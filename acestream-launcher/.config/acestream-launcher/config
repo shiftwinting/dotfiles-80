@@ -1,0 +1,13 @@
+[DEFAULT]
+player = mpv --no-resume-playback
+engine = acestreamplayer.engine --client-console
+verbose = true
+
+[tty]
+engine = acestreamplayer.engine --client-console 
+verbose = true
+
+[browser]
+engine = acestreamplayer.engine --client-gtk
+verbose = false
+

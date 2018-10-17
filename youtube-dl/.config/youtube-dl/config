@@ -1,0 +1,9 @@
+-i
+
+# Get All Subs to SRT
+--write-sub
+--convert-subs srt
+--sub-lang en,eng
+
+# Get metadata
+--add-metadata

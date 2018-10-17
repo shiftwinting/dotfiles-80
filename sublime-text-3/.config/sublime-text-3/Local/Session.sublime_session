@@ -1,0 +1,554 @@
+{
+	"folder_history":
+	[
+		"/home/sommerfeld/MEGA/Curriculum/CV",
+		"/home/sommerfeld/MEGA/thesis/project/thesis-latex"
+	],
+	"last_version": 3176,
+	"last_window_id": 3,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 0.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/Makefile/Make.sublime-build",
+							""
+						],
+						[
+							"Packages/Makefile/Make.sublime-build",
+							"Clean"
+						]
+					],
+					[
+						"Packages/Makefile/Make.sublime-build",
+						""
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 283.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"make",
+						"Build With: Make - Clean"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"pack",
+						"Install Package Control"
+					]
+				],
+				"width": 497.0
+			},
+			"console":
+			{
+				"height": 0.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis.tex",
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis_Preamble.tex",
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis_Background.tex",
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis_Implementation.tex",
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis.pdf",
+				"/home/sommerfeld/.config/sublime-text-3/Packages/LaTeXing/LaTeXing.sublime-settings"
+			],
+			"find":
+			{
+				"height": 0.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 469.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 500.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 380.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 174.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 0.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "Thesis_Implementation.tex",
+					"settings":
+					{
+						"buffer_size": 10815,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n%                                                                      %\n%     File: Thesis_Background.tex                                      %\n%     Tex Master: Thesis.tex                                           %\n%                                                                      %\n%     Author: Andre C. Marta                                           %\n%     Last modified :  2 Jul 2015                                      %\n%                                                                      %\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\\chapter{Background}\n\\label{chapter:background}\n\nInsert your chapter material here...\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\\section{Theoretical Overview}\n\\label{section:theo-overview}\n\n\\subsection{The Fierz-Pauli Action}\\label{sec:fp-action}\nWhen trying to describe a graviton, it is useful to use GR and consider its field as a perturbation to the metric ($g_{\\mu\\nu}$). Due to the fact that the metric is a real symmetric tensor, the graviton field ($h_{\\mu\\nu}$) will also have to share those properties.\n\n\nIn order to write down the most general action for the graviton field, one could consider an Effective Field Theory with terms up to quadratic order because the desired cutoff of the theory is $M_p$, and gravity is the weakest force. That means any power 4 or higher terms will be highly suppressed in an EFT.\n\n\nOne would obviously want to include parity symmetry, that means no linear terms are allowed. We are left with quadratic terms in 1st order derivatives, and quadratic terms in $h_{\\mu\\nu}$ (mass terms). It is possible to include the field $h_{\\mu\\nu}$ in contractions with itself and its derivatives and also its trace, \\emph{i.e.} $h=h_{\\mu\\nu}g^{\\mu\\nu}=h_\\mu^\\nu$. The determinant of the field ($\\det(h)$) can also be included, but by the trace-determinant relationship, $h_{,\\mu}=(\\det(h)_{,\\mu})$ so that wouldn't make a difference.\n\n\nIn flat space ($g_{\\mu\\nu}=\\eta_{\\mu\\nu}$), without sources ($T_{\\mu\\nu}=0$), the most general action one can write in $D$ dimensions is\n\\begin{equation}\nS=\\int{\\dd[D]{x}\\  a_1 h_{\\mu\\nu,\\lambda}h^{\\mu\\nu,\\lambda}+a_2 h_{\\lambda\\nu,\\mu}h^{\\mu\\lambda,\\nu}+a_3 h^{\\mu\\nu}_{\\ \\ ,\\mu}h_{,\\nu}+a_4 h_{,\\lambda}h^{,\\lambda}-\\frac{1}{2}m^2(h_{\\mu\\nu}h^{\\mu\\nu}-ah^2)}\n\\end{equation}\n\nThe coefficients $\\{a_i\\}$ specify the weight of each kinetic term, the $m^2$ coefficient regulates the weight of the mass terms with respect to the kinetic terms, and finally, the $a$ coefficient controls the weight of the trace mass term, and its sign regulates the overall sign of the mass terms with respect to the kinetic terms.\n\n\nThe value of the coefficients depends on which symmetries we want to impose. The most common one, general local diffeomorphisms ($x^\\mu\\to x^\\mu-\\xi^\\mu(x)$) which imply that $h_{\\mu\\nu}$ transforms as $\\var{h_{\\mu\\nu}} = \\xi_{\\nu,\\mu}+\\xi_{\\mu,\\nu}=2\\xi_{(\\mu,\\nu)}$.\n\n\nImposing diffeomorphism invariance fixes ${a_i}$ coefficients up to an overall factor, which can be reabsorbed in the $m^2$ and $a$ coefficients. The problem is, the mass terms break the diffeomorphism invariance, \\emph{i.e.} $\\var{\\lag}=2m^2\\xi_{(\\mu,\\nu)}\\qty(\\eta^{\\mu\\nu}-h^{\\mu\\nu})\\neq 0$. If $m=0$ (the massless graviton case), this is not a big deal, as the symmetry is preserved and we get the standard GR predictions. However, including mass terms breaks this important symmetry. This is one of the issues behind the zDZV discontinuity. And finally an overall factor in the action is irrelevant to the equations of motion, being only of some importance when computing path integrals, but the overall factor can be reabsorbed into the fields themselves.\n\n\nThe partially diffeomorphism invariant free Fierz-Pauli action in Minkowski space is then\n\n\\begin{equation}\n\\label{eq:fp}\nS=\\int{\\dd[D]{x}-\\frac{1}{2}h_{\\mu\\nu,\\lambda}h^{\\mu\\nu,\\lambda}+h_{\\lambda\\nu,\\mu}h^{\\mu\\lambda,\\nu}-h^{\\mu\\nu}_{\\ \\ ,\\mu}h_{,\\nu}+\\frac{1}{2}h_{,\\lambda}h^{,\\lambda}-\\frac{1}{2}m^2(h_{\\mu\\nu}h^{\\mu\\nu}-h^2)}\n\\end{equation}\n\nThe $a$ factor is not fixed by any symmetry, but by the consistency of the equations of motion. Making $a\\neq 1$ will alter drastically the degrees of freedom creating a scalar ghost (negative kinetic energy) with a mass that diverges as $a\\to 1$ implying that the coefficient is non-dynamical due to this singularity. Therefore, $a$ has to be mathematically $1$ (\\emph{Fierz-Pauli tuning}).\n\n\nThe same result could have been derived from the \\emph{Hilbert-Einstein} action ($\\lag=R$), working in $\\order{2}$ in the perturbation $h_{\\mu\\nu}$.\n\n\\subsection{Constrained Hamiltonian and degrees of freedom}\n\\label{sec:ham}\nOne major difference when working with massive gravity is the inclusion of additional degrees of freedom. The \\dof count can be done easily in \\cref{eq:eom-const} in \\cref{sec:ffps} although that hand-waving process can be misleading in some cases. To get the correct count, one needs to perform an Hamiltonian analysis to check what exactly is an \\eom and what is a constraint.\n\n\n\\cite[ch. 2.1]{kurt} expands the index summation in time and spatial components, producing long long expressions. He uses only the purely spatial part of the field, $h_{ij}$, in its Hamiltonian analysis, treating the others ($h_{00}$ and $h_{0i}$) separately. In other to achieve that, one has to use partial integration (using the D dimensional integral in the action) to change the non-spatial terms. That allows us to change quadratic in the derivatives type terms to (minus) linear times second derivative type terms, because the surface term in the partial integration is 0 at infinity.\n\n\nAfter that expansion, the general Hamiltonian formulation procedure outlined in \\cite[ch. 1]{gaugesystems} is used. Namely\\footnote{Repeated spatial indices are summing under this convention, regardless of the fact of whether they are covariant or contravariant}:\n\\begin{enumerate}\n    \\item Computing spatial canonical momenta:\n    \\begin{equation} \n    \\pi_{ij}=\\pdv{\\lag}{\\dot{h}_{ij}}=\\dot{h}_{ij}-2h_{0(j,i)}+\\delta_{ij}\\qty((2-\\epsilon_1)h_{0k,k}-\\dot{h}_{kk})\n    \\end{equation}\n    \\item Computing the Hamiltonian $\\ham$ including only terms in $h_{ij}$ and $\\pi_{ij}$:\n    \\begin{equation}\n    \\begin{split}\n    \\ham\\qty(h_{ij},\\pi_{ij})&=\\dot{h}_{ij}\\pi_{ij}-\\lag\\qty(h_{ij},\\pi_{ij})=\\\\ \n    &=\\half\\pi_{ij}^2-\\half\\frac{\\pi_{ii}^2}{D-2}+\\half\\qty(h_{ij,k})^2-h_{jk,i}h_{ik,j}+h_{ij,i}h_{kk,j}-\\half\\qty(h_{kk,i})^2+\\half m^2\\qty(h_{ij}^2-h_{ii}^2)\n    \\end{split}\n    \\end{equation}\n    \\item Rewriting the action using Hamiltonian variables, considering the temporal components separately:\n    \\begin{equation}\n    \\begin{split}\n    S&=\\int{\\dd[D]{x}\\dot{h}_{ij}\\pi_{ij}-\\ham\\qty(h_{ij},\\pi_{ij})+\\lambda_m\\phi_m\\qty(h_{ij},\\pi_{ij})+f\\qty(h_{0i},h_{00})}=\\\\\n    &=\\int{\\dd[D]{x}\\dot{h}_{ij}\\pi_{ij}-\\ham+h_{0i}\\qty(\\pi_{ij,j})+h_{0i}^2m^2+h_{00}\\qty(\\laplacian h_{ii}-h_{ij,ij}-m^2h_{ii})+\\epsilon_24h_{0i}h_{0[j,i]i}}s\n    \\end{split}\n    \\end{equation}\n    A lot to needs to be said about this particular step:\n    \\begin{enumerate}\n    \\item The $\\lambda_m\\phi_m$ terms refer to the `leftovers' between the original $\\lag$ and $\\dot{h}_{ij}\\pi_{ij}-\\ham$. According to \\cite[ch. 1.2]{gaugesystems}, they are to be interpreted as system constraints ($\\phi_m=0$) that restrict the original solution space ($D(D+1)/2$ dimensional\\footnote{The Hamiltonian dynamical variable is the purely spatial symmetric $h_{ij}$ which has $d(d+1)/2$ components, with $d=D-1$ being the number of space dimensions. One has to multiply by 2 due to the degrees of freedom of the canonical momentum}) to a restricted space called the constraint subspace which is $D(D-1)-2M_1-M_2$ dimensional, in which $M_1$ is number of independent first-class constraints and $M_2$ the number of independent second-class constraints. The $\\lambda_m$ parameters are linear parameters independent from $\\pi_{ij}$ and $h_{ij}$, contrary to the constraints $\\phi_m$ which can only depend on those variables and their derivatives. All terms other than $\\dot{h}_{ij}\\pi_{ij},\\ham$ and $h_{0i}^2m^2$ fall under this `constraint category'.\n\n\n    This is where it gets tricky. The type of constraint distinction clearly matters since first-class ones count twice as much in removing degrees of freedom. A set of constraints is considered to be of first-class if the Poisson brackets between them always identically vanishes in the constraint subspace. After asserting which of the constraints are first-class, a function can be first-class iff its Poisson bracket with every first-class constraint also vanishes. Anything which is not first-class is second class.\n\n\n    The reason first-class constraints count twice is that each one of those has an associated gauge freedom (gauge orbits) which requires gauge fixing in order to remove ambiguity between canonical variables and actual physics degrees of freedom. So for every first-class constraint, there is an `additional' gauge fixing constraint.\n\n    \\item The $f\\qty(h_{0i},h_{00})$ term is representing the leftovers that don't fall into the constraints category. They have to be treated on their own by solving the \\emph{e.o.m.} for $h_{0i}$ since $f=h_{0i}^2m^2$. One only needs to worry about it in the massive ($m\\neq 0$) case.\n\n    \\end{enumerate}\n    \\item Treat the massive and massless cases separately:\n    \\begin{enumerate}\n        \\item Compute time-like components' \\eom to linearize the action if $f\\neq 0$\n        \\item Assert the class of the constraints by computing their Poisson brackets\n        \\item Count the degrees of freedom using $D(D-1)-2M_1-M_2$ in order to find the correct helicity/spin of the graviton\n    \\end{enumerate}\n\\end{enumerate}\n\nIn the massless case, everything is already set and ready. $h_{00}$ and $h_{0i}$ are just Lagrange multipliers and their factors are the constraints, \\emph{i.e.} $\\pi_{ij,j}=0$ and $\\laplacian h_{ii}-h_{ij,ij}-m^2h_{ii}=0$. In total we have 4 constraints {$\\phi_\\alpha=0$}, with $\\alpha=0$ being the `scalar' constraint. One can then easily check that $\\pb{\\phi_0}{\\phi_i}=\\pb{\\phi_\\alpha}{\\ham}=0$. That means the the set of constraints are first class, and the Hamiltonian is first class. Thus, for $D=4$ the total number of degrees of freedom for $m=0$ is $12-2\\times 4=4$, which gives the graviton 2 polarizations along with their respective canonical momenta.\n\n\nIn the massive case, one needs to solve the equation for $h_{0i}$ due to the presence of the quadratic non-constraint term. Trivially, $\\fdv{S}{h_{0i}}=\\pdv{S}{h_{0i}}=0\\Rightarrow h_{0i}=\\frac{\\pi_{ij,j}}{m^2}$. Putting it back into the action just adds a $\\frac{\\pi_{ij,j}^2}{m^2} $term to $\\ham$ and removes the previous $h_{0i}$ constraints. Seemingly, $\\phi_0$ is the only constraint left. However, one could impose that the constraint should be constant over time using the Hamiltonian equations of motion. That \\emph{e.o.m.} is itself another constraint. The same procedure could be done for the massless case but as we have seen before, all the Poisson brackets vanish on the constraint subspace.\n\n\nLet $\\phi'=\\dot{\\phi}_0$ be this extra constraint. Using the Hamilton equations\\footnote{$H=\\int{\\dd[d]{x}\\ham}$}, $\\phi'=\\pb{H}{\\phi_0}=\\frac{m^2\\pi_{ii}}{D-2}+\\pi_{ij,ij}=0$. The Hamiltonian is no longer first class because its Poisson bracket with $\\phi_0$ does not vanish on the $\\phi_0$ constraint subspace (only in the $\\phi'$ constraint subspace). But $\\phi_0$ and $\\phi'$ can still be a set of first-class constraints if their Poisson bracket vanishes. As it turns out, $\\pb{\\phi_0}{\\phi'}=\\frac{D-1}{D-2}m^4\\neq 0$, which means both constraints are second class. With that in mind, the number of degrees of freedom in the massive graviton case is $12-2=10$, corresponding to the $5$ spin states of a spin-2 particle and their canonical momenta.\n\n\\subsection{Free Fierz-Pauli solutions}\\label{sec:ffps}\n\nIn this section we go back to the Lagrangian formalism. From the Euler-Lagrange equations we get the following \\eom\n\n\\begin{equation}\n\\label{eq:eom}\n\\fdv{S}{h^{\\mu\\nu}}=0\\Rightarrow \\Box h_{\\mu\\nu}-2\\epsilon_3h^{\\lambda}_{\\ (\\mu,\\nu)\\lambda}+\\eta_{\\mu\\nu}h^{\\lambda\\sigma}_{\\ \\ ,\\sigma\\lambda}+h_{,\\mu\\nu}-\\eta_{\\mu\\nu} \\Box h -m^2(h_{\\mu\\nu}-\\eta_{\\mu\\nu}h)=0\n\\end{equation}\n\n\\cref{eq:eom} is a tensor equation that corresponds to $D^2$ equations but, in this case, due to the symmetry tensor to $D(D+1)/2$ independent \\eom. However, using some kind of SVT\\footnote{Scalars, Vectors and Tensors decomposition. It is used in Cosmology Perturbation Theory} decomposition, these equations can be spitted into $1$ scalar equation, $D$ transverse vector equations and and an equation for a symmetric traceless transverse tensor.\n\n\nRewriting \\cref{eq:eom} as $F_{\\mu\\nu}=0$, one can SVT decompose it into\n\\begin{align}\n&F_{\\mu\\nu}=0 \\qq{$\\Rightarrow$tensor \\eom with constraints}\\\\\n&F_{\\mu\\nu}^{\\ \\ ,\\mu}=0 \\qq{$\\Rightarrow$ transverse vector constraint}\\\\\n&F_{\\mu\\nu}\\eta^{\\mu\\nu}=F=0 \\qq{scalar constraint}\n\\end{align}\nAfter the decomposition, from ($m\\neq 0)$, one gets (using \\emph{Mathematica}):\n\\begin{equation}\n\\label{eq:eom-const}\n\\begin{cases}\n(\\Box-m^2)h_{\\mu\\nu}=0 \\qq{$\\Rightarrow$ Klein-Gordon equation}\\\\\n\\partial^\\mu h_{\\mu\\nu}=0 \\qq{$\\Rightarrow$ vector constraint}\\\\\nh=0 \\qq{$\\Rightarrow$scalar constraint}\n\\end{cases}\n\\end{equation}\nNow we can count the degrees of freedom as being $D(D+1)/2$ from the tensor equation, minus $D$ from the vector constraint, minus $1$ from the scalar constraint. For $D=4$, it gives us $5$ degrees of freedom (spin 2 graviton), since now we are not considering the Hamiltonian variables (canonical momenta). That is the same answer we got in \\cref{sec:ham}. \n\n\nThe general solution of the Klein-Gordon equation can easily be found by a Fourier-transform.\n\\begin{equation}\n\\label{eq:kgsol}\nh_{\\mu\\nu}(x)=\\int{\\frac{\\dd[d]{p}}{\\sqrt{(2\\pi)^d2p^0}}\\qty[h_{\\mu\\nu}(\\vb{p})e^{ip\\vdot x}+h_{\\mu\\nu}^{*}(\\vb{p})e^{-ip\\vdot x}]}\n\\end{equation}\nWhere $p^\\mu=(\\sqrt{\\vb{p}^2+m^2},\\vb{p})$ is the D-dimensional on shell momentum of the graviton and the $h_{\\mu\\nu}(\\vb{p})$ are the Fourier transforms of the graviton field. They, in turn, can be decomposed in a sum of their degrees of freedom, indexed be $\\lambda$:\n\\begin{equation}\nh_{\\mu\\nu}(\\vb{p})=\\sum_{\\lambda=-2}^2{a_{\\vb{p},\\lambda}\\bar{\\epsilon}_{\\mu\\nu}(\\vb{p},\\lambda)}\n\\end{equation}\nThe quantities $\\bar{\\epsilon}_{\\mu\\nu}(\\vb{p},\\lambda)$ are 2-tensors, which means they can be expressed using coordinate transformations with respect to the graviton rest frame where one gets $\\bar{\\epsilon}_{\\mu\\nu}(\\vb{k},\\lambda)$, $k^\\mu=(m,0,...)$. The coordinate transformations required are Lorentz boosts, \\ie\n\\begin{equation}\n\\bar{\\epsilon}_{\\mu\\nu}(\\vb{p},\\lambda)=\\Lambda(\\vb{p})^\\alpha_{\\ \\mu}\\Lambda(\\vb{p})^\\beta_{\\ \\nu}\\bar{\\epsilon}_{\\alpha\\beta}(\\vb{k},\\lambda)\n\\end{equation}\nKeeping the in mind that the Klein-Gordon equation is constrained (\\cref{eq:eom-const}), assuming the $a_{\\vb{p}}$ coefficients are independent one gets \n\\begin{equation}\n\\label{eq:const}\n\\begin{cases}\n\\Lambda(\\vb{p})^\\alpha_{\\ \\mu}\\Lambda(\\vb{p})^\\beta_{\\ \\nu}\\cdot(-2)\\Im{a_{\\vb{p},\\lambda}\\bar{\\epsilon}_{\\alpha\\beta}(\\vb{k},\\lambda)e^{ip\\vdot x}}(-p^\\mu)=0\\Rightarrow k_\\mu \\bar{\\epsilon}^{\\mu\\nu}(\\vb{k},\\lambda) = 0 \\Rightarrow m\\cdot \\bar{\\epsilon}^{0\\nu}(\\vb{k},\\lambda) = 0\\\\\n2\\eta_{\\mu\\nu}\\Re{a_{\\vb{p},\\lambda}\\bar{\\epsilon}^{\\mu\\nu}(\\vb{k},\\lambda)e^{ip\\vdot x}}=0 \\Rightarrow  \\bar{\\epsilon}^\\mu_{\\ \\mu}(\\vb{k},\\lambda) = 0 \\Rightarrow \\bar{\\epsilon}^i_{\\ i}(\\vb{k},\\lambda)=0\n\\end{cases}\n\\end{equation}\nwhere it was used that $a_{\\vb{p},\\lambda}e^{ip\\vdot x}$ are non-trivial and independent. In short, \\cref{eq:const} tells us that the $\\bar{\\epsilon}_{\\mu\\nu}(\\vb{k},\\lambda)$ basis only has spatial components and it is traceless, \\ie $\\lambda=1,...,D(D-1)/2-1$. In $D=4$ that means $5$ \\dof, consistent with the analysis in \\cref{sec:ham}.\n\nWorking with an orthogonal basis, $\\bar{\\epsilon}^{\\mu\\nu}(\\vb{k},\\lambda)\\bar{\\epsilon}_{\\mu\\nu}^*(\\vb{k},\\lambda')=\\delta_{\\lambda\\lambda'}$. The basis is a symmetric traceless representation of $SO(d)$ which can be broken into 3 representations of $SO(d-1)$: a scalar ($\\bar{\\epsilon}_S^{ij}$, 1 \\dof) , a longitudinal vector ($\\bar{\\epsilon}_{V,k}^{ij}$, $\\varepsilon_{nlk}k_l\\bar{\\epsilon}_{V,k}^{ij}=0\\Rightarrow d-1$ \\dof), and a symmetric traceless transverse tensor ($\\bar{\\epsilon}_{T,kl}^{ij}$, $k_l\\bar{\\epsilon}_{V,kl}^{ij}=0\\Rightarrow d(d-1)/2-1-d$ \\dof).\n\n\nDue to these restrictions, the scalar mode will have at least a term quadratic in $\\vb{k}$, the vector mode has to be linear in $\\vb{k}$ (since it is longitudinal) and the tensor mode has no $\\vb{k}$ dependence (since it is transverse). The dependence in $\\vb{k}$ is relevant because it shows how the mode transforms under Lorentz boosts. According to \\cite[p. 20]{kurt}, the massless limit is equivalent to the large boost limit, which means that only the scalar and vector modes are relevant, again reducing the \\dof, as predicted in this limit in \\cref{sec:ham}.\n\n\\subsection{Graviton Solutions with a Source Term}\nWe introduce sources by adding a coupling term with the graviton to the free \\emph{Fierz-Pauli} action.\n\\begin{align}\n\\label{eq:src}\n&S=S_\\text{free}+S_\\text{source} \\\\\n&S_\\text{source}=\\int{\\dd[D]{x} \\kappa h_{\\mu\\nu}T^{\\mu\\nu}}\n\\end{align}\nwith $T^{\\mu\\nu}= \\frac{2}{\\sqrt{-g}}\\fdv{L}{g_{\\mu\\nu}}$ and $\\var{g_{\\mu\\nu}}=2\\kappa h_{\\mu\\nu}$ one gets $\\kappa=M_P^{-\\frac{D-2}{2}}$ for the coupling constant, keeping in mind that $M_P=(8\\pi G)^{-\\half}$. The $G$ coupling is not fixed and it is not necessarily $G_N$. The standard procedure in QFT is to keep the coupling constants free and renormalize them according to experimental results. As we will see later, $G$ is different for the massless and the massive gravitons if we impose that they generate the same Newtonian field in the massless limit.\n\n\nSolving the source \\eom by Fourier transforming\\cite[p. 24]{kurt}\\footnote{I will use a notation in which non-primed variables represent massive gravity calculations and prime variables represent the massless ones.},\n\n\\begin{equation}\n\\label{eq:srcsol-massive}\nh_{\\mu\\nu}(x)=\\kappa \\int{\\frac{\\dd[D]{x}}{(2\\pi)^D}\\frac{e^{ip\\vdot x}}{p^2+m^2}\\qty[T_{\\mu\\nu}-\\frac{1}{D-1}\\qty(\\eta_{\\mu\\nu}+\\frac{p_\\mu p_\\nu}{m^2})T(p)]} \\qq{massive case}\n\\end{equation}\n\n\n\\begin{equation}\n\\label{eq:srcsol-massless}\nh'_{\\mu\\nu}(x)=\\kappa' \\int{\\frac{\\dd[D]{x}}{(2\\pi)^D}\\frac{e^{ip\\vdot x}}{p^2}\\qty[T_{\\mu\\nu}-\\frac{1}{D-2}\\eta_{\\mu\\nu}T(p)]} \\qq{massless case}\n\\end{equation}\nwith $T^{\\mu\\nu}(p)=\\int{\\dd[D]{x}e^{-ip\\vdot x}T^{\\mu\\nu}(x)}$. In the massive case, the $p_\\mu p_\\nu$ term can be thrown away since it can be put to 0 using a Lorentz boost\\cite[p. 29]{kurt} (it is a gauge term). Neglecting the aforementioned term, the 2 solutions have a different coefficient in the trace term. The reason behind it is that due to the total diffeomorphism invariance invariance in the \\emph{massless} case (\\cref{sec:fp-action}), by working in the Lorenz Gauge\\footnote{$\\Box \\xi_\\mu=-(h_{\\mu\\nu}^{\\ \\ ,\\nu}-\\half h_{,\\mu})=0$} the \\eom's simplify greatly, thus changing that specific coefficient. This procedure is not possible in the massive case because there is no diffeomorphism invariance for $m\\neq 0$.\n\n\\subsection{'Black Hole' solutions}\n\nFor a static source, one can from \\cref{eq:srcsol-massive,eq:srcsol-massless} that they yield static solutions as well. These static solutions are most often refered as `Black Hole' solutions even though they can be applied to a broader spectrum of physical or theoretical objects\\footnote{They are refered to as a BH solution because they describe the geometry surrounding a BH, regardless of where the matter is located.}. There type of soluction can be specified by wether the BH has charge \\(Q\\) and/or angular momentum (including spin) \\(J\\). Another factor to take into account is the overall curvature of space-time caused by the presence of a cosmological constant \\(\\Lambda\\), which depending on its sign makes the space-time (Anti)deSitter ((A)dS) or asymptotically flat if \\(\\Lambda=0\\).\n\n\nIn this thesis, I will firstly focus on the simplest case\\footnote{Working with a non-Kerr geometry (\\(J=0\\)) simplifies the calculations considerably as the Kerr solution does not have the nice property of being spherically symmetric.}, an asymptotically flat D-dimensional Schwarzchild BH solution (no charge or spin) with mass M (\\cref{eq:schwarz-geo})\n\n\n \\begin{equation}\n\\label{eq:schwarz-geo}\n\\dd{s}^2 = -f(r) \\dd{t}^2 + \\frac{1}{f(r)} \\dd{r}^2 + r^2 \\dd{\\Omega_{D-2}}\n\\end{equation}\n\nIn standard Schwarzchild coordinates and \\(D=4\\), \\(f(r)= 1-2GM/r\\) for massless gravity.\nThe solutions from the massless case come out from \\cref{eq:srcsol-massive} by first picking an adequate matter lagrangian \\(\\lag_m\\) or equivalent stress tensor \\(T^{\\mu\\nu}\\). This part will be explored in \\Cref{sec:bh-sol-massive}.\n\n\\subsection{Quasi-Normal Modes}\\label{sec:qnm-intro}\n\n\n Finding a suitable BH spacetime allows one to in turn consider it as a background and study its perturbations. These are eigenmodes of a dissipative system whose physical interpretation is depedent on the full setup. From a theoretical standpoint, QNM reveals us the energy spectrum of the spacetime and its (in)stability whereas from an experimental standpoint, they provide signatures on gravitational wave profiles that allows us to infer physical properties from their source and probe high energy physics.\n\n\nConsidering the metric from \\cref{eq:schwarz-geo} as the background metric \\(g_{\\mu\\nu}^{BG}\\) along with the perturbation \\(h_{\\mu\\nu}\\) such that \\(g_{\\mu\\nu}=g_{\\mu\\nu}^{BG} + h_{\\mu\\nu}\\), one gets to solve the linearized Einstein equations for \\wrt \\(h_{\\mu\\nu}\\). These equations are homogenous because the source term was absorved and used to compute the background solution. In this case, we are only considering perturbations in the gravitational field, not in the other source fields.\n\nAfter rewriting the perturbations as \\(h_{\\mu\\nu}=e^{-\\omega t}\\tilde{h}_{\\mu\\nu}\\) one can decomposed them in tensorial harmonics for \\(D=4\\) with even parity \\((-1)^l\\) (Regge-Wheeler type) and odd parity \\((-1)^{l+1}\\) (Zerilli type).\n\n\n\nThe decompositions generate a set of 10 coupled second-order differential equations: 3 for the odd perturbations and 7 for the even ones. As such, in both cases the functions are not indepedent and one can define 2 master functions, \\(\\Psi^-\\) and \\(\\Psi^+\\) for odd and even parities that completely describe the system. As it was discovered by Chandrasekhar, these 2 fields yield the same perturbation spectrum (isospectrality)REF which makes it easier to just work with the odd parity sector that presents a simpler form.   \n\n\nThe master equation that defines QNM is the RWZ equation (Regge-Wheeler-Zerilli).\n\\begin{equation}\n\\label{eq:rwz}\n\\pdv[2]{\\Psi_s}{r_*} + (\\omega^2-V_s)\\Psi_s = 0\n\\end{equation}\nwhere \\(\\Psi_s\\) is a field of spin \\(s\\), \\(\\omega\\) is a complex frequency that characterizes the QNM and \\(\\dd{r_*}/\\dd{r}=1/f\\).\nFor an odd parity graviton (spin \\(s=2\\)),\n \\begin{equation}\n\\label{eq:odd-s2-pot}\nV_{s=2}^-=f(r)\\qty[\\frac{l(l+1)}{r^2}-\\frac{6M}{r^3}]\n\\end{equation}\n\n\nIn order to compute QNM one needs to first define physical boundary conditions for the specific problem at hand. The most common ones (in the case of a BH) are set at the horizon (\\(r_*\\to -\\infty\\)) and at infinity (\\(r_*\\to + \\infty\\)).\n\n\nNear the horizon, one should have only ingoing waves, \\ie nothing should leave the horizon if the object is a BH.\n\\begin{equation}\n\\label{eq:bc-horizon}\n\\Psi(r_*\\to -\\infty) \\sim e^{-i\\omega(t+r_*)}\n\\end{equation}\n\n\nAt spatial infinity, one should only have outgoing waves because no waves can come `from infinity'.\n\\begin{equation}\n\\label{eq:bc-inf}\n\\Psi(r_*\\to +\\infty) \\sim e^{-i\\omega(t-r_*)}\n\\end{equation}\n\n\nIn most cases, \\cref{eq:rwz} has to be solved numerically or with an approximation as exact solutions are hard to find. The most common methods are the WKB approximation and the continued fraction method (INSERT REF).\n\n\nWhen considering our chosen toy model (asymptotically flat Schwarzchild BH), the QNM spectrum is composed of weakly damped modes (for overtone number \\(n<10\\)) and highly damped modes \\(n>10\\). The most relevant mode for GW ringdown signatures is the fundamental mode \\(n=0\\).\n\n\n\\subsection{Extremely Compact Objects}\n\nOne of many the many usefulness of QNM is the fact that it allows us to probe the near horizon (high energy) region. One can even go a step further and state that we can devise a definite test for the existence of an event horizon!\n\n\nTheir existence (and the existance of BH themselves) as long been a deeply held dogma with few to no contestants. Despite their elegance and simplicity, mathematical and conceptual problems still puzzled many physicists for the past decades. The singularity (a mathematical point with infinite density) and the BH Information Paradox are just examples of issues that are still hard to swallow.\n\n\nMany different alternatives have been proposed\n\n\n\n\\section{Quasi-Normal Modes in Massive Gravity}\n\nComputing QNM for a massive graviton does not begin from the same assumptions as the ones in \\cref{sec:qnm-intro}. One cannot simply solve the perturbed Einstein Field Equations because, as explained in \\cref{sec:ffps}, the \\eom are different, even in the massless limit.\n\n\nThus, one has to solve INSERT REF, but unlike in INSERT REF, one cannot apply the same tensor harmonics decomposition. This is because in the massless case there is diffeomorphism invariance and one can use that gauge freedom to impose a gauge (the Regge-Wheeler gauge) and simply the tensor harmonics into its cannonical form.\n\n\nIn the massive case, we no longer have that freedom which means using the full form of the decomposition and using the trace and transverse equations to make up for that.\n\n\nSubstituting REF in REF, and assuming without loss of generality \\(\\theta=0\\), the system of equations simplyfies to:\n\n\n\nOne can use the  transverse equation to solve for \\(h_0\\) and substitute it back in the other equations. After some simlpification, we arrive at the RW coupled equations for a massive graviton in a spherically symmetric background:\n\n\nIn which the Zerilli potential is given by\n\n\nFor a Schwarzchild background (\\(f = 1-\\frac{2M}{r}\\)), which means the potential has to form\n\n\nand the REF can be written explicitely as\n\n\n\n\\subsection{Continued Fraction Method}\nThe continued fraction method relies on a suitable \\emph{ansatz} that respects the boundary conditions thus in this case, the same one as in massless gravity can be used.\n\nSubstituting REF onto REF, one obtains the recursive coefficient relation:\n\nand at the boundaries:\n\n\n    ",
+					"file": "Thesis_Background.tex",
+					"file_size": 26967,
+					"file_write_time": 131732961805167733,
+					"settings":
+					{
+						"buffer_size": 26971,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "Thesis_Preamble.tex",
+					"settings":
+					{
+						"buffer_size": 19620,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "Thesis.tex",
+					"settings":
+					{
+						"buffer_size": 12005,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "Packages/Makefile/Make.sublime-build",
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/Makefile/Make.sublime-build",
+							""
+						],
+						[
+							"Packages/Makefile/Make.sublime-build",
+							"Clean"
+						]
+					],
+					[
+						"Packages/Makefile/Make.sublime-build",
+						""
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 283.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"make",
+						"Build With: Make - Clean"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"pack",
+						"Install Package Control"
+					]
+				],
+				"width": 497.0
+			},
+			"console":
+			{
+				"height": 150.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex"
+			],
+			"file_history":
+			[
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis.pdf",
+				"/home/sommerfeld/MEGA/thesis/project/thesis-latex/Thesis_Preamble.tex",
+				"/home/sommerfeld/.config/sublime-text-3/Packages/LaTeXing/LaTeXing.sublime-settings"
+			],
+			"find":
+			{
+				"height": 26.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"    "
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"groups":
+			[
+				{
+					"selected": 1,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "Thesis_Implementation.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 10815,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										10815,
+										10815
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeXing/support/LaTeX.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "Thesis_Background.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 26971,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										26965,
+										26965
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeXing/support/LaTeX.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 6117.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "Thesis_Preamble.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 19620,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										19528,
+										19528
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeXing/support/LaTeX.tmLanguage",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 188.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 3,
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "Thesis.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 12005,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeXing/support/LaTeX.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 2193.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 26.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 171.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"position": "0,1,0,0,0,0,0,0,0,1920,1080",
+			"project": "thesis.sublime-project",
+			"replace":
+			{
+				"height": 48.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 500.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 380.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 174.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 3,
+			"workspace_name": "/home/sommerfeld/MEGA/thesis/project/thesis-latex/thesis.sublime-workspace"
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+			"/home/sommerfeld/MEGA/thesis/project/thesis-latex/thesis.sublime-workspace",
+			"/home/sommerfeld/MEGA/Curriculum/CV/cv.sublime-workspace"
+		]
+	}
+}
