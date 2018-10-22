@@ -854,3 +854,130 @@ sudo apt install intel-microcode
 echo $SHELL
 sudo ./install.sh 
 ls
+ping 8.8.8.8
+sudo apt update
+dpkg --print-foreign-architectures
+sudo dpkg --remove-architecture arm64
+dpkg -l | grep arm64
+nano /etc/apt/sources.list
+sudo nano /etc/apt/sources.list
+sudo apt update
+apt list --upgradable
+sudo apt upgrade
+sudo apt install vim
+sudo apt install emacs
+sudo apt install zsh
+sudo apt install i3
+sudo apt install i3blocks 
+sudo apt install nmtui
+sudo apt install xfce-terminal
+sudo apt install xfce4-terminal
+sudo -H pip3 install pywal
+sudo -H pip3 install --upgrade pip
+sudo -H pip2 install --upgrade pip
+sudo -H pip3 install --upgrade matplotlib numpy argparse tqdm pillow
+sudo -H pip2 install --upgrade matplotlib numpy argparse tqdm pillow
+ifconfig
+pwd
+wal -i /home/INTRANET.XESOL.COM/rfmarques/Pictures/wallpapers
+sudo apt install feh
+sudo apt install stow
+git clone https://github.com/ruifm/dotfiles.git
+sudo apt install playerctl
+sudo apt install pactl
+cd dotfiles/
+vim i3/.i3/config 
+vim zsh/.zshrc
+stow i3
+stow zsh
+vim X/.xinitrc 
+vim X/.Xdefaults 
+vim i3/.i3/config 
+sudo apt install neofetch
+sudo add-apt-repository ppa:dawidd0811/neofetch
+sudo apt update
+sudo apt upgrade
+sudo apt install neofetch
+sudo add-apt-repository ppa:dawidd0811/neofetch-daily
+sudo apt upgrade
+sudo apt update
+sudo apt install neofetch
+neofetch
+vim i3/.i3/config 
+vim rofi/.config/rofi/config 
+sudo apt install rofi
+stow rofi
+stow bash
+cd
+rm .bash*
+rm .profile 
+cd dotfiles/
+vim bash/.bashrc 
+stow bash
+vim zsh/.zshrc
+vim X/.xinitrc 
+vim i3/.i3/config 
+ll -a
+cd ..
+ll -a
+cd dotfiles/
+vim vim/.vimrc
+touch vim/.vimrc
+ls
+mkdir vim
+vim vim/.vimrc
+stow vim
+cd vim
+mkdir -p .vim/plugged
+cd
+cd dotfiles/
+stow vim
+cd vim
+vim .vimrc
+cd
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ls -a .vim/autoload/plug.vim 
+vim .vimrc
+ll -a .vim/
+ll -a .vim/autoload/
+
+ll -a .vim/autoload/
+vim .vimrc
+cd dotfiles/
+stow vim
+cd
+vimtutor
+cd
+cd Downloads/
+git clone https://github.com/dylanaraps/wal.vim.git
+cd wal.vim/
+which clion 
+clion
+vim i3/.i3/config 
+vim vim/.vimrc 
+cd vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+la
+ls
+cd
+mv .vimrc dotfiles/vim
+ls
+cd dotfiles/
+ll -a
+ls -a
+cd vim
+ls -a
+nano .vimrc
+vim .vimrc 
+./clion.sh 
+cd
+cd Downloads/
+git clone " Using plug
+Plug 'dylanaraps/wal.vim'
+
+git clone https://github.com/Mr-SD/intellijPywal.git
+cd intellijPywal/
+ls
+chmod +x intellijPywalGen.sh 
+./intellijPywalGen.sh /home/INTRANET.XESOL.COM/rfmarques/.CLion2018.2/config
+./clion.sh

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/sommerfeld/.oh-my-zsh"
+  export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -81,7 +81,16 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
 
+# Alternative (blocks terminal for 0-3ms)
+#cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -112,3 +121,4 @@ export PATH
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 DEFAULT_USER=sommerfeld
 prompt_context(){}
+

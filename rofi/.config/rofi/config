@@ -137,4 +137,4 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
-rofi.theme: /usr/share/rofi/themes/DarkBlue.rasi
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
