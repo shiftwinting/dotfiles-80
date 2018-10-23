@@ -75,7 +75,14 @@ plugins=(
   sublime
   web-search
   pip
-  
+  common-aliases
+  debian
+  history
+  lol
+  pep8
+  python
+  sudo
+  web-search
 )
 
 source $ZSH/oh-my-zsh.sh
