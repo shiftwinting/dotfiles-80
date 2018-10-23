@@ -170,6 +170,11 @@ bindsym $mod+Shift+g exec --no-startup-id i3lock-fancy
 bindsym --release $mod+o exec --no-startup-id scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 
+# Transparency control
+bindsym $mod+F5 exec --no-startup-id transset -a --dec 0.1
+bindsym $mod+F6 exec --no-startup-id transset -a --inc 0.1
+bindsym $mod+F7 exec --no-startup-id transset -a 0.85
+
 # gaps
 #for_window [class="^.*"] border pixel 2
 #gaps inner 15
