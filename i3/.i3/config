@@ -76,6 +76,12 @@ bindsym $mod+x focus parent
 # focus the child container
 #bindsym $mod+c focus child
 
+# open terminal below
+bindsym $mod+Shift+v focus child; split v; exec xfce4-terminal -e zsh
+
+# open terminal at the side
+bindsym $mod+Shift+b focus child; split h; exec xfce4-terminal -e zsh
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -112,6 +118,9 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# panic button
+bindsym $mod+F1 workspace $ws10; exec xfce4-terminal -e 'vim .vimrc'; split h; exec xfce4-terminal -e 'htop'
 
 # reload the configuration file
 bindsym $mod+r reload
@@ -167,6 +176,7 @@ bindsym $mod+Left exec --no-startup-id playerctl previous
 bindsym $mod+Shift+g exec --no-startup-id i3lock-fancy
 
 # Screenshot with scrot
+exec --no-startup-id mkdir -p ~/Pictures/screenshots
 bindsym --release $mod+o exec --no-startup-id scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 
