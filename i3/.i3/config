@@ -196,6 +196,6 @@ bindsym $mod+F7 exec --no-startup-id transset -a 0.85
 # -R restores the last colorscheme that was in use.
 exec wal -i $HOME/dotfiles/wallpapers && $HOME/Downloads/intellijPywal/intellijPywalGen.sh $HOME/.CLion2018.2/config
 exec --no-startup-id compton
-
+exec --no-startup-id setxkbmap -option caps:swapescape
 
 
