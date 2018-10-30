@@ -134,6 +134,7 @@ set fileformats=unix
 filetype on
 set visualbell
 set t_vb=
+set t_Co=256
 
 set foldenable
 set foldlevelstart=10
