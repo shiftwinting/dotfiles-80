@@ -168,9 +168,9 @@ bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -10% #decrease so
 bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Media player controls
-bindsym $mod+p exec --no-startup-id playerctl play-pause
-bindsym $mod+Right exec --no-startup-id playerctl next
-bindsym $mod+Left exec --no-startup-id playerctl previous
+bindsym --release $mod+p exec --no-startup-id playerctl play-pause
+bindsym --release $mod+Right exec --no-startup-id playerctl next
+bindsym --release $mod+Left exec --no-startup-id playerctl previous
 
 # Screen Lock
 bindsym $mod+Shift+g exec --no-startup-id i3lock-fancy
@@ -194,8 +194,10 @@ bindsym $mod+F7 exec --no-startup-id transset -a 0.85
 
 # Add this to your .xinitrc or whatever file starts programs on startup.
 # -R restores the last colorscheme that was in use.
-exec wal -i $HOME/dotfiles/wallpapers && $HOME/Downloads/intellijPywal/intellijPywalGen.sh $HOME/.CLion2018.2/config
+exec wal -i $HOME/dotfiles/wallpapers
 exec --no-startup-id compton
 exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 
 
