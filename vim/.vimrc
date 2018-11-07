@@ -27,7 +27,6 @@ if has('mouse')
 endif
 
 
-set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set number relativenumber
@@ -45,13 +44,12 @@ filetype indent on
 set hidden
 set autoread
 set cursorline
+set colorcolumn=80
 set wildmenu
 set showmatch
 set ignorecase
 set smartcase
-set more
 set lazyredraw
-set showmode
 
 set scrolloff=5
 set sidescrolloff=5
@@ -63,7 +61,7 @@ set visualbell
 set t_Co=256
 
 set foldenable
-set foldlevelstart=0
+set foldlevelstart=1
 set foldnestmax=10
 set foldmethod=indent
 
@@ -129,8 +127,7 @@ call plug#end()
 "colorscheme wal
 colorscheme molokai
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -146,7 +143,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
@@ -155,7 +152,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
-"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
@@ -204,3 +200,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
 
 let g:rainbow_active = 1
+
+noremap <leader>h <c-w>h
+noremap <leader>j <c-w>j
+noremap <leader>k <c-w>k
+noremap <leader>l <c-w>l
