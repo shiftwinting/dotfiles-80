@@ -1,20 +1,3 @@
-
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2016 Mar 25
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -29,9 +12,6 @@ else
   set undofile		" keep an undo file (undo changes after closing)
 endif
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
 
 
 " Don't use Ex mode, use Q for formatting
@@ -46,103 +26,56 @@ if has('mouse')
   set mouse=a
 endif
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-packadd matchit
-
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
 set number relativenumber
-let mapleader=' '
 set background=dark
 syntax on            " Turn on syntax highlighting
-                     " (makes code and config files more readable)
-set background=dark  " If using a dark background, instead of the
-                     " usual white background in Terminal
-                     " (makes darker colors brighter)
-set incsearch        " Used for incremental searching
-                     " (useful when searching large text files)
 set hlsearch         " Turns on highlighting for matched search patterns
-                     " (use :nohlsearch inside vim to turn off highlights
-                     " after a search)
+
 set tabstop=4        " Sets the tab size to 4
-                     " (tabs are usually 8 spaces)
 set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
 set shiftround       " Indent to nearest tabstop
 set autoindent       " Carries over previous indent to the next line
+filetype indent on
+
 set hidden
 set autoread
 set cursorline
-filetype indent on
+set colorcolumn=80
 set wildmenu
 set showmatch
 set ignorecase
 set smartcase
-set more
 set lazyredraw
-set showmode
-set nocompatible
-set smartindent
-set smarttab
+
 set scrolloff=5
 set sidescrolloff=5
 set ttyfast
 set noerrorbells
 set shell=zsh
 set fileformats=unix
-filetype on
 set visualbell
-set t_vb=
 set t_Co=256
 
 set foldenable
-set foldlevelstart=10
+set foldlevelstart=1
 set foldnestmax=10
 set foldmethod=indent
 
 set list listchars=tab:\ \ ,trail:·
 set linebreak    "Wrap lines at convenient points
+
+
+let mapleader=' '
+
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+packadd matchit
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -156,7 +89,7 @@ call plug#begin('~/.vim/plugged')
 
 " Using plug
 Plug 'flazz/vim-colorschemes'
-Plug 'dylanaraps/wal.vim'
+"Plug 'dylanaraps/wal.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
@@ -168,6 +101,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'valloric/youcompleteme'
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips'
@@ -186,19 +120,14 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-eunuch'
-Plug 'yuttie/comfortable-motion.vim'
+"Plug 'yuttie/comfortable-motion.vim'
 " Initialize plugin system
 call plug#end()
 
 "colorscheme wal
 colorscheme molokai
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -214,7 +143,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
@@ -222,20 +151,25 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
   \ }
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+let g:ctrlp_by_filename = 1
+let g:ctrlp_show_hidden = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
 
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+let g:UltiSnipsExpandTrigger="<leader>s"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -264,4 +198,10 @@ let g:cpp_no_function_highlight = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
+
 let g:rainbow_active = 1
+
+noremap <leader>h <c-w>h
+noremap <leader>j <c-w>j
+noremap <leader>k <c-w>k
+noremap <leader>l <c-w>l
