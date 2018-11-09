@@ -69,7 +69,7 @@ set list listchars=tab:\ \ ,trail:·
 set linebreak    "Wrap lines at convenient points
 
 
-let mapleader=' '
+let mapleader=','
 
 " Add optional packages.
 "
