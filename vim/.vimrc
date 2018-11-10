@@ -5,13 +5,13 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  set undofile		" keep an undo file (undo changes after closing)
-endif
-set history=50		" keep 50 lines of command line history
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+set undofile		" keep an undo file (undo changes after closing)
+set history=100		" keep 100 lines of command line history
 
 
 " Don't use Ex mode, use Q for formatting
@@ -23,7 +23,7 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 
@@ -33,20 +33,19 @@ set number relativenumber
 set background=dark
 syntax on            " Turn on syntax highlighting
 set hlsearch         " Turns on highlighting for matched search patterns
+set showmatch
 
 set tabstop=4        " Sets the tab size to 4
 set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
-set shiftround       " Indent to nearest tabstop
 set autoindent       " Carries over previous indent to the next line
-filetype indent on
+filetype plugin indent on
 
 set hidden
 set autoread
 set cursorline
 set colorcolumn=80
 set wildmenu
-set showmatch
 set ignorecase
 set smartcase
 set lazyredraw
@@ -61,15 +60,15 @@ set visualbell
 set t_Co=256
 
 set foldenable
-set foldlevelstart=1
-set foldnestmax=10
-set foldmethod=indent
+set foldlevelstart=2
+set foldnestmax=3
+set foldmethod=syntax
 
 set list listchars=tab:\ \ ,trail:·
 set linebreak    "Wrap lines at convenient points
 
 
-let mapleader=','
+let mapleader=' '
 
 " Add optional packages.
 "
@@ -78,9 +77,9 @@ let mapleader=','
 packadd matchit
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -89,7 +88,6 @@ call plug#begin('~/.vim/plugged')
 
 " Using plug
 Plug 'flazz/vim-colorschemes'
-"Plug 'dylanaraps/wal.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
@@ -103,9 +101,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'valloric/youcompleteme'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips'
-Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
@@ -119,15 +116,14 @@ Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
-Plug 'tpope/vim-eunuch'
-"Plug 'yuttie/comfortable-motion.vim'
+Plug 'raimondi/delimitmate'
 " Initialize plugin system
 call plug#end()
 
 "colorscheme wal
-colorscheme molokai
+colorscheme gruvbox
 
-noremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -144,14 +140,13 @@ let g:syntastic_check_on_wq = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+            \ 'file': '\v\.(exe|so|dll)$',
+            \ }
 
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
@@ -162,28 +157,27 @@ let g:airline_theme='powerlineish'
 
 let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
-"let g:UltiSnipsExpandTrigger="<c-tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>', '<tab>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
-let g:UltiSnipsExpandTrigger="<leader>s"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<CR>"
+let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+let g:UltiSnipsListSnippets = "<C-l>"
 
 au! BufRead,BufNewFile *.json set filetype=json
 
 augroup json_autocmd
-     autocmd!
-     autocmd FileType json set autoindent
-     autocmd FileType json set formatoptions=tcq2l
-     autocmd FileType json set textwidth=78 shiftwidth=2
-     autocmd FileType json set softtabstop=2 tabstop=8
-     autocmd FileType json set expandtab
-     autocmd FileType json set foldmethod=syntax
- augroup END
+    autocmd!
+    autocmd FileType json set autoindent
+    autocmd FileType json set formatoptions=tcq2l
+    autocmd FileType json set textwidth=78 shiftwidth=2
+    autocmd FileType json set softtabstop=2 tabstop=8
+    autocmd FileType json set expandtab
+    autocmd FileType json set foldmethod=syntax
+augroup END
 
 let g:pymode_python = 'python3'
 
@@ -201,7 +195,7 @@ let g:indent_guides_space_guides = 1
 
 let g:rainbow_active = 1
 
-noremap <leader>h <c-w>h
-noremap <leader>j <c-w>j
-noremap <leader>k <c-w>k
-noremap <leader>l <c-w>l
+nnoremap <leader>h <c-w>h
+nnoremap <leader>j <c-w>j
+nnoremap <leader>k <c-w>k
+nnoremap <leader>l <c-w>l

@@ -1,3 +1,4 @@
+stty -ixon
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -123,9 +124,7 @@ export PATH
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ccat ='pygmentize'
 #DEFAULT_USER=
 #prompt_context(){}
 (cat ~/.cache/wal/sequences &)
