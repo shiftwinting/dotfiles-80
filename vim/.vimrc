@@ -199,3 +199,6 @@ nnoremap <leader>h <c-w>h
 nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
 nnoremap <leader>l <c-w>l
+
+set timeoutlen=1000
+set ttimeoutlen=10

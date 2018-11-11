@@ -131,7 +131,7 @@ export PATH
 # For a full list of active aliases, run `alias`.
 #
 alias ccat ='pygmentize'
-#DEFAULT_USER=
+DEFAULT_USER=sommerfeld
 #prompt_context(){}
 (cat ~/.cache/wal/sequences &)
 clear
