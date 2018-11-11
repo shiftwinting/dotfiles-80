@@ -73,7 +73,6 @@ plugins=(
   copyfile
   cp
   extract
-  sublime
   web-search
   pip
   common-aliases
@@ -84,6 +83,7 @@ plugins=(
   python
   sudo
   web-search
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,23 +99,29 @@ source $ZSH/oh-my-zsh.sh
 
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+bindkey -v
+export KEYTIMEOUT=1
+
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 path+=('/snap/bin')
 path+=('/usr/local/texlive/2017/bin/x86_64-linux')
 export PATH
