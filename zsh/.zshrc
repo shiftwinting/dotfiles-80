@@ -132,7 +132,7 @@ export PATH
 #
 alias ccat ='pygmentize'
 DEFAULT_USER=sommerfeld
-#prompt_context(){}
+setxkbmap -option caps:swapescape
 (cat ~/.cache/wal/sequences &)
 clear
 

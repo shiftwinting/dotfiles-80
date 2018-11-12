@@ -1,18 +1,20 @@
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
+set nobackup
+set noswapfile
+set nowb
 set undofile		" keep an undo file (undo changes after closing)
 set history=100		" keep 100 lines of command line history
 
+
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -28,6 +30,7 @@ endif
 
 
 set showcmd		" display incomplete commands
+set showmode
 set incsearch		" do incremental searching
 set number relativenumber
 set background=dark
@@ -35,7 +38,7 @@ syntax on            " Turn on syntax highlighting
 set hlsearch         " Turns on highlighting for matched search patterns
 set showmatch
 
-set tabstop=4        " Sets the tab size to 4
+set softtabstop=4        " Sets the tab size to 4
 set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
 set autoindent       " Carries over previous indent to the next line
@@ -140,7 +143,10 @@ let g:syntastic_check_on_wq = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
+set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
@@ -195,10 +201,30 @@ let g:indent_guides_space_guides = 1
 
 let g:rainbow_active = 1
 
+let g:NERDTrimTrailingWhitespace = 1
+
 nnoremap <leader>h <c-w>h
 nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
 nnoremap <leader>l <c-w>l
 
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" go to first non-blank character of current line
+nnoremap 0 ^
+
+augrou  formatting
+    autocmd!
+    autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+augroup END
+
 set timeoutlen=1000
 set ttimeoutlen=10
+
+set splitbelow
+set splitright
