@@ -131,7 +131,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 autocmd QuickFixCmdPost *grep* cwindow
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
 
@@ -165,10 +165,13 @@ let g:airline_theme='powerlineish'
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>', '<tab>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>', '<S-TAB>']
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_key_list_stop_completion = ['<C-y>']
+let g:ycm_confirm_extra_conf = 0
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = "<C-s>"
 let g:UltiSnipsJumpForwardTrigger = "<C-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 let g:UltiSnipsListSnippets = "<C-l>"
