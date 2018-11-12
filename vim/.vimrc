@@ -95,14 +95,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'valloric/youcompleteme'
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+"Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
@@ -135,10 +135,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -161,10 +161,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
 
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+"let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>', '<tab>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
 " better key bindings for UltiSnipsExpandTrigger
