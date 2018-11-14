@@ -32,6 +32,7 @@ endif
 set showcmd		" display incomplete commands
 set showmode
 set incsearch		" do incremental searching
+set ignorecase smartcase
 set number relativenumber
 set background=dark
 syntax on            " Turn on syntax highlighting
@@ -42,6 +43,7 @@ set softtabstop=4        " Sets the tab size to 4
 set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
 set autoindent       " Carries over previous indent to the next line
+set shiftround
 filetype plugin indent on
 
 set hidden
@@ -58,7 +60,7 @@ set sidescrolloff=5
 set ttyfast
 set noerrorbells
 set shell=zsh
-set fileformats=unix
+"set fileformats=unix
 set visualbell
 set t_Co=256
 
@@ -69,7 +71,7 @@ set foldmethod=syntax
 
 set list listchars=tab:\ \ ,trail:·
 set linebreak    "Wrap lines at convenient points
-
+set textwidth=79
 
 let mapleader=' '
 
@@ -81,7 +83,7 @@ packadd matchit
 
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " Specify a directory for plugins
@@ -91,8 +93,8 @@ call plug#begin('~/.vim/plugged')
 
 " Using plug
 Plug 'flazz/vim-colorschemes'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 "Plug 'scrooloose/syntastic'
@@ -102,31 +104,37 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'valloric/youcompleteme'
-"Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'chrisbra/csv.vim'
-Plug 'lervag/vimtex'
+"Plug 'python-mode/python-mode', { 'branch': 'develop' }
+"Plug 'hynek/vim-python-pep8-indent'
+"Plug 'chrisbra/csv.vim'
+"Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
 Plug 'raimondi/delimitmate'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'octref/rootignore'
+Plug 'nacitar/a.vim'
+Plug 'andrewradev/splitjoin.vim'
+Plug 'michaeljsmith/vim-indent-object'
 " Initialize plugin system
 call plug#end()
 
-"colorscheme wal
+
 colorscheme gruvbox
 
-nnoremap <C-n> :NERDTreeToggle<CR>
+"nnoremap <C-n> :NERDTreeToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -134,11 +142,6 @@ set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -159,7 +162,7 @@ let g:ctrlp_show_hidden = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+"let g:airline_theme='powerlineish'
 
 "let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
@@ -180,17 +183,12 @@ au! BufRead,BufNewFile *.json set filetype=json
 
 augroup json_autocmd
     autocmd!
-    autocmd FileType json set autoindent
-    autocmd FileType json set formatoptions=tcq2l
-    autocmd FileType json set textwidth=78 shiftwidth=2
-    autocmd FileType json set softtabstop=2 tabstop=8
-    autocmd FileType json set expandtab
-    autocmd FileType json set foldmethod=syntax
+    autocmd FileType json setlocal formatoptions=tcq2l
+    autocmd FileType json setlocal textwidth=78 shiftwidth=2
+    autocmd FileType json setlocal softtabstop=2 tabstop=8
+    autocmd FileType json setlocal expandtab
+    autocmd FileType json setlocal foldmethod=syntax
 augroup END
-
-let g:pymode_python = 'python3'
-
-let g:csv_highlight_column = 'y'
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -223,7 +221,9 @@ nnoremap 0 ^
 
 augrou  formatting
     autocmd!
-    autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+    autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
+    autocmd BufNewFile,BufRead * setlocal formatoptions+=t
+    autocmd BufNewFile,BufRead * setlocal textwidth=79
 augroup END
 
 set timeoutlen=1000
@@ -231,3 +231,8 @@ set ttimeoutlen=10
 
 set splitbelow
 set splitright
+
+let &makeprg='(mkdir -p build && cd build && make adas)'
+
+nnoremap <F8> :TagbarToggle<CR>
+
