@@ -131,8 +131,11 @@ export PATH
 # For a full list of active aliases, run `alias`.
 #
 alias ccat ='pygmentize'
+export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*3rd-party*'"
 DEFAULT_USER=sommerfeld
 setxkbmap -option caps:swapescape
 (cat ~/.cache/wal/sequences &)
 clear
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

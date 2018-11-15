@@ -105,7 +105,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'valloric/youcompleteme'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
@@ -143,22 +143,8 @@ set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline+=%{FugitiveStatusline()}
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll)$',
-            \ }
-
-let g:ctrlp_by_filename = 1
-let g:ctrlp_show_hidden = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -203,6 +189,8 @@ let g:indent_guides_space_guides = 1
 let g:rainbow_active = 1
 
 let g:NERDTrimTrailingWhitespace = 1
+
+nnoremap <leader>f :FZF --reverse<CR>
 
 nnoremap <leader>h <c-w>h
 nnoremap <leader>j <c-w>j
