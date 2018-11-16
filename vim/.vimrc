@@ -128,6 +128,7 @@ Plug 'octref/rootignore'
 Plug 'nacitar/a.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'rhysd/vim-clang-format'
 " Initialize plugin system
 call plug#end()
 
@@ -181,7 +182,7 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
+"let g:cpp_no_function_highlight = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
@@ -192,10 +193,17 @@ let g:NERDTrimTrailingWhitespace = 1
 
 nnoremap <leader>f :FZF --reverse<CR>
 
-nnoremap <leader>h <c-w>h
-nnoremap <leader>j <c-w>j
-nnoremap <leader>k <c-w>k
-nnoremap <leader>l <c-w>l
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Stroustrup"}
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 " move vertically by visual line
 nnoremap j gj
