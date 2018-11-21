@@ -72,6 +72,8 @@ set foldmethod=syntax
 set list listchars=tab:\ \ ,trail:·
 set linebreak    "Wrap lines at convenient points
 set textwidth=79
+set spelllang=en
+set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
 
 let mapleader=' '
 
@@ -110,12 +112,12 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'bronson/vim-trailing-whitespace'
 "Plug 'python-mode/python-mode', { 'branch': 'develop' }
-"Plug 'hynek/vim-python-pep8-indent'
+Plug 'hynek/vim-python-pep8-indent'
 "Plug 'chrisbra/csv.vim'
 "Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -132,7 +134,8 @@ Plug 'rhysd/vim-clang-format'
 " Initialize plugin system
 call plug#end()
 
-
+let g:gruvbox_italic=1
+let g:gruvbox_guisp_fallback = "fg"
 colorscheme gruvbox
 
 "nnoremap <C-n> :NERDTreeToggle<CR>
@@ -177,6 +180,19 @@ augroup json_autocmd
     autocmd FileType json setlocal foldmethod=syntax
 augroup END
 
+augroup writting_autocmd
+    autocmd!
+    autocmd FileType markdown nnoremap <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
+    autocmd FileType markdown,text,tex setlocal colorcolumn=""
+    autocmd FileType markdown,text,tex setlocal spell
+    autocmd FileType markdown,text,tex setlocal complete+=kspell
+    autocmd FileType markdown nnoremap <F6> :Toc<CR>
+augroup END
+
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_math = 1
+let g:vim_markdown_new_list_item_indent = 0
+
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
@@ -217,9 +233,13 @@ nnoremap 0 ^
 
 augrou  formatting
     autocmd!
-    autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
-    autocmd BufNewFile,BufRead * setlocal formatoptions+=t
-    autocmd BufNewFile,BufRead * setlocal textwidth=79
+    autocmd BufNewFile,BufRead * setlocal formatoptions-=r
+    autocmd BufNewFile,BufRead * setlocal formatoptions-=t
+    autocmd BufNewFile,BufRead * setlocal formatoptions-=o
+    autocmd BufNewFile,BufRead * hi clear SpellBad
+    autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red gui=undercurl ctermbg=White
+    "autocmd BufNewFile,BufRead * setlocal formatoptions+=t
+    "autocmd BufNewFile,BufRead * setlocal textwidth=79
 augroup END
 
 set timeoutlen=1000
@@ -231,4 +251,3 @@ set splitright
 let &makeprg='(mkdir -p build && cd build && make adas)'
 
 nnoremap <F8> :TagbarToggle<CR>
-
