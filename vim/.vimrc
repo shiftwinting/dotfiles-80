@@ -1,4 +1,4 @@
-" allow backspacing over everything in insert mode
+
 set backspace=indent,eol,start
 
 set nobackup
@@ -181,8 +181,11 @@ augroup json_autocmd
 augroup END
 
 augroup writting_autocmd
-    autocmd!
+    "autocmd!
     autocmd FileType markdown nnoremap <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
+    autocmd FileType markdown nnoremap <F4> :w<CR>:!pandoc % -o %:r.pdf && pkill -HUP mupdf<CR><CR><CR>
+    autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf && pkill -HUP mupdf"
+    autocmd FileType markdown nnoremap <F3> :make<CR><CR>
     autocmd FileType markdown,text,tex setlocal colorcolumn=""
     autocmd FileType markdown,text,tex setlocal spell
     autocmd FileType markdown,text,tex setlocal complete+=kspell
@@ -232,7 +235,7 @@ nnoremap gV `[v`]
 nnoremap 0 ^
 
 augrou  formatting
-    autocmd!
+    "autocmd!
     autocmd BufNewFile,BufRead * setlocal formatoptions-=r
     autocmd BufNewFile,BufRead * setlocal formatoptions-=t
     autocmd BufNewFile,BufRead * setlocal formatoptions-=o
@@ -248,6 +251,15 @@ set ttimeoutlen=10
 set splitbelow
 set splitright
 
-let &makeprg='(mkdir -p build && cd build && make adas)'
+augroup cpp_group
+    "autocmd!
+    autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake ..<CR>
+    autocmd FileType cpp nnoremap <F10> :!rm -rf build && mkdir build && cd build && cmake ..<CR>
+    autocmd FileType cpp let &makeprg='(mkdir -p build && cd build && make adas)'
+    autocmd FileType cpp nnoremap <F5> :make<CR>
+    autocmd FileType cpp :ClangFormatAutoEnable<CR>
+    autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+    autocmd FileType cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+    autocmd FileType cpp nnoremap <F8> :TagbarToggle<CR>
+augroup END
 
-nnoremap <F8> :TagbarToggle<CR>
