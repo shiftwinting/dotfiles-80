@@ -56,7 +56,11 @@ set belloff=all
 set shell=zsh
 set fileformats=unix
 set visualbell
-set t_Co=256
+
+"if !has('nvim')
+    "set t_Co=256
+"endif
+set termguicolors
 
 set foldenable
 set foldlevelstart=2
@@ -89,6 +93,15 @@ set viminfo^=!
 setglobal tags-=./tags tags-=./tags; tags^=./tags;
 set nrformats-=octal
 
+if !has('nvim')
+    set ttymouse=xterm2
+endif
+
+if has('nvim')
+    "let g:vimtex_compiler_progname='nvr'
+    let g:python_host_prog='usr/bin/python'
+    let g:python3_host_prog='/usr/bin/python3'
+endif
 
 let mapleader=' '
 
@@ -96,7 +109,9 @@ let mapleader=' '
 "
 " The matchit plugin makes the % command work better, but it is not backwards
 " compatible.
-packadd matchit
+if !has('nvim')
+    packadd matchit
+endif
 
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -116,9 +131,12 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
-Plug 'valloric/youcompleteme'
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+"Plug 'valloric/youcompleteme'
+"Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+if has('nvim')
+    Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+endif
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
@@ -132,7 +150,7 @@ Plug 'bronson/vim-trailing-whitespace'
 "Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'hynek/vim-python-pep8-indent'
 "Plug 'chrisbra/csv.vim'
-"Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
@@ -144,41 +162,82 @@ Plug 'nacitar/a.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/vim-clang-format'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+if has('nvim')
+    Plug 'neomake/neomake'
+    Plug 'kassio/neoterm'
+endif
 " Initialize plugin system
 call plug#end()
 
 let g:gruvbox_italic=1
-let g:gruvbox_guisp_fallback = "fg"
 colorscheme gruvbox
 
 autocmd QuickFixCmdPost *grep* cwindow
 
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%{FugitiveStatusline()}
+let g:gitgutter_max_signs=500  " default value
+let g:gitgutter_override_sign_column_highlight=0
+highlight SignColumn ctermbg=black    " terminal Vim
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='powerlineish'
 
-"let g:ycm_server_python_interpreter = '/usr/bin/python3'
+""let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>', '<tab>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>', '<S-TAB>']
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_key_list_stop_completion = ['<C-y>']
-let g:ycm_confirm_extra_conf = 0
+"" make YCM compatible with UltiSnips (using supertab)
+"let g:ycm_key_list_select_completion = ['<C-j>', '<Down>', '<tab>']
+"let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>', '<S-TAB>']
+"let g:ycm_autoclose_preview_window_after_completion = 0
+"let g:ycm_key_list_stop_completion = ['<C-y>']
+"let g:ycm_confirm_extra_conf = 0
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-s>"
-let g:UltiSnipsJumpForwardTrigger = "<C-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
-let g:UltiSnipsListSnippets = "<C-l>"
+"" better key bindings for UltiSnipsExpandTrigger
+"let g:UltiSnipsExpandTrigger = "<C-s>"
+"let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+"let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+"let g:UltiSnipsListSnippets = "<C-l>"
+
+if has('nvim')
+    " Full config: when writing or reading a buffer, and on changes in insert and
+    " normal mode (after 1s; no delay when writing).
+    call neomake#configure#automake('nrwi', 500)
+    let g:neomake_open_list=2
+endif
+
+let g:deoplete#enable_at_startup = 1
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
 
 au! BufRead,BufNewFile *.json set filetype=json
 
@@ -252,7 +311,7 @@ augrou  formatting
     autocmd BufNewFile,BufRead * setlocal formatoptions-=t
     autocmd BufNewFile,BufRead * setlocal formatoptions-=o
     autocmd BufNewFile,BufRead * hi clear SpellBad
-    autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red gui=undercurl ctermbg=White
+    autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red
 augroup END
 
 
