@@ -1,20 +1,15 @@
+set nocompatible
 
 set backspace=indent,eol,start
 
-set nobackup
-set noswapfile
-set nowb
-set undofile		" keep an undo file (undo changes after closing)
-set history=100		" keep 100 lines of command line history
-
-
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
+set history=10000
+silent !mkdir -p $HOME/.vim/.undo
+silent !mkdir -p $HOME/.vim/.backup
+silent !mkdir -p $HOME/.vim/.swap
+set undodir=~/.vim/.undo
+set backupdir=~/.vim/.backup
+set directory=~/.vim/.swap
+set writebackup
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -44,6 +39,7 @@ set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
 set autoindent       " Carries over previous indent to the next line
 set shiftround
+set smarttab
 filetype plugin indent on
 
 set hidden
@@ -51,16 +47,14 @@ set autoread
 set cursorline
 set colorcolumn=80
 set wildmenu
-set ignorecase
-set smartcase
 set lazyredraw
 
 set scrolloff=5
-set sidescrolloff=5
 set ttyfast
 set noerrorbells
+set belloff=all
 set shell=zsh
-"set fileformats=unix
+set fileformats=unix
 set visualbell
 set t_Co=256
 
@@ -69,11 +63,32 @@ set foldlevelstart=2
 set foldnestmax=3
 set foldmethod=syntax
 
-set list listchars=tab:\ \ ,trail:·
+set timeoutlen=1000
+set ttimeoutlen=10
+
+set splitbelow
+set splitright
+
+set list listchars=tab:\ \ ,trail:·,extends:>,precedes:<,nbsp:+
 set linebreak    "Wrap lines at convenient points
 set textwidth=79
 set spelllang=en
 set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
+set complete-=i
+set cscopeverbose
+set display+=lastline
+set encoding=utf-8
+set nofsync
+set formatoptions+=j
+set nolangremap
+set laststatus=2
+set sessionoptions-=options
+set shortmess+=F
+set tabpagemax=50
+set viminfo^=!
+setglobal tags-=./tags tags-=./tags; tags^=./tags;
+set nrformats-=octal
+
 
 let mapleader=' '
 
@@ -92,14 +107,10 @@ endif
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-
 " Using plug
 Plug 'flazz/vim-colorschemes'
-"Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-"Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -113,7 +124,9 @@ Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'elzr/vim-json'
 Plug 'bronson/vim-trailing-whitespace'
 "Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -137,8 +150,6 @@ call plug#end()
 let g:gruvbox_italic=1
 let g:gruvbox_guisp_fallback = "fg"
 colorscheme gruvbox
-
-"nnoremap <C-n> :NERDTreeToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
@@ -232,7 +243,8 @@ nnoremap k gk
 nnoremap gV `[v`]
 
 " go to first non-blank character of current line
-nnoremap 0 ^
+nnoremap S ^
+nnoremap E $
 
 augrou  formatting
     "autocmd!
@@ -241,15 +253,8 @@ augrou  formatting
     autocmd BufNewFile,BufRead * setlocal formatoptions-=o
     autocmd BufNewFile,BufRead * hi clear SpellBad
     autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red gui=undercurl ctermbg=White
-    "autocmd BufNewFile,BufRead * setlocal formatoptions+=t
-    "autocmd BufNewFile,BufRead * setlocal textwidth=79
 augroup END
 
-set timeoutlen=1000
-set ttimeoutlen=10
-
-set splitbelow
-set splitright
 
 augroup cpp_group
     "autocmd!
@@ -263,3 +268,4 @@ augroup cpp_group
     autocmd FileType cpp nnoremap <F8> :TagbarToggle<CR>
 augroup END
 
+autocmd BufWritePost .vimrc source $MYVIMRC
