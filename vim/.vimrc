@@ -57,10 +57,10 @@ set shell=zsh
 set fileformats=unix
 set visualbell
 
-"if !has('nvim')
-    "set t_Co=256
-"endif
-set termguicolors
+if !has('nvim')
+    set t_Co=256
+endif
+"set termguicolors
 
 set foldenable
 set foldlevelstart=2
@@ -178,14 +178,14 @@ endif
 " Initialize plugin system
 call plug#end()
 
-let g:gruvbox_italic=1
+"let g:gruvbox_italic=1
 colorscheme gruvbox
 
 autocmd QuickFixCmdPost *grep* cwindow
 
 let g:gitgutter_max_signs=500  " default value
 let g:gitgutter_override_sign_column_highlight=0
-highlight SignColumn ctermbg=black    " terminal Vim
+"highlight SignColumn ctermbg=black    " terminal Vim
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o

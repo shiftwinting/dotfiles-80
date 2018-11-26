@@ -107,6 +107,7 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 bindkey -v
 export KEYTIMEOUT=1
+export TERM=vte-256color
 
 function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
