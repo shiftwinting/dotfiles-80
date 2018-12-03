@@ -1,118 +1,76 @@
-set nocompatible
-
-set backspace=indent,eol,start
-
-set history=10000
-silent !mkdir -p $HOME/.vim/.undo
-silent !mkdir -p $HOME/.vim/.backup
-silent !mkdir -p $HOME/.vim/.swap
-set undodir=~/.vim/.undo
-set backupdir=~/.vim/.backup
-set directory=~/.vim/.swap
-set writebackup
+if !has('nvim')
+    set t_Co=256
+    silent !mkdir -p $HOME/.vim/.undo
+    silent !mkdir -p $HOME/.vim/.backup
+    silent !mkdir -p $HOME/.vim/.swap
+    set background=dark
+    set undodir=~/.vim/.undo
+    set backupdir=~/.vim/.backup
+    set directory=~/.vim/.swap
+    set belloff=all
+    set cscopeverbose
+    set nofsync
+    set hlsearch         " Turns on highlighting for matched search patterns
+    set nolangremap
+    set shortmess+=F
+    set showcmd		" display incomplete commands
+    set ttyfast
+    set ttymouse=xterm2
+else
+    if has('termguicolors') && ($TERM=="xterm-256" || $TERM=="xterm-kitty")
+        set termguicolors
+    endif
+    "let g:vimtex_compiler_progname='nvr'
+    let g:python_host_prog='/usr/bin/python'
+    let g:python3_host_prog='/usr/bin/python3'
+endif
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
     set mouse=a
 endif
 
+set writebackup
+set hidden
 
-set showcmd		" display incomplete commands
-set showmode
-set incsearch		" do incremental searching
-set ignorecase smartcase
-set number relativenumber
 set background=dark
-syntax on            " Turn on syntax highlighting
-set hlsearch         " Turns on highlighting for matched search patterns
+set showmode
+set number relativenumber
+set cursorline
+set colorcolumn=80
+set lazyredraw
+
+set ignorecase smartcase
 set showmatch
 
 set softtabstop=4        " Sets the tab size to 4
 set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
-set autoindent       " Carries over previous indent to the next line
 set shiftround
-set smarttab
-filetype plugin indent on
-
-set hidden
-set autoread
-set cursorline
-set colorcolumn=80
-set wildmenu
-set lazyredraw
-
-set scrolloff=5
-set ttyfast
-set noerrorbells
-set belloff=all
-set shell=zsh
-set fileformats=unix
-set visualbell
-
-if !has('nvim')
-    set t_Co=256
-endif
-"set termguicolors
 
 set foldenable
 set foldlevelstart=2
 set foldnestmax=3
 set foldmethod=syntax
 
-set timeoutlen=1000
-set ttimeoutlen=10
 
 set splitbelow
 set splitright
 
-set list listchars=tab:\ \ ,trail:·,extends:>,precedes:<,nbsp:+
 set linebreak    "Wrap lines at convenient points
 set textwidth=79
+
 set spelllang=en
 set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
-set complete-=i
-set cscopeverbose
-set display+=lastline
-set encoding=utf-8
-set nofsync
-set formatoptions+=j
-set nolangremap
-set laststatus=2
-set sessionoptions-=options
-set shortmess+=F
-set tabpagemax=50
-set viminfo^=!
-setglobal tags-=./tags tags-=./tags; tags^=./tags;
-set nrformats-=octal
 
-if !has('nvim')
-    set ttymouse=xterm2
-endif
-
-if has('nvim')
-    "let g:vimtex_compiler_progname='nvr'
-    let g:python_host_prog='usr/bin/python'
-    let g:python3_host_prog='/usr/bin/python3'
-endif
 
 let mapleader=' '
 
 " Add optional packages.
 "
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-if !has('nvim')
-    packadd matchit
-endif
-
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -134,9 +92,6 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'valloric/youcompleteme'
 "Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-if has('nvim')
-    Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
-endif
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
@@ -154,7 +109,7 @@ Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
-Plug 'raimondi/delimitmate'
+"Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'octref/rootignore'
@@ -163,18 +118,19 @@ Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/vim-clang-format'
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'neomake/neomake'
+    Plug 'kassio/neoterm'
+    Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'tpope/vim-sensible'
 endif
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-if has('nvim')
-    Plug 'neomake/neomake'
-    Plug 'kassio/neoterm'
-endif
+Plug 'ludovicchabant/vim-gutentags'
 " Initialize plugin system
 call plug#end()
 
@@ -189,7 +145,9 @@ let g:gitgutter_override_sign_column_highlight=0
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
+set wildignore+=*build/*
 
+set statusline+=%{gutentags#statusline()}
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -211,11 +169,25 @@ let g:airline_powerline_fonts = 1
 if has('nvim')
     " Full config: when writing or reading a buffer, and on changes in insert and
     " normal mode (after 1s; no delay when writing).
-    call neomake#configure#automake('nrwi', 500)
+    call neomake#configure#automake('nrw', 500)
     let g:neomake_open_list=2
 endif
 
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+\ 'camel_case': v:true,
+\ 'max_list': 10,
+\ })
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+autocmd CompleteDone * silent! pclose!
+autocmd InsertLeave * silent! pclose!
+
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -225,10 +197,10 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
@@ -237,6 +209,17 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+let g:neosnippet#enable_completed_snippet=1
+autocmd CompleteDone * call neosnippet#complete_done()
+autocmd InsertLeave * NeoSnippetClearMarkers
+
+" Expand the completed snippet trigger by <CR>.
+imap <expr><CR>
+\ (pumvisible() && neosnippet#expandable()) ?
+\ "\<Plug>(neosnippet_expand)" : "\<CR>"
+
+let g:neoterm_autoinsert=1
+let g:neoterm_autoscroll=1
 
 
 au! BufRead,BufNewFile *.json set filetype=json
@@ -262,16 +245,15 @@ augroup writting_autocmd
     autocmd FileType markdown nnoremap <F6> :Toc<CR>
 augroup END
 
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_math = 1
-let g:vim_markdown_new_list_item_indent = 0
+"let g:vim_markdown_toc_autofit = 1
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_new_list_item_indent = 0
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
-"let g:cpp_no_function_highlight = 1
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
@@ -289,14 +271,20 @@ let g:clang_format#style_options = {
             \ "Standard" : "C++11",
             \ "BreakBeforeBraces" : "Stroustrup"}
 
+let g:vimtex_fold_enabled=1
+let g:vimtex_view_automatic='mupdf'
+
+" This is new style
+call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete
+        \})
+
+
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -306,7 +294,7 @@ nnoremap S ^
 nnoremap E $
 
 augrou  formatting
-    "autocmd!
+    autocmd!
     autocmd BufNewFile,BufRead * setlocal formatoptions-=r
     autocmd BufNewFile,BufRead * setlocal formatoptions-=t
     autocmd BufNewFile,BufRead * setlocal formatoptions-=o
@@ -316,10 +304,10 @@ augroup END
 
 
 augroup cpp_group
-    "autocmd!
+    autocmd!
     autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake ..<CR>
     autocmd FileType cpp nnoremap <F10> :!rm -rf build && mkdir build && cd build && cmake ..<CR>
-    autocmd FileType cpp let &makeprg='(mkdir -p build && cd build && make adas)'
+    autocmd FileType cpp let &makeprg='(mkdir -p build && cd build && make )'
     autocmd FileType cpp nnoremap <F5> :make<CR>
     autocmd FileType cpp :ClangFormatAutoEnable<CR>
     autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -327,4 +315,8 @@ augroup cpp_group
     autocmd FileType cpp nnoremap <F8> :TagbarToggle<CR>
 augroup END
 
-autocmd BufWritePost .vimrc source $MYVIMRC
+augroup vim_group
+    autocmd!
+    autocmd BufWritePost .vimrc source $MYVIMRC
+    autocmd BufWritePost .zshrc,.bashrc silent !source %
+augroup END

@@ -107,7 +107,9 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 bindkey -v
 export KEYTIMEOUT=1
-export TERM=vte-256color
+if [ $TERM = "xterm" ]; then
+    export TERM=vte-256color
+fi
 
 function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
@@ -123,15 +125,19 @@ export ARCHFLAGS="-arch x86_64"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-path+=('/snap/bin')
-path+=('/usr/local/texlive/2017/bin/x86_64-linux')
+
+
+path+=/snap/bin
+path+=/usr/local/texlive/2017/bin/x86_64-linux
+path+=${HOME}/.local/bin
 export PATH
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-alias ccat ='pygmentize'
+alias ccat='pygmentize'
+alias ace='acestream-launcher'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*3rd-party*'"
 DEFAULT_USER=sommerfeld
 setxkbmap -option caps:swapescape
