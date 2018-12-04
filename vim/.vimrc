@@ -116,19 +116,15 @@ Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'elzr/vim-json'
 Plug 'bronson/vim-trailing-whitespace'
 "Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'hynek/vim-python-pep8-indent'
-"Plug 'chrisbra/csv.vim'
 Plug 'lervag/vimtex'
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
-"Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'octref/rootignore'
@@ -141,15 +137,18 @@ if has('nvim')
     Plug 'neomake/neomake'
     Plug 'kassio/neoterm'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+    Plug 'arakashic/chromatica.nvim'
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'tpope/vim-sensible'
+    Plug 'octol/vim-cpp-enhanced-highlight'
 endif
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'w0rp/ale'
 " Initialize plugin system
 call plug#end()
 
@@ -164,6 +163,18 @@ set wildignore+=*build/*
 set statusline+=%{gutentags#statusline()}
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+if has('nvim')
+    " Set this. Airline will handle the rest.
+    let g:airline#extensions#ale#enabled = 1
+    let g:chromatica#libclang_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
+    let g:chromatica#enable_at_startup=1
+else
+    let g:cpp_class_scope_highlight = 1
+    let g:cpp_member_variable_highlight = 1
+    let g:cpp_class_decl_highlight = 1
+    let g:cpp_experimental_simple_template_highlight = 1
+endif
 
 ""let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
@@ -199,12 +210,6 @@ call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-augroup complete_group
-    autocmd!
-    autocmd CompleteDone * silent! pclose!
-    autocmd InsertLeave * silent! pclose!
-augroup END
-
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -237,22 +242,10 @@ let g:neoterm_autoinsert=1
 let g:neoterm_autoscroll=1
 
 
-"let g:vim_markdown_toc_autofit = 1
-"let g:vim_markdown_math = 1
-"let g:vim_markdown_new_list_item_indent = 0
-
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
 
 let g:rainbow_active = 1
-
-let g:NERDTrimTrailingWhitespace = 1
 
 nnoremap <leader>f :FZF --reverse<CR>
 
@@ -273,6 +266,12 @@ call deoplete#custom#var('omni', 'input_patterns', {
         \})
 
 if has("autocmd")
+    augroup complete_group
+        autocmd!
+        autocmd CompleteDone * silent! pclose!
+        autocmd InsertLeave * silent! pclose!
+    augroup END
+
     augroup snippet_group
         autocmd!
         autocmd CompleteDone * call neosnippet#complete_done()
@@ -326,6 +325,10 @@ if has("autocmd")
 
     augroup vim_group
         autocmd!
+        autocmd VimEnter *
+            \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+            \|   PlugInstall --sync | q
+            \| endif
         autocmd BufWritePost .vimrc source $MYVIMRC
         autocmd BufWritePost .zshrc,.bashrc silent !source %
     augroup END
