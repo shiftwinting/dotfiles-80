@@ -140,9 +140,8 @@ alias ccat='pygmentize'
 alias ace='acestream-launcher'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*3rd-party*'"
 DEFAULT_USER=sommerfeld
-setxkbmap -option caps:swapescape
-(cat ~/.cache/wal/sequences &)
-clear
+#(cat ~/.cache/wal/sequences &)
+#clear
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

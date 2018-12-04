@@ -4,14 +4,13 @@ if !has('nvim')
     silent !mkdir -p $HOME/.vim/.backup
     silent !mkdir -p $HOME/.vim/.swap
     set background=dark
-    set undodir=~/.vim/.undo
-    set backupdir=~/.vim/.backup
-    set directory=~/.vim/.swap
     set belloff=all
     set cscopeverbose
     set nofsync
     set hlsearch         " Turns on highlighting for matched search patterns
-    set nolangremap
+    if exists('+langnoremap')
+        set langnoremap
+    endif
     set shortmess+=F
     set showcmd		" display incomplete commands
     set ttyfast
@@ -20,21 +19,22 @@ else
     if has('termguicolors') && ($TERM=="xterm-256" || $TERM=="xterm-kitty")
         set termguicolors
     endif
-    "let g:vimtex_compiler_progname='nvr'
     let g:python_host_prog='/usr/bin/python'
     let g:python3_host_prog='/usr/bin/python3'
 endif
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
     set mouse=a
 endif
 
+let g:is_posix = 1
+
 set writebackup
 set hidden
+set undodir=~/.vim/.undo
+set backupdir=~/.vim/.backup
+set directory=~/.vim/.swap
 
 set background=dark
 set showmode
@@ -42,6 +42,7 @@ set number relativenumber
 set cursorline
 set colorcolumn=80
 set lazyredraw
+set synmaxcol=300
 
 set ignorecase smartcase
 set showmatch
@@ -66,8 +67,26 @@ set textwidth=79
 set spelllang=en
 set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
 
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
 let mapleader=' '
+" Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
+" but not Vi-compatible), rather than act as yy
+nnoremap Y y$
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" go to first non-blank character of current line
+nnoremap S ^
+nnoremap E $
 
 " Add optional packages.
 "
@@ -88,7 +107,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 "Plug 'valloric/youcompleteme'
 "Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -137,11 +156,6 @@ call plug#end()
 "let g:gruvbox_italic=1
 colorscheme gruvbox
 
-autocmd QuickFixCmdPost *grep* cwindow
-
-let g:gitgutter_max_signs=500  " default value
-let g:gitgutter_override_sign_column_highlight=0
-"highlight SignColumn ctermbg=black    " terminal Vim
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
@@ -185,8 +199,11 @@ call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-autocmd CompleteDone * silent! pclose!
-autocmd InsertLeave * silent! pclose!
+augroup complete_group
+    autocmd!
+    autocmd CompleteDone * silent! pclose!
+    autocmd InsertLeave * silent! pclose!
+augroup END
 
 
 " Plugin key-mappings.
@@ -210,8 +227,6 @@ if has('conceal')
 endif
 
 let g:neosnippet#enable_completed_snippet=1
-autocmd CompleteDone * call neosnippet#complete_done()
-autocmd InsertLeave * NeoSnippetClearMarkers
 
 " Expand the completed snippet trigger by <CR>.
 imap <expr><CR>
@@ -221,29 +236,6 @@ imap <expr><CR>
 let g:neoterm_autoinsert=1
 let g:neoterm_autoscroll=1
 
-
-au! BufRead,BufNewFile *.json set filetype=json
-
-augroup json_autocmd
-    autocmd!
-    autocmd FileType json setlocal formatoptions=tcq2l
-    autocmd FileType json setlocal textwidth=78 shiftwidth=2
-    autocmd FileType json setlocal softtabstop=2 tabstop=8
-    autocmd FileType json setlocal expandtab
-    autocmd FileType json setlocal foldmethod=syntax
-augroup END
-
-augroup writting_autocmd
-    "autocmd!
-    autocmd FileType markdown nnoremap <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
-    autocmd FileType markdown nnoremap <F4> :w<CR>:!pandoc % -o %:r.pdf && pkill -HUP mupdf<CR><CR><CR>
-    autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf && pkill -HUP mupdf"
-    autocmd FileType markdown nnoremap <F3> :make<CR><CR>
-    autocmd FileType markdown,text,tex setlocal colorcolumn=""
-    autocmd FileType markdown,text,tex setlocal spell
-    autocmd FileType markdown,text,tex setlocal complete+=kspell
-    autocmd FileType markdown nnoremap <F6> :Toc<CR>
-augroup END
 
 "let g:vim_markdown_toc_autofit = 1
 "let g:vim_markdown_math = 1
@@ -272,51 +264,69 @@ let g:clang_format#style_options = {
             \ "BreakBeforeBraces" : "Stroustrup"}
 
 let g:vimtex_fold_enabled=1
-let g:vimtex_view_automatic='mupdf'
+let g:vimtex_view_automatic='zathura'
+let g:vimtex_compiler_progname='nvr'
 
 " This is new style
 call deoplete#custom#var('omni', 'input_patterns', {
         \ 'tex': g:vimtex#re#deoplete
         \})
 
+if has("autocmd")
+    augroup snippet_group
+        autocmd!
+        autocmd CompleteDone * call neosnippet#complete_done()
+        autocmd InsertLeave * NeoSnippetClearMarkers
+    augroup END
 
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
+    augroup json_autocmd
+        autocmd!
+        autocmd BufRead,BufNewFile *.json set filetype=json
+        autocmd FileType json setlocal formatoptions=tcq2l
+        autocmd FileType json setlocal textwidth=78 shiftwidth=2
+        autocmd FileType json setlocal softtabstop=2 tabstop=8
+        autocmd FileType json setlocal expandtab
+        autocmd FileType json setlocal foldmethod=syntax
+    augroup END
+
+    augroup writting_autocmd
+        "autocmd!
+        autocmd FileType markdown nnoremap <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
+        autocmd FileType markdown nnoremap <F4> :w<CR>:!pandoc % -o %:r.pdf && pkill -HUP mupdf<CR><CR><CR>
+        autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf && pkill -HUP mupdf"
+        autocmd FileType markdown nnoremap <F3> :make<CR><CR>
+        autocmd FileType markdown,text,tex setlocal colorcolumn=""
+        autocmd FileType markdown,text,tex setlocal spell
+        autocmd FileType markdown,text,tex setlocal complete+=kspell
+        autocmd FileType markdown nnoremap <F6> :Toc<CR>
+    augroup END
+
+    augrou  formatting
+        autocmd!
+        autocmd BufNewFile,BufRead * setlocal formatoptions-=r
+        autocmd BufNewFile,BufRead * setlocal formatoptions-=t
+        autocmd BufNewFile,BufRead * setlocal formatoptions-=o
+        autocmd BufNewFile,BufRead * hi clear SpellBad
+        autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red
+        autocmd QuickFixCmdPost *grep* cwindow
+    augroup END
 
 
-" highlight last inserted text
-nnoremap gV `[v`]
+    augroup cpp_group
+        autocmd!
+        autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake ..<CR>
+        autocmd FileType cpp nnoremap <F10> :!rm -rf build && mkdir build && cd build && cmake ..<CR>
+        autocmd FileType cpp let &makeprg='(mkdir -p build && cd build && make )'
+        autocmd FileType cpp nnoremap <F5> :make<CR>
+        autocmd FileType cpp :ClangFormatAutoEnable<CR>
+        autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+        autocmd FileType cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+        autocmd FileType cpp nnoremap <F8> :TagbarToggle<CR>
+    augroup END
 
-" go to first non-blank character of current line
-nnoremap S ^
-nnoremap E $
-
-augrou  formatting
-    autocmd!
-    autocmd BufNewFile,BufRead * setlocal formatoptions-=r
-    autocmd BufNewFile,BufRead * setlocal formatoptions-=t
-    autocmd BufNewFile,BufRead * setlocal formatoptions-=o
-    autocmd BufNewFile,BufRead * hi clear SpellBad
-    autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red
-augroup END
-
-
-augroup cpp_group
-    autocmd!
-    autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake ..<CR>
-    autocmd FileType cpp nnoremap <F10> :!rm -rf build && mkdir build && cd build && cmake ..<CR>
-    autocmd FileType cpp let &makeprg='(mkdir -p build && cd build && make )'
-    autocmd FileType cpp nnoremap <F5> :make<CR>
-    autocmd FileType cpp :ClangFormatAutoEnable<CR>
-    autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-    autocmd FileType cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-    autocmd FileType cpp nnoremap <F8> :TagbarToggle<CR>
-augroup END
-
-augroup vim_group
-    autocmd!
-    autocmd BufWritePost .vimrc source $MYVIMRC
-    autocmd BufWritePost .zshrc,.bashrc silent !source %
-augroup END
+    augroup vim_group
+        autocmd!
+        autocmd BufWritePost .vimrc source $MYVIMRC
+        autocmd BufWritePost .zshrc,.bashrc silent !source %
+    augroup END
+endif
