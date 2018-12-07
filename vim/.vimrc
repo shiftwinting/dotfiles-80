@@ -88,7 +88,11 @@ nnoremap gV `[v`]
 nnoremap S ^
 nnoremap E $
 
-nnoremap <F1> :nohlsearch
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
+nnoremap <leader>go i<CR><esc>
+
+nnoremap <F1> :nohlsearch<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
 set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
@@ -172,6 +176,8 @@ call plug#end()
 "let g:gruvbox_italic=1
 colorscheme gruvbox
 
+nnoremap <F8> :TagbarToggle<CR>
+
  " path to directory where library can be found
  let g:clang_library_path=$HOME . '/Downloads/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-16.04/lib/libclang.so'
 
@@ -213,6 +219,10 @@ let g:airline_powerline_fonts = 1
 "     call neomake#configure#automake('nrw', 500)
 "     let g:neomake_open_list=2
 " endif
+
+let g:ale_linters = {
+\   'cpp': ['cquery'],
+\}
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
@@ -284,8 +294,8 @@ call deoplete#custom#var('omni', 'input_patterns', {
 
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-    \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+    \ 'cpp': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log'],
+    \ 'c': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log'],
     \ }
 
     " \ 'c': [$HOME . '/Downloads/ccls/Release/ccls', '--log-file=/tmp/cc.log'],
@@ -357,15 +367,14 @@ if has("autocmd")
 
     augroup cpp_group
         autocmd!
-        autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake .. && ln -s -f compile_commands.json ../compile_commands.json<CR>
-        autocmd FileType cpp nnoremap <F10> :!rm -rf build && mkdir build && cd build && cmake ..<CR>
+        autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
+        autocmd FileType cpp nnoremap <F10> :!rm -rf build<CR>
         autocmd FileType cpp let &makeprg='make -C build'
-        autocmd FileType cpp nnoremap <F5> :make<CR>
+        autocmd FileType cpp nnoremap <F5> :make 
         autocmd FileType cpp :ClangFormatAutoEnable<CR>
         autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
         autocmd FileType cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-        autocmd FileType cpp nnoremap <F8> :TagbarToggle<CR>
-        autocmd BufWritePost CMakeLists.txt <F2>
+        autocmd BufWritePost CMakeLists.txt :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
     augroup END
 
     augroup vim_group
