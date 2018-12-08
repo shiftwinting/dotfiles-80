@@ -31,11 +31,15 @@ endif
 let g:is_posix = 1
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" poor mans version control
 set writebackup
 set hidden
 set undodir=~/.vim/.undo
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.swap
+set undofile
+set backup
+set swapfile
 
 set background=dark
 set showmode
@@ -353,6 +357,7 @@ if has("autocmd")
 
     augroup git
         autocmd!
+        autocmd FileType gitcommit setlocal textwidth=79
         autocmd FileType gitcommit setlocal formatoptions+=t
         autocmd FileType gitcommit match ErrorMsg /\%1l.\%>51v/
         autocmd FileType gitcommit setlocal spell
