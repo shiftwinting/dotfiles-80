@@ -29,6 +29,7 @@ if has('mouse')
 endif
 
 let g:is_posix = 1
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 set writebackup
 set hidden
@@ -43,6 +44,8 @@ set cursorline
 set colorcolumn=80
 set lazyredraw
 set synmaxcol=300
+" Always draw the signcolumn.
+set signcolumn=yes
 
 set ignorecase smartcase
 set showmatch
@@ -71,6 +74,7 @@ set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
 map Q gq
 
 let mapleader=' '
+
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 " but not Vi-compatible), rather than act as yy
 nnoremap Y y$
@@ -88,9 +92,10 @@ nnoremap gV `[v`]
 nnoremap S ^
 nnoremap E $
 
-nnoremap <leader>o o<esc>
-nnoremap <leader>O O<esc>
-nnoremap <leader>go i<CR><esc>
+nnoremap <leader>o o<esc>k
+nnoremap <leader>O O<esc>k
+
+nnoremap <leader>go i<CR><esc>k
 
 nnoremap <F1> :nohlsearch<CR>
 
@@ -121,10 +126,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'valloric/youcompleteme'
-"Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'sirver/ultisnips'
+Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -153,23 +156,22 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Plug 'neomake/neomake'
     Plug 'kassio/neoterm'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
-    Plug 'arakashic/chromatica.nvim'
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'tpope/vim-sensible'
-    Plug 'octol/vim-cpp-enhanced-highlight'
 endif
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'VoldikSS/vim-mma'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'mboughaba/i3config.vim'
+Plug 'neomake/neomake'
 " Initialize plugin system
 call plug#end()
 
@@ -184,45 +186,24 @@ nnoremap <F8> :TagbarToggle<CR>
 if has('nvim')
     " Set this. Airline will handle the rest.
     let g:airline#extensions#ale#enabled = 1
-    let g:chromatica#libclang_path=g:clang_library_path
-    let g:chromatica#enable_at_startup=1
-else
-    let g:cpp_class_scope_highlight = 1
-    let g:cpp_member_variable_highlight = 1
-    let g:cpp_class_decl_highlight = 1
-    let g:cpp_experimental_simple_template_highlight = 1
+" else
 endif
 
-""let g:ycm_server_python_interpreter = '/usr/bin/python3'
-
-"" make YCM compatible with UltiSnips (using supertab)
-"let g:ycm_key_list_select_completion = ['<C-j>', '<Down>', '<tab>']
-"let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>', '<S-TAB>']
-"let g:ycm_autoclose_preview_window_after_completion = 0
-"let g:ycm_key_list_stop_completion = ['<C-y>']
-"let g:ycm_confirm_extra_conf = 0
-
-"" better key bindings for UltiSnipsExpandTrigger
-"let g:UltiSnipsExpandTrigger = "<C-s>"
-"let g:UltiSnipsJumpForwardTrigger = "<C-n>"
-"let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
-"let g:UltiSnipsListSnippets = "<C-l>"
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
 
 set statusline+=%{gutentags#statusline()}
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 
-" if has('nvim')
-"     " Full config: when writing or reading a buffer, and on changes in insert and
-"     " normal mode (after 1s; no delay when writing).
-"     call neomake#configure#automake('nrw', 500)
-"     let g:neomake_open_list=2
-" endif
-
 let g:ale_linters = {
-\   'cpp': ['cquery'],
+\   'cpp': ['cquery', 'clangd', 'clang-format', 'clang-tidy', 'uncrustify', 'cppcheck', 'flawfinder'],
+\   'c': ['cquery', 'clangd', 'clang-format', 'clang-tidy', 'uncrustify', 'cppcheck', 'flawfinder'],
 \}
+let g:ale_cpp_cquery_executable='~/Downloads/cquery/build/release/bin/cquery'
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
@@ -230,6 +211,9 @@ call deoplete#custom#option({
 \ 'max_list': 10,
 \ })
 call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
 call deoplete#custom#var('clangx', 'clang_binary', $HOME . '/Downloads/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/clang')
 
 
@@ -282,6 +266,9 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11",
             \ "BreakBeforeBraces" : "Stroustrup"}
+let g:clang_format#auto_format = 1
+let g:clang_format#auto_format_on_insert_leave = 1
+let g:clang_format#auto_formatexpr = 1
 
 let g:vimtex_fold_enabled=1
 let g:vimtex_view_automatic='zathura'
@@ -294,8 +281,8 @@ call deoplete#custom#var('omni', 'input_patterns', {
 
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'cpp': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log'],
-    \ 'c': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log'],
+    \ 'cpp': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/var/cquery/"}'],
+    \ 'c': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/var/cquery/"}'],
     \ }
 
     " \ 'c': [$HOME . '/Downloads/ccls/Release/ccls', '--log-file=/tmp/cc.log'],
@@ -364,16 +351,23 @@ if has("autocmd")
         autocmd QuickFixCmdPost *grep* cwindow
     augroup END
 
+    augroup git
+        autocmd!
+        autocmd FileType gitcommit setlocal formatoptions+=t
+        autocmd FileType gitcommit match ErrorMsg /\%1l.\%>51v/
+        autocmd FileType gitcommit setlocal spell
+    augroup END
+
 
     augroup cpp_group
         autocmd!
-        autocmd FileType cpp nnoremap <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
-        autocmd FileType cpp nnoremap <F10> :!rm -rf build<CR>
-        autocmd FileType cpp let &makeprg='make -C build'
-        autocmd FileType cpp nnoremap <F5> :make 
-        autocmd FileType cpp :ClangFormatAutoEnable<CR>
-        autocmd FileType cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-        autocmd FileType cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+        autocmd FileType c,cpp nnoremap <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
+        autocmd FileType c,cpp nnoremap <F10> :!rm -rf build<CR>
+        autocmd FileType c,cpp let &makeprg='make -C build '
+        autocmd FileType c,cpp nnoremap <F5> :make 
+        autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+        autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+        autocmd FileType c,cpp ClangFormatAutoEnable
         autocmd BufWritePost CMakeLists.txt :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
     augroup END
 
