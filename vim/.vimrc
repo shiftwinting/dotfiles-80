@@ -48,8 +48,10 @@ set cursorline
 set colorcolumn=80
 set lazyredraw
 set synmaxcol=300
-" Always draw the signcolumn.
-set signcolumn=yes
+if has('signcolumn')
+    " Always draw the signcolumn.
+    set signcolumn=yes
+endif
 
 set ignorecase smartcase
 set showmatch
@@ -74,10 +76,11 @@ set textwidth=79
 set spelllang=en
 set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+" Don't use Ex mode, use Q for running macros
+nnoremap Q @q
 
-let mapleader=' '
+let mapleader = "\<Space>"
+nnoremap <Space> <Nop>
 
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 " but not Vi-compatible), rather than act as yy
@@ -101,16 +104,46 @@ nnoremap <leader>O O<esc>k
 
 nnoremap <leader>go i<CR><esc>k
 
-nnoremap <F1> :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<CR><CR>
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
-set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
-set wildignore+=*build/*
+inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
+inoremap <expr> <esc> pumvisible() ? "<C-e>" : "<Esc>"
+
+" This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
+xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
+
+nnoremap <silent> <Leader>w :update<cr><cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>z :wq<cr>
+nnoremap <leader>s :set spell!
+
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>
+
+noremap <M-l> gt
+noremap <M-h> gT
+
+noremap <Right> :cnext<CR>
+noremap <Left> :cprev<CR>
+
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
+" set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
+" set wildignore+=*build/*
 
 
 " Add optional packages.
 "
 if empty(glob('~/.vim/autoload/plug.vim'))
+    if !executable("curl")
+        echoerr "You have to install curl or first install vim-plug yourself!"
+        execute "q!"
+    endif
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
@@ -130,10 +163,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+if isdirectory('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+endif
 Plug 'honza/vim-snippets'
-Plug 'easymotion/vim-easymotion'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
@@ -175,14 +211,13 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'mboughaba/i3config.vim'
-Plug 'neomake/neomake'
 " Initialize plugin system
 call plug#end()
 
 "let g:gruvbox_italic=1
 colorscheme gruvbox
 
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 
  " path to directory where library can be found
  let g:clang_library_path=$HOME . '/Downloads/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-16.04/lib/libclang.so'
@@ -200,8 +235,42 @@ let g:cpp_experimental_simple_template_highlight = 1
 
 set statusline+=%{gutentags#statusline()}
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 
+" vim-airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+if !exists('g:airline_powerline_fonts')
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_left_sep          = '▶'
+  let g:airline_left_alt_sep      = '»'
+  let g:airline_right_sep         = '◀'
+  let g:airline_right_alt_sep     = '«'
+  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+  let g:airline#extensions#readonly#symbol   = '⊘'
+  let g:airline#extensions#linecolumn#prefix = '¶'
+  let g:airline#extensions#paste#symbol      = 'ρ'
+  let g:airline_symbols.linenr    = '␊'
+  let g:airline_symbols.branch    = '⎇'
+  let g:airline_symbols.paste     = 'ρ'
+  let g:airline_symbols.paste     = 'Þ'
+  let g:airline_symbols.paste     = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+else
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+endif
 
 let g:ale_linters = {
 \   'cpp': ['cquery', 'clangd', 'clang-format', 'clang-tidy', 'uncrustify', 'cppcheck', 'flawfinder'],
@@ -224,7 +293,6 @@ call deoplete#custom#var('clangx', 'clang_binary', $HOME . '/Downloads/clang+llv
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -301,7 +369,6 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
 nnoremap <leader><F5> :call LanguageClient_contextMenu()<CR>
 
 if has("autocmd")
@@ -335,14 +402,14 @@ if has("autocmd")
 
     augroup writting_autocmd
         autocmd!
-        autocmd FileType markdown nnoremap <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
-        autocmd FileType markdown nnoremap <F4> :w<CR>:!pandoc % -o %:r.pdf && pkill -HUP mupdf<CR><CR><CR>
+        autocmd FileType markdown nnoremap <buffer> <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
+        autocmd FileType markdown nnoremap <buffer> <F4> :w<CR>:!pandoc % -o %:r.pdf && pkill -HUP mupdf<CR><CR><CR>
         autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf && pkill -HUP mupdf"
-        autocmd FileType markdown nnoremap <F3> :make<CR><CR>
+        autocmd FileType markdown nnoremap <buffer> <F3> :make<CR><CR>
         autocmd FileType markdown,text,tex setlocal colorcolumn=""
         autocmd FileType markdown,text,tex setlocal spell
         autocmd FileType markdown,text,tex setlocal complete+=kspell
-        autocmd FileType markdown nnoremap <F6> :Toc<CR>
+        autocmd FileType markdown nnoremap <buffer> <F6> :Toc<CR>
     augroup END
 
     augrou  formatting
@@ -366,14 +433,20 @@ if has("autocmd")
 
     augroup cpp_group
         autocmd!
-        autocmd FileType c,cpp nnoremap <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
-        autocmd FileType c,cpp nnoremap <F10> :!rm -rf build<CR>
+        autocmd FileType c,cpp nnoremap <buffer> <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
+        autocmd FileType c,cpp nnoremap <buffer> <F10> :!rm -rf build<CR>
         autocmd FileType c,cpp let &makeprg='make -C build '
-        autocmd FileType c,cpp nnoremap <F5> :make 
+        autocmd FileType c,cpp nnoremap <buffer> <F5> :make 
         autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
         autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
         autocmd FileType c,cpp ClangFormatAutoEnable
         autocmd BufWritePost CMakeLists.txt :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
+    augroup END
+
+"" Remember cursor position
+    augroup vimrc-remember-cursor-position
+        autocmd!
+        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     augroup END
 
     augroup vim_group
