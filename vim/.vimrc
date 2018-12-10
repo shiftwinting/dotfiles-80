@@ -107,6 +107,8 @@ nnoremap <leader>go i<CR><esc>k
 nnoremap <CR> :nohlsearch<CR><CR>
 
 inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
+inoremap <expr> kj pumvisible() ? "<C-e>" : "<Esc>"
+inoremap <expr> jj pumvisible() ? "<C-e>" : "<Esc>"
 inoremap <expr> <esc> pumvisible() ? "<C-e>" : "<Esc>"
 
 " This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
@@ -198,6 +200,7 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'kassio/neoterm'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+    Plug 'bfredl/nvim-miniyank'
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
@@ -211,6 +214,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'mboughaba/i3config.vim'
+Plug 'machakann/vim-highlightedyank'
 " Initialize plugin system
 call plug#end()
 
@@ -226,6 +230,11 @@ if has('nvim')
     " Set this. Airline will handle the rest.
     let g:airline#extensions#ale#enabled = 1
 " else
+endif
+
+if !exists('##TextYankPost')
+  nmap y <Plug>(highlightedyank)
+  vmap y <Plug>(highlightedyank)
 endif
 
 let g:cpp_class_scope_highlight = 1
