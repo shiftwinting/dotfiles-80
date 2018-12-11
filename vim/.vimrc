@@ -104,7 +104,7 @@ nnoremap <leader>O O<esc>k
 
 nnoremap <leader>go i<CR><esc>k
 
-nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <CR> :<C-U>nohlsearch<CR><CR>
 
 inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
 inoremap <expr> kj pumvisible() ? "<C-e>" : "<Esc>"
@@ -114,9 +114,9 @@ inoremap <expr> <esc> pumvisible() ? "<C-e>" : "<Esc>"
 " This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
-nnoremap <silent> <Leader>w :update<cr><cr>
-nnoremap <leader>q :q<cr>
-nnoremap <leader>z :wq<cr>
+nnoremap <Leader>w :update<cr><cr>
+nnoremap <leader>q :<C-U>quit<cr>
+nnoremap <leader>z :<c-u>update <Bar>quit<cr>
 nnoremap <leader>s :set spell!
 
 "" Copy/Paste/Cut
