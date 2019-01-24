@@ -107,7 +107,6 @@ label=⚡
 interval=30
 
 [gpu-load]
-command=~/Downloads/i3blocks-contrib/gpu-load/gpu-load
 label=GPU
 interval=10
 #min_width=GPU 100% 100% 100% 100%
@@ -139,21 +138,18 @@ label=TEMP
 interval=10
 
 [apt-upgrades]
-command=~/Downloads/i3blocks-contrib/apt-upgrades/apt-upgrades
 signal=1
 interval=once
 
 [calendar]
-command=~/Downloads/i3blocks-contrib/calendar/calendar
 interval=1
-label= 
+label=cal
 #datefmt=+%H:%M:%S
 # SHORTFMT=+%H:%M:%S
 # HEIGHT=180
 # WIDTH=220
 
 [essid]
-command=~/Downloads/i3blocks-contrib/essid/essid
 interval=60
 instance=wlp2s0
 # Key indicators
