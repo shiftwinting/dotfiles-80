@@ -119,9 +119,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# panic button
-bindsym $mod+F1 workspace $ws10; exec xfce4-terminal -e 'vim .vimrc'; split h; exec xfce4-terminal -e 'htop'
-
 # reload the configuration file
 bindsym $mod+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -159,13 +156,13 @@ bindsym $mod+Shift+s mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	status_command i3blocks
+	status_command SCRIPT_DIR=~/dotfiles/scripts/i3blocks i3blocks
 }
 
 # Pulse Audio controls
-bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +10% #increase sound volume
-bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -10% #decrease sound volume
-bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%  && pkill -RTMIN+10 i3blocks #increase sound volume
+bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%  && pkill -RTMIN+10 i3blocks #decrease sound volume
+bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks # mute sound
 
 # Media player controls
 bindsym --release $mod+p exec --no-startup-id playerctl play-pause
@@ -180,11 +177,6 @@ exec --no-startup-id mkdir -p ~/Pictures/screenshots
 bindsym --release $mod+o exec --no-startup-id scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 
-# Transparency control
-bindsym $mod+F5 exec --no-startup-id transset -a --dec 0.1
-bindsym $mod+F6 exec --no-startup-id transset -a --inc 0.1
-bindsym $mod+F7 exec --no-startup-id transset -a 0.85
-
 # gaps
 #for_window [class="^.*"] border pixel 2
 #gaps inner 15
@@ -192,6 +184,6 @@ bindsym $mod+F7 exec --no-startup-id transset -a 0.85
 #smart_gaps on
 #smart_borders on
 
-exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id setxkbmap -option caps:swapescape -option nodeadkeys
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

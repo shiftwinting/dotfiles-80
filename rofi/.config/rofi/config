@@ -137,4 +137,4 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+rofi.theme: ~/dotfiles/themes/rofi/gruvbox-dark-hard.rasi
