@@ -24,7 +24,8 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/share/i3blocks/$BLOCK_NAME
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -33,13 +34,13 @@ markup=none
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
+
 [volume]
-label=VOL
-#label=♪
-instance=Master
-#instance=PCM
+label=♪
+#label=VOL
 interval=once
 signal=10
+#STEP=5%
 
 # Memory usage
 #
@@ -62,7 +63,7 @@ interval=30
 # (defaults to 10 for 10%).
 [disk]
 label=HOME
-#instance=/mnt/data
+#DIR=/mnt/data
 interval=30
 
 # Network interface monitoring
@@ -70,18 +71,19 @@ interval=30
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
-#instance=wlan0
+#IFACE=wlan0
 color=#00FF00
 interval=10
 separator=false
 
 [wifi]
-instance=wlp3s0
+#INTERFACE=wlp3s0
+label=wifi:
 interval=10
 separator=false
 
 [bandwidth]
-#instance=eth0
+#INTERFACE=eth0
 interval=5
 
 # CPU usage
@@ -91,29 +93,27 @@ interval=5
 [cpu_usage]
 label=CPU
 interval=10
-min_width=CPU: 100.00%
+min_width=CPU 100.00%
 #separator=false
 
 [load_average]
+label=LOAD
 interval=10
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
 [battery]
-label=BAT
+#label=BAT
 label=⚡
-#instance=1
 interval=30
 
-[gpu-load]
-command=~/Downloads/i3blocks-contrib/gpu-load/gpu-load
-label=GPU
-interval=10
-#min_width=GPU 100% 100% 100% 100%
-##T_WARN=70
-##T_CRIT=90
+# Date Time
 #
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5
+
 # Generic media player support
 #
 # This displays "ARTIST - SONG" if a music is playing.
@@ -138,24 +138,6 @@ interval=20
 label=TEMP
 interval=10
 
-[apt-upgrades]
-command=~/Downloads/i3blocks-contrib/apt-upgrades/apt-upgrades
-signal=1
-interval=once
-
-[calendar]
-command=~/Downloads/i3blocks-contrib/calendar/calendar
-interval=1
-label= 
-#datefmt=+%H:%M:%S
-# SHORTFMT=+%H:%M:%S
-# HEIGHT=180
-# WIDTH=220
-
-[essid]
-command=~/Downloads/i3blocks-contrib/essid/essid
-interval=60
-instance=wlp2s0
 # Key indicators
 #
 # Add the following bindings to i3 config file:
@@ -163,11 +145,50 @@ instance=wlp2s0
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 # bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 #[keyindicator]
-#instance=CAPS
+#KEY=CAPS
+#markup=pango
 #interval=once
 #signal=11
 
 #[keyindicator]
-#instance=NUM
+#KEY=NUM
+#markup=pango
 #interval=once
 #signal=11
+
+[essid]
+interval=60
+#INTERFACE=wlo1
+
+[gpu-load]
+label=GPU
+interval=10
+#min_width=GPU 100% 100% 100% 100%
+#T_WARN=70
+#T_CRIT=90
+
+[nm-vpn]
+label=VPN:
+interval=5
+
+[shutdown_menu]
+full_text=Quit
+# If you are using FontAwesome, we recommend the power-off icon:
+# http://fontawesome.io/icon/power-off/
+#FG_COLOR=#bbbbbb
+#BG_COLOR=#111111
+#HLFG_COLOR=#111111
+#HLBG_COLOR=#bbbbbb
+#BORDER_COLOR=#222222
+#ROFI_TEXT=Menu:
+#ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
+#ZENITY_TITLE=Menu
+#ZENITY_TEXT=Action:
+#ZENITY_OPTIONS=--column= --hide-header
+#ENABLE_CONFIRMATIONS=true (must be true or false)
+#LAUNCHER=rofi (must be rofi or zenity)
+#LOCKSCRIPT=i3lock --color=${BG_COLOR#"#"}
+
+[wlan-dbm]
+#IFACE=wlan0
+#USE_PERCENT=0
