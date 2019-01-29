@@ -134,11 +134,6 @@ noremap <M-h> gT
 noremap <Right> :cnext<CR>
 noremap <Left> :cprev<CR>
 
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,*.tmp,*.log     " MacOSX/Linux
-" set wildignore+=*.png,*jpg,*.jpeg,*.mp4,*.pb,*.bin,*.pbtxt,*.gif,*.pdf,*.o
-" set wildignore+=*build/*
-
-
 " Add optional packages.
 "
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -176,7 +171,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'elzr/vim-json'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'lervag/vimtex'
 Plug 'pboettch/vim-cmake-syntax'
@@ -185,7 +179,6 @@ Plug 'octref/rootignore'
 Plug 'nacitar/a.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'rhysd/vim-clang-format'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -208,7 +201,6 @@ else
     Plug 'tpope/vim-sensible'
 endif
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'VoldikSS/vim-mma'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
@@ -222,9 +214,6 @@ call plug#end()
 colorscheme gruvbox
 
 nnoremap <leader>t :TagbarToggle<CR>
-
- " path to directory where library can be found
- let g:clang_library_path=$HOME . '/Downloads/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-16.04/lib/libclang.so'
 
 if has('nvim')
     " Set this. Airline will handle the rest.
@@ -281,12 +270,6 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-let g:ale_linters = {
-\   'cpp': ['cquery', 'clangd', 'clang-format', 'clang-tidy', 'uncrustify', 'cppcheck', 'flawfinder'],
-\   'c': ['cquery', 'clangd', 'clang-format', 'clang-tidy', 'uncrustify', 'cppcheck', 'flawfinder'],
-\}
-let g:ale_cpp_cquery_executable='~/Downloads/cquery/build/release/bin/cquery'
-
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
 \ 'camel_case': v:true,
@@ -296,8 +279,6 @@ call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 call deoplete#custom#source('LanguageClient',
             \ 'min_pattern_length',
             \ 2)
-call deoplete#custom#var('clangx', 'clang_binary', $HOME . '/Downloads/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-16.04/bin/clang')
-
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
@@ -341,16 +322,6 @@ let g:rainbow_active = 1
 
 nnoremap <leader>f :FZF --reverse<CR>
 
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "false",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11",
-            \ "BreakBeforeBraces" : "Stroustrup"}
-let g:clang_format#auto_format = 1
-let g:clang_format#auto_format_on_insert_leave = 1
-let g:clang_format#auto_formatexpr = 1
-
 let g:vimtex_fold_enabled=1
 let g:vimtex_view_automatic='zathura'
 let g:vimtex_compiler_progname='nvr'
@@ -362,12 +333,8 @@ call deoplete#custom#var('omni', 'input_patterns', {
 
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'cpp': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/var/cquery/"}'],
-    \ 'c': ['~/Downloads/cquery/build/release/bin/cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/var/cquery/"}'],
     \ }
 
-    " \ 'c': [$HOME . '/Downloads/ccls/Release/ccls', '--log-file=/tmp/cc.log'],
-    " \ 'cpp': [$HOME . '/Downloads/ccls/Release/ccls', '--log-file=/tmp/cc.log'],
 let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
 let g:LanguageClient_settingsPath = $HOME . '/.config/nvim/settings.json'
 set completefunc=LanguageClient#complete
@@ -391,16 +358,6 @@ if has("autocmd")
         autocmd!
         autocmd CompleteDone * call neosnippet#complete_done()
         autocmd InsertLeave * NeoSnippetClearMarkers
-    augroup END
-
-    augroup json_autocmd
-        autocmd!
-        autocmd BufRead,BufNewFile *.json set filetype=json
-        autocmd FileType json setlocal formatoptions=tcq2l
-        autocmd FileType json setlocal textwidth=78 shiftwidth=2
-        autocmd FileType json setlocal softtabstop=2 tabstop=8
-        autocmd FileType json setlocal expandtab
-        autocmd FileType json setlocal foldmethod=syntax
     augroup END
 
     augroup mathematica
@@ -435,7 +392,6 @@ if has("autocmd")
         autocmd!
         autocmd FileType gitcommit setlocal textwidth=79
         autocmd FileType gitcommit setlocal formatoptions+=t
-        autocmd FileType gitcommit match ErrorMsg /\%1l.\%>51v/
         autocmd FileType gitcommit setlocal spell
     augroup END
 
@@ -465,6 +421,5 @@ if has("autocmd")
             \|   PlugInstall --sync | q | source $MYVIMRC
             \| endif
         autocmd BufWritePost .vimrc source $MYVIMRC
-        autocmd BufWritePost .zshrc,.bashrc silent !source %
     augroup END
 endif

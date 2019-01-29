@@ -5,5 +5,5 @@
 # global xinitrc file, used by all X sessions started by xinit (startx)
 
 # invoke global X session script
-feh --bg-scale ~/dotfiles/wallpapers/bliss.png
+# feh --bg-scale ~/dotfiles/wallpapers/bliss.png
 exec i3

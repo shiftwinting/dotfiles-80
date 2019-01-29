@@ -187,3 +187,4 @@ bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.
 exec --no-startup-id setxkbmap -option caps:swapescape -option nodeadkeys
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+exec --no-startup-id feh --bg-center ~/dotfiles/wallpapers/bliss.png
