@@ -122,3 +122,9 @@ alias ace='acestream-launcher'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*3rd-party*'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
