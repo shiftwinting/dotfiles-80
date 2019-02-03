@@ -2,6 +2,7 @@
 set -e
 stow X
 stow acestream-launcher
+stow dunst
 stow git
 stow i3
 stow i3blocks
