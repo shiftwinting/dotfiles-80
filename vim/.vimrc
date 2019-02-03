@@ -29,7 +29,6 @@ if has('mouse')
 endif
 
 let g:is_posix = 1
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " poor mans version control
 set writebackup
@@ -165,7 +164,6 @@ else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
 endif
-Plug 'honza/vim-snippets'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
@@ -186,18 +184,15 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'kassio/neoterm'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     Plug 'bfredl/nvim-miniyank'
-    Plug 'roxma/nvim-yarp'
 else
     Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'tpope/vim-sensible'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'mboughaba/i3config.vim'
@@ -229,42 +224,6 @@ let g:cpp_experimental_simple_template_highlight = 1
 set statusline+=%{gutentags#statusline()}
 let g:airline#extensions#tabline#enabled = 1
 
-" vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
-
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
 \ 'camel_case': v:true,
@@ -275,37 +234,6 @@ call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-let g:neosnippet#enable_completed_snippet=1
-
-" Expand the completed snippet trigger by <CR>.
-imap <expr><CR>
-\ (pumvisible() && neosnippet#expandable()) ?
-\ "\<Plug>(neosnippet_expand)" : "\<CR>"
-
-let g:neoterm_autoinsert=1
-let g:neoterm_autoscroll=1
-
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
@@ -328,12 +256,6 @@ if has("autocmd")
         autocmd!
         autocmd CompleteDone * silent! pclose!
         autocmd InsertLeave * silent! pclose!
-    augroup END
-
-    augroup snippet_group
-        autocmd!
-        autocmd CompleteDone * call neosnippet#complete_done()
-        autocmd InsertLeave * NeoSnippetClearMarkers
     augroup END
 
     augroup writting_autocmd
