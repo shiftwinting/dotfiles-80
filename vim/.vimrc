@@ -16,7 +16,7 @@ if !has('nvim')
     set ttyfast
     set ttymouse=xterm2
 else
-    if has('termguicolors') && ($TERM=="xterm-256" || $TERM=="xterm-kitty")
+    if has('termguicolors') && ($TERM=="xterm-kitty")
         set termguicolors
     endif
     let g:python_host_prog='/usr/bin/python'
@@ -106,10 +106,9 @@ nnoremap <leader>go i<CR><esc>k
 
 nnoremap <CR> :<C-U>nohlsearch<CR><CR>
 
-inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
-inoremap <expr> kj pumvisible() ? "<C-e>" : "<Esc>"
-inoremap <expr> jj pumvisible() ? "<C-e>" : "<Esc>"
-inoremap <expr> <esc> pumvisible() ? "<C-e>" : "<Esc>"
+inoremap <expr> jk  "<Esc>"
+inoremap <expr> kj  "<Esc>"
+inoremap <expr> jj  "<Esc>"
 
 " This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
@@ -179,10 +178,6 @@ Plug 'octref/rootignore'
 Plug 'nacitar/a.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neoinclude.vim'
@@ -194,9 +189,9 @@ if has('nvim')
     Plug 'kassio/neoterm'
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     Plug 'bfredl/nvim-miniyank'
+    Plug 'roxma/nvim-yarp'
 else
     Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'tpope/vim-sensible'
 endif
@@ -276,12 +271,9 @@ call deoplete#custom#option({
 \ 'max_list': 10,
 \ })
 call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
 
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> deoplete#smart_close_popup()
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
 " Plugin key-mappings.
@@ -331,22 +323,6 @@ call deoplete#custom#var('omni', 'input_patterns', {
         \ 'tex': g:vimtex#re#deoplete
         \})
 
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ }
-
-let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-let g:LanguageClient_settingsPath = $HOME . '/.config/nvim/settings.json'
-set completefunc=LanguageClient#complete
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
-
-nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader><F5> :call LanguageClient_contextMenu()<CR>
-
 if has("autocmd")
     augroup complete_group
         autocmd!
@@ -360,12 +336,6 @@ if has("autocmd")
         autocmd InsertLeave * NeoSnippetClearMarkers
     augroup END
 
-    augroup mathematica
-        autocmd!
-        autocmd BufNewFile,BufRead *.wl set filetype=mma
-        autocmd BufNewFile,BufRead *.wls set filetype=mma
-    augroup END
-
     augroup writting_autocmd
         autocmd!
         autocmd FileType markdown nnoremap <buffer> <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
@@ -376,16 +346,6 @@ if has("autocmd")
         autocmd FileType markdown,text,tex setlocal spell
         autocmd FileType markdown,text,tex setlocal complete+=kspell
         autocmd FileType markdown nnoremap <buffer> <F6> :Toc<CR>
-    augroup END
-
-    augrou  formatting
-        autocmd!
-        autocmd BufNewFile,BufRead * setlocal formatoptions-=r
-        autocmd BufNewFile,BufRead * setlocal formatoptions-=t
-        autocmd BufNewFile,BufRead * setlocal formatoptions-=o
-        autocmd BufNewFile,BufRead * hi clear SpellBad
-        autocmd BufNewFile,BufRead * hi SpellBad ctermfg=Red term=Reverse guisp=Red
-        autocmd QuickFixCmdPost *grep* cwindow
     augroup END
 
     augroup git
@@ -401,10 +361,7 @@ if has("autocmd")
         autocmd FileType c,cpp nnoremap <buffer> <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
         autocmd FileType c,cpp nnoremap <buffer> <F10> :!rm -rf build<CR>
         autocmd FileType c,cpp let &makeprg='make -C build '
-        autocmd FileType c,cpp nnoremap <buffer> <F5> :make 
-        autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-        autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-        autocmd FileType c,cpp ClangFormatAutoEnable
+        autocmd FileType c,cpp nnoremap <buffer> <F5> :make
         autocmd BufWritePost CMakeLists.txt :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
     augroup END
 
