@@ -119,6 +119,7 @@ export PATH
 # For a full list of active aliases, run `alias`.
 #
 alias ace='acestream-launcher'
+alias ipecho='curl ipecho.net/plain; echo'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*3rd-party*'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
