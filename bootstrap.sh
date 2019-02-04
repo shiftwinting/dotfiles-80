@@ -2,7 +2,7 @@
 set -e
 stow X
 stow acestream-launcher
-stow csgo
+stow csgo || stow csgo_alt
 stow dunst
 stow git
 stow i3
