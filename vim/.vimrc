@@ -105,10 +105,6 @@ nnoremap <leader>go i<CR><esc>k
 
 nnoremap <CR> :<C-U>nohlsearch<CR><CR>
 
-inoremap <expr> jk  "<Esc>"
-inoremap <expr> kj  "<Esc>"
-inoremap <expr> jj  "<Esc>"
-
 " This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
@@ -128,9 +124,6 @@ noremap XX "+x<CR>
 
 noremap <M-l> gt
 noremap <M-h> gT
-
-noremap <Right> :cnext<CR>
-noremap <Left> :cprev<CR>
 
 " Add optional packages.
 "
