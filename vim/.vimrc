@@ -1,5 +1,4 @@
 if !has('nvim')
-    set t_Co=256
     silent !mkdir -p $HOME/.vim/.undo
     silent !mkdir -p $HOME/.vim/.backup
     silent !mkdir -p $HOME/.vim/.swap
@@ -218,11 +217,6 @@ set statusline+=%{gutentags#statusline()}
 let g:airline#extensions#tabline#enabled = 1
 
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-\ 'camel_case': v:true,
-\ 'max_list': 10,
-\ })
-call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()
