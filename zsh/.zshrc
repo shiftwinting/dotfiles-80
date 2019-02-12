@@ -131,5 +131,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*
 autoload -Uz compinit
 compinit
 # Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+if [[ $TERM == "xterm-kitty" ]]; then
+    kitty + complete setup zsh | source /dev/stdin
+fi
 
