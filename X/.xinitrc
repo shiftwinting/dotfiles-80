@@ -6,5 +6,4 @@
 
 # invoke global X session script
 systemctl --user import-environment DISPLAY
-export vblank_mode=0
-exec primusrun i3
+exec i3

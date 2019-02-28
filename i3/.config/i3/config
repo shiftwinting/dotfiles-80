@@ -74,7 +74,7 @@ bindsym $mod+Tab focus mode_toggle
 bindsym $mod+x focus parent
 
 # focus the child container
-#bindsym $mod+c focus child
+bindsym $mod+c focus child
 
 # open terminal below
 bindsym $mod+Shift+v focus child; split v; exec xfce4-terminal -e zsh
@@ -176,6 +176,16 @@ bindsym $mod+Shift+g exec --no-startup-id i3lock-fancy
 exec --no-startup-id mkdir -p ~/Pictures/screenshots
 bindsym --release $mod+o exec --no-startup-id scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
+
+# ranger
+bindsym $mod+Shift+f exec --no-startup-id kitty ranger
+
+# python
+bindsym $mod+Shift+p exec --no-startup-id kitty python3 -i -c 'import numpy as np'
+
+#htop
+bindsym $mod+Shift+t exec --no-startup-id kitty htop
+
 
 # gaps
 #for_window [class="^.*"] border pixel 2
