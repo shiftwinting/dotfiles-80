@@ -59,11 +59,7 @@ set expandtab        " Tab key inserts spaces instead of tabs
 set shiftwidth=4     " Sets spaces used for (auto)indent
 set shiftround
 
-set foldenable
-set foldlevelstart=1
-set foldnestmax=3
-set foldmethod=indent
-
+set nofoldenable
 
 set splitbelow
 set splitright
@@ -165,7 +161,6 @@ Plug 'lervag/vimtex'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
 Plug 'octref/rootignore'
-Plug 'nacitar/a.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'zchee/deoplete-jedi'
@@ -267,11 +262,7 @@ if has("autocmd")
 
     augroup cpp_group
         autocmd!
-        autocmd FileType c,cpp nnoremap <buffer> <F2> :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
-        autocmd FileType c,cpp nnoremap <buffer> <F10> :!rm -rf build<CR>
         autocmd FileType c,cpp let &makeprg='make -C build '
-        autocmd FileType c,cpp nnoremap <buffer> <F5> :make
-        autocmd BufWritePost CMakeLists.txt :!mkdir -p build && cd build && cmake .. && cd .. && ln -s -f build/compile_commands.json <CR>
     augroup END
 
 "" Remember cursor position

@@ -109,7 +109,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 
 path+=/snap/bin
-path+=/usr/local/texlive/2017/bin/x86_64-linux
 path+=${HOME}/.local/bin
 path+=/sbin
 export PATH
