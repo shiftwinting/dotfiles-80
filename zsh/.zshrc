@@ -123,7 +123,7 @@ alias nv-settings='optirun -b none nvidia-settings -c :8'
 alias primusrun="vblank_mode=0 primusrun"
 alias pip2update="pip2 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip2 install -U"
 alias pip3update="pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
-export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*' -g !'*deps*' -g !'*3rd-party*'"
+export FZF_DEFAULT_COMMAND="rg --files --hidden -g !'.git/*'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -74,6 +74,7 @@ set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
 nnoremap Q @q
 
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 nnoremap <Space> <Nop>
 
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
@@ -158,8 +159,9 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'lervag/vimtex'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'pboettch/vim-cmake-syntax'
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 Plug 'octref/rootignore'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
@@ -224,9 +226,7 @@ let g:rainbow_active = 1
 
 nnoremap <leader>f :FZF --reverse<CR>
 
-let g:vimtex_fold_enabled=1
 let g:vimtex_view_automatic='zathura'
-let g:vimtex_compiler_progname='nvr'
 
 " This is new style
 call deoplete#custom#var('omni', 'input_patterns', {
