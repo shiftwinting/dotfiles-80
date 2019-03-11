@@ -161,7 +161,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'lervag/vimtex'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'pboettch/vim-cmake-syntax'
-" Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 Plug 'octref/rootignore'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
@@ -186,6 +186,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'mboughaba/i3config.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'sbdchd/neoformat'
 " Initialize plugin system
 call plug#end()
 
@@ -257,6 +258,11 @@ if has("autocmd")
         autocmd FileType markdown,text,tex setlocal spell
         autocmd FileType markdown,text,tex setlocal complete+=kspell
         autocmd FileType markdown nnoremap <buffer> <F6> :Toc<CR>
+    augroup END
+
+    augroup latex
+        autocmd!
+        autocmd BufReadPost *.cls setlocal syntax=tex
     augroup END
 
     augroup git
