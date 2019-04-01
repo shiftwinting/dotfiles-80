@@ -108,7 +108,7 @@ nnoremap <leader>O O<esc>k
 
 nnoremap <leader>go i<CR><esc>k
 
-nnoremap <CR> :<C-U>nohlsearch<CR><CR>
+nnoremap <silent><CR> :<C-U>nohlsearch<CR><CR>
 
 " This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
@@ -119,9 +119,9 @@ nnoremap <leader>z :<c-u>update <Bar>quit<cr>
 nnoremap <leader>s :set spell!
 
 "" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
+" if has('unnamedplus')
+"   set clipboard=unnamed,unnamedplus
+" endif
 
 noremap YY "+y<CR>
 noremap <leader>p "+gP<CR>
@@ -153,12 +153,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'honza/vim-snippets'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -206,6 +207,13 @@ call plug#end()
 
 "let g:gruvbox_italic=1
 colorscheme gruvbox
+nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
 nnoremap <leader>t :TagbarToggle<CR>
 
@@ -285,12 +293,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 " if you want to disable auto detect, comment out those two lines
 "let g:airline#extensions#disable_rtp_load = 1
 "let g:airline_extensions = ['branch', 'hunks', 'coc']
@@ -331,22 +333,18 @@ if has("autocmd")
         " Highlight symbol under cursor on CursorHold
         autocmd CursorHold * silent call CocActionAsync('highlight')
     augroup end
-    augroup complete_group
-        autocmd!
-        autocmd CompleteDone * silent! pclose!
-        autocmd InsertLeave * silent! pclose!
-    augroup END
+    " augroup complete_group
+    "     autocmd!
+    "     autocmd CompleteDone * silent! pclose!
+    "     autocmd InsertLeave * silent! pclose!
+    " augroup END
 
     augroup writting_autocmd
         autocmd!
-        autocmd FileType markdown nnoremap <buffer> <F5> :w<CR>:!pandoc % -s -o %:r.html<CR><CR>
-        autocmd FileType markdown nnoremap <buffer> <F4> :w<CR>:!pandoc % -o %:r.pdf && pkill -HUP mupdf<CR><CR><CR>
-        autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf && pkill -HUP mupdf"
-        autocmd FileType markdown nnoremap <buffer> <F3> :make<CR><CR>
-        autocmd FileType markdown,text,tex setlocal colorcolumn=""
+        autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf"
+        " autocmd FileType markdown,text,tex setlocal colorcolumn=""
         autocmd FileType markdown,text,tex setlocal spell
         autocmd FileType markdown,text,tex setlocal complete+=kspell
-        autocmd FileType markdown nnoremap <buffer> <F6> :Toc<CR>
     augroup END
 
     augroup latex
@@ -359,7 +357,9 @@ if has("autocmd")
         autocmd FileType gitcommit setlocal textwidth=79
         autocmd FileType gitcommit setlocal formatoptions+=t
         autocmd FileType gitcommit setlocal spell
+        autocmd FileType gitcommit setlocal complete+=kspell
         autocmd FileType gitcommit match ErrorMsg /\%1l.\%>81v/
+        autocmd FileType gitcommit exec 'normal gg' | startinsert!
     augroup END
 
 
