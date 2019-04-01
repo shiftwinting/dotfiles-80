@@ -134,3 +134,5 @@ if [[ $TERM == "xterm-kitty" ]]; then
     kitty + complete setup zsh | source /dev/stdin
 fi
 
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
