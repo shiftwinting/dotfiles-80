@@ -37,6 +37,9 @@ apt install -y \
     tmux \
     imagemagick \
     scrot \
+    node \
+    yarn \
+    ruby-dev \
     libnotify
 
 
@@ -60,3 +63,6 @@ pip3 install --upgrade pynvim
 pip2 install --upgrade pynvim
 pip install --upgrade Pygments
 pip install --upgrade acestream-launcher
+pip install --upgrade tldr
+gem install neovim
+npm install -g neovim
