@@ -374,6 +374,13 @@ if has("autocmd")
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     augroup END
 
+    augroup i3config_ft_detection
+        autocmd!
+        autocmd BufNewFile,BufRead ~/.config/i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufRead ~/.i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufRead ~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
+    augroup END
+
     augroup vim_group
         autocmd!
         autocmd VimEnter *
