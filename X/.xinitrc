@@ -6,4 +6,4 @@
 
 # invoke global X session script
 systemctl --user import-environment DISPLAY
-exec i3
+exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id) i3
