@@ -176,17 +176,16 @@ Plug 'lervag/vimtex'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
-Plug 'octref/rootignore'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'Shougo/neoinclude.vim'
 Plug 'zchee/deoplete-zsh'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
+Plug 'bfredl/nvim-miniyank'
 if has('nvim')
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
-    Plug 'bfredl/nvim-miniyank'
 else
     " Plug 'Shougo/deoplete.nvim'
     Plug 'tpope/vim-sensible'
@@ -315,6 +314,9 @@ let g:vimtex_quickfix_autojump=1
 let g:vimtex_quickfix_autoclose_after_keystrokes=3
 let g:vimtex_view_method='zathura'
 let g:vimtex_complete_img_use_tail=1
+let g:vimtex_compiler_latexmk = {
+      \  'callback' : 0,
+      \}
 
 " " This is new style
 " call deoplete#custom#var('omni', 'input_patterns', {
@@ -349,7 +351,7 @@ if has("autocmd")
 
     augroup latex
         autocmd!
-        autocmd BufReadPost *.cls setlocal syntax=tex
+        autocmd BufReadPost *.cls setlocal filetype=tex
     augroup END
 
     augroup git
