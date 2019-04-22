@@ -172,9 +172,9 @@ bar {
 	status_command SCRIPT_DIR=~/dotfiles/scripts/i3blocks i3blocks
         colors {
         # bar background color
-        background $bg
+        background $darkgray
         # text color used for blocks that do not have a color specified.
-        statusline $aqua
+        statusline $yellow
         # workspaces section
         #                    border  backgr. text
         focused_workspace    $aqua $aqua $darkgray

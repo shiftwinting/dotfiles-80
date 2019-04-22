@@ -110,6 +110,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 path+=/snap/bin
 path+=${HOME}/.local/bin
+path+=$HOME/.yarn/bin
+path+=$HOME/.config/yarn/global/node_modules/.bin
 path+=/sbin
 export PATH
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
