@@ -153,6 +153,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 " Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/gv.vim'
@@ -354,17 +355,6 @@ if has("autocmd")
         autocmd BufReadPost *.cls setlocal filetype=tex
     augroup END
 
-    augroup git
-        autocmd!
-        autocmd FileType gitcommit setlocal textwidth=79
-        autocmd FileType gitcommit setlocal formatoptions+=t
-        autocmd FileType gitcommit setlocal spell
-        autocmd FileType gitcommit setlocal complete+=kspell
-        autocmd FileType gitcommit match ErrorMsg /\%1l.\%>81v/
-        autocmd FileType gitcommit exec 'normal gg' | startinsert!
-    augroup END
-
-
     augroup cpp_group
         autocmd!
         autocmd FileType c,cpp let &makeprg='make -C build '
@@ -374,6 +364,17 @@ if has("autocmd")
     augroup vimrc-remember-cursor-position
         autocmd!
         autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    augroup END
+
+    augroup git
+        autocmd!
+        autocmd FileType gitcommit setlocal textwidth=79
+        autocmd FileType gitcommit setlocal formatoptions+=t
+        autocmd FileType gitcommit setlocal spell
+        autocmd FileType gitcommit setlocal complete+=kspell
+        autocmd FileType gitcommit match ErrorMsg /\%1l.\%>81v/
+        autocmd FileType gitcommit autocmd! vimrc-remember-cursor-position
+        autocmd FileType gitcommit exec 'normal gg' | startinsert!
     augroup END
 
     augroup i3config_ft_detection
