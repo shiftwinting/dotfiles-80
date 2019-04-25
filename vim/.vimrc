@@ -117,8 +117,6 @@ nnoremap <Leader>w :update<cr><cr>
 nnoremap <leader>q :<C-U>quit<cr>
 nnoremap <leader>z :<c-u>update <Bar>quit<cr>
 nnoremap <leader>s :set spell!
-" Allow saving of files as root
-cmap w!! w !sudo tee > /dev/null %
 
 "" Copy/Paste/Cut
 " if has('unnamedplus')
