@@ -16,11 +16,5 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-MANPATH=$MANPATH:/usr/local/texlive/2017/texmf-dist/doc/man
-INFOPATH=$INFOPATH:/usr/local/texlive/2017/texmf-dist/doc/info
-PATH=$PATH:/usr/local/texlive/2017/bin/x86_64-linux
+# set PATH so it includes user's private bin directories
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"

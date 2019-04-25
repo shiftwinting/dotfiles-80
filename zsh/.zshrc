@@ -97,7 +97,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-export EDITOR='vim'
+export EDITOR='nvim'
 # bindkey -v
 # export KEYTIMEOUT=1
 
@@ -110,6 +110,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 path+=/snap/bin
 path+=${HOME}/.local/bin
+path+=$HOME/.yarn/bin
+path+=$HOME/.config/yarn/global/node_modules/.bin
 path+=/sbin
 export PATH
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
