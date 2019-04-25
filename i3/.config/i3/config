@@ -237,7 +237,8 @@ bindsym $mod+Shift+t exec --no-startup-id kitty htop
 #smart_gaps on
 #smart_borders on
 
-exec --no-startup-id setxkbmap -option caps:swapescape
+exec_always --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id feh --bg-center ~/dotfiles/wallpapers/bliss.png
+exec_always --no-startup-id ~/hostrc.sh
