@@ -12,7 +12,6 @@ if [[ $DISTRO == "Ubuntu" ]]; then
     add-apt-repository -y ppa:jonathonf/vim
     add-apt-repository -y ppa:neovim-ppa/stable
     add-apt-repository -y ppa:dawidd0811/neofetch
-    add-apt-repository -y ppa:djcj/vapoursynth
     add-apt-repository -y ppa:jonathonf/i3
     add-apt-repository -y ppa:jasonpleau/rofi
 fi
@@ -34,12 +33,15 @@ apt install -y \
     vim-nox \
     vim-gtk \
     neovim \
+    nnn \
     tmux \
     imagemagick \
     scrot \
+    sxiv \
     node \
     yarn \
     ruby-dev \
+    zathura \
     libnotify
 
 
@@ -57,12 +59,5 @@ else
 fi
 
 snap install acestreamplayer
-pip3 install --upgrade pip
-pip2 install --upgrade pip
-pip3 install --upgrade pynvim
-pip2 install --upgrade pynvim
-pip install --upgrade Pygments
-pip install --upgrade acestream-launcher
-pip install --upgrade tldr
 gem install neovim
 npm install -g neovim

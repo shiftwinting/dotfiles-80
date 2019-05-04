@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty zsh
+bindsym $mod+Return exec $TERMINAL
 
 # kill focused window
 bindsym $mod+q kill
@@ -221,14 +221,10 @@ bindsym --release $mod+o exec --no-startup-id scrot -q 100 -t 10 -s '%Y-%m-%d-%H
 bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 
 # ranger
-bindsym $mod+Shift+f exec --no-startup-id kitty ranger
+bindsym $mod+Shift+f exec --no-startup-id $TERMINAL -e $FILE_MANAGER
 
 # python
-bindsym $mod+Shift+p exec --no-startup-id kitty python3 -i -c 'import numpy as np'
-
-#htop
-bindsym $mod+Shift+t exec --no-startup-id kitty htop
-
+bindsym $mod+Shift+p exec --no-startup-id $TERMINAL -e python3 -i -c 'import numpy as np'
 
 # gaps
 #for_window [class="^.*"] border pixel 2
@@ -236,9 +232,3 @@ bindsym $mod+Shift+t exec --no-startup-id kitty htop
 #gaps outer 15
 #smart_gaps on
 #smart_borders on
-
-exec_always --no-startup-id setxkbmap -option caps:swapescape
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id feh --bg-center ~/dotfiles/wallpapers/bliss.png
-exec_always --no-startup-id ~/hostrc.sh

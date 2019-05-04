@@ -148,6 +148,7 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 " Using plug
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -162,12 +163,8 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'honza/vim-snippets'
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
@@ -189,7 +186,6 @@ if has('nvim')
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
 else
     " Plug 'Shougo/deoplete.nvim'
-    Plug 'tpope/vim-sensible'
     " Plug 'roxma/nvim-yarp'
     " Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -202,6 +198,7 @@ Plug 'sbdchd/neoformat'
 Plug 'neoclide/coc-neco'
 Plug 'jsfaint/coc-neoinclude'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'dag/vim-fish'
 " Initialize plugin system
 call plug#end()
 
@@ -390,6 +387,14 @@ if has("autocmd")
             \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
             \|   PlugInstall --sync | q | source $MYVIMRC
             \| endif
-        autocmd BufWritePost .vimrc source $MYVIMRC
+    augroup END
+
+    augroup reload
+        autocmd!
+        autocmd BufWritePost ~/.vimrc source $MYVIMRC
+        autocmd BufWritePost ~/.Xresources !xrdb ~/.Xresources
+        autocmd BufWritePost ~/.config/i3/config !i3 reload
+        autocmd BufWritePost ~/.i3/config !i3 reload
+        autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3 reload
     augroup END
 endif

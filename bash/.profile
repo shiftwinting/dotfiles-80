@@ -8,13 +8,21 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+# source environment variables
+if [ -f ~/.env.sh ]; then
+    # shellcheck source=/home/sommerfeld/.env.sh
+    . ~/.env.sh
 fi
 
-# set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# if running bash
+# if [ -n "$BASH_VERSION" ]; then
+#     # include .bashrc if it exists
+#     if [ -f "$HOME/.bashrc" ]; then
+#       # shellcheck source=/home/sommerfeld/.bashrc
+# 	. "$HOME/.bashrc"
+#     fi
+# fi
+setleds -D +num
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx -- -keeptty
+fi

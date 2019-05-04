@@ -1,0 +1,9 @@
+#!/bin/sh
+
+setxkbmap -option caps:swapescape
+numlockx &
+nm-applet &
+blueman-applet &
+feh --bg-center ~/dotfiles/wallpapers/bliss.png &
+# shellcheck source=/home/sommerfeld/hostrc.sh
+[ -f ~/hostrc.sh ] && . ~/hostrc.sh
