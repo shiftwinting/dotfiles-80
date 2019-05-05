@@ -127,3 +127,4 @@ text/plain=nvim.desktop;
 image/jpeg=sxiv.desktop;
 application/x-shellscript=nvim.desktop;
 text/x-python=nvim.desktop;
+image/png=sxiv.desktop;
