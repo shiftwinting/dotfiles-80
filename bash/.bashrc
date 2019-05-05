@@ -72,6 +72,9 @@ xterm*|rxvt*)
     ;;
 esac
 
+# shellcheck source=/home/sommerfeld/.env.sh
+[ -f ~/.env.sh ] && . ~/.env.sh
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.aliases, instead of adding them here directly.
@@ -98,6 +101,4 @@ if [ "$TERM" = xterm-kitty ]; then
     . <(kitty + complete setup bash)
 fi
 
-if [ -z "$BASH_EXECUTION_STRING" ]; then
-    exec fish
-fi
+[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == 1 ] && exec fish

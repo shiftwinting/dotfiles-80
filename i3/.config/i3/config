@@ -36,7 +36,9 @@ bindsym $mod+Return exec $TERMINAL
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+m exec rofi -show run
+bindsym --release $mod+m exec rofi -show combi
+bindsym --release $mod+a exec rg --files | rofi -dmenu -p home | xargs -r mimeopen
+bindsym --release $mod+d exec cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r mimeopen
 
 # change focus
 bindsym $mod+h focus left
@@ -77,10 +79,10 @@ bindsym $mod+x focus parent
 bindsym $mod+c focus child
 
 # open terminal below
-bindsym $mod+Shift+v focus child; split v; exec xfce4-terminal -e zsh
+bindsym $mod+Shift+v focus child; split v; exec $TERMINAL
 
 # open terminal at the side
-bindsym $mod+Shift+b focus child; split h; exec xfce4-terminal -e zsh
+bindsym $mod+Shift+b focus child; split h; exec $TERMINAL
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -203,9 +205,9 @@ client.urgent           $red $red $white $red $red
 #end of window title bars & borders section
 
 # Pulse Audio controls
-bindsym $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%  && pkill -RTMIN+10 i3blocks #increase sound volume
-bindsym $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%  && pkill -RTMIN+10 i3blocks #decrease sound volume
-bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks # mute sound
+bindsym --release $mod+Up exec --no-startup-id pactl set-sink-volume 0 +5%  && pkill -RTMIN+10 i3blocks #increase sound volume
+bindsym --release $mod+Down exec --no-startup-id pactl set-sink-volume 0 -5%  && pkill -RTMIN+10 i3blocks #decrease sound volume
+bindsym --release $mod+Shift+m exec --no-startup-id pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks # mute sound
 
 # Media player controls
 bindsym --release $mod+p exec --no-startup-id playerctl play-pause
@@ -213,18 +215,18 @@ bindsym --release $mod+Right exec --no-startup-id playerctl next
 bindsym --release $mod+Left exec --no-startup-id playerctl previous
 
 # Screen Lock
-bindsym $mod+Shift+g exec --no-startup-id i3lock-fancy
+bindsym --release $mod+Shift+g exec --no-startup-id i3lock-fancy
 
 # Screenshot with scrot
 exec --no-startup-id mkdir -p ~/Pictures/screenshots
 bindsym --release $mod+o exec --no-startup-id scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
-bindsym $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
+bindsym --release $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 
-# ranger
-bindsym $mod+Shift+f exec --no-startup-id $TERMINAL -e $FILE_MANAGER
+# file manager
+bindsym $mod+Shift+f exec SHELL=/usr/bin/fish $TERMINAL -e "$FILE_MANAGER"
 
 # python
-bindsym $mod+Shift+p exec --no-startup-id $TERMINAL -e python3 -i -c 'import numpy as np'
+bindsym $mod+Shift+p exec $TERMINAL -e python3 -i -c 'import numpy as np'
 
 # gaps
 #for_window [class="^.*"] border pixel 2
