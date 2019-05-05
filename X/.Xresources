@@ -14,7 +14,7 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 
-URxvt.font: xft:DejaVu Sans Mono:size=13
+URxvt*font: xft:mono:pixelsize=20:antialias=true:autohint=true
 
 URxvt*saveLines:32767
 URxvt.scrollBar: false
@@ -48,33 +48,54 @@ URxvt*urgentOnBell: false
 ! LightGrey + White
 *color7:  #a89984
 
-URxvt.color24:  #076678
-URxvt.color66:  #427b58
-URxvt.color88:  #9d0006
-URxvt.color96:  #8f3f71
-URxvt.color100: #79740e
-URxvt.color108: #8ec07c
-URxvt.color109: #83a598
-URxvt.color130: #af3a03
-URxvt.color136: #b57614
-URxvt.color142: #b8bb26
-URxvt.color167: #fb4934
-URxvt.color175: #d3869b
-URxvt.color208: #fe8019
-URxvt.color214: #fabd2f
-URxvt.color223: #ebdbb2
-URxvt.color228: #f2e5bc
-URxvt.color229: #fbf1c7
-URxvt.color230: #f9f5d7
-URxvt.color234: #1d2021
-URxvt.color235: #282828
-URxvt.color236: #32302f
-URxvt.color237: #3c3836
-URxvt.color239: #504945
-URxvt.color241: #665c54
-URxvt.color243: #7c6f64
-URxvt.color244: #928374
-URxvt.color245: #928374
-URxvt.color246: #a89984
-URxvt.color248: #bdae93
-URxvt.color250: #d5c4a1
+*color24:  #076678
+*color66:  #427b58
+*color88:  #9d0006
+*color96:  #8f3f71
+*color100: #79740e
+*color108: #8ec07c
+*color109: #83a598
+*color130: #af3a03
+*color136: #b57614
+*color142: #b8bb26
+*color167: #fb4934
+*color175: #d3869b
+*color208: #fe8019
+*color214: #fabd2f
+*color223: #ebdbb2
+*color228: #f2e5bc
+*color229: #fbf1c7
+*color230: #f9f5d7
+*color234: #1d2021
+*color235: #282828
+*color236: #32302f
+*color237: #3c3836
+*color239: #504945
+*color241: #665c54
+*color243: #7c6f64
+*color244: #928374
+*color245: #928374
+*color246: #a89984
+*color248: #bdae93
+*color250: #d5c4a1
+
+! These are all possible options, presented with default values.
+! xst will fallback to *.option if st.option is not present.
+! see src/config.h for more information about option meanings.
+
+! These options only take effect on startup.
+st.termname:     st-256color
+! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
+st.shell:        /bin/sh
+st.font: mono:pixelsize=20:antialias=true:autohint=true
+
+st.xfps:              120
+st.actionfps:         30
+! Kerning / character bounding-box height multiplier
+st.chscale:           1.0
+! Kerning / character bounding-box width multiplier
+st.cwscale:           1.0
+! blinking timeout for terminal and cursor blinking (0 disables)
+st.blinktimeout:      800
+! bell volume. Value between -100 and 100. (0 disables)
+st.bellvolume:        0

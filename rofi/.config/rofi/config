@@ -23,7 +23,7 @@ rofi.modi:                           window,run,drun
 ! "Whether to load and show icons" Set from: Default
 ! rofi.show-icons:                     false
 ! "Terminal to use" Set from: Default
-rofi.terminal:                       urxvt
+rofi.terminal:                       st
 ! "Ssh client to use" Set from: Default
 ! rofi.ssh-client:                     ssh
 ! "Ssh command to execute" Set from: Default

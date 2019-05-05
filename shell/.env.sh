@@ -17,8 +17,8 @@ if [ -n "$ENV_SOURCED" ]; then
     -g '!.local/*'"
     export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
     export BROWSER='firefox'
-    export TERMINAL='urxvt'
-    export VISUAL='urxvt -e nvim'
+    export TERMINAL='st'
+    export VISUAL="$TERMINAL -e $EDITOR"
     export fish_greeting=
     export NNN_USER_EDITOR=1
     export NNN_OPENER=mimeopen

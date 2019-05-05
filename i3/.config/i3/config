@@ -225,6 +225,12 @@ bindsym --release $mod+Shift+o exec --no-startup-id scrot -q 100 -t 10 '%Y-%m-%d
 # file manager
 bindsym $mod+Shift+f exec SHELL=/usr/bin/fish $TERMINAL -e "$FILE_MANAGER"
 
+# reddit
+bindsym $mod+Shift+u exec $TERMINAL -e rtv
+
+# browser
+bindsym $mod+Shift+w exec $BROWSER
+
 # python
 bindsym $mod+Shift+p exec $TERMINAL -e python3 -i -c 'import numpy as np'
 
