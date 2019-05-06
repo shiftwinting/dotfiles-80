@@ -1,5 +1,6 @@
 #!/bin/sh
 
+[ -f ~/.env.sh ] && . ~/.env.sh
 setxkbmap -option caps:swapescape
 numlockx &
 nm-applet &

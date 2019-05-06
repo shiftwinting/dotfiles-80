@@ -3,6 +3,6 @@ Version=1.0
 Type=Application
 Name=nvim
 Comment=Literally the future of victim
-Exec=urxvt -e nvim %F
+Exec=st -e nvim %F
 Icon=vim
 MimeType=text/plain;

@@ -36,9 +36,9 @@ bindsym $mod+Return exec $TERMINAL
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym --release $mod+m exec rofi -show combi
+bindsym --release $mod+m exec rofi -show run
 bindsym --release $mod+a exec rg --files | rofi -dmenu -p home | xargs -r mimeopen
-bindsym --release $mod+d exec cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r mimeopen
+bindsym --release $mod+d exec cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r $TERMINAL -e $EDITOR
 
 # change focus
 bindsym $mod+h focus left
