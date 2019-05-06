@@ -30,6 +30,7 @@ if [ -n "$ENV_SOURCED" ]; then
     export VISUAL_FILE_MANAGER="$TERMINAL -e $FILE_MANAGER"
     export EMAIL_CLIENT='neomutt'
     export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
+    export NO_AT_BRIDGE=1
 else
     export ENV_SOURCED=yes
 fi
