@@ -381,6 +381,11 @@ if has("autocmd")
         autocmd BufNewFile,BufRead ~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
     augroup END
 
+    augroup i3_format
+        autocmd!
+        autocmd FileType i3config setlocal formatoptions-=t
+    augroup END
+
     augroup vim_group
         autocmd!
         autocmd VimEnter *
