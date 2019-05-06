@@ -101,4 +101,5 @@ if [ "$TERM" = xterm-kitty ]; then
     . <(kitty + complete setup bash)
 fi
 
+tput smkx
 [ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == 1 ] && exec fish
