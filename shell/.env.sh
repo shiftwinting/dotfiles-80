@@ -18,12 +18,18 @@ if [ -n "$ENV_SOURCED" ]; then
     export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
     export BROWSER='firefox'
     export TERMINAL='st'
+    export VIDEO_PLAYER='mpv'
+    export IMAGE_VIEWER='sxiv'
+    export PDF_READER='zathura'
     export VISUAL="$TERMINAL -e $EDITOR"
     export fish_greeting=
     export NNN_USER_EDITOR=1
-    export NNN_OPENER=mimeopen
+    export NNN_OPENER='mimeopen -n'
     export NNN_OPS_PROG=1
     export FILE_MANAGER='nnn'
+    export VISUAL_FILE_MANAGER="$TERMINAL -e $FILE_MANAGER"
+    export EMAIL_CLIENT='neomutt'
+    export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
 else
     export ENV_SOURCED=yes
 fi
