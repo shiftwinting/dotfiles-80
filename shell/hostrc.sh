@@ -9,4 +9,5 @@ elif [ "$(hostname)" = "dev-004p" ]; then
     synclient VertScrollDelta=-77
     synclient HorizScrollDelta=-77
     synclient PalmDetect=1
+    # /opt/kaspersky/kesl/libexec/kesl-gui &
 fi

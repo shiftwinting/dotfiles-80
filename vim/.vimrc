@@ -184,6 +184,7 @@ Plug 'bfredl/nvim-miniyank'
 if has('nvim')
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+    Plug 'lambdalisue/suda.vim'
 else
     " Plug 'Shougo/deoplete.nvim'
     " Plug 'roxma/nvim-yarp'
@@ -320,6 +321,8 @@ let g:vimtex_compiler_latexmk = {
 " call deoplete#custom#var('omni', 'input_patterns', {
 "         \ 'tex': g:vimtex#re#deoplete
 "         \})
+
+command W w suda://%
 
 if has("autocmd")
     augroup coc
