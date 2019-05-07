@@ -14,7 +14,7 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 
-URxvt*font: xft:mono:pixelsize=20:antialias=true:autohint=true
+URxvt*font: xft:mono:pixelsize=20:antialias=true
 
 URxvt*saveLines:32767
 URxvt.scrollBar: false
@@ -87,7 +87,7 @@ URxvt*urgentOnBell: false
 st.termname:     st-256color
 ! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
 st.shell:        /bin/sh
-st.font: mono:pixelsize=20:antialias=true:autohint=true
+*.font: mono:size=20:antialias=true
 
 st.xfps:              120
 st.actionfps:         30
