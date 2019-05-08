@@ -24,7 +24,8 @@ alias ipecho='curl ipecho.net/plain; echo'
 alias nv-settings='optirun -b none nvidia-settings -c :8'
 alias primusrun="vblank_mode=0 primusrun"
 alias ccat='pygmentize'
+alias xclip='xclip -selection clipboard'
 
-neoless() {
+nless() {
     cat "$@" | less
 }

@@ -1,3 +1,3 @@
-function neoless
+function nless
     cat $argv | less
 end
