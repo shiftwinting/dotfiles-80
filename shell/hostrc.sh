@@ -10,4 +10,5 @@ elif [ "$(hostname)" = "dev-004p" ]; then
     synclient HorizScrollDelta=-77
     synclient PalmDetect=1
     # /opt/kaspersky/kesl/libexec/kesl-gui &
+    [ -f "$HOME"/adas/helpers/mount.sh ] && "$HOME"/adas/helpers/mount.sh rui.ferreira
 fi

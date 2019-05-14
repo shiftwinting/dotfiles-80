@@ -183,7 +183,6 @@ Plug 'Shougo/neco-syntax'
 Plug 'bfredl/nvim-miniyank'
 if has('nvim')
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     Plug 'lambdalisue/suda.vim'
 else
     " Plug 'Shougo/deoplete.nvim'
