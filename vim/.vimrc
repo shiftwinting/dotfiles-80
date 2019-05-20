@@ -113,9 +113,6 @@ nnoremap <silent><CR> :<C-U>nohlsearch<CR><CR>
 " This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
-nnoremap <Leader>w :update<cr><cr>
-nnoremap <leader>q :<C-U>quit<cr>
-nnoremap <leader>z :<c-u>update <Bar>quit<cr>
 nnoremap <leader>s :set spell!
 
 "" Copy/Paste/Cut
@@ -160,8 +157,9 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
+Plug 'rbong/vim-crystalline'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -212,13 +210,33 @@ nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
 nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
 nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
+function! StatusLine(current)
+  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
+        \ . ' %f%h%w%m%r '
+        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
+        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
+        \ . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+endfunction
+
+function! TabLine()
+  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'gruvbox'
+
+set showtabline=2
+set laststatus=2
+
 nnoremap <leader>t :TagbarToggle<CR>
 
-if has('nvim')
-    " Set this. Airline will handle the rest.
-    let g:airline#extensions#ale#enabled = 1
-" else
-endif
+" if has('nvim')
+"     " Set this. Airline will handle the rest.
+"     let g:airline#extensions#ale#enabled = 1
+" " else
+" endif
 
 if !exists('##TextYankPost')
   nmap y <Plug>(highlightedyank)
@@ -231,7 +249,7 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 
 set statusline+=%{gutentags#statusline()}
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " let g:deoplete#enable_at_startup = 1
 
@@ -294,8 +312,8 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 "let g:airline#extensions#disable_rtp_load = 1
 "let g:airline_extensions = ['branch', 'hunks', 'coc']
 
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
