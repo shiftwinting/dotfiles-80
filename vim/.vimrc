@@ -197,6 +197,7 @@ Plug 'neoclide/coc-neco'
 Plug 'jsfaint/coc-neoinclude'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dag/vim-fish'
+Plug 'kovetskiy/sxhkd-vim'
 " Initialize plugin system
 call plug#end()
 
@@ -399,6 +400,7 @@ if has("autocmd")
         autocmd BufNewFile,BufRead ~/.config/i3/config setlocal filetype=i3config
         autocmd BufNewFile,BufRead ~/.i3/config setlocal filetype=i3config
         autocmd BufNewFile,BufRead ~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufRead *sxhkrc setlocal filetype=sxhkd
     augroup END
 
     augroup i3_format
@@ -416,9 +418,9 @@ if has("autocmd")
 
     augroup reload
         autocmd!
-        autocmd BufWritePost ~/.vimrc source $MYVIMRC
+        autocmd BufWritePost *.vimrc source $MYVIMRC
         autocmd BufWritePost *.Xresources !xrdb %
-        autocmd BufWritePost config.h !sudo make install
+        autocmd BufWritePost *config.h !sudo make install
         autocmd BufWritePost ~/.config/i3/config !i3 reload
         autocmd BufWritePost ~/.i3/config !i3 reload
         autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3 reload

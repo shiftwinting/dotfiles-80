@@ -1,0 +1,41 @@
+mod4+Return
+    $TERMINAL
+
+mod4+@m
+    rofi -show run
+
+mod4+@d
+    cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r $VISUAL
+
+mod4+@a
+    rg --files | rofi -dmenu -p home | xargs -r mimeopen -n
+
+@XF86Audio{Lower,Raise}Volume
+    pactl set-sink-volume 0 {-,+}5%  && pkill -RTMIN+10 i3blocks
+
+@XF86AudioMute
+    pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
+
+@XF86Audio{Prev,Play,Next}
+    playerctl {previous,play-pause,next}
+
+mod4+shift+g
+    i3lock-fancy
+
+@Print
+    scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
+
+shift+@Print
+    scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
+
+mod4+shift+f
+    SHELL=/usr/bin/fish $TERMINAL -e "$FILE_MANAGER"
+
+mod4+shift+u
+    $TERMINAL -e rtv
+
+mod4+shift+w
+    $BROWSER
+
+mod4+p
+    $TERMINAL -e python3 -i -c 'import numpy as np'

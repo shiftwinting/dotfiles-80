@@ -2,9 +2,12 @@
 
 [ -f ~/.env.sh ] && . ~/.env.sh
 setxkbmap -option caps:swapescape
+mkdir -p ~/Pictures/screenshots
+sxhkd &
 numlockx &
 nm-applet &
 blueman-applet &
+pasystray &
 feh --bg-center ~/dotfiles/wallpapers/bliss.png &
 # shellcheck source=/home/sommerfeld/hostrc.sh
 [ -f ~/hostrc.sh ] && . ~/hostrc.sh
