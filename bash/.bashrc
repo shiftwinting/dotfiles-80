@@ -102,4 +102,4 @@ if [ "$TERM" = xterm-kitty ]; then
 fi
 
 tput smkx
-[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == 1 ] && exec fish
+[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == 3 ] && exec fish

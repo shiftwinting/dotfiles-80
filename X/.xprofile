@@ -7,7 +7,7 @@ sxhkd &
 numlockx &
 nm-applet &
 blueman-applet &
-pasystray &
+pasystray > /dev/null 2>&1 &
 feh --bg-center ~/dotfiles/wallpapers/bliss.png &
 # shellcheck source=/home/sommerfeld/hostrc.sh
 [ -f ~/hostrc.sh ] && . ~/hostrc.sh
