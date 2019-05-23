@@ -424,5 +424,6 @@ if has("autocmd")
         autocmd BufWritePost ~/.config/i3/config !i3 reload
         autocmd BufWritePost ~/.i3/config !i3 reload
         autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3 reload
+        autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
     augroup END
 endif

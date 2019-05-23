@@ -14,6 +14,8 @@ if [ -f ~/.env.sh ]; then
     . ~/.env.sh
 fi
 
+systemctl --user import-environment PATH
+
 # if running bash
 # if [ -n "$BASH_VERSION" ]; then
 #     # include .bashrc if it exists
