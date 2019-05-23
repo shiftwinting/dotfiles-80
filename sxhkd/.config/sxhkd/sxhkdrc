@@ -19,6 +19,9 @@ mod4+@a
 @XF86Audio{Prev,Play,Next}
     playerctl {previous,play-pause,next}
 
+mod4+@{Left,Down,Right}
+    playerctl {previous,play-pause,next}
+
 mod4+shift+g
     i3lock-fancy
 
@@ -39,3 +42,6 @@ mod4+shift+w
 
 mod4+p
     $TERMINAL -e python3 -i -c 'import numpy as np'
+
+mod4+shift+p
+    dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
