@@ -92,7 +92,7 @@ separator=false
 [cpu_usage]
 label=CPU
 interval=10
-min_width=CPU 100.00%
+# min_width=CPU 100.00%
 separator=false
 
 #[load_average]
@@ -121,13 +121,13 @@ separator=false
 ##PREFIX=
 ##SUFFIX="B/s"
 
-[gpu-load]
-label=GPU
-interval=10
-separator=false
-#min_width=GPU 100% 100% 100% 100%
-# T_WARN=70
-# T_CRIT=90
+#[gpu-load]
+#label=GPU
+#interval=10
+#separator=false
+##min_width=GPU 100% 100% 100% 100%
+## T_WARN=70
+## T_CRIT=90
 
 # Temperature
 #
@@ -184,6 +184,11 @@ separator=false
 [nm-vpn]
 label=VPN:
 interval=5
+separator=false
+
+[public-ip]
+command=curl ipecho.net/plain; echo
+interval=300
 separator=false
 
 [essid]
