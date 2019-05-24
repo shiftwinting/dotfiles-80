@@ -1,29 +1,44 @@
 mod4+Return
     $TERMINAL
 
-mod4+@m
+mod4+m
     rofi -show run
 
-mod4+@d
+mod4+d
     cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r $VISUAL
 
-mod4+@a
+mod4+a
     rg --files | rofi -dmenu -p home | xargs -r mimeopen -n
 
-@XF86Audio{Lower,Raise}Volume
+XF86Audio{Lower,Raise}Volume
     pactl set-sink-volume 0 {-,+}5%  && pkill -RTMIN+10 i3blocks
 
-@XF86AudioMute
+mod4+{minus,plus}
+    pactl set-sink-volume 0 {-,+}5%  && pkill -RTMIN+10 i3blocks
+
+XF86AudioMute
     pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
 
-@XF86Audio{Prev,Play,Next}
-    playerctl {previous,play-pause,next}
+mod4+shift+m
+    pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
 
-mod4+@{Left,Down,Right}
-    playerctl {previous,play-pause,next}
+XF86Audio{Prev,Play,Next}
+    playerctl {previous,play-pause,next}  && pkill -RTMIN+10 i3blocks
+
+mod4+{Left,Down,Right}
+    playerctl {previous,play-pause,next}  && pkill -RTMIN+10 i3blocks
+
+XF86MonBrightness{Down,Up}
+    light -{U,A} 5  && pkill -RTMIN+10 i3blocks
+
+mod4+{Prior,Next}
+    light -{U,A} 5  && pkill -RTMIN+10 i3blocks
+
+XF86Display
+    xset dpms force off
 
 mod4+shift+g
-    i3lock-fancy
+    $SCREENLOCKER
 
 @Print
     scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'

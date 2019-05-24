@@ -102,4 +102,11 @@ if [ "$TERM" = xterm-kitty ]; then
 fi
 
 tput smkx
-[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == 3 ] && exec fish
+
+FISHLVL=1
+if [ "$(hostname)" = "garry" ]; then
+    FISHLVL=1
+elif [ "$(hostname)" = "dev-004p" ]; then
+    FISHLVL=3
+fi
+[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == "$FISHLVL" ] && exec fish

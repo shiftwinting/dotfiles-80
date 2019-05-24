@@ -31,6 +31,7 @@ if [ -n "$ENV_SOURCED" ]; then
     export EMAIL_CLIENT='neomutt'
     export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
     export NO_AT_BRIDGE=1
+    export SCREENLOCKER='i3lock-fancy'
 else
     export ENV_SOURCED=yes
 fi

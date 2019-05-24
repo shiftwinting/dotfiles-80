@@ -166,7 +166,7 @@ set $darkgray #1d2021
 bar {
         font pango:mono 12
         position bottom
-	status_command SCRIPT_DIR=~/dotfiles/scripts/i3blocks i3blocks
+	status_command KEY=NUM INTERFACE=wlo1 IFACE=wlo1 USE_PERCENT=1 SCRIPT_DIR=~/i3blocks-contrib i3blocks
         colors {
         # bar background color
         background $darkgray
@@ -198,3 +198,5 @@ client.urgent           $red $red $white $red $red
 #gaps outer 15
 #smart_gaps on
 #smart_borders on
+
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
