@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 LAST_WIN_ACTIVE=""
 while :

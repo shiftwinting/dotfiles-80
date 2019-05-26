@@ -11,6 +11,7 @@ else
     export MANPATH="$HOME"/.local/share/man:"$MANPATH"
 
     export EDITOR='nvim'
+    export PAGER='nvim -R'
     export MANPATH="/usr/local/man:$MANPATH"
     export LANG=en_US.UTF-8
     export ARCHFLAGS="-arch x86_64"
@@ -27,9 +28,14 @@ else
     export VISUAL="$TERMINAL -e $EDITOR"
     export fish_greeting=
     export NNN_USER_EDITOR=1
-    export NNN_OPENER='mimeopen -n'
-    export NNN_OPS_PROG=1
-    export FILE_MANAGER='nnn'
+    export NNN_OPENER='mimeopen'
+    export NNN_CONTEXT_COLORS='1234'
+    export NNN_RESTRICT_0B=1
+    export NNN_TMPFILE="/tmp/nnn"
+    export NNN_NOTE="$HOME"/.mynotes
+    export NNN_COPIER="$HOME"/dotfiles/scripts/bin/copier
+    export LC_COLLATE="C"
+    export FILE_MANAGER='nwrap'
     export VISUAL_FILE_MANAGER="$TERMINAL -e $FILE_MANAGER"
     export EMAIL_CLIENT='neomutt'
     export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"

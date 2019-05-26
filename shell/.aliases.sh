@@ -1,3 +1,4 @@
+#! /bin/sh
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -28,4 +29,15 @@ alias xclip='xclip -selection clipboard'
 
 nless() {
     cat "$@" | less
+}
+
+
+n()
+{
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
 }

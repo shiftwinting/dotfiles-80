@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/env sh
 
 if [ "$(hostname)" = "garry" ]; then
     echo wlo1

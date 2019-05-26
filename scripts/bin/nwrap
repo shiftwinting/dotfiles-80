@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export NNN_USER_EDITOR=1
+export NNN_OPENER='mimeopen -n'
+export NNN_CONTEXT_COLORS='1234'
+export NNN_RESTRICT_0B=1
+export NNN_TMPFILE="/tmp/nnn"
+export NNN_NOTE="$HOME"/.mynotes
+export NNN_COPIER="$HOME"/dotfiles/scripts/bin/copier
+export LC_COLLATE="C"
+alias ncp="cat ~/.config/nnn/.selection | tr '\0' '\n'"
+
+# Start nnn with your preferred options
+nnn -isl "$@"
