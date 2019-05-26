@@ -2,7 +2,6 @@ if !has('nvim')
     silent !mkdir -p $HOME/.vim/.undo
     silent !mkdir -p $HOME/.vim/.backup
     silent !mkdir -p $HOME/.vim/.swap
-    set background=dark
     set belloff=all
     set cscopeverbose
     set nofsync
@@ -15,7 +14,7 @@ if !has('nvim')
     set ttyfast
     set ttymouse=xterm2
 else
-    if has('termguicolors') && ($TERM=="xterm-kitty")
+    if has('termguicolors')
         set termguicolors
     endif
     let g:python_host_prog='/usr/bin/python'
@@ -152,13 +151,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
-" Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'rbong/vim-crystalline'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -174,18 +169,9 @@ Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'Shougo/neoinclude.vim'
-Plug 'zchee/deoplete-zsh'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neco-syntax'
 Plug 'bfredl/nvim-miniyank'
 if has('nvim')
-    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'lambdalisue/suda.vim'
-else
-    " Plug 'Shougo/deoplete.nvim'
-    " Plug 'roxma/nvim-yarp'
-    " Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ludovicchabant/vim-gutentags'
@@ -233,12 +219,6 @@ set laststatus=2
 
 nnoremap <leader>t :TagbarToggle<CR>
 
-" if has('nvim')
-"     " Set this. Airline will handle the rest.
-"     let g:airline#extensions#ale#enabled = 1
-" " else
-" endif
-
 if !exists('##TextYankPost')
   nmap y <Plug>(highlightedyank)
   vmap y <Plug>(highlightedyank)
@@ -248,15 +228,6 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
-
-set statusline+=%{gutentags#statusline()}
-" let g:airline#extensions#tabline#enabled = 1
-
-" let g:deoplete#enable_at_startup = 1
-
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> deoplete#smart_close_popup()
-" inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -309,13 +280,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" if you want to disable auto detect, comment out those two lines
-"let g:airline#extensions#disable_rtp_load = 1
-"let g:airline_extensions = ['branch', 'hunks', 'coc']
-
-" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_space_guides = 1
 
@@ -335,18 +299,13 @@ let g:vimtex_compiler_latexmk = {
       \  'callback' : 0,
       \}
 
-" " This is new style
-" call deoplete#custom#var('omni', 'input_patterns', {
-"         \ 'tex': g:vimtex#re#deoplete
-"         \})
-
-command W w suda://%
+command SW write suda://%
 
 if has("autocmd")
     augroup coc
         autocmd!
         " Setup formatexpr specified filetype(s).
-        autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+        autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
         " Update signature help on jump placeholder
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
         autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -354,16 +313,10 @@ if has("autocmd")
         " Highlight symbol under cursor on CursorHold
         autocmd CursorHold * silent call CocActionAsync('highlight')
     augroup end
-    " augroup complete_group
-    "     autocmd!
-    "     autocmd CompleteDone * silent! pclose!
-    "     autocmd InsertLeave * silent! pclose!
-    " augroup END
 
     augroup writting_autocmd
         autocmd!
         autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf"
-        " autocmd FileType markdown,text,tex setlocal colorcolumn=""
         autocmd FileType markdown,text,tex setlocal spell
         autocmd FileType markdown,text,tex setlocal complete+=kspell
     augroup END
@@ -371,11 +324,6 @@ if has("autocmd")
     augroup latex
         autocmd!
         autocmd BufReadPost *.cls setlocal filetype=tex
-    augroup END
-
-    augroup cpp_group
-        autocmd!
-        autocmd FileType c,cpp let &makeprg='make -C build '
     augroup END
 
 "" Remember cursor position
@@ -420,7 +368,7 @@ if has("autocmd")
         autocmd!
         autocmd BufWritePost *.vimrc source $MYVIMRC
         autocmd BufWritePost *.Xresources !xrdb %
-        autocmd BufWritePost *config.h !sudo make install
+        autocmd BufWritePost *config.h !make install
         autocmd BufWritePost ~/.config/i3/config !i3 reload
         autocmd BufWritePost ~/.i3/config !i3 reload
         autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3 reload
