@@ -1,11 +1,14 @@
+#! /bin/sh
 if [ -n "$ENV_SOURCED" ]; then
+    :
+else
     export PATH="$PATH":/sbin
-    export PATH="$PATH":/snap/bin
     export PATH="$HOME"/.local/bin:"$PATH"
     export PATH="$HOME"/bin:"$PATH"
     export PATH="$HOME"/.yarn/bin:"$PATH"
     export PATH="$HOME"/.config/yarn/global/node_modules/.bin:"$PATH"
     export PATH="$HOME"/.fzf/bin:"$PATH"
+    export MANPATH="$HOME"/.local/share/man:"$MANPATH"
 
     export EDITOR='nvim'
     export MANPATH="/usr/local/man:$MANPATH"
@@ -32,6 +35,5 @@ if [ -n "$ENV_SOURCED" ]; then
     export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
     export NO_AT_BRIDGE=1
     export SCREENLOCKER='i3lock-fancy'
-else
     export ENV_SOURCED=yes
 fi
