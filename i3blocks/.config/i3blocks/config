@@ -46,19 +46,26 @@ signal=10
 separator=false
 
 
+[volume-active-sink]
+command=get_volume.sh
+signal=10
+interval=once
+label=♪
+separator=true
+
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
 
-[volume]
-label=♪
-#label=VOL
-interval=once
-signal=10
-#STEP=5%
-separator=true
+#[volume]
+#label=♪
+##label=VOL
+#interval=once
+#signal=10
+##STEP=5%
+#separator=true
 
 [brightness]
 command=light -G

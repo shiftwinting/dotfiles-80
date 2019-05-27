@@ -8,19 +8,19 @@ mod4+d
     cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r $VISUAL
 
 mod4+a
-    FZF_DEFAULT_COMMAND | rofi -dmenu -p home | xargs -r mimeopen -n
+    $FZF_DEFAULT_COMMAND | rofi -dmenu -p home | xargs -r mimeopen -n
 
 XF86Audio{Lower,Raise}Volume
-    pactl set-sink-volume 0 {-,+}5%  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-volume $(get_sink.sh) {-,+}5%  && pkill -RTMIN+10 i3blocks
 
 mod4+{minus,plus}
-    pactl set-sink-volume 0 {-,+}5%  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-volume $(get_sink.sh) {-,+}5%  && pkill -RTMIN+10 i3blocks
 
 XF86AudioMute
-    pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-mute $(get_sink.sh) toggle  && pkill -RTMIN+10 i3blocks
 
 mod4+shift+m
-    pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-mute $(get_sink.sh) toggle  && pkill -RTMIN+10 i3blocks
 
 XF86Audio{Prev,Play,Next}
     mediactl {previous,play-pause,next}
@@ -61,5 +61,5 @@ mod4+p
 mod4+shift+p
     dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
 
-mod4+shift+m
-    $TERMINAL -e sconsify
+mod4+o
+    $TERMINAL -e sconsify && $TERMINAL -e cava
