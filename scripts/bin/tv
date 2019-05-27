@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+choice=$(printf "rtp1\ntve\neuronews" | rofi -dmenu -p tv)
+
+case $choice in
+    "rtp1") streamlink https://www.rtp.pt/play/direto/rtp1 best
+    ;;
+    "tve") streamlink http://www.rtve.es/directo/la-1 best
+    ;;
+    "euronews") streamlink https://www.euronews.com/live best
+    ;;
+    *) exit 0
+    ;;
+esac
