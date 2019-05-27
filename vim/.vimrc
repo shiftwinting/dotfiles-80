@@ -394,6 +394,8 @@ if has("autocmd")
         autocmd BufWritePost ~/.config/i3/config !i3 reload
         autocmd BufWritePost ~/.i3/config !i3 reload
         autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3 reload
+        autocmd BufWritePost ~/.config/i3blocks/config !pkill -RTMIN+10 i3blocks
+        autocmd BufWritePost ~/dotfiles/i3blocks/.config/i3blocks/config !pkill -RTMIN+10 i3blocks
         autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
     augroup END
 endif

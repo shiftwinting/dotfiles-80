@@ -11,7 +11,6 @@ else
     export MANPATH="$HOME"/.local/share/man:"$MANPATH"
 
     export EDITOR='nvim'
-    export PAGER='nvim -R'
     export MANPATH="/usr/local/man:$MANPATH"
     export LANG=en_US.UTF-8
     export ARCHFLAGS="-arch x86_64"
@@ -29,7 +28,7 @@ else
     export fish_greeting=
     export NNN_USER_EDITOR=1
     export NNN_OPENER='mimeopen'
-    export NNN_CONTEXT_COLORS='1234'
+    export NNN_CONTEXT_COLORS='4321'
     export NNN_RESTRICT_0B=1
     export NNN_TMPFILE="/tmp/nnn"
     export NNN_NOTE="$HOME"/.mynotes
@@ -41,5 +40,6 @@ else
     export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
     export NO_AT_BRIDGE=1
     export SCREENLOCKER='i3lock-fancy'
+    [ -f "$HOME"/.sconsify/.cred ] && SCONSIFY_PASSWORD=$(cat "$HOME"/.sconsify/.cred) && export SCONSIFY_PASSWORD
     export ENV_SOURCED=yes
 fi

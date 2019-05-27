@@ -23,10 +23,10 @@ mod4+shift+m
     pactl set-sink-mute 0 toggle  && pkill -RTMIN+10 i3blocks
 
 XF86Audio{Prev,Play,Next}
-    playerctl {previous,play-pause,next}  && pkill -RTMIN+10 i3blocks
+    mediactl {previous,play-pause,next}
 
 mod4+{Left,Down,Right}
-    playerctl {previous,play-pause,next}  && pkill -RTMIN+10 i3blocks
+    mediactl {previous,play-pause,next}
 
 XF86MonBrightness{Down,Up}
     light -{U,A} 5  && pkill -RTMIN+10 i3blocks
@@ -38,7 +38,7 @@ XF86Display
     xset dpms force off
 
 mod4+shift+g
-    $SCREENLOCKER
+    $SCREENLOCKER && pkill -RTMIN+10 i3blocks
 
 @Print
     scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
@@ -60,3 +60,6 @@ mod4+p
 
 mod4+shift+p
     dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
+
+mod4+shift+m
+    $TERMINAL -e sconsify

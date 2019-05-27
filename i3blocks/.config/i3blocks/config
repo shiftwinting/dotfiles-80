@@ -39,6 +39,12 @@ interval=5
 signal=10
 separator=false
 
+[sconsify]
+command=[ -f /tmp/sconsify-track ] && cat /tmp/sconsify-track
+interval=20
+signal=10
+separator=false
+
 
 # Volume indicator
 #

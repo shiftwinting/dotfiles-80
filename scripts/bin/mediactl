@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+if [ "$(playerctl status 2>&1)" = "No players found" ]; then
+    command="sconsify -command"
+    case "$1" in
+        "previous") $command replay
+            ;;
+        "play-pause") $command play_pause
+            ;;
+        "next") $command next
+            ;;
+        *) $command pause
+            ;;
+    esac
+else
+    playerctl "$@"
+fi
+pkill -RTMIN+10 i3blocks
