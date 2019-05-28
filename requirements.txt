@@ -1,7 +1,6 @@
 acestream
 autopep8
 jedi
-lxml
 matplotlib
 neovim
 neovim-remote
@@ -10,10 +9,7 @@ Pillow
 pipe
 Pygments
 pynvim
-pywal
-ranger-fm
 rtv
 scipy
-six
 streamlink
 tldr
