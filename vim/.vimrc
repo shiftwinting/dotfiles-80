@@ -183,6 +183,18 @@ Plug 'jsfaint/coc-neoinclude'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dag/vim-fish'
 Plug 'kovetskiy/sxhkd-vim'
+Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-sources', {'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
+Plug 'Maxattax97/coc-ccls', {'do': 'yarn install --frozen-lockfile'}
 " Initialize plugin system
 call plug#end()
 
