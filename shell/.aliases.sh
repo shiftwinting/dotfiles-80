@@ -23,14 +23,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias ace='acestream-launcher'
 alias ipecho='curl ipecho.net/plain; echo'
 alias nv-settings='optirun -b none nvidia-settings -c :8'
-alias primusrun="vblank_mode=0 primusrun"
+alias pr="vblank_mode=0 primusrun"
 alias ccat='pygmentize'
-alias xclip='xclip -selection clipboard'
-
-nless() {
-    cat "$@" | less
-}
-
+alias copy='xargs echo -n | xclip -selection clipboard -i'
 
 n()
 {

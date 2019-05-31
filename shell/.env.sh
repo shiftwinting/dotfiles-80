@@ -11,13 +11,13 @@ else
     export MANPATH="$HOME"/.local/share/man:"$MANPATH"
 
     export EDITOR='nvim'
+    export LESS='-L'
     export MANPATH="/usr/local/man:$MANPATH"
     export LANG=en_US.UTF-8
     export ARCHFLAGS="-arch x86_64"
     export SSH_KEY_PATH="$HOME"/.ssh/rsa_id
     export FZF_BASE=$HOME/.fzf/bin/fzf
-    export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*' -g '!.cache/*'
-    -g '!.local/*'"
+    export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
     export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
     export BROWSER='firefox'
     export TERMINAL='st'
@@ -27,7 +27,7 @@ else
     export VISUAL="$TERMINAL -e $EDITOR"
     export fish_greeting=
     export NNN_USER_EDITOR=1
-    export NNN_OPENER='mimeopen'
+    export NNN_OPENER='mimeopen -n'
     export NNN_CONTEXT_COLORS='4321'
     export NNN_RESTRICT_0B=1
     export NNN_TMPFILE="/tmp/nnn"

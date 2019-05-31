@@ -5,10 +5,10 @@ mod4+m
     rofi -show run
 
 mod4+d
-    cd ~/dotfiles && rg --files --hidden -g '!.git/*' | rofi -dmenu -p dotfiles | xargs -r $VISUAL
+    cd ~/dotfiles && eval $FZF_DEFAULT_COMMAND | rofi -dmenu -p dotfiles | xargs -r $VISUAL
 
 mod4+a
-    $FZF_DEFAULT_COMMAND | rofi -dmenu -p home | xargs -r mimeopen -n
+    rg --files | rofi -dmenu -p home | xargs -r mimeopen -n
 
 XF86Audio{Lower,Raise}Volume
     pactl set-sink-volume $(get_sink.sh) {-,+}5%  && pkill -RTMIN+10 i3blocks
@@ -56,7 +56,7 @@ mod4+shift+w
     $BROWSER
 
 mod4+p
-    $TERMINAL -e python3 -i -c 'import numpy as np'
+    $TERMINAL -e python3 -i -c 'from numpy import *'
 
 mod4+shift+p
     dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
