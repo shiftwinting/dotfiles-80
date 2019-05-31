@@ -13,3 +13,5 @@ rtv
 scipy
 streamlink
 tldr
+mypy
+python-language-server
