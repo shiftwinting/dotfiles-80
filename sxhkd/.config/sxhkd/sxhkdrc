@@ -38,7 +38,7 @@ XF86Display
     xset dpms force off
 
 mod4+shift+g
-    $SCREENLOCKER && mediactl pause
+    lock.sh
 
 @Print
     scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
