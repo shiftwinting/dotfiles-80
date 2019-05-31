@@ -42,6 +42,6 @@ echo
 echo
 echo
 echo "st terminal update:"
-cd ~/st && git pull
+cd ~/st && git pull && make install
 
 cd "$originalWD" || exit
