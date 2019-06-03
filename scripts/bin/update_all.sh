@@ -2,15 +2,6 @@
 
 originalWD=$(pwd)
 
-echo
-echo "System Update:"
-echo
-sudo apt update && sudo apt upgrade -y
-
-echo
-echo
-echo
-echo
 echo "pip update:"
 echo
 echo
