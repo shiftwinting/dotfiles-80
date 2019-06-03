@@ -7,6 +7,7 @@ else
     export PATH="$HOME"/bin:"$PATH"
     export PATH="$HOME"/.yarn/bin:"$PATH"
     export PATH="$HOME"/.config/yarn/global/node_modules/.bin:"$PATH"
+    export PATH="$HOME"/.gem/ruby/2.6.0/bin:"$PATH"
     export PATH="$HOME"/.fzf/bin:"$PATH"
     export MANPATH="/usr/local/man:$MANPATH"
     export MANPATH="$HOME"/.local/share/man:"$MANPATH"

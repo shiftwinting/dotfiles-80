@@ -7,7 +7,7 @@ else
     stty -ixon
 end
 
-set -xg SHELL /usr/bin/fish
+# set -xg SHELL /usr/bin/fish
 
 theme_gruvbox dark hard
 

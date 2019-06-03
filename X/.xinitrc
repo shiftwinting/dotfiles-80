@@ -15,4 +15,5 @@ systemctl --user import-environment DISPLAY
 dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
-exec dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" i3
+#exec dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" i3
+exec i3

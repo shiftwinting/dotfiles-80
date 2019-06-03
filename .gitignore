@@ -3,3 +3,6 @@ mpv/.config/mpv/watch_later
 vim/.vim
 X/.Xauthority
 tags*
+sconsify/.sconsify/.cred
+sconsify/.sconsify/cache
+fish_variables
