@@ -1,3 +1,10 @@
+let g:use_plugins = 1
+let g:is_ide = 1
+
+if !g:use_plugins
+    let g:is_ide = 0
+endif
+
 if !has('nvim')
     silent !mkdir -p $HOME/.vim/.undo
     silent !mkdir -p $HOME/.vim/.backup
@@ -54,6 +61,8 @@ if has('signcolumn')
     " Always draw the signcolumn.
     set signcolumn=yes
 endif
+set showtabline=2
+set laststatus=2
 
 set ignorecase smartcase
 set showmatch
@@ -114,7 +123,11 @@ nnoremap <leader>go i<CR><esc>k
 
 nnoremap <silent><CR> :<C-U>nohlsearch<CR><CR>
 
-" This extends p in visual mode (note the noremap), so that if you paste from the unnamed (ie. default) register, that register content is not replaced by the visual selection you just pasted over–which is the default behavior. This enables the user to yank some text and paste it over several places in a row, without using a named register (eg. "ay, "ap etc.).
+" This extends p in visual mode (note the noremap), so that if you paste from
+" the unnamed (ie. default) register, that register content is not replaced by
+" the visual selection you just pasted over–which is the default behavior.
+" This enables the user to yank some text and paste it over several places in
+" a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
 nnoremap <leader>s :set spell!
@@ -136,234 +149,235 @@ endif
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" Add optional packages.
-"
-if empty(glob('~/.vim/autoload/plug.vim'))
-    if !executable("curl")
-        echoerr "You have to install curl or first install vim-plug yourself!"
-        execute "q!"
+if g:use_plugins
+    " Add optional packages.
+    "
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        if !executable("curl")
+            echoerr "You have to install curl or first install vim-plug yourself!"
+            execute "q!"
+        endif
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     endif
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " Specify a directory for plugins
+    " - For Neovim: ~/.local/share/nvim/plugged
+    " - Avoid using standard Vim directory names like 'plugin'
+    call plug#begin('~/.vim/plugged')
+    " Using plug
+    Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-obsession'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-eunuch'
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'vim-pandoc/vim-pandoc-syntax'
+    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'pboettch/vim-cmake-syntax'
+    Plug 'luochen1990/rainbow'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'bfredl/nvim-miniyank'
+    Plug 'lambdalisue/suda.vim'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'mboughaba/i3config.vim'
+    Plug 'kovetskiy/sxhkd-vim'
+    Plug 'dag/vim-fish'
+    if g:is_ide
+        Plug 'majutsushi/tagbar'
+        Plug 'ludovicchabant/vim-gutentags'
+        Plug 'w0rp/ale'
+        Plug 'honza/vim-snippets'
+        Plug 'vim-pandoc/vim-pandoc'
+        Plug 'lervag/vimtex'
+        Plug 'sbdchd/neoformat'
+        Plug 'Shougo/neco-vim'
+        Plug 'neoclide/coc-neco'
+        Plug 'Shougo/neoinclude.vim'
+        Plug 'jsfaint/coc-neoinclude'
+        Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+        Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-sources', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
+        " Plug 'Maxattax97/coc-ccls', {'do': 'yarn install --frozen-lockfile'}
+    endif
+    " Initialize plugin system
+    call plug#end()
+
+
+    "let g:gruvbox_italic=1
+    colorscheme gruvbox
+    nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+    nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+    nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+    nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+    nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+    nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
+    function! StatusLine(current, width)
+    let l:s = ''
+
+    if a:current
+        let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+    else
+        let l:s .= '%#CrystallineInactive#'
+    endif
+    let l:s .= ' %f%h%w%m%r '
+    if a:current
+        let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+    endif
+
+    let l:s .= '%='
+    if a:current
+        let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+        let l:s .= crystalline#left_mode_sep('')
+    endif
+    if a:width > 80
+        let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+    else
+        let l:s .= ' '
+    endif
+
+    return l:s
+    endfunction
+
+    function! TabLine()
+    let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+    return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+    endfunction
+
+    let g:crystalline_enable_sep = 0
+    let g:crystalline_statusline_fn = 'StatusLine'
+    let g:crystalline_tabline_fn = 'TabLine'
+    let g:crystalline_theme = 'gruvbox'
+
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_space_guides = 1
+
+    let g:rainbow_active = 1
+
+    let g:cpp_class_scope_highlight = 1
+    let g:cpp_member_variable_highlight = 1
+    let g:cpp_class_decl_highlight = 1
+    let g:cpp_experimental_simple_template_highlight = 1
+
+    nnoremap <silent><leader>f :FZF --reverse<CR>
+
+    cnoreabbrev SW write suda://%
+
+    if g:is_ide
+        nnoremap <leader>t :TagbarToggle<CR>
+
+        function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
+        endfunction
+
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        let g:coc_snippet_next = '<tab>'
+        let g:coc_snippet_prev = '<S-TAB>'
+
+        " Use <c-space> for trigger completion.
+        inoremap <silent><expr> <c-space> coc#refresh()
+
+        " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+        " Coc only does snippet and additional edit on confirm.
+        inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+        " Use `[c` and `]c` for navigate diagnostics
+        nmap <silent> [c <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+        " Remap keys for gotos
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
+
+        " Use K for show documentation in preview window
+        nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+        function! s:show_documentation()
+        if &filetype == 'vim'
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+        endfunction
+
+        " Remap for rename current word
+        nmap <leader>rn <Plug>(coc-rename)
+
+
+        " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+        vmap <leader>a  <Plug>(coc-codeaction-selected)
+        nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+        " Remap for do codeAction of current line
+        nmap <leader>ac  <Plug>(coc-codeaction)
+        " Fix autofix problem of current line
+        nmap <leader>qf  <Plug>(coc-fix-current)
+
+        if has('nvim')
+            let g:vimtex_compiler_progname='nvr'
+        endif
+        let g:vimtex_format_enabled=1
+        let g:vimtex_quickfix_autojump=1
+        let g:vimtex_quickfix_autoclose_after_keystrokes=3
+        let g:vimtex_view_method='zathura'
+        let g:vimtex_complete_img_use_tail=1
+        let g:vimtex_compiler_latexmk = {
+            \  'callback' : 0,
+            \}
+
+        let g:ale_fixers = {
+        \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+        \   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'isort', 'yapf',],
+        \}
+        let g:ale_cpp_ccls_init_options = {
+        \   'cache': {
+        \       'directory': '/tmp/ccls/cache',
+        \   },
+        \ }
+
+        let g:ale_completion_enabled = 1
+
+        " Set this variable to 1 to fix files when you save them.
+        let g:ale_fix_on_save = 1
+    endif
+
 endif
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-" Using plug
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'gruvbox-community/gruvbox'
-Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar'
-Plug 'rbong/vim-crystalline'
-Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'lervag/vimtex'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'pboettch/vim-cmake-syntax'
-Plug 'luochen1990/rainbow'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'bfredl/nvim-miniyank'
-Plug 'lambdalisue/suda.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'w0rp/ale'
-Plug 'mboughaba/i3config.vim'
-Plug 'sbdchd/neoformat'
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
-Plug 'Shougo/neoinclude.vim'
-Plug 'jsfaint/coc-neoinclude'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'dag/vim-fish'
-Plug 'kovetskiy/sxhkd-vim'
-Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-sources', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
-Plug 'Maxattax97/coc-ccls', {'do': 'yarn install --frozen-lockfile'}
-" Initialize plugin system
-call plug#end()
-
-"let g:gruvbox_italic=1
-colorscheme gruvbox
-nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
-nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
-nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
-
-nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
-nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
-nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
-
-function! StatusLine(current, width)
-  let l:s = ''
-
-  if a:current
-    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
-  else
-    let l:s .= '%#CrystallineInactive#'
-  endif
-  let l:s .= ' %f%h%w%m%r '
-  if a:current
-    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
-  endif
-
-  let l:s .= '%='
-  if a:current
-    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
-    let l:s .= crystalline#left_mode_sep('')
-  endif
-  if a:width > 80
-    let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
-  else
-    let l:s .= ' '
-  endif
-
-  return l:s
-endfunction
-
-function! TabLine()
-  let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
-  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-endfunction
-
-let g:crystalline_enable_sep = 0
-let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'gruvbox'
-
-set showtabline=2
-set laststatus=2
-
-nnoremap <leader>t :TagbarToggle<CR>
-
-if !exists('##TextYankPost')
-  nmap y <Plug>(highlightedyank)
-  vmap y <Plug>(highlightedyank)
-endif
-
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-TAB>'
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_space_guides = 1
-
-let g:rainbow_active = 1
-
-nnoremap <silent><leader>f :FZF --reverse<CR>
-
-if has('nvim')
-    let g:vimtex_compiler_progname='nvr'
-endif
-let g:vimtex_format_enabled=1
-let g:vimtex_quickfix_autojump=1
-let g:vimtex_quickfix_autoclose_after_keystrokes=3
-let g:vimtex_view_method='zathura'
-let g:vimtex_complete_img_use_tail=1
-let g:vimtex_compiler_latexmk = {
-      \  'callback' : 0,
-      \}
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'isort', 'yapf',],
-\}
-let g:ale_cpp_ccls_init_options = {
-\   'cache': {
-\       'directory': '/tmp/ccls/cache',
-\   },
-\ }
-
-let g:ale_completion_enabled = 1
-
-" Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
-
-cnoreabbrev SW write suda://%
 
 if has("autocmd")
-    augroup coc
-        autocmd!
-        " Setup formatexpr specified filetype(s).
-        autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
-        " Update signature help on jump placeholder
-        autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-        autocmd FileType json syntax match Comment +\/\/.\+$+
-        autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-        " Highlight symbol under cursor on CursorHold
-        autocmd CursorHold * silent call CocActionAsync('highlight')
-    augroup end
+    if g:is_ide && g:use_plugins
+        augroup coc
+            autocmd!
+            " Setup formatexpr specified filetype(s).
+            autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
+            " Update signature help on jump placeholder
+            autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+            autocmd FileType json syntax match Comment +\/\/.\+$+
+            autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+            " Highlight symbol under cursor on CursorHold
+            autocmd CursorHold * silent call CocActionAsync('highlight')
+        augroup end
+    endif
 
     augroup writting_autocmd
         autocmd!
@@ -407,13 +421,15 @@ if has("autocmd")
         autocmd FileType i3config setlocal formatoptions-=t
     augroup END
 
-    augroup vim_group
-        autocmd!
-        autocmd VimEnter *
-            \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-            \|   PlugInstall --sync | q | source $MYVIMRC
-            \| endif
-    augroup END
+    if g:use_plugins
+        augroup vim_group
+            autocmd!
+            autocmd VimEnter *
+                \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+                \|   PlugInstall --sync | q | source $MYVIMRC
+                \| endif
+        augroup END
+    endif
 
     augroup reload
         autocmd!
