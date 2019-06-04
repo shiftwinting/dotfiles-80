@@ -1,8 +1,8 @@
-let g:use_plugins = 1
-let g:is_ide = 1
+let s:use_plugins = 1
+let s:is_ide = 1
 
-if !g:use_plugins
-    let g:is_ide = 0
+if !s:use_plugins
+    let s:is_ide = 0
 endif
 
 if !has('nvim')
@@ -51,6 +51,9 @@ set backup
 set swapfile
 
 set background=dark
+if !s:use_plugins
+    colorscheme desert
+endif
 set showmode
 set number relativenumber
 set cursorline
@@ -149,7 +152,7 @@ endif
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-if g:use_plugins
+if s:use_plugins
     " Add optional packages.
     "
     if empty(glob('~/.vim/autoload/plug.vim'))
@@ -189,7 +192,7 @@ if g:use_plugins
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'dag/vim-fish'
-    if g:is_ide
+    if s:is_ide
         Plug 'majutsushi/tagbar'
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'w0rp/ale'
@@ -280,7 +283,7 @@ if g:use_plugins
 
     cnoreabbrev SW write suda://%
 
-    if g:is_ide
+    if s:is_ide
         nnoremap <leader>t :TagbarToggle<CR>
 
         function! s:check_back_space() abort
@@ -365,7 +368,7 @@ if g:use_plugins
 endif
 
 if has("autocmd")
-    if g:is_ide && g:use_plugins
+    if s:is_ide && s:use_plugins
         augroup coc
             autocmd!
             " Setup formatexpr specified filetype(s).
@@ -421,7 +424,7 @@ if has("autocmd")
         autocmd FileType i3config setlocal formatoptions-=t
     augroup END
 
-    if g:use_plugins
+    if s:use_plugins
         augroup vim_group
             autocmd!
             autocmd VimEnter *
