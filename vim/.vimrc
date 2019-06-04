@@ -14,13 +14,18 @@ if !has('nvim')
     set ttyfast
     set ttymouse=xterm2
 else
-    if has('termguicolors')
-        set termguicolors
-    endif
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python3'
 endif
 
+if has('termguicolors')
+    set termguicolors
+    if !has('nvim')
+        " set Vim-specific sequences for RGB colors
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+endif
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
     set mouse=a
@@ -119,12 +124,14 @@ nnoremap <leader>s :set spell!
 "   set clipboard=unnamed,unnamedplus
 " endif
 
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
+nnoremap YY "+y<CR>
+nnoremap <leader>p "+gP<CR>
+nnoremap XX "+x<CR>
 
-noremap <M-l> gt
-noremap <M-h> gT
+if has('nvim')
+    nnoremap <M-l> gt
+    nnoremap <M-h> gT
+endif
 
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -168,9 +175,7 @@ Plug 'pboettch/vim-cmake-syntax'
 Plug 'luochen1990/rainbow'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'bfredl/nvim-miniyank'
-if has('nvim')
-    Plug 'lambdalisue/suda.vim'
-endif
+Plug 'lambdalisue/suda.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
@@ -334,6 +339,13 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'isort', 'yapf',],
 \}
+let g:ale_cpp_ccls_init_options = {
+\   'cache': {
+\       'directory': '/tmp/ccls/cache',
+\   },
+\ }
+
+let g:ale_completion_enabled = 1
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1

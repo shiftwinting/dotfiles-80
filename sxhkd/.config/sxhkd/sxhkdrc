@@ -47,7 +47,7 @@ shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
 
 mod4+shift+f
-    SHELL=/usr/bin/fish $TERMINAL -e "$FILE_MANAGER"
+    $TERMINAL -e "$FILE_MANAGER"
 
 mod4+shift+u
     $TERMINAL -e rtv
