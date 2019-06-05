@@ -9,10 +9,8 @@
 #umask 022
 
 # source environment variables
-if [ -f ~/.env.sh ]; then
-    # shellcheck source=/home/sommerfeld/.env.sh
-    . ~/.env.sh
-fi
+# shellcheck source=/home/sommerfeld/.env.sh
+[ -f ~/.env.sh ] && . ~/.env.sh
 
 systemctl --user import-environment PATH
 
