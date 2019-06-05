@@ -6,8 +6,9 @@
 
 # shellcheck source=/home/sommerfeld/.env.sh
 [ -f ~/.env.sh ] && . ~/.env.sh
-# invoke global X session script
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+# invoke global X session script
 # shellcheck source=/home/sommerfeld/.xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 systemctl --user import-environment DISPLAY
