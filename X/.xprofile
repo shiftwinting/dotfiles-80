@@ -1,5 +1,6 @@
 #!/bin/sh
 
+[ -f ~/.Xkeymap ] && xkbcomp ~/.Xkeymap $DISPLAY
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
 # shellcheck source=/home/sommerfeld/.env.sh
