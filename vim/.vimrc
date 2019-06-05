@@ -221,7 +221,7 @@ if s:use_plugins
     call plug#end()
 
 
-    "let g:gruvbox_italic=1
+    let g:gruvbox_italic=1
     colorscheme gruvbox
     nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
     nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
