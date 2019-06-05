@@ -12,7 +12,6 @@ i3blocks
 kitty
 latexmk
 mpv
-mutt
 mypy
 neofetch
 nvim

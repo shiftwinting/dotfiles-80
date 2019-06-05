@@ -62,4 +62,4 @@ mod4+shift+p
     dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
 
 mod4+o
-    $TERMINAL -e sconsify && $TERMINAL -e cava
+    launch_sconsify.sh

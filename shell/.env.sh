@@ -12,6 +12,8 @@ else
     export MANPATH="/usr/local/man:$MANPATH"
     export MANPATH="$HOME"/.local/share/man:"$MANPATH"
 
+    [ -f "$HOME"/.sconsify/.cred ] && SCONSIFY_PASSWORD=$(cat "$HOME"/.sconsify/.cred) && export SCONSIFY_PASSWORD
+
     export ENV_SOURCED=yes
 fi
 
@@ -28,7 +30,6 @@ export VIDEO_PLAYER='mpv'
 export IMAGE_VIEWER='sxiv'
 export PDF_READER='zathura'
 export VISUAL="$TERMINAL -e $EDITOR"
-export fish_greeting=
 export NNN_USER_EDITOR=1
 export NNN_OPENER='mimeopen -n'
 export NNN_CONTEXT_COLORS='4321'
@@ -43,4 +44,3 @@ export EMAIL_CLIENT='neomutt'
 export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
 export NO_AT_BRIDGE=1
 export SCREENLOCKER='i3lock-fancy'
-[ -f "$HOME"/.sconsify/.cred ] && SCONSIFY_PASSWORD=$(cat "$HOME"/.sconsify/.cred) && export SCONSIFY_PASSWORD
