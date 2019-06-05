@@ -444,5 +444,7 @@ if has("autocmd")
         autocmd BufWritePost ~/.config/i3blocks/config !pkill -RTMIN+10 i3blocks
         autocmd BufWritePost ~/dotfiles/i3blocks/.config/i3blocks/config !pkill -RTMIN+10 i3blocks
         autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
+        autocmd BufWritePost *.Xkeymap !xkbcomp ~/.Xkeymap $DISPLAY
+        autocmd BufWritePost *.Xmodmap !xmodmap ~/.Xmodmap
     augroup END
 endif
