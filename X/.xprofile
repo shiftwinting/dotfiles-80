@@ -5,8 +5,7 @@ eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
 # shellcheck source=/home/sommerfeld/.env.sh
 [ -f ~/.env.sh ] && . ~/.env.sh
-setxkbmap es
-setxkbmap -option caps:swapescape
+kb-setup.sh
 mkdir -p ~/Pictures/screenshots
 sxhkd &
 numlockx &
