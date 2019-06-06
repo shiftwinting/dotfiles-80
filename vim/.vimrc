@@ -417,9 +417,10 @@ if has("autocmd")
         autocmd BufNewFile,BufRead *.cls setlocal filetype=tex
     augroup END
 
-    augroup i3_format
+    augroup no_autoformat
         autocmd!
         autocmd FileType i3config setlocal formatoptions-=t
+        autocmd FileType sh setlocal formatoptions-=t
     augroup END
 
     if s:use_plugins
