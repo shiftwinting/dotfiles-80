@@ -3,6 +3,7 @@ let s:is_ide = 1
 
 if !s:use_plugins
     let s:is_ide = 0
+    source $HOME/.my-vim-plugs/sensible.vim
 endif
 
 if !has('nvim')
@@ -57,7 +58,9 @@ endif
 set showmode
 set number relativenumber
 set cursorline
-set colorcolumn=80
+if s:use_plugins
+    set colorcolumn=80
+endif
 set lazyredraw
 set synmaxcol=300
 if has('signcolumn')
@@ -83,7 +86,7 @@ set linebreak    "Wrap lines at convenient points
 set textwidth=79
 
 set spelllang=en
-set spellfile=$HOME/dotfiles/vim/spell/en.utf-8.add
+set spellfile=$HOME/.spell/en.utf-8.add
 
 " Better display for messages
 set cmdheight=2
@@ -388,11 +391,6 @@ if has("autocmd")
         autocmd FileType markdown,text,tex setlocal complete+=kspell
     augroup END
 
-    augroup latex
-        autocmd!
-        autocmd BufReadPost *.cls setlocal filetype=tex
-    augroup END
-
 "" Remember cursor position
     augroup vimrc-remember-cursor-position
         autocmd!
@@ -410,12 +408,13 @@ if has("autocmd")
         autocmd FileType gitcommit exec 'normal gg' | startinsert!
     augroup END
 
-    augroup i3config_ft_detection
+    augroup ft_detection
         autocmd!
         autocmd BufNewFile,BufRead ~/.config/i3/config setlocal filetype=i3config
         autocmd BufNewFile,BufRead ~/.i3/config setlocal filetype=i3config
         autocmd BufNewFile,BufRead ~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
         autocmd BufNewFile,BufRead *sxhkrc setlocal filetype=sxhkd
+        autocmd BufNewFile,BufRead *.cls setlocal filetype=tex
     augroup END
 
     augroup i3_format
