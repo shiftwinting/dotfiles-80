@@ -178,6 +178,7 @@ if s:use_plugins
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
     Plug 'gruvbox-community/gruvbox'
+    Plug 'rbong/vim-crystalline'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
