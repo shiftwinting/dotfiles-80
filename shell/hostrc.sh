@@ -9,5 +9,5 @@ elif [ "$(hostname)" = "dev-004p" ]; then
     synclient VertScrollDelta=-77
     synclient HorizScrollDelta=-77
     synclient PalmDetect=1
-    # [ -f "$HOME"/adas/helpers/mount.sh ] && ping -c 1 win_sm_dt > /dev/null 2>&1 && "$HOME"/adas/helpers/mount.sh rui.ferreira || echo "Failed to mount"
+    [ -f "$HOME"/adas/helpers/mount.sh ] && "$HOME"/adas/helpers/mount.sh rui.ferreira &
 fi

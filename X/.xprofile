@@ -3,11 +3,10 @@
 [ -f ~/.Xkeymap ] && xkbcomp ~/.Xkeymap $DISPLAY
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
-# shellcheck source=/home/sommerfeld/.env.sh
+# shellcheck source=/dev/null
 [ -f ~/.env.sh ] && . ~/.env.sh
 setxkbmap es
 setxkbmap -option caps:swapescape
-mkdir -p ~/Pictures/screenshots
 sxhkd &
 numlockx &
 nm-applet &
@@ -15,4 +14,4 @@ nm-applet &
 # pasystray > /dev/null 2>&1 &
 feh --bg-center ~/dotfiles/wallpapers/bliss.png &
 # shellcheck source=/home/sommerfeld/hostrc.sh
-[ -f ~/hostrc.sh ] && . ~/hostrc.sh
+[ -f ~/hostrc.sh ] && . ~/hostrc.sh &

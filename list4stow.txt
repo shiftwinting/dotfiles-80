@@ -1,7 +1,7 @@
 X
 acestream-launcher
 bash
-csgo_alt
+csgo
 dunst
 fish
 fontconfig
