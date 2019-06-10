@@ -87,7 +87,7 @@ URxvt*urgentOnBell: false
 st.termname:     st-256color
 ! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
 st.shell:        /bin/sh
-*.font: mono:size=20:antialias=true
+*.font: mono:size=16:antialias=true
 
 st.xfps:              120
 st.actionfps:         30

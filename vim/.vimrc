@@ -437,7 +437,7 @@ if has("autocmd")
     augroup reload
         autocmd!
         autocmd BufWritePost *.vimrc,*init.vim source $MYVIMRC
-        autocmd BufWritePost *.Xresources !xrdb %
+        autocmd BufWritePost *.Xresources,*.Xdefaults !xrdb %
         autocmd BufWritePost *config.h !make install
         autocmd BufWritePost ~/.config/i3/config !i3 reload
         autocmd BufWritePost ~/.i3/config !i3 reload

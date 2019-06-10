@@ -11,16 +11,16 @@ mod4+a
     rg --files | rofi -dmenu -p home | xargs -r mimeopen -n
 
 XF86Audio{Lower,Raise}Volume
-    pactl set-sink-volume $(get_sink.sh) {-,+}5%  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%  && pkill -RTMIN+1 i3blocks
 
 mod4+{minus,plus}
-    pactl set-sink-volume $(get_sink.sh) {-,+}5%  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%  && pkill -RTMIN+1 i3blocks
 
 XF86AudioMute
-    pactl set-sink-mute $(get_sink.sh) toggle  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-mute @DEFAULT_SINK@ toggle  && pkill -RTMIN+1 i3blocks
 
 mod4+shift+m
-    pactl set-sink-mute $(get_sink.sh) toggle  && pkill -RTMIN+10 i3blocks
+    pactl set-sink-mute @DEFAULT_SINK@ toggle  && pkill -RTMIN+1 i3blocks
 
 XF86Audio{Prev,Play,Next}
     mediactl {previous,play-pause,next}
@@ -49,10 +49,7 @@ shift+@Print
 mod4+shift+f
     $TERMINAL -e "$FILE_MANAGER"
 
-mod4+shift+u
-    $TERMINAL -e rtv
-
-mod4+shift+w
+mod4+w
     $BROWSER
 
 mod4+p
@@ -61,5 +58,8 @@ mod4+p
 mod4+shift+p
     dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
 
-mod4+o
-    launch_sconsify.sh
+mod4+o;{m,a,s,t,r,v}
+    {launch_sconsify.sh,ace,stream,twitch,$TERMINAL -e rtv,tv}
+
+mod4+g
+    ducksearch

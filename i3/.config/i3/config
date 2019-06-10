@@ -166,7 +166,7 @@ set $darkgray #1d2021
 bar {
         font pango:mono 12
         position bottom
-	status_command KEY=NUM INTERFACE=$(iface.sh) IFACE=$(iface.sh) USE_PERCENT=1 SCRIPT_DIR=~/repos/i3blocks-contrib i3blocks
+	status_command KEY=NUM INTERFACE=$(iface.sh) IFACE=$(iface.sh) USE_PERCENT=1 AUDIO_HIGH_SYMBOL='♪' AUDIO_MED_SYMBOL='♪' AUDIO_LOW_SYMBOL='♪' SCRIPT_DIR=~/repos/i3blocks-contrib i3blocks
         colors {
         # bar background color
         background $darkgray

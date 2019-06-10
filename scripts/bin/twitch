@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+streamer="$1"
+if [ -z "$1" ]; then
+    streamer=$(xclip -o -selection clipboard)
+fi
+
+mpv https://www.twitch.tv/"$streamer" &
+surf https://www.twitch.tv/popout/"$streamer"/chat

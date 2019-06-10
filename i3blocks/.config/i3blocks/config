@@ -29,6 +29,21 @@ command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
+[torrent]
+command=torrent
+interval=20
+signal=7
+
+[weather]
+command=weather
+interval=18000
+signal=5
+
+[mailbox]
+command=mailbox
+label=📬
+interval=180
+signal=12
 # Generic media player support
 #
 # This displays "ARTIST - SONG" if a music is playing.
@@ -52,6 +67,28 @@ signal=10
 interval=once
 label=♪
 separator=true
+
+# [volume-pulseaudio]
+# interval=once
+# signal=1
+# separator=true
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
+#LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
+#AUDIO_HIGH_SYMBOL='  '
+#AUDIO_MED_THRESH=50
+#AUDIO_MED_SYMBOL='  '
+#AUDIO_LOW_THRESH=0
+#AUDIO_LOW_SYMBOL='  '
+#AUDIO_DELTA=5
+#DEFAULT_COLOR="#ffffff"
+#MUTED_COLOR="#a0a0a0"
+#USE_ALSA_NAME=0
+#USE_DESCRIPTION=0
+## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
+#SUBSCRIBE=0
 
 # Volume indicator
 #
@@ -77,7 +114,8 @@ signal=10
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=MEM
+command=memory
+# label=MEM
 separator=false
 interval=30
 
@@ -92,18 +130,18 @@ interval=30
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label=HOME
-#DIR=/mnt/data
-interval=30
-separator=false
+#[disk]
+#label=HOME
+##DIR=/mnt/data
+#interval=30
+#separator=false
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=CPU
+# label=CPU
 interval=10
 # min_width=CPU 100.00%
 separator=false
@@ -156,7 +194,7 @@ separator=false
 #
 # The battery instance defaults to 0.
 [battery]
-#label=BAT
+# label=BAT
 label=⚡
 interval=30
 separator=true
@@ -199,20 +237,20 @@ label=VPN:
 interval=5
 separator=false
 
-[public-ip]
-command=curl ipecho.net/plain; echo
-interval=300
-separator=false
-
 [essid]
 interval=60
 #INTERFACE=wlo1
+separator=false
+
+[public-ip]
+command=curl ipecho.net/plain; echo
+interval=300
 separator=true
 
-[key_layout]
-# label=Layout
-interval=30
-separator=false
+# [key_layout]
+# # label=Layout
+# interval=30
+# separator=false
 
 [keyindicator]
 # KEY=NUM
@@ -224,7 +262,7 @@ separator=true
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=clock
 interval=5
 
 # [rofi-calendar]

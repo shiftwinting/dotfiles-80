@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+if [ -z "$1" ]; then
+    xclip -o -selection clipboard | xargs -r acestream-launcher
+else
+    acestream-launcher "$@"
+fi
