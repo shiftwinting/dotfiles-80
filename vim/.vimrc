@@ -39,8 +39,6 @@ if has('mouse')
     set mouse=a
 endif
 
-let g:is_posix = 1
-
 " poor mans version control
 set writebackup
 set hidden
