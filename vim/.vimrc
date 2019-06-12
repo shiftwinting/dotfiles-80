@@ -135,6 +135,12 @@ xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
 nnoremap <leader>s :set spell!
 
+function! Write_emoji()
+    return system('emoji')
+endfunction
+
+nnoremap <leader>e "=Write_emoji()<CR>P
+
 "" Copy/Paste/Cut
 " if has('unnamedplus')
 "   set clipboard=unnamed,unnamedplus
@@ -437,11 +443,11 @@ if has("autocmd")
         autocmd BufWritePost *.vimrc,*init.vim source $MYVIMRC
         autocmd BufWritePost *.Xresources,*.Xdefaults !xrdb %
         autocmd BufWritePost *config.h !make clean install
-        autocmd BufWritePost ~/.config/i3/config !i3 reload
-        autocmd BufWritePost ~/.i3/config !i3 reload
-        autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3 reload
-        autocmd BufWritePost ~/.config/i3blocks/config !pkill -RTMIN+10 i3blocks
-        autocmd BufWritePost ~/dotfiles/i3blocks/.config/i3blocks/config !pkill -RTMIN+10 i3blocks
+        autocmd BufWritePost ~/.config/i3/config !i3-msg reload
+        autocmd BufWritePost ~/.i3/config !i3-msg reload
+        autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3-msg reload
+        autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
+        autocmd BufWritePost ~/dotfiles/i3blocks/.config/i3blocks/config !i3-msg restart
         autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
         autocmd BufWritePost *.Xkeymap !xkbcomp ~/.Xkeymap $DISPLAY
         autocmd BufWritePost *.Xmodmap !xmodmap ~/.Xmodmap
