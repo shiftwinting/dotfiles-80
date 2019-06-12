@@ -14,7 +14,7 @@ case $BLOCK_BUTTON in
 - Middle click to update forecast.
 ☔: Chance of rain/snow
 ❄: Daily low
-H: Daily high" ;;
+☀: Daily high" ;;
 esac
 
 if [ "$(stat -c %y "$HOME/.local/share/weatherreport" >/dev/null 2>&1 | awk '{print $1}')" != "$(date '+%Y-%m-%d')" ]

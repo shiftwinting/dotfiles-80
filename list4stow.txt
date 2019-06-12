@@ -15,6 +15,7 @@ mpv
 mypy
 neofetch
 nvim
+pulseaudio
 ranger
 rofi
 rtv
@@ -26,6 +27,7 @@ streamlink
 sway
 sxhkd
 tmux
+transmission
 vim
 xfce4-terminal
 youtube-dl

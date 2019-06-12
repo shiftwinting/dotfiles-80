@@ -16,9 +16,9 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:mono 8
-default_border normal
-hide_edge_borders both
+font pango:mono 0
+default_border pixel 1
+hide_edge_borders smart
 workspace_auto_back_and_forth yes
 
 # Before i3 v4.8, we used to recommend this one as the default:
@@ -165,7 +165,7 @@ set $darkgray #1d2021
 # finds out, if available)
 bar {
         font pango:mono 12
-        position bottom
+        position top
 	status_command KEY=NUM INTERFACE=$(iface.sh) IFACE=$(iface.sh) USE_PERCENT=1 AUDIO_HIGH_SYMBOL='♪' AUDIO_MED_SYMBOL='♪' AUDIO_LOW_SYMBOL='♪' SCRIPT_DIR=~/repos/i3blocks-contrib i3blocks
         colors {
         # bar background color

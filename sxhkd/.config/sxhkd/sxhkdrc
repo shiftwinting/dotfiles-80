@@ -10,6 +10,9 @@ mod4+d
 mod4+a
     rg --files | rofi -dmenu -p home | xargs -r mimeopen -n
 
+mod4+e
+    emoji
+
 XF86Audio{Lower,Raise}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%  && pkill -RTMIN+1 i3blocks
 
