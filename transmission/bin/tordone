@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+notify-send "$TR_TORRENT_NAME download has finished"

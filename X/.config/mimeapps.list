@@ -130,3 +130,5 @@ text/x-python=nvim.desktop;
 image/png=sxiv.desktop;
 text/x-chdr=nvim.desktop;
 text/x-tex=nvim.desktop;
+x-scheme-handler/magnet=torrent.desktop;
+application/x-bittorrent=torrent.desktop;
