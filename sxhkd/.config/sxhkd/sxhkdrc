@@ -66,3 +66,6 @@ mod4+o;{m,a,s,t,r,v}
 
 mod4+g
     ducksearch
+
+mod4+shift+c
+    showclip

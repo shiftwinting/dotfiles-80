@@ -44,6 +44,9 @@ set -xg fish_pager_color_description '555'  'yellow'
 set -xg fish_pager_color_prefix cyan
 set -xg fish_pager_color_progress cyan
 
+if test -f ~/.aliases.sh
+    source ~/.aliases.sh
+end
 theme_gruvbox dark hard
 
 if test "$TERM" = "xterm-kitty"

@@ -21,18 +21,25 @@ if !has('nvim')
     set showcmd		" display incomplete commands
     set ttyfast
     set ttymouse=xterm2
+    if &term =~ '256color'
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://sunaku.github.io/vim-256color-bce.html
+	set t_ut=
+    endif
 else
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python3'
 endif
 
 if has('termguicolors')
-    set termguicolors
     if !has('nvim')
         " set Vim-specific sequences for RGB colors
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     endif
+    set t_Co=256
+    set termguicolors
 endif
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -449,6 +456,7 @@ if has("autocmd")
         autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
         autocmd BufWritePost ~/dotfiles/i3blocks/.config/i3blocks/config !i3-msg restart
         autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
+        autocmd BufWritePost *dunstrc !systemctl --user restart dunst
         autocmd BufWritePost *.Xkeymap !xkbcomp ~/.Xkeymap $DISPLAY
         autocmd BufWritePost *.Xmodmap !xmodmap ~/.Xmodmap
     augroup END

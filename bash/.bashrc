@@ -105,6 +105,9 @@ fi
 
 tput smkx
 
+# When resizing a terminal emulator, Bash may not receive the resize signal. This will cause typed text to not wrap correctly and overlap the prompt. The checkwinsize shell option checks the window size after each command and, if necessary, updates the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 FISHLVL=1
 if [ "$(hostname)" = "garry" ]; then
     FISHLVL=1
