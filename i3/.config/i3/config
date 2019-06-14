@@ -201,5 +201,4 @@ client.urgent           $red $red $white $red $red
 
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
-bindsym --release $mod+z bar mode invisible
-bindsym --release $mod+Shift+z bar mode dock
+bindsym $mod+z bar mode toggle
