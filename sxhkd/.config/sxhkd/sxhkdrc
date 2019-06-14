@@ -47,10 +47,10 @@ mod4+shift+g
     lock.sh
 
 @Print
-    scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
+    scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
 shift+@Print
-    scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots'
+    scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
 mod4+shift+f
     $TERMINAL -e "$FILE_MANAGER"

@@ -4,10 +4,14 @@ set -e
 
 current_wd=$(pwd)
 
-~/dotfiles/scripts/bin/stow_all.sh
-
-mkdir -p ~/Pictures/screenshots
+mkdir -p ~/pics/screenshots
 mkdir -p ~/repos
+mkdir -p ~/.local/bin
+mkdir -p ~/.local/share
+mkdir -p ~/.config
+mkdir -p ~/.vim
+
+~/dotfiles/scripts/bin/stow_all.sh
 cd ~/repos
 
 if [ ! -d 'st' ]; then

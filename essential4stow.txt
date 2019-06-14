@@ -1,0 +1,11 @@
+bash
+fish
+gdb
+git
+mypy
+nvim
+scripts
+sh
+tmux
+vim
+zsh
