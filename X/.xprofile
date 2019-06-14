@@ -13,6 +13,6 @@ numlockx &
 nm-applet &
 # blueman-applet &
 # pasystray > /dev/null 2>&1 &
-feh --bg-center ~/dotfiles/wallpapers/bliss.png &
+feh --bg-center ~/dotfiles/wallpapers/arch.png &
 # shellcheck source=/home/sommerfeld/hostrc.sh
 [ -r ~/hostrc.sh ] && . ~/hostrc.sh &
