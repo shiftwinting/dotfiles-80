@@ -3,13 +3,7 @@
 # for examples
 . ~/.shinit
 
-FISHLVL=1
-if [ "$(hostname)" = "garry" ]; then
-    FISHLVL=1
-elif [ "$(hostname)" = "dev-004p" ]; then
-    FISHLVL=3
-fi
-[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == "$FISHLVL" ] && exec fish
+[ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec fish
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
