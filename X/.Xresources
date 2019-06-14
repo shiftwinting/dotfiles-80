@@ -80,14 +80,14 @@ URxvt*urgentOnBell: false
 *color250: #d5c4a1
 
 ! These are all possible options, presented with default values.
-! xst will fallback to *.option if st.option is not present.
+! st will fallback to *.option if st.option is not present.
 ! see src/config.h for more information about option meanings.
 
 ! These options only take effect on startup.
 st.termname:     st-256color
 ! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
 st.shell:        /bin/sh
-*.font: mono:size=16:antialias=true
+*.font: mono:size=14:antialias=true
 
 st.xfps:              120
 st.actionfps:         30
