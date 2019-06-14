@@ -9,19 +9,9 @@
 #umask 022
 
 # source environment variables
-# shellcheck source=/home/sommerfeld/.env.sh
-[ -f ~/.env.sh ] && . ~/.env.sh
-
 systemctl --user import-environment PATH
+[ -r ~/.env.sh ] && . ~/.env.sh
 
-# if running bash
-# if [ -n "$BASH_VERSION" ]; then
-#     # include .bashrc if it exists
-#     if [ -f "$HOME/.bashrc" ]; then
-#       # shellcheck source=/home/sommerfeld/.bashrc
-# 	. "$HOME/.bashrc"
-#     fi
-# fi
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [ ! "$DISPLAY" -a "$XDG_VTNR" -eq 1 ]; then
   exec startx -- -keeptty
 fi

@@ -1,14 +1,15 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+. ~/.shinit
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) stty -ixon
-        ;;
-      *) return
-          ;;
-esac
+FISHLVL=1
+if [ "$(hostname)" = "garry" ]; then
+    FISHLVL=1
+elif [ "$(hostname)" = "dev-004p" ]; then
+    FISHLVL=3
+fi
+[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == "$FISHLVL" ] && exec fish
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -45,7 +46,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+# force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -74,17 +75,6 @@ xterm*|rxvt*|st*)
     ;;
 esac
 
-# shellcheck source=/home/sommerfeld/.env.sh
-[ -f ~/.env.sh ] && . ~/.env.sh
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.aliases, instead of adding them here directly.
-if [ -f ~/.aliases.sh ]; then
-    # shellcheck source=/home/sommerfeld/.aliases.sh
-    . ~/.aliases.sh
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -97,21 +87,3 @@ if ! shopt -oq posix; then
 fi
 
 shopt -s autocd
-
-if [ "$TERM" = xterm-kitty ]; then
-    # shellcheck source=/dev/null
-    . <(kitty + complete setup bash)
-fi
-
-tput smkx
-
-# When resizing a terminal emulator, Bash may not receive the resize signal. This will cause typed text to not wrap correctly and overlap the prompt. The checkwinsize shell option checks the window size after each command and, if necessary, updates the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-FISHLVL=1
-if [ "$(hostname)" = "garry" ]; then
-    FISHLVL=1
-elif [ "$(hostname)" = "dev-004p" ]; then
-    FISHLVL=3
-fi
-[ -z "$BASH_EXECUTION_STRING" ] && [ "$SHLVL" == "$FISHLVL" ] && exec fish

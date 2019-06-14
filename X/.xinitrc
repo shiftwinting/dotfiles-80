@@ -4,11 +4,6 @@
 #
 # global xinitrc file, used by all X sessions started by xinit (startx)
 
-# shellcheck source=/dev/null
-[ -f ~/.env.sh ] && . ~/.env.sh
-[ -f ~/.Xresources ] && xrdb ~/.Xresources
-[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
-
 systemctl --user import-environment DISPLAY
 dbus-update-activation-environment --systemd DISPLAY
 

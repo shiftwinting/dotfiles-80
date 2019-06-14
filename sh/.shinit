@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) stty -ixon
+        ;;
+      *) return
+          ;;
+esac
+
+# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+PS1="$USER"@"$(hostname)":"$PWD"\$
+export PS1
+
+[ -r ~/.env.sh ] && . ~/.env.sh
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.aliases, instead of adding them here directly.
+if [ -r ~/.aliases.sh ]; then
+    . ~/.aliases.sh
+fi
+
+tput smkx

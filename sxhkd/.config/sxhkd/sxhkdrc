@@ -1,6 +1,9 @@
 mod4+Return
     $TERMINAL
 
+mod4+space
+    $TERMINAL
+
 mod4+m
     rofi -show run
 
@@ -8,7 +11,7 @@ mod4+d
     cd ~/dotfiles && eval $FZF_DEFAULT_COMMAND | rofi -width 90 -dmenu -p dotfiles | xargs -r $VISUAL
 
 mod4+a
-    rg --files | rofi -width 90 -dmenu -p home | xargs -r xdg-open
+    rg --files | rofi -width 90 -dmenu -p home | xargs -r $OPENER
 
 mod4+e
     emoji
