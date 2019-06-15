@@ -53,7 +53,7 @@ shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
 mod4+shift+f
-    $TERMINAL -e "$FILE_MANAGER"
+    $FILE_MANAGER
 
 mod4+w
     $BROWSER
