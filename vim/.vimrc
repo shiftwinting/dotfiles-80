@@ -218,7 +218,7 @@ if s:use_plugins
         Plug 'neoclide/coc-neco'
         Plug 'Shougo/neoinclude.vim'
         Plug 'jsfaint/coc-neoinclude'
-        Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
         Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
         Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
