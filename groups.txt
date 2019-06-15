@@ -1,0 +1,6 @@
+base
+base-devel
+xorg
+xorg-apps
+i3
+texlive-most
