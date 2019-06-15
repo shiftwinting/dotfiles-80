@@ -1,18 +1,25 @@
 #!/usr/bin/env sh
-
 set -e
 
 current_wd=$(pwd)
 
+cat ~/dotfiles/lists/groups.txt | sudo pacman -Syu -
+cat ~/dotfiles/lists/nativepkgs.txt | sudo pacman -Syu -
+
 mkdir -p ~/pics/screenshots
 mkdir -p ~/repos
-mkdir -p ~/.local/bin
-mkdir -p ~/.local/share
-mkdir -p ~/.config
-mkdir -p ~/.vim
 
-~/dotfiles/scripts/bin/stow_all.sh
 cd ~/repos
+
+if [ ! -d 'yay' ]; then
+    git clone https://aur.archlinux.org/yay.git
+    (
+    cd yay || exit
+    makepkg -si
+    )
+fi
+
+yay -Syu - < ~/dotfiles/lists/aurpkgs.txt
 
 if [ ! -d 'st' ]; then
     git clone git@github.com:ruifm/st.git
@@ -36,6 +43,11 @@ if [ ! -d 'surf' ]; then
     )
 fi
 
-cd "$current_wd" || exit
+mkdir -p ~/.local/bin
+mkdir -p ~/.local/share
+mkdir -p ~/.config
+mkdir -p ~/.vim
 
-~/dotfiles/scripts/bin/update_all.sh
+~/dotfiles/scripts/bin/stow_all.sh
+
+cd "$current_wd" || exit
