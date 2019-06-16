@@ -1,17 +1,11 @@
-acestream
 autopep8
 jedi
 matplotlib
-neovim
 neovim-remote
 numpy
 Pillow
-pipe
 Pygments
 pynvim
-rtv
 scipy
-streamlink
-tldr
 mypy
 python-language-server

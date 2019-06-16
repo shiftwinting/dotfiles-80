@@ -21,6 +21,9 @@ fi
 
 yay -Syu - < ~/dotfiles/lists/aurpkgs.txt
 
+gem install neovim
+npm install -g neovim
+
 if [ ! -d 'st' ]; then
     git clone git@github.com:ruifm/st.git
     (

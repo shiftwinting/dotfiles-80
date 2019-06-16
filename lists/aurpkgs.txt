@@ -14,9 +14,12 @@ otf-cm-unicode
 otf-stix
 pam-gnupg-git
 protonmail-bridge
+rtv
 sconsify
 spotify
+subliminal
 systemd-numlockontty
+tldr
 transmission-remote-cli-git
 ttf-computer-modern-fonts
 ttf-inconsolata-g

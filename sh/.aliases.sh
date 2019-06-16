@@ -26,3 +26,4 @@ alias copy="xclip -selection clipboard; xclip -selection clipboard -o"
 
 alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
 alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files'
+alias sub='subliminal download -l en'
