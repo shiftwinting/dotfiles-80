@@ -293,13 +293,78 @@ if s:use_plugins
     let g:cpp_class_decl_highlight = 1
     let g:cpp_experimental_simple_template_highlight = 1
 
+    " Customize fzf colors to match your color scheme
+    let g:fzf_colors =
+    \ { 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
+
+    " Enable per-command history.
+    " CTRL-N and CTRL-P will be automatically bound to next-history and
+    " previous-history instead of down and up. If you don't like the change,
+    " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+    let g:fzf_history_dir = '~/.local/share/fzf-history'
     nnoremap <silent><leader>f :FZF --reverse<CR>
+
+    if has('nvim')
+        function! FzyCommand(choice_command, vim_command) abort
+            let l:callback = {
+                        \ 'window_id': win_getid(),
+                        \ 'filename': tempname(),
+                        \  'vim_command':  a:vim_command
+                        \ }
+
+            function! l:callback.on_exit(job_id, data, event) abort
+                bdelete!
+                call win_gotoid(self.window_id)
+                if filereadable(self.filename)
+                    try
+                        let l:selected_filename = readfile(self.filename)[0]
+                        exec self.vim_command . l:selected_filename
+                    catch /E684/
+                    endtry
+                endif
+                call delete(self.filename)
+            endfunction
+
+            botright 10 new
+            let l:term_command = a:choice_command . ' | fzy > ' .  l:callback.filename
+            silent call termopen(l:term_command, l:callback)
+            setlocal nonumber norelativenumber
+            startinsert
+        endfunction
+    else
+        function! FzyCommand(choice_command, vim_command)
+            try
+                let output = system(a:choice_command . " | fzy ")
+            catch /Vim:Interrupt/
+                " Swallow errors from ^C, allow redraw! below
+            endtry
+            redraw!
+            if v:shell_error == 0 && !empty(output)
+                exec a:vim_command . ' ' . output
+            endif
+        endfunction
+    endif
+
+    nnoremap <silent><leader>e :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":edit")<cr>
+    nnoremap <silent><leader>t :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":tabedit")<cr>
+    nnoremap <silent><leader>h :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":split")<cr>
+    nnoremap <silent><leader>v :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":vsplit")<cr>
 
     cnoreabbrev SW write suda://%
 
     if s:is_ide
-        nnoremap <leader>t :TagbarToggle<CR>
-
         function! s:check_back_space() abort
         let col = col('.') - 1
         return !col || getline('.')[col - 1]  =~# '\s'

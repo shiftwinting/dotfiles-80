@@ -16,6 +16,7 @@ feh
 firefox
 fish
 fzf
+fzy
 git
 gource
 grub
