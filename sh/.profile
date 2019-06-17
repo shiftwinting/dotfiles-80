@@ -15,3 +15,9 @@ systemctl --user import-environment PATH
 if [ ! "$DISPLAY" -a "$XDG_VTNR" -eq 1 ]; then
   exec startx -- -keeptty
 fi
+
+if [ "$SHELL" = "/bin/bash" ]; then
+    . ~/.bashrc
+else
+    . ~/.shinit
+fi
