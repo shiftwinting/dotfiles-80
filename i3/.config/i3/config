@@ -16,7 +16,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:mono 0
+font pango:mono 10
 default_border pixel 1
 hide_edge_borders smart
 workspace_auto_back_and_forth yes
@@ -62,9 +62,6 @@ bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+Tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+x focus parent
@@ -130,16 +127,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 10 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
+        bindsym h resize grow left 1 px or 1 ppt
+        bindsym j resize grow down 10 px or 1 ppt
+        bindsym k resize grow up 1 px or 1 ppt
+        bindsym l resize grow right 1 px or 1 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -202,3 +193,6 @@ client.urgent           $red $red $white $red $red
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 bindsym $mod+z bar mode toggle
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+for_window [class="Surf"] resize set width 250

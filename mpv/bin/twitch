@@ -6,4 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 mpv https://www.twitch.tv/"$streamer" &
-surf https://www.twitch.tv/popout/"$streamer"/chat
+surf https://www.twitch.tv/popout/"$streamer"/chat &
+sleep 8
+i3-msg move left
+i3-msg restart
