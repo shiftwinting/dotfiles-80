@@ -12,12 +12,12 @@
 systemctl --user import-environment PATH
 [ -r ~/.env.sh ] && . ~/.env.sh
 
+if [ ! "$DISPLAY" -a "$XDG_VTNR" = "1" ]; then
+  exec startx -- -keeptty
+fi
+
 if [ -n "$BASH" -a -z "$DISPLAY" ]; then
     . ~/.bashrc
 else
     . ~/.shinit
-fi
-
-if [ ! "$DISPLAY" -a "$XDG_VTNR" = "1" ]; then
-  exec startx -- -keeptty
 fi
