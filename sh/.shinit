@@ -9,9 +9,10 @@ case $- in
 esac
 
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-PS1="$USER"@"$(hostname)":"$PWD"\$
-export PS1
+if [ -z "$BASH" ]; then
+    PS1="$USER"@"$(hostname)":"$PWD"\$
+    export PS1
+fi
 
 [ -r ~/.env.sh ] && . ~/.env.sh
 
