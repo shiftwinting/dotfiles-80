@@ -1,6 +1,6 @@
 let s:use_plugins = 1
 let s:use_crystalline = 1
-let s:is_ide = 0
+let s:is_ide = 1
 
 if !s:use_plugins
     let s:is_ide = 0
