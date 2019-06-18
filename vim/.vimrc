@@ -364,12 +364,13 @@ if s:use_plugins
         endfunction
     endif
 
-    nnoremap <silent><leader>e :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":edit")<cr>
     nnoremap <silent><leader>t :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":tabedit")<cr>
     nnoremap <silent><leader>h :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":split")<cr>
     nnoremap <silent><leader>v :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":vsplit")<cr>
 
-    " cnoreabbrev SW write suda://%
+    if has('nvim')
+        command! SW write suda://%
+    endif
 
     if s:is_ide
         function! s:check_back_space() abort
