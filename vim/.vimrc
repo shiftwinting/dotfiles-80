@@ -513,9 +513,8 @@ if has("autocmd")
 
     augroup ft_detection
         autocmd!
-        autocmd BufNewFile,BufRead ~/.config/i3/config setlocal filetype=i3config
-        autocmd BufNewFile,BufRead ~/.i3/config setlocal filetype=i3config
-        autocmd BufNewFile,BufRead ~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufRead ~/.config/i3/config,~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufRead ~/.config/rofi/config,~/dotfiles/rofi/.config/rofi/config setlocal filetype=xdefaults
         autocmd BufNewFile,BufRead *sxhkrc setlocal filetype=sxhkd
         autocmd BufNewFile,BufRead *.cls setlocal filetype=tex
     augroup END
@@ -541,14 +540,13 @@ if has("autocmd")
         autocmd BufWritePost *.vimrc,*init.vim source $MYVIMRC
         autocmd BufWritePost *.Xresources,*.Xdefaults !xrdb %
         autocmd BufWritePost *config.h !make clean install
-        autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-        autocmd BufWritePost ~/.i3/config !i3-msg reload
-        autocmd BufWritePost ~/dotfiles/i3/.config/i3/config !i3-msg reload
-        autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
-        autocmd BufWritePost ~/dotfiles/i3blocks/.config/i3blocks/config !i3-msg restart
+        autocmd BufWritePost ~/.config/i3/config,~/dotfiles/i3/.config/i3/config !i3-msg reload
+        autocmd BufWritePost ~/.config/i3blocks/config,~/dotfiles/i3blocks/.config/i3blocks/config !i3-msg restart
         autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
         autocmd BufWritePost *dunstrc !systemctl --user restart dunst
         autocmd BufWritePost *.Xkeymap !xkbcomp ~/.Xkeymap $DISPLAY
         autocmd BufWritePost *.Xmodmap !xmodmap ~/.Xmodmap
+        autocmd BufWritePost *user-dirs.dirs !xdg-user-dirs-update
+        autocmd BufWritePost *user-dirs.locale !xdg-user-dirs-update
     augroup END
 endif
