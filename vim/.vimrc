@@ -103,6 +103,11 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
+" Set commentstring globally for all undetected filetypes
+set commentstring=#\ %s
+
+let g:is_posix=1
+
 " Don't use Ex mode, use Q for running macros
 nnoremap Q @q
 
@@ -183,12 +188,12 @@ if s:use_plugins
     call plug#begin('~/.vim/plugged')
     " Using plug
     Plug 'tpope/vim-sensible'
-    Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
+    Plug 'machakann/vim-sandwich'
     Plug 'gruvbox-community/gruvbox'
     if s:use_crystalline
         Plug 'rbong/vim-crystalline'
@@ -435,7 +440,7 @@ if s:use_plugins
         let g:vimtex_compiler_latexmk = {
             \  'callback' : 0,
             \}
-
+        nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
         let g:ale_fixers = {
         \   '*': ['remove_trailing_lines', 'trim_whitespace'],
         \   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'isort', 'yapf',],
@@ -469,6 +474,13 @@ if has("autocmd")
         augroup end
     endif
 
+    augroup commentary
+        autocmd!
+        autocmd FileType cpp setlocal commentstring=//\ %s
+        autocmd FileType cfg setlocal commentstring=#\ %s
+        autocmd FileType xdefaults setlocal commentstring=!\ %s
+    augroup end
+
     augroup writting_autocmd
         autocmd!
         autocmd FileType markdown let &makeprg="pandoc '%' -o '%:r'.pdf"
@@ -479,7 +491,14 @@ if has("autocmd")
 "" Remember cursor position
     augroup vimrc-remember-cursor-position
         autocmd!
-        autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+        " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid, when inside an event handler
+    " (happens when dropping a file on gvim) and for a commit message (it's
+    " likely a different one than last time).
+        autocmd BufReadPost *
+        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \ |   exe "normal! g`\""
+        \ | endif
     augroup END
 
     augroup git
@@ -489,7 +508,6 @@ if has("autocmd")
         autocmd FileType gitcommit setlocal spell
         autocmd FileType gitcommit setlocal complete+=kspell
         autocmd FileType gitcommit match ErrorMsg /\%1l.\%>81v/
-        autocmd FileType gitcommit autocmd! vimrc-remember-cursor-position
         autocmd FileType gitcommit exec 'normal gg' | startinsert!
     augroup END
 
