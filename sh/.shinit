@@ -10,7 +10,8 @@ esac
 
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 if [ -z "$BASH" ]; then
-    PS1="$USER"@"$(hostname)":"$PWD"\$
+    PS1="$USER"@"$(hostname)":"$PWD"\$\
+    # PS1='\u@\h:\w\$ '
     export PS1
 fi
 
