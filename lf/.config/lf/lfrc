@@ -38,6 +38,16 @@ map O $mimeopen --ask $f
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
+        # *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)
+        #     mntdir="$f-archivemount"
+        #     [ ! -d "$mntdir" ] && {
+        #         mkdir "$mntdir"
+        #         archivemount "$f" "$mntdir"
+        #         echo "$mntdir" >> "/tmp/__lf_archivemount_$id"
+        #     }
+        #     lf -remote "send $id cd \"$mntdir\""
+        #     lf -remote "send $id reload"
+        #     ;;
         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
@@ -51,7 +61,7 @@ map r push :rename<space>
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+# cmd trash %set -f; mv $fx ~/.trash
 
 # define a custom 'delete' command
 # cmd delete ${{
@@ -64,7 +74,7 @@ cmd trash %set -f; mv $fx ~/.trash
 
 # use '<delete>' key for either 'trash' or 'delete' command
 # map <delete> trash
-# map <delete> delete
+map D delete
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
@@ -96,4 +106,36 @@ cmd zip ${{
     cp -r $fx $1
     zip -r $1.zip $1
     rm -rf $1
+}}
+
+map f $lf -remote "send $id select '$(fzf)'"
+
+cmd recol &{{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+recol
+
+cmd paste &{{
+    load=$(lf -remote 'load')
+    mode=$(echo "$load" | sed -n '1p')
+    list=$(echo "$load" | sed '1d')
+    if [ $mode = 'copy' ]; then
+        rsync -av --ignore-existing --progress $list . \
+        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
+        | while read line; do
+            lf -remote "send $id echo $line"
+        done
+    elif [ $mode = 'move' ]; then
+        mv -n $list .
+    fi
+    lf -remote 'send load'
+    lf -remote 'send clear'
 }}
