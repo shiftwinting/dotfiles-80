@@ -21,3 +21,7 @@ if [ -n "$BASH" -a -z "$DISPLAY" ]; then
 else
     . ~/.shinit
 fi
+
+if [ "$TERM" = "tmux-256color" ]; then
+    . ~/.bashrc
+fi
