@@ -4,7 +4,9 @@ let s:is_ide = 1
 
 if !s:use_plugins
     let s:is_ide = 0
-    source $HOME/.my-vim-plugs/sensible.vim
+    if filereadable("~/.my-vim-plugs/sensible.vim")
+        source "~/.my-vim-plugs/sensible.vim"
+    endif
 endif
 
 if !has('nvim')
@@ -148,14 +150,6 @@ xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
 nnoremap <leader>s :set spell!
 
-if executable('emoji')
-    function! Write_emoji()
-        return system('emoji')
-    endfunction
-
-    nnoremap <leader>e "=Write_emoji()<CR>P
-endif
-
 "" Copy/Paste/Cut
 " if has('unnamedplus')
 "   set clipboard=unnamed,unnamedplus
@@ -172,6 +166,18 @@ endif
 
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+if filereadable("~/.my-vim-plugs/lf.vim")
+    source "~/.my-vim-plugs/lf.vim"
+endif
+
+if filereadable("~/.my-vim-plugs/emoji.vim")
+    source "~/.my-vim-plugs/emoji.vim"
+endif
+
+if filereadable("~/.my-vim-plugs/fzy.vim")
+    source "~/.my-vim-plugs/fzy.vim"
+endif
 
 if s:use_plugins
     " Add optional packages.
@@ -331,52 +337,6 @@ if s:use_plugins
     let g:fzf_history_dir = '~/.local/share/fzf-history'
     nnoremap <silent><leader>f :FZF --reverse<CR>
 
-    if executable('fzy')
-        if has('nvim')
-            function! FzyCommand(choice_command, vim_command) abort
-                let l:callback = {
-                            \ 'window_id': win_getid(),
-                            \ 'filename': tempname(),
-                            \  'vim_command':  a:vim_command
-                            \ }
-
-                function! l:callback.on_exit(job_id, data, event) abort
-                    bdelete!
-                    call win_gotoid(self.window_id)
-                    if filereadable(self.filename)
-                        try
-                            let l:selected_filename = readfile(self.filename)[0]
-                            exec self.vim_command . l:selected_filename
-                        catch /E684/
-                        endtry
-                    endif
-                    call delete(self.filename)
-                endfunction
-
-                botright 10 new
-                let l:term_command = a:choice_command . ' | fzy > ' .  l:callback.filename
-                silent call termopen(l:term_command, l:callback)
-                setlocal nonumber norelativenumber
-                startinsert
-            endfunction
-        else
-            function! FzyCommand(choice_command, vim_command)
-                try
-                    let output = system(a:choice_command . " | fzy ")
-                catch /Vim:Interrupt/
-                    " Swallow errors from ^C, allow redraw! below
-                endtry
-                redraw!
-                if v:shell_error == 0 && !empty(output)
-                    exec a:vim_command . ' ' . output
-                endif
-            endfunction
-        endif
-
-        nnoremap <silent><leader>t :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":tabedit")<cr>
-        nnoremap <silent><leader>h :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":split")<cr>
-        nnoremap <silent><leader>v :call FzyCommand("rg --files --hidden -g '!.git/*' .", ":vsplit")<cr>
-    endif
 
     if has('nvim')
         command! SW write suda://%
