@@ -379,6 +379,8 @@ if s:use_plugins
         command! SW write suda://%
     endif
 
+    let g:pandoc#syntax#conceal#use = 0
+
     if s:is_ide
         function! s:check_back_space() abort
         let col = col('.') - 1
@@ -515,10 +517,11 @@ if has("autocmd")
 
     augroup ft_detection
         autocmd!
-        autocmd BufNewFile,BufRead ~/.config/i3/config,~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
-        autocmd BufNewFile,BufRead ~/.config/rofi/config,~/dotfiles/rofi/.config/rofi/config setlocal filetype=xdefaults
-        autocmd BufNewFile,BufRead *sxhkrc setlocal filetype=sxhkd
-        autocmd BufNewFile,BufRead *.cls setlocal filetype=tex
+        autocmd BufNewFile,BufFilePre,BufRead ~/.config/i3/config,~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufFilePre,BufRead ~/.config/rofi/config,~/dotfiles/rofi/.config/rofi/config setlocal filetype=xdefaults
+        autocmd BufNewFile,BufFilePre,BufRead *sxhkrc setlocal filetype=sxhkd
+        autocmd BufNewFile,BufFilePre,BufRead *.cls setlocal filetype=tex
+        autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
     augroup END
 
     augroup no_autoformat
