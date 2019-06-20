@@ -148,11 +148,13 @@ xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
 nnoremap <leader>s :set spell!
 
-function! Write_emoji()
-    return system('emoji')
-endfunction
+if executable('emoji')
+    function! Write_emoji()
+        return system('emoji')
+    endfunction
 
-nnoremap <leader>e "=Write_emoji()<CR>P
+    nnoremap <leader>e "=Write_emoji()<CR>P
+endif
 
 "" Copy/Paste/Cut
 " if has('unnamedplus')
@@ -206,6 +208,7 @@ if s:use_plugins
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'pboettch/vim-cmake-syntax'
+    Plug 'tmux-plugins/vim-tmux'
     Plug 'luochen1990/rainbow'
     Plug 'michaeljsmith/vim-indent-object'
     if has('nvim')
@@ -517,11 +520,11 @@ if has("autocmd")
 
     augroup ft_detection
         autocmd!
-        autocmd BufNewFile,BufFilePre,BufRead ~/.config/i3/config,~/dotfiles/i3/.config/i3/config setlocal filetype=i3config
-        autocmd BufNewFile,BufFilePre,BufRead ~/.config/rofi/config,~/dotfiles/rofi/.config/rofi/config setlocal filetype=xdefaults
+        autocmd BufNewFile,BufFilePre,BufRead */i3/config setlocal filetype=i3config
+        autocmd BufNewFile,BufFilePre,BufRead */rofi/config setlocal filetype=xdefaults
         autocmd BufNewFile,BufFilePre,BufRead *sxhkrc setlocal filetype=sxhkd
         autocmd BufNewFile,BufFilePre,BufRead *.cls setlocal filetype=tex
-        autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+        autocmd BufNewFile,BufFilePre,BufRead *.md,rtv_* setlocal filetype=markdown.pandoc
     augroup END
 
     augroup no_autoformat
@@ -545,13 +548,13 @@ if has("autocmd")
         autocmd BufWritePost *.vimrc,*init.vim source $MYVIMRC
         autocmd BufWritePost *.Xresources,*.Xdefaults !xrdb %
         autocmd BufWritePost *config.h !make clean install
-        autocmd BufWritePost ~/.config/i3/config,~/dotfiles/i3/.config/i3/config !i3-msg reload
-        autocmd BufWritePost ~/.config/i3blocks/config,~/dotfiles/i3blocks/.config/i3blocks/config !i3-msg restart
+        autocmd BufWritePost */i3/config !i3-msg reload
+        autocmd BufWritePost */i3blocks/config !i3-msg restart
         autocmd BufWritePost *sxhkdrc !pkill -SIGUSR1 sxhkd
         autocmd BufWritePost *dunstrc !systemctl --user restart dunst
         autocmd BufWritePost *.Xkeymap !xkbcomp ~/.Xkeymap $DISPLAY
         autocmd BufWritePost *.Xmodmap !xmodmap ~/.Xmodmap
-        autocmd BufWritePost *user-dirs.dirs !xdg-user-dirs-update
-        autocmd BufWritePost *user-dirs.locale !xdg-user-dirs-update
+        autocmd BufWritePost *user-dirs.dirs,*user-dirs.locale !xdg-user-dirs-update
+        autocmd BufWritePost *.tmux.conf make
     augroup END
 endif
