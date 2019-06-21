@@ -1,3 +1,4 @@
 set selection-clipboard clipboard
 set synctex-editor-command 'nvim --remote-silent +%l "%f"'
 set incremental-search true
+set smooth-scroll true

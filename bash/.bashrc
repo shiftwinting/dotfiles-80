@@ -39,3 +39,5 @@ if ! shopt -oq posix; then
 fi
 
 shopt -s autocd
+
+bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'

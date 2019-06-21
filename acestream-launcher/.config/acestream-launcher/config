@@ -1,15 +1,11 @@
 [DEFAULT]
 player = mpv --no-resume-playback
-verbose = false
-engine = acestreamplayer.engine --client-console
+verbose = true
+timeout = 60
 
 [tty]
-player = mpv --no-resume-playback
-verbose = true
-engine = acestreamplayer.engine --client-console
+engine = acestreamengine --client-console
 
 [browser]
-player = mpv --no-resume-playback
-engine = acestreamplayer.engine --client-gtk
+engine = acestreamplayerengine --client-gtk
 verbose = false
-
