@@ -108,6 +108,8 @@ set shortmess+=c
 " Set commentstring globally for all undetected filetypes
 set commentstring=#\ %s
 
+set gdefault
+
 let g:is_posix=1
 
 " Don't use Ex mode, use Q for running macros
