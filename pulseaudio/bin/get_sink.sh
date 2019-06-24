@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-SINK=$(pactl list sinks short | grep RUNNING | cut -f 1)
-
-[ -n "$SINK" ] && echo "$SINK" || echo 0
+pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' | head -n 1 || echo 0

@@ -1,31 +1,12 @@
 #!/usr/bin/env sh
 
-VOL=$(pactl list sinks | grep RUNNING -A 8 | grep Volume | cut -d " " -f 6)
+SINK=$(get_sink.sh)
+NOW=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $((SINK + 1)) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+IS_MUTED=$(pactl list sinks | awk '/Mute/ { print $2 }' | head -n $((SINK + 1)) | tail -n 1)
 
-default_vol() {
-    pactl list sinks | grep "Sink #0" -A 9 | grep Volume | cut -d " " -f 6
-}
-
-is_muted_default() {
-    pactl list sinks | grep "Sink #0" -A 8 | grep Mute | cut -d " " -f 2
-}
-
-is_muted() {
-    pactl list sinks | grep RUNNING -A 7 | grep Mute | cut -d " " -f 2
-}
-
-if [ -n "$VOL" ]; then
-    p_is_muted=$(is_muted)
-    if [ "$p_is_muted" = "yes" ]; then
-        echo "MUTED"
-    else
-        echo "$VOL"
-    fi
-else
-    p_is_muted=$(is_muted_default)
-    if [ "$p_is_muted" = "yes" ]; then
-        echo "MUTED"
-    else
-        default_vol
-    fi
+LABEL="🔊"
+if [ "$IS_MUTED" = "yes" ]; then
+    LABEL="🔇"
 fi
+
+printf "%s%s" "$LABEL" "$NOW"

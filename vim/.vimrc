@@ -4,9 +4,7 @@ let s:is_ide = 1
 
 if !s:use_plugins
     let s:is_ide = 0
-    if filereadable("~/.my-vim-plugs/sensible.vim")
-        source "~/.my-vim-plugs/sensible.vim"
-    endif
+    source ~/.my-vim-plugs/sensible.vim
 endif
 
 if !has('nvim')
@@ -108,6 +106,8 @@ set shortmess+=c
 " Set commentstring globally for all undetected filetypes
 set commentstring=#\ %s
 
+set gdefault
+
 let g:is_posix=1
 
 " Don't use Ex mode, use Q for running macros
@@ -167,17 +167,9 @@ endif
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-if filereadable("~/.my-vim-plugs/lf.vim")
-    source "~/.my-vim-plugs/lf.vim"
-endif
-
-if filereadable("~/.my-vim-plugs/emoji.vim")
-    source "~/.my-vim-plugs/emoji.vim"
-endif
-
-if filereadable("~/.my-vim-plugs/fzy.vim")
-    source "~/.my-vim-plugs/fzy.vim"
-endif
+source ~/.my-vim-plugs/lf.vim
+source ~/.my-vim-plugs/emoji.vim
+source ~/.my-vim-plugs/fzy.vim
 
 if s:use_plugins
     " Add optional packages.

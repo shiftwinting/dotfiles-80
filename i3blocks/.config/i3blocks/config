@@ -44,28 +44,27 @@ command=mailbox
 label=📬
 interval=180
 signal=12
-# Generic media player support
-#
-# This displays "ARTIST - SONG" if a music is playing.
-# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-[mediaplayer]
-instance=spotify
+## Generic media player support
+##
+## This displays "ARTIST - SONG" if a music is playing.
+## Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+#[mediaplayer]
+#instance=spotify
+#interval=5
+#signal=10
+#separator=false
+
+[mediainfo]
+command=dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" mediactl info
 interval=5
 signal=10
+label=♪
 separator=false
-
-[sconsify]
-command=[ -f /tmp/sconsify-track ] && cat /tmp/sconsify-track
-interval=20
-signal=10
-separator=false
-
 
 [volume-active-sink]
 command=get_volume.sh
 signal=10
 interval=once
-label=♪
 separator=true
 
 # [volume-pulseaudio]

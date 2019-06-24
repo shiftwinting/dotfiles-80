@@ -9,10 +9,18 @@ if [ "$(playerctl status 2>&1)" = "No players found" ]; then
             ;;
         "next") $command next
             ;;
+        "info") [ -r /tmp/sconsify-track ] && cat /tmp/sconsify-track
+            ;;
         *) $command pause
             ;;
     esac
 else
-    playerctl "$@"
+    case "$1" in
+        "info")
+            printf "%s - %s" "$(playerctl metadata title 2>&1)" "$(playerctl metadata artist 2>&1)"
+            ;;
+        *) playerctl "$@"
+            ;;
+    esac
 fi
 pkill -RTMIN+10 i3blocks
