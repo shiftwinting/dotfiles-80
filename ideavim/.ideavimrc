@@ -37,6 +37,9 @@ set smartjoin
 set visualbell
 set wrapscan
 
+set surround
+set commentary
+
 inoremap <C-U> <C-G>u<C-U>
 " Don't use Ex mode, use Q for running macros
 nnoremap Q @q
