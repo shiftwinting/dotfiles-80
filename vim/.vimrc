@@ -10,8 +10,6 @@ endif
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 
-runtime! plugin/*.vim
-
 if g:use_plugins
     " Add optional packages.
     "
