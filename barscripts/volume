@@ -9,4 +9,18 @@ if [ "$IS_MUTED" = "yes" ]; then
     LABEL="🔇"
 fi
 
-printf "%s%s" "$LABEL" "$NOW"
+if [ "$NOW" -ge 75 ]; then
+	color="#ffffff"
+elif [ "$NOW" -ge 50 ]; then
+	color="#00ff00"
+elif [ "$NOW" -ge 25 ]; then
+	color="#ffff00"
+else
+	color="#ffa500"
+fi
+
+if [ "$IS_MUTED" = "yes" ]; then
+    color="#ff0000"
+fi
+
+printf "<span color='%s'>%s%s</span>" "$color" "$LABEL" "$NOW"

@@ -11,18 +11,19 @@ case $BLOCK_BUTTON in
 - Text color reflects charge left" ;;
 esac
 
-capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
-status=$(cat /sys/class/power_supply/"$1"/status)
+capacity=$(cat /sys/class/power_supply/BAT0/capacity) || exit
+status=$(cat /sys/class/power_supply/BAT0/status)
 
 if [ "$capacity" -ge 75 ]; then
 	color="#00ff00"
 elif [ "$capacity" -ge 50 ]; then
-	color="#ffffff"
-elif [ "$capacity" -ge 25 ]; then
 	color="#ffff00"
+elif [ "$capacity" -ge 25 ]; then
+	color="#ffa500"
 else
 	color="#ff0000"
 	warn="❗"
+        notify-send -u critical "Battery critically low"
 fi
 
 [ -z $warn ] && warn=" "

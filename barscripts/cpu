@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+usage=$(mpstat 1 1 | awk '/Average/ {print $3}' | cut -d "," -f 1)
+LABEL="💻"
+
+if [ "$usage" -ge 75 ]; then
+	color="#ff0000"
+elif [ "$usage" -ge 50 ]; then
+	color="#ffa500"
+elif [ "$usage" -ge 25 ]; then
+	color="#ffff00"
+else
+	color="#00ff00"
+fi
+
+printf "<span color='%s'>%s%s%%</span>" "$color" "$LABEL" "$usage"

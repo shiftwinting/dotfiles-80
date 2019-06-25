@@ -25,34 +25,22 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
-command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
+command=~/dotfiles/barscripts/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
 [torrent]
-command=torrent
 interval=20
 signal=7
 
 [weather]
-command=weather
 interval=18000
 signal=5
 
 [mailbox]
-command=mailbox
 label=📬
 interval=180
 signal=12
-## Generic media player support
-##
-## This displays "ARTIST - SONG" if a music is playing.
-## Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-#[mediaplayer]
-#instance=spotify
-#interval=5
-#signal=10
-#separator=false
 
 [mediainfo]
 command=dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" mediactl info
@@ -61,188 +49,67 @@ signal=10
 label=♪
 separator=false
 
-[volume-active-sink]
-command=get_volume.sh
-signal=10
+[volume]
+signal=1
 interval=once
 separator=true
-
-# [volume-pulseaudio]
-# interval=once
-# signal=1
-# separator=true
-#MIXER=[determined automatically]
-#SCONTROL=[determined automatically]
-##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
-#LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
-#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
-#AUDIO_HIGH_SYMBOL='  '
-#AUDIO_MED_THRESH=50
-#AUDIO_MED_SYMBOL='  '
-#AUDIO_LOW_THRESH=0
-#AUDIO_LOW_SYMBOL='  '
-#AUDIO_DELTA=5
-#DEFAULT_COLOR="#ffffff"
-#MUTED_COLOR="#a0a0a0"
-#USE_ALSA_NAME=0
-#USE_DESCRIPTION=0
-## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
-#SUBSCRIBE=0
-
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-
-#[volume]
-#label=♪
-##label=VOL
-#interval=once
-#signal=10
-##STEP=5%
-#separator=true
+markup=pango
 
 [brightness]
-command=printf "%.0f" $(light -G)
-label=☀️
-interval=10
-signal=10
+interval=once
+signal=2
+markup=pango
 
-# Memory usage
-#
-# The type defaults to "mem" if the instance is not specified.
 [memory]
-command=memory
-# label=MEM
 separator=false
 interval=30
+markup=pango
 
-# [memory]
-# label=SWAP
-# instance=swap
-# separator=false
-# interval=30
-
-# Disk usage
-#
-# The directory defaults to $HOME if the instance is not specified.
-# The script may be called with a optional argument to set the alert
-# (defaults to 10 for 10%).
-#[disk]
-#label=HOME
-##DIR=/mnt/data
-#interval=30
-#separator=false
-
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-# label=CPU
-interval=10
-# min_width=CPU 100.00%
+[cpu]
+interval=30
 separator=false
+markup=pango
 
-#[load_average]
-#label=LOAD
-#interval=10
-#separator=false
-
-#[disk-io]
-## command=$SCRIPT_DIR/disk-io
-##command=$SCRIPT_DIR/disk-io -w 3 -M -P 0
-#interval=persist
-#markup=pango
-#separator=true
-## LABEL=
-##instance=/^sda/
-##DT=5
-##MB_ONLY=0 #0 or 1
-##KB_ONLY=0 #0 or 1
-##WIDTH=4
-##MB_PRECISION=1
-##KB_PRECISION=0
-##REGEX=/^(s|h)d[a-zA-Z]+/
-##THRESHOLD=0
-##WARN_COLOR="#FF0000"
-##SEPARATOR=/
-##PREFIX=
-##SUFFIX="B/s"
-
-#[gpu-load]
-#label=GPU
-#interval=10
-#separator=false
-##min_width=GPU 100% 100% 100% 100%
-## T_WARN=70
-## T_CRIT=90
-
-# Temperature
-#
-# Support multiple chips, though lm-sensors.
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[temperature]
-# label=TEMP
+[temp]
 interval=10
 separator=false
+markup=pango
 
-# Battery indicator
-#
-# The battery instance defaults to 0.
 [battery]
-# label=BAT
-label=⚡
 interval=30
 separator=true
+markup=pango
 
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
+command=~/repos/i3blocks-contrib/iface/iface
 #IFACE=wlan0
 color=#00FF00
 interval=10
 separator=false
 
-[wlan-dbm]
-#IFACE=wlan0
-#USE_PERCENT=0
-separator=false
-
 [wifi]
+command=~/repos/i3blocks-contrib/wifi/wifi
 #INTERFACE=wlp3s0
 label=wifi:
 interval=10
 separator=false
 
-[bandwidth]
-#INTERFACE=eth0
-interval=5
-separator=false
-
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-# [openvpn]
-# interval=20
-# separator=false
-
 [nm-vpn]
+command=~/repos/i3blocks-contrib/nm-vpn/nm-vpn
 label=VPN:
 interval=5
 separator=false
 
 [essid]
+command=~/repos/i3blocks-contrib/essid/essid
 interval=60
 #INTERFACE=wlo1
 separator=false
 
 [public-ip]
 command=curl ipecho.net/plain; echo
+color=#00ff00
+label=🌍
 interval=300
 separator=true
 
@@ -252,38 +119,12 @@ separator=true
 # separator=false
 
 [keyindicator]
+command=KEY=NUM ~/repos/i3blocks-contrib/keyindicator/keyindicator
 # KEY=NUM
 markup=pango
 interval=once
 signal=11
 separator=true
 
-# Date Time
-#
-[time]
-command=clock
+[clock]
 interval=5
-
-# [rofi-calendar]
-# interval=3600
-# label=CAL
-#DATEFTM=+%a. %d. %b. %Y
-#SHORTFTM=+%d.%m.%Y
-
-# [shutdown_menu]
-# full_text=Quit
-# If you are using FontAwesome, we recommend the power-off icon:
-# http://fontawesome.io/icon/power-off/
-#FG_COLOR=#bbbbbb
-#BG_COLOR=#111111
-#HLFG_COLOR=#111111
-#HLBG_COLOR=#bbbbbb
-#BORDER_COLOR=#222222
-#ROFI_TEXT=Menu:
-#ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
-#ZENITY_TITLE=Menu
-#ZENITY_TEXT=Action:
-#ZENITY_OPTIONS=--column= --hide-header
-#ENABLE_CONFIRMATIONS=true (must be true or false)
-#LAUNCHER=rofi (must be rofi or zenity)
-#LOCKSCRIPT=i3lock --color=${BG_COLOR#"#"}

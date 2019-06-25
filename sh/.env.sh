@@ -14,6 +14,8 @@ else
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
     export MANPATH
 
+    IFACE=$(iface.sh) && export IFACE
+    export INTERFACE="$IFACE"
     [ -r "$HOME"/.sconsify/.cred ] && SCONSIFY_PASSWORD=$(cat "$HOME"/.sconsify/.cred) && export SCONSIFY_PASSWORD
 
     export ENV_SOURCED=yes

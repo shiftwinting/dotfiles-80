@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+brightness=$(printf "%.0f" "$(light -G)")
+
+if [ "$brightness" -ge 75 ]; then
+	color="#00ff00"
+elif [ "$brightness" -ge 50 ]; then
+	color="#ffff00"
+elif [ "$brightness" -ge 25 ]; then
+	color="#ffa500"
+else
+	color="#ff0000"
+fi
+
+LABEL="☀️"
+
+printf "<span color='%s'>%s%s</span>" "$color" "$LABEL" "$brightness"
