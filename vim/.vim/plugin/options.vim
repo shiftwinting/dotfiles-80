@@ -85,7 +85,7 @@ set linebreak    "Wrap lines at convenient points
 set textwidth=79
 
 set spelllang=en
-set spellfile=$HOME/.spell/en.utf-8.add
+set spellfile=$HOME/.vim/spell/en.utf-8.add
 
 " Better display for messages
 set cmdheight=2
