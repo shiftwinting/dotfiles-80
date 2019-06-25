@@ -2,11 +2,10 @@
 " Maintainer:   Tim Pope <http://tpo.pe/>
 " Version:      1.2
 
-if exists('g:loaded_sensible') || &compatible
+if g:use_plugins || exists('g:loaded_my_sensible') || &compatible
   finish
-else
-  let g:loaded_sensible = 'yes'
 endif
+let g:loaded_my_sensible = 1
 
 if has('autocmd')
   filetype plugin indent on
