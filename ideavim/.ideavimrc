@@ -31,8 +31,11 @@ set ignorecase smartcase
 
 let g:is_posix=1
 
-set diagraph
 set gdefault
+
+set iskeyword-=_
+
+set diagraph
 set smartjoin
 set visualbell
 set wrapscan

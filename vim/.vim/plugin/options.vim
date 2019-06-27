@@ -101,6 +101,8 @@ set commentstring=#\ %s
 
 set gdefault
 
+set iskeyword-=_
+
 let g:is_posix=1
 
 " highlight merge conflict markers
