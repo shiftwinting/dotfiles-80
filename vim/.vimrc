@@ -32,6 +32,7 @@ if g:use_plugins
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-scriptease'
     Plug 'machakann/vim-sandwich'
     Plug 'gruvbox-community/gruvbox'
     if g:use_crystalline
