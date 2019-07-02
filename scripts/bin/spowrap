@@ -1,3 +1,11 @@
 #!/usr/bin/env sh
+set -e
 
-dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
+i3-msg workspace 10
+dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify &
+i3-msg split v
+$TERMINAL -e cava &
+
+sleep 3
+
+i3-msg move up

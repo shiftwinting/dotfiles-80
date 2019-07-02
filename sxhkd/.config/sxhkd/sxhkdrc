@@ -62,7 +62,7 @@ mod4+p
     $TERMINAL -e python3 -i -c 'from numpy import *'
 
 mod4+shift+p
-    dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify
+    spowrap
 
 mod4+o;{m,a,s,t,r,v}
     {launch_sconsify.sh,ace,stream,twitch,$TERMINAL -e rtv,tv}
