@@ -1,21 +1,26 @@
-#! /bin/sh
-# enable color support of ls and also add handy aliases
+#!/usr/bin/env sh
+
 alias ls='ls --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto'
+alias ll='ls -lhG'
+alias la='ls -AlhG'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 # alias diff='diff --color=auto'
 
-# some more ls aliases
-alias ll='ls -lhG'
-alias la='ll -A'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias gs='git status'
+alias gc='git commit'
+alias gpull='git pull'
+alias gpush='git push'
+alias gd='git diff'
+alias glog='git log'
+alias gl='git log--oneline --decorate --all --graph'
+alias ga='git add'
+alias gca='git commit -a'
+alias gsub='git submodule'
+alias gsubf='git submodule foreach'
+alias gr='git remote'
 
 alias ipecho='curl ipecho.net/plain; echo'
 alias nv-settings='optirun -b none nvidia-settings -c :8'
