@@ -56,6 +56,8 @@ if g:use_plugins
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
+    Plug 'arzg/vim-sh'
+    Plug 'sickill/vim-pasta'
     Plug 'dag/vim-fish'
     if g:is_ide
         Plug 'majutsushi/tagbar'
