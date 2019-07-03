@@ -72,6 +72,7 @@ if g:use_plugins
         Plug 'Shougo/neoinclude.vim'
         Plug 'jsfaint/coc-neoinclude'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     endif
     " Initialize plugin system
     call plug#end()
