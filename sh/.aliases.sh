@@ -30,6 +30,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias mkdir='mkdir -p'
 alias du='du -h'
+alias df='df -h'
 
 alias ipecho='curl ipecho.net/plain; echo'
 alias nv-settings='optirun -b none nvidia-settings -c :8'
