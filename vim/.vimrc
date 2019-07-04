@@ -28,6 +28,8 @@ if g:use_plugins
     " Using plug
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
+    Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
@@ -42,7 +44,6 @@ if g:use_plugins
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'pboettch/vim-cmake-syntax'
@@ -64,7 +65,6 @@ if g:use_plugins
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'w0rp/ale'
         Plug 'honza/vim-snippets'
-        Plug 'vim-pandoc/vim-pandoc'
         Plug 'lervag/vimtex'
         Plug 'sbdchd/neoformat'
         Plug 'Shougo/neco-vim'

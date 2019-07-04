@@ -24,9 +24,6 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -37,6 +34,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1="\[\033[38;5;184m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;78m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;190m\]\w\[$(tput sgr0)\]$(__git_ps1 " (%s)")\[\033[38;5;15m\][\$?]\\$ \[$(tput sgr0)\]"
 
 shopt -s autocd
 
