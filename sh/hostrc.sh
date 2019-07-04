@@ -9,5 +9,5 @@ elif [ "$(hostname)" = "dev-004p" ]; then
     synclient VertScrollDelta=-77
     synclient HorizScrollDelta=-77
     synclient PalmDetect=1
-    [ -f "$HOME"/adas/helpers/mount.sh ] && "$HOME"/adas/helpers/mount.sh rui.ferreira &
+    # [ -f "$HOME"/adas/helpers/mount.sh ] && "$HOME"/adas/helpers/mount.sh rui.ferreira &
 fi
