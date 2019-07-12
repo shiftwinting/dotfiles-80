@@ -73,6 +73,7 @@ if g:use_plugins
         Plug 'jsfaint/coc-neoinclude'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+        Plug 'Konfekt/vim-sentence-chopper'
     endif
     " Initialize plugin system
     call plug#end()

@@ -133,4 +133,5 @@ let g:coc_global_extensions= [
     \'coc-json',
     \'coc-vimtex',
     \'coc-prettier',
+    \'coc-github',
 \]
