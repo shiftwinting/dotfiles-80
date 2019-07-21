@@ -11,8 +11,6 @@ let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 
 if g:use_plugins
-    " Add optional packages.
-    "
     if empty(glob('~/.vim/autoload/plug.vim'))
         if !executable("curl")
             echoerr "You have to install curl or first install vim-plug yourself!"
@@ -35,6 +33,7 @@ if g:use_plugins
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-scriptease'
+    Plug 'tpope/vim-unimpaired'
     Plug 'machakann/vim-sandwich'
     Plug 'gruvbox-community/gruvbox'
     if g:use_crystalline
@@ -60,8 +59,8 @@ if g:use_plugins
     Plug 'arzg/vim-sh'
     Plug 'sickill/vim-pasta'
     Plug 'dag/vim-fish'
+    Plug 'majutsushi/tagbar'
     if g:is_ide
-        Plug 'majutsushi/tagbar'
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'w0rp/ale'
         Plug 'honza/vim-snippets'

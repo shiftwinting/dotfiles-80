@@ -4,6 +4,9 @@
 #
 # global xinitrc file, used by all X sessions started by xinit (startx)
 
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
 systemctl --user import-environment DISPLAY
 dbus-update-activation-environment --systemd DISPLAY
 

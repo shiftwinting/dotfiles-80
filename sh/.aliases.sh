@@ -33,7 +33,6 @@ alias du='du -h'
 alias df='df -h'
 
 alias ipecho='curl ipecho.net/plain; echo'
-alias nv-settings='optirun -b none nvidia-settings -c :8'
 alias pr="vblank_mode=0 primusrun"
 alias ccat='pygmentize'
 alias copy="xclip -selection clipboard; xclip -selection clipboard -o"
