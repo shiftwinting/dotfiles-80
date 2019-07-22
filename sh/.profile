@@ -12,11 +12,15 @@
 systemctl --user import-environment PATH
 [ -r ~/.env.sh ] && . ~/.env.sh
 
-if [ ! "$DISPLAY" -a "$XDG_VTNR" = "1" ]; then
-  exec startx -- -keeptty
+if [ ! "$DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
+    if [ "$(hostname)" = "garry" ]; then
+        exec nvidia-xrun ~/.xinitrc
+    else
+        exec startx -- -keeptty
+    fi
 fi
 
-if [ -n "$BASH" -a -z "$DISPLAY" ]; then
+if [ -n "$BASH" ] && [ -z "$DISPLAY" ]; then
     . ~/.bashrc
 else
     . ~/.shinit

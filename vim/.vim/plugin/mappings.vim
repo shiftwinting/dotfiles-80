@@ -30,7 +30,7 @@ nnoremap <leader>O O<esc>k
 
 nnoremap <leader>go i<CR><esc>k
 
-nnoremap <silent><CR> :<C-U>nohlsearch<CR><CR>
+" nnoremap <silent><CR> :<C-U>nohlsearch<CR><CR>
 
 " This extends p in visual mode (note the noremap), so that if you paste from
 " the unnamed (ie. default) register, that register content is not replaced by

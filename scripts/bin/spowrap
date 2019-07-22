@@ -2,7 +2,11 @@
 set -e
 
 i3-msg workspace 10
-dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify &
+if [ "$(hostname)" = "dev-004" ]; then
+    dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify &
+else
+    spotify &
+fi
 i3-msg split v
 $TERMINAL -e cava &
 

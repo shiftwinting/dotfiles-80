@@ -25,9 +25,6 @@ if g:use_plugins
     call plug#begin('~/.vim/plugged')
     " Using plug
     Plug 'tpope/vim-sensible'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
-    Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
@@ -35,6 +32,7 @@ if g:use_plugins
     Plug 'tpope/vim-scriptease'
     Plug 'tpope/vim-unimpaired'
     Plug 'machakann/vim-sandwich'
+    Plug 'romainl/vim-cool'
     Plug 'gruvbox-community/gruvbox'
     if g:use_crystalline
         Plug 'rbong/vim-crystalline'
@@ -43,21 +41,17 @@ if g:use_plugins
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
     Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'luochen1990/rainbow'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
-    Plug 'luochen1990/rainbow'
     Plug 'michaeljsmith/vim-indent-object'
     if has('nvim')
-        Plug 'bfredl/nvim-miniyank'
         Plug 'lambdalisue/suda.vim'
     endif
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
-    Plug 'arzg/vim-sh'
-    Plug 'sickill/vim-pasta'
     Plug 'dag/vim-fish'
     Plug 'majutsushi/tagbar'
     if g:is_ide

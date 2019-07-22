@@ -35,10 +35,6 @@ if has('termguicolors')
     " set t_Co=256
     set termguicolors
 endif
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-    set mouse=a
-endif
 
 " poor mans version control
 set writebackup
