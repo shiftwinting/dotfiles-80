@@ -16,7 +16,7 @@
         cmd = nvim -d $LOCAL $REMOTE
         trustExitCode = true
 [merge]
-        tool = nfugitive
+        tool = nvimdiff4
             # if not using a tool name with builtin support, must supply mergetool cmd
                 # as below
 [mergetool "nvimdiff4"]
