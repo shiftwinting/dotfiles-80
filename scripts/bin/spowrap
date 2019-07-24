@@ -2,7 +2,7 @@
 set -e
 
 i3-msg workspace 10
-if [ "$(hostname)" = "dev-004" ]; then
+if [ "$(hostname)" = "dev-004p" ]; then
     dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify &
 else
     spotify &

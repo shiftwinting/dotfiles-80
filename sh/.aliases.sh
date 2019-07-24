@@ -23,6 +23,7 @@ alias gr='git remote'
 alias gdiff='git difftool'
 alias gmerge='git mergetool'
 
+alias please='sudo !!'
 alias rtfm='man'
 alias gimme='sudo chown $USER:$USER'
 alias free='free -h'

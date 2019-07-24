@@ -57,7 +57,7 @@ if g:use_plugins
     set colorcolumn=80
 endif
 set lazyredraw
-set synmaxcol=300
+set synmaxcol=200
 if has('signcolumn')
     " Always draw the signcolumn.
     set signcolumn=yes
