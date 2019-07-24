@@ -1,4 +1,5 @@
 bash
+cava
 fish
 gdb
 git

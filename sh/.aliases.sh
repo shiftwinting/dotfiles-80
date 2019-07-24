@@ -23,6 +23,7 @@ alias gr='git remote'
 alias gdiff='git difftool'
 alias gmerge='git mergetool'
 
+alias please='sudo !!'
 alias rtfm='man'
 alias gimme='sudo chown $USER:$USER'
 alias free='free -h'
@@ -33,7 +34,6 @@ alias du='du -h'
 alias df='df -h'
 
 alias ipecho='curl ipecho.net/plain; echo'
-alias pr="vblank_mode=0 primusrun"
 alias ccat='pygmentize'
 alias copy="xclip -selection clipboard; xclip -selection clipboard -o"
 
