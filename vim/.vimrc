@@ -57,7 +57,7 @@ if g:use_plugins
     Plug 'majutsushi/tagbar'
     if g:is_ide
         Plug 'ludovicchabant/vim-gutentags'
-        Plug 'w0rp/ale'
+        Plug 'dense-analysis/ale'
         Plug 'honza/vim-snippets'
         Plug 'lervag/vimtex'
         Plug 'sbdchd/neoformat'
