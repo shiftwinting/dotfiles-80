@@ -2,10 +2,11 @@
 " Maintainer:   Tim Pope <http://tpo.pe/>
 " Version:      1.2
 
-if g:use_plugins || exists('g:loaded_my_sensible') || &compatible
+if exists('g:loaded_sensible') || &compatible
   finish
+else
+  let g:loaded_sensible = 'yes'
 endif
-let g:loaded_my_sensible = 1
 
 if has('autocmd')
   filetype plugin indent on
@@ -89,6 +90,11 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
 
-inoremap <C-U> <C-G>u<C-U>
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
 
 " vim:set ft=vim et sw=2:
