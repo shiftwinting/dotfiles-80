@@ -26,3 +26,5 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 nnoremap <silent><leader>f :FZF --reverse<CR>
 nnoremap <silent><leader>b :Buffers<CR>
+nnoremap <silent><leader>r :Rg<CR>
+nnoremap <silent><leader>t :Tags<CR>
