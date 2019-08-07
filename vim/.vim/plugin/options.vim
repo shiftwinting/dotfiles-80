@@ -42,7 +42,9 @@ set hidden
 set undodir=~/.vim/.undo
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.swap
-set undofile
+if has('persistent_undo')
+    set undofile
+endif
 set backup
 set swapfile
 
@@ -57,7 +59,6 @@ if g:use_plugins
     set colorcolumn=80
 endif
 set lazyredraw
-set synmaxcol=200
 if has('signcolumn')
     " Always draw the signcolumn.
     set signcolumn=yes
@@ -103,3 +104,8 @@ let g:is_posix=1
 
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
