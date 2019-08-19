@@ -134,4 +134,5 @@ let g:coc_global_extensions= [
     \'coc-vimtex',
     \'coc-prettier',
     \'coc-tabnine',
+    \'coc-sh',
 \]

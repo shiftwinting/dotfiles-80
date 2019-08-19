@@ -54,3 +54,10 @@ if has('nvim')
     nnoremap <M-l> gt
     nnoremap <M-h> gT
 endif
+
+set pastetoggle=<c-p>
+
+" Find and Replace binds
+nnoremap <leader>s :<c-u>%s/
+xnoremap <leader>s :s/
+nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
