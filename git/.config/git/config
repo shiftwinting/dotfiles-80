@@ -11,6 +11,7 @@
 [web]
 	browser = firefox
 [diff]
+        algorithm = histogram
         tool = nvimdiff2
 [difftool "nvimdiff2"]
         cmd = nvim -d $LOCAL $REMOTE

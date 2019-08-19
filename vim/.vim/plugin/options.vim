@@ -109,3 +109,7 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif

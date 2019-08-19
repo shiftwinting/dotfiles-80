@@ -195,3 +195,4 @@ bindsym $mod+z bar mode toggle
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 for_window [class="Surf"] resize set width 250
+for_window [instance="origin.exe"] floating enable
