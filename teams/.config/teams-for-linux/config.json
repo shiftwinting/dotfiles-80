@@ -3,13 +3,13 @@
     "version": false,
     "onlineOfflineReload": true,
     "rightClickWithSpellcheck": false,
-    "enableDesktopNotificationsHack": false,
+    "enableDesktopNotificationsHack": true,
     "closeAppOnCross": true,
     "partition": "persist:teams-4-linux",
     "webDebug": false,
     "minimized": false,
     "url": "https://teams.microsoft.com/",
-    "chromeUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36",
+    "chromeUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3831.6 Safari/537.36",
     "ntlmV2enabled": true,
     "authServerWhitelist": "*"
 }
