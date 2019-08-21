@@ -98,7 +98,7 @@ set commentstring=#\ %s
 
 set gdefault
 
-set iskeyword-=_
+set path+=**
 
 let g:is_posix=1
 

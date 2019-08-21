@@ -32,6 +32,8 @@ if g:use_plugins
     Plug 'tpope/vim-scriptease'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
+    Plug 'tpope/vim-abolish'
+    Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
     Plug 'romainl/vim-cool'
     Plug 'gruvbox-community/gruvbox'
