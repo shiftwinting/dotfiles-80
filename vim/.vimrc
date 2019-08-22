@@ -33,10 +33,11 @@ if g:use_plugins
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-rsi'
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
     Plug 'romainl/vim-cool'
-    Plug 'gruvbox-community/gruvbox'
+    Plug 'lifepillar/vim-gruvbox8'
     if g:use_crystalline
         Plug 'rbong/vim-crystalline'
     endif
@@ -56,7 +57,6 @@ if g:use_plugins
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'dag/vim-fish'
-    Plug 'majutsushi/tagbar'
     if g:is_ide
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'dense-analysis/ale'
