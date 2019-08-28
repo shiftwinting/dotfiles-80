@@ -24,7 +24,7 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-nnoremap <silent><leader>f :FZF --reverse<CR>
-nnoremap <silent><leader>b :Buffers<CR>
-nnoremap <silent><leader>r :Rg<CR>
-nnoremap <silent><leader>t :Tags<CR>
+nnoremap <silent><leader>F :FZF --reverse<CR>
+nnoremap <silent><leader>B :Buffers<CR>
+nnoremap <silent><leader>R :Rg<CR>
+nnoremap <silent><leader>T :Tags<CR>

@@ -70,6 +70,7 @@ if g:use_plugins
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
         Plug 'Konfekt/vim-sentence-chopper'
+        Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
     endif
     " Initialize plugin system
     call plug#end()

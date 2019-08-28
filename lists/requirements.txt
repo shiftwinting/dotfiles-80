@@ -1,5 +1,4 @@
 autopep8
-jedi
 matplotlib
 neovim-remote
 numpy
@@ -9,3 +8,4 @@ pynvim
 scipy
 mypy
 python-language-server
+rtv

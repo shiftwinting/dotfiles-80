@@ -1,5 +1,5 @@
-command! CMake !mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ..
-command! CClean !rm -rf build && mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ..
+command! CMake !mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug ..
+command! CClean !rm -rf build && mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug ..
 augroup my_cmake
     autocmd! BufWritePost <buffer>
     autocmd BufWritePost <buffer> CMake
