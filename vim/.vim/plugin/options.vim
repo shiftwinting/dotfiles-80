@@ -24,6 +24,9 @@ if !has('nvim')
 	" see also http://sunaku.github.io/vim-256color-bce.html
 	set t_ut=
     endif
+else
+    let g:python_host_prog='/usr/bin/python2'
+    let g:python3_host_prog='/usr/bin/python3'
 endif
 
 if has('termguicolors')
