@@ -4,7 +4,9 @@ endif
 let g:loaded_ale_config = 1
 
 let g:ale_fixers = {
-\   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'isort', 'yapf',],
+\	'*': ['remove_trailing_lines', 'trim_whitespace'],
+\   	'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'isort', 'yapf',],
+\	'tex': ['latexindent', 'textlint',],
 \}
 let g:ale_linters = {
 \   'cpp': ['cppcheck', 'clangcheck', 'clangtidy', 'cquery',],
