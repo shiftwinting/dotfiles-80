@@ -19,11 +19,7 @@ if g:use_plugins
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     endif
-    " Specify a directory for plugins
-    " - For Neovim: ~/.local/share/nvim/plugged
-    " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
-    " Using plug
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
@@ -36,7 +32,6 @@ if g:use_plugins
     Plug 'tpope/vim-rsi'
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
-    Plug 'romainl/vim-cool'
     Plug 'lifepillar/vim-gruvbox8'
     if g:use_crystalline
         Plug 'rbong/vim-crystalline'
@@ -47,12 +42,12 @@ if g:use_plugins
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'luochen1990/rainbow'
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'pboettch/vim-cmake-syntax'
-    Plug 'tmux-plugins/vim-tmux'
     Plug 'michaeljsmith/vim-indent-object'
     if has('nvim')
         Plug 'lambdalisue/suda.vim'
     endif
+    Plug 'pboettch/vim-cmake-syntax'
+    Plug 'tmux-plugins/vim-tmux'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
@@ -65,8 +60,6 @@ if g:use_plugins
         Plug 'sbdchd/neoformat'
         Plug 'Shougo/neco-vim'
         Plug 'neoclide/coc-neco'
-        Plug 'Shougo/neoinclude.vim'
-        Plug 'jsfaint/coc-neoinclude'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
         Plug 'Konfekt/vim-sentence-chopper'

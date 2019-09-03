@@ -1,4 +1,5 @@
 augroup my_vim
+    autocmd! fmt
     autocmd! BufWritePost <buffer>
     autocmd BufWritePost <buffer> source $MYVIMRC | Runtime
 augroup END

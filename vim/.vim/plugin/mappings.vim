@@ -8,6 +8,8 @@ nnoremap <Space> <Nop>
 " Don't use Ex mode, use Q for running macros
 nnoremap Q @q
 
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
+
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 " but not Vi-compatible), rather than act as yy
 nnoremap Y y$
@@ -21,9 +23,11 @@ nnoremap <c-l> <c-w>l
 " highlight last inserted text
 nnoremap gV `[v`]
 
+nnoremap <c-j> <c-e>
+nnoremap <c-k> <c-y>
 " go to first non-blank character of current line
-nnoremap S ^
-nnoremap E $
+nnoremap <c-a> ^
+nnoremap <c-e> $
 
 nnoremap <leader>o o<esc>k
 nnoremap <leader>O O<esc>k
@@ -39,21 +43,10 @@ nnoremap <leader>go i<CR><esc>k
 " a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
-nnoremap <leader>s :set spell!
-
-"" Copy/Paste/Cut
-" if has('unnamedplus')
-"   set clipboard=unnamed,unnamedplus
-" endif
 
 nnoremap YY "+y<CR>
 nnoremap <leader>p "+gP<CR>
 nnoremap XX "+x<CR>
-
-if has('nvim')
-    nnoremap <M-l> gt
-    nnoremap <M-h> gT
-endif
 
 set pastetoggle=<c-p>
 
