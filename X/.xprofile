@@ -2,12 +2,12 @@
 
 [ -r ~/.env.sh ] && . ~/.env.sh
 systemctl --user import-environment PATH
-[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap $DISPLAY
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
-[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
 kb-setup.sh
+[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap $DISPLAY
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 sxhkd &
 numlockx &
 nm-applet &
