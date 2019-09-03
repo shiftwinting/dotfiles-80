@@ -9,6 +9,7 @@ endif
 
 let mapleader = "\<Space>"
 let maplocalleader = ","
+let g:start = '/bin/bash'
 
 if g:use_plugins
     if empty(glob('~/.vim/autoload/plug.vim'))
@@ -70,3 +71,5 @@ if g:use_plugins
 endif
 
 runtime! plug-config/**/*.vim
+set exrc
+set secure
