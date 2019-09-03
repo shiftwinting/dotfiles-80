@@ -8,7 +8,7 @@ if !g:use_plugins
 endif
 
 let mapleader = "\<Space>"
-let maplocalleader = "\<Space>"
+let maplocalleader = ","
 
 if g:use_plugins
     if empty(glob('~/.vim/autoload/plug.vim'))

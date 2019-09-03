@@ -3,38 +3,31 @@ if exists('g:loaded_mappings')
 endif
 let g:loaded_mappings = 1
 
-nnoremap <Space> <Nop>
+nnoremap <silent> <Space> <Nop>
 
 " Don't use Ex mode, use Q for running macros
 nnoremap Q @q
 
-nnoremap <silent> <CR> :nohlsearch<CR><CR>
+nnoremap <silent> <CR> :<c-u>nohlsearch<CR><CR>
 
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 " but not Vi-compatible), rather than act as yy
-nnoremap Y y$
+nnoremap <silent> Y y$
 
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
+nnoremap <silent> <c-h> <c-w>h
+nnoremap <silent> <c-j> <c-w>j
+nnoremap <silent> <c-k> <c-w>k
+nnoremap <silent> <c-l> <c-w>l
 
 
 " highlight last inserted text
-nnoremap gV `[v`]
+nnoremap <silent> gV `[v`]
 
-nnoremap <c-j> <c-e>
-nnoremap <c-k> <c-y>
+nnoremap <silent> <down> <c-e>
+nnoremap <silent> <up> <c-y>
 " go to first non-blank character of current line
-nnoremap <c-a> ^
-nnoremap <c-e> $
-
-nnoremap <leader>o o<esc>k
-nnoremap <leader>O O<esc>k
-
-nnoremap <leader>go i<CR><esc>k
-
-" nnoremap <silent><CR> :<C-U>nohlsearch<CR><CR>
+nnoremap <silent> <c-a> ^
+nnoremap <silent> <c-e> $
 
 " This extends p in visual mode (note the noremap), so that if you paste from
 " the unnamed (ie. default) register, that register content is not replaced by
@@ -43,14 +36,9 @@ nnoremap <leader>go i<CR><esc>k
 " a row, without using a named register (eg. "ay, "ap etc.).
 xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
-
-nnoremap YY "+y<CR>
-nnoremap <leader>p "+gP<CR>
-nnoremap XX "+x<CR>
-
 set pastetoggle=<c-p>
 
 " Find and Replace binds
-nnoremap <leader>s :<c-u>%s/
-xnoremap <leader>s :s/
-nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
+nnoremap <silent> <leader>s :<c-u>%s/
+xnoremap <silent> <leader>s :s/
+nnoremap <silent> <Leader>S :%s/\<<C-r><C-w>\>/
