@@ -83,7 +83,7 @@ set splitright
 set linebreak    "Wrap lines at convenient points
 set textwidth=79
 
-set spelllang=en
+set spelllang=en,pt_pt,es_es
 set spellfile=$HOME/.vim/spell/en.utf-8.add
 
 " Better display for messages
@@ -103,11 +103,6 @@ set gdefault
 set path+=**
 
 let g:is_posix=1
-
-" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
 
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'

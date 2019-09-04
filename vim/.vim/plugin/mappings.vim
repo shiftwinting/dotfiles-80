@@ -39,6 +39,6 @@ xnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 set pastetoggle=<c-p>
 
 " Find and Replace binds
-nnoremap <silent> <leader>s :<c-u>%s/
-xnoremap <silent> <leader>s :s/
-nnoremap <silent> <Leader>S :%s/\<<C-r><C-w>\>/
+nnoremap <leader>s :<c-u>%s/
+xnoremap <leader>s :s/
+nnoremap <Leader>S :%s/\<<C-r><C-w>\>/

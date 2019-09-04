@@ -2,3 +2,4 @@ set selection-clipboard clipboard
 set synctex-editor-command 'nvim --remote-silent +%l "%f"'
 set incremental-search true
 set smooth-scroll true
+set highlight-transparency 0.0
