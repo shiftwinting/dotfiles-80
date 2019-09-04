@@ -16,3 +16,5 @@ nm-applet &
 feh --bg-center ~/dotfiles/wallpapers/arch.png &
 # shellcheck source=/home/sommerfeld/hostrc.sh
 [ -r ~/hostrc.sh ] && . ~/hostrc.sh &
+nvidia-settings --load-config-only &
+nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
