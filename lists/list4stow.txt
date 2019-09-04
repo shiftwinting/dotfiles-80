@@ -3,6 +3,7 @@ dunst
 fontconfig
 i3
 i3blocks
+gtk
 latexmk
 mpv
 neofetch
