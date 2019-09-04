@@ -1,6 +1,4 @@
 X
-acestream-launcher
-csgo
 dunst
 fontconfig
 i3
@@ -10,7 +8,6 @@ mpv
 neofetch
 pulseaudio
 rofi
-sconsify
 streamlink
 sxhkd
 transmission

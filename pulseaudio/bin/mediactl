@@ -1,20 +1,6 @@
 #!/usr/bin/env sh
 
-if [ "$(playerctl status 2>&1)" = "No players found" ]; then
-    command="sconsify -command"
-    case "$1" in
-        "previous") $command replay
-            ;;
-        "play-pause") $command play_pause
-            ;;
-        "next") $command next
-            ;;
-        "info") [ -r /tmp/sconsify-track ] && cat /tmp/sconsify-track
-            ;;
-        *) $command pause
-            ;;
-    esac
-else
+if [ "$(playerctl status 2>&1)" != "No players found" ]; then
     case "$1" in
         "info")
             printf "%s - %s" "$(playerctl metadata title 2>&1)" "$(playerctl metadata artist 2>&1)"

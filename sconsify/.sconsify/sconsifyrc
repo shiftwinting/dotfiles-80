@@ -1,3 +1,0 @@
--username=4c91sjue6zvv1kr0cqsrsxcqi
--status-file=/tmp/sconsify-track
--status-file-template={{.Track}} - {{.Artist}}
