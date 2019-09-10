@@ -10,6 +10,9 @@ nnoremap Q @q
 
 nnoremap <silent> <CR> :<c-u>nohlsearch<CR><CR>
 
+" make an accidental ; press also enter command mode
+nnoremap ; :
+
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 " but not Vi-compatible), rather than act as yy
 nnoremap <silent> Y y$
