@@ -6,7 +6,6 @@ i3blocks
 gtk
 latexmk
 mpv
-neofetch
 pulseaudio
 rofi
 streamlink
