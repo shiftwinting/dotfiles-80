@@ -45,3 +45,8 @@ set pastetoggle=<c-p>
 nnoremap <leader>s :<c-u>%s/
 xnoremap <leader>s :s/
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
+
+nnoremap <silent> <leader>x :wall<cr>
+nnoremap <silent> <leader>z :wqall<cr>
+nnoremap <silent> <leader>q :quitall<cr>
+nnoremap <F1> :h<space>
