@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-usage=$(mpstat 1 1 | awk '/Average/ {print $3}' | cut -d "," -f 1)
+usage=$(mpstat 1 1 | awk '/Average/ {print $3}' | cut -d "." -f 1)
 LABEL="💻"
 
 if [ "$usage" -ge 75 ]; then

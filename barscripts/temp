@@ -21,4 +21,4 @@ else
 fi
 
 LABEL="🌡"
-printf "<span color='%s'>%s%s°</span>" "$color" "$LABEL" "$temp"
+printf "<span color='%s'>%s%s°</span>\n" "$color" "$LABEL" "$temp"

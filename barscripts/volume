@@ -23,4 +23,4 @@ if [ "$IS_MUTED" = "yes" ]; then
     color="#ff0000"
 fi
 
-printf "<span color='%s'>%s%s</span>" "$color" "$LABEL" "$NOW"
+printf "<span color='%s'>%s%s</span>\n" "$color" "$LABEL" "$NOW"

@@ -14,4 +14,4 @@ fi
 
 LABEL="☀️"
 
-printf "<span color='%s'>%s%s</span>" "$color" "$LABEL" "$brightness"
+printf "<span color='%s'>%s%s</span>\n" "$color" "$LABEL" "$brightness"

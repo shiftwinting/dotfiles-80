@@ -21,7 +21,7 @@
 # urgent
 
 # Global properties
-#
+
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
@@ -29,9 +29,9 @@ command=~/dotfiles/barscripts/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[torrent]
-interval=20
-signal=7
+# [torrent]
+# interval=20
+# signal=7
 
 [weather]
 interval=18000
@@ -43,7 +43,7 @@ interval=180
 signal=12
 
 [mediainfo]
-command=dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" mediactl info
+command=mediactl info
 interval=5
 signal=10
 label=♪
@@ -106,12 +106,12 @@ interval=60
 #INTERFACE=wlo1
 separator=false
 
-[public-ip]
-command=curl ipecho.net/plain; echo
-color=#00ff00
-label=🌍
-interval=300
-separator=true
+# [public-ip]
+# command=curl ipecho.net/plain; echo
+# color=#00ff00
+# label=🌍
+# interval=300
+# separator=true
 
 # [key_layout]
 # # label=Layout
