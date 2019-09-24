@@ -6,14 +6,12 @@ systemctl --user import-environment PATH
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
 kb-setup.sh
-[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap $DISPLAY
+[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
 sxhkd &
 numlockx &
 nm-applet &
 # blueman-applet &
-# pasystray > /dev/null 2>&1 &
 feh --bg-center ~/dotfiles/wallpapers/arch.png &
-# shellcheck source=/home/sommerfeld/hostrc.sh
-[ -r ~/hostrc.sh ] && . ~/hostrc.sh &
+[ -r ~/.hostrc ] && . ~/.hostrc &
 nvidia-settings --load-config-only &
 nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
