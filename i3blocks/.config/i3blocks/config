@@ -75,6 +75,11 @@ interval=10
 separator=false
 markup=pango
 
+[gpu-temp]
+interval=10
+separator=false
+markup=pango
+
 [battery]
 interval=30
 separator=true

@@ -13,4 +13,4 @@ else
 	color="#00ff00"
 fi
 
-printf "<span color='%s'>%s%s%%</span>" "$color" "$LABEL" "$usage"
+printf "<span color='%s'>%s%s%%</span>\n" "$color" "$LABEL" "$usage"
