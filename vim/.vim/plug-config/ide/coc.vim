@@ -135,4 +135,5 @@ let g:coc_global_extensions= [
     \'coc-prettier',
     \'coc-tabnine',
     \'coc-sh',
+    \'coc-texlab',
 \]

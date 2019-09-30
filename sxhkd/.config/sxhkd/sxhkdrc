@@ -1,9 +1,6 @@
 mod4+Return
     $TERMINAL
 
-mod4+space
-    $TERMINAL
-
 mod4+m
     rofi -show run
 
