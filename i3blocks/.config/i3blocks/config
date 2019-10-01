@@ -29,9 +29,9 @@ command=~/dotfiles/barscripts/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-# [torrent]
-# interval=20
-# signal=7
+[torrent]
+interval=20
+signal=7
 
 [weather]
 interval=18000
