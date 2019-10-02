@@ -28,6 +28,7 @@ if g:use_plugins
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rsi'
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
