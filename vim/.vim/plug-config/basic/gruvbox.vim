@@ -4,3 +4,4 @@ endif
 let g:loaded_gruvbox_config = 1
 
 colorscheme gruvbox8
+let g:gruvbox_italicize_strings = 0
