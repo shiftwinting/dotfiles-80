@@ -22,3 +22,4 @@ let g:ale_fix_on_save = 1
 
 nmap <silent> [w <Plug>(ale_previous_wrap)
 nmap <silent> ]w <Plug>(ale_next_wrap)
+let g:airline#extensions#ale#enabled = 1

@@ -1,10 +1,8 @@
 let g:use_plugins = 1
 let g:is_ide = 1
-let g:use_crystalline = 1
 
 if !g:use_plugins
     let g:is_ide = 0
-    let g:use_crystalline = 0
 endif
 
 let mapleader = "\<Space>"
@@ -34,9 +32,8 @@ if g:use_plugins
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
     Plug 'lifepillar/vim-gruvbox8'
-    if g:use_crystalline
-        Plug 'rbong/vim-crystalline'
-    endif
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
