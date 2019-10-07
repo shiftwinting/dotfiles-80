@@ -30,6 +30,7 @@ if g:use_plugins
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rsi'
+    Plug 'haya14busa/incsearch.vim'
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
     Plug 'lifepillar/vim-gruvbox8'
@@ -44,6 +45,8 @@ if g:use_plugins
     Plug 'michaeljsmith/vim-indent-object'
     if has('nvim')
         Plug 'lambdalisue/suda.vim'
+    else
+        Plug 'markonm/traces.vim'
     endif
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
