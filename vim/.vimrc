@@ -33,6 +33,7 @@ if g:use_plugins
     Plug 'haya14busa/incsearch.vim'
     Plug 'bkad/CamelCaseMotion'
     Plug 'machakann/vim-sandwich'
+    Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'

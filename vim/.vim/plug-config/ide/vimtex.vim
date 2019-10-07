@@ -3,6 +3,7 @@ if !g:use_plugins || !g:is_ide || exists('g:loaded_vimtex_config')
 endif
 let g:loaded_vimtex_config = 1
 
+let g:tex_flavor = 'latex'
 if has('nvim')
     let g:vimtex_compiler_progname='nvr'
 endif
