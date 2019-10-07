@@ -12,9 +12,9 @@ temp=$(printf "%.0f" "$temp")
 
 if [ "$temp" -ge 90 ]; then
 	color="#ff0000"
-elif [ "$temp" -ge 75 ]; then
+elif [ "$temp" -ge 80 ]; then
 	color="#ffa500"
-elif [ "$temp" -ge 40 ]; then
+elif [ "$temp" -ge 70 ]; then
 	color="#ffff00"
 else
 	color="#00ff00"
