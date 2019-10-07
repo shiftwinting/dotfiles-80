@@ -8,7 +8,7 @@ nnoremap <silent> <Space> <Nop>
 " Don't use Ex mode, use Q for running macros
 nnoremap Q @q
 
-nnoremap <silent> <CR> :<c-u>nohlsearch<CR><CR>
+" nnoremap <silent> <esc><esc> :<c-u>nohlsearch<CR><CR>
 
 " make an accidental ; press also enter command mode
 nnoremap ; :
