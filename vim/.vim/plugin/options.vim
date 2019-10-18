@@ -57,7 +57,7 @@ if !g:use_plugins
     colorscheme desert
 endif
 set showmode
-set number relativenumber
+set number
 set cursorline
 if g:use_plugins
     set colorcolumn=80
