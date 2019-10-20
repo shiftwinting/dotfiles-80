@@ -23,16 +23,15 @@ if g:use_plugins
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-scriptease'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rsi'
+    Plug 'tpope/vim-surround'
     Plug 'haya14busa/incsearch.vim'
     Plug 'bkad/CamelCaseMotion'
-    Plug 'machakann/vim-sandwich'
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'vim-airline/vim-airline'
@@ -44,6 +43,8 @@ if g:use_plugins
     Plug 'luochen1990/rainbow'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'michaeljsmith/vim-indent-object'
+    Plug 'wellle/targets.vim'
+    Plug 'rhysd/clever-f.vim'
     if has('nvim')
         Plug 'lambdalisue/suda.vim'
     else
@@ -60,13 +61,10 @@ if g:use_plugins
         Plug 'dense-analysis/ale'
         Plug 'honza/vim-snippets'
         Plug 'lervag/vimtex'
-        Plug 'sbdchd/neoformat'
         Plug 'Shougo/neco-vim'
         Plug 'neoclide/coc-neco'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-        Plug 'Konfekt/vim-sentence-chopper'
-        Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
     endif
     " Initialize plugin system
     call plug#end()
