@@ -56,6 +56,9 @@ if g:use_plugins
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'dag/vim-fish'
+    if has('nvim-0.4')
+        Plug 'norcalli/nvim-colorizer.lua'
+    endif
     if g:is_ide
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'dense-analysis/ale'

@@ -38,6 +38,9 @@ if has('termguicolors')
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     endif
     set termguicolors
+    " if has('nvim-0.4')
+    "     lua require'colorizer'.setup()
+    " endif
 endif
 
 " poor mans version control
