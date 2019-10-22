@@ -1,5 +1,5 @@
 {
-    "coc.preferences.diagnostic.displayByAle": true,
+    "diagnostic.enable": false,
     "languageserver": {
         "ccls": {
             "command": "ccls",
