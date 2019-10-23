@@ -120,3 +120,12 @@ endif
 if has('nvim-0.3.2') || has("patch-8.1.0360")
     set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 endif
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+augroup compl
+    autocmd!
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup end
+set completeopt=menuone,preview,noinsert,noselect
