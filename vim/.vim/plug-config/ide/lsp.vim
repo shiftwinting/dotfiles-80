@@ -12,6 +12,7 @@ if executable('ccls')
       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
       \ })
    autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
+   autocmd Filetype c,cpp let b:vcm_tab_complete="omni"
 endif
 
 if executable('clangd')
@@ -21,6 +22,7 @@ if executable('clangd')
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
         \ })
    autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
+   autocmd Filetype c,cpp let b:vcm_tab_complete="omni"
 endif
 
 if executable('pyls')
@@ -30,6 +32,7 @@ if executable('pyls')
         \ 'whitelist': ['python'],
         \ })
    autocmd Filetype python setlocal omnifunc=lsp#complete
+   autocmd Filetype python let b:vcm_tab_complete="omni"
 endif
 
 let g:lsp_fold_enabled = 0
