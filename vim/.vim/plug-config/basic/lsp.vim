@@ -1,4 +1,4 @@
-if !g:use_plugins || !g:is_ide || exists('g:loaded_lsp_config')
+if !g:use_plugins || exists('g:loaded_lsp_config')
     finish
 endif
 let g:loaded_lsp_config = 1
@@ -15,9 +15,7 @@ if executable('ccls')
             \ })
         autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
     augroup END
-endif
-
-if executable('clangd')
+elseif executable('clangd')
     augroup clangd
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
@@ -50,7 +48,6 @@ if executable('bash-language-server')
                 \ 'whitelist': ['sh'],
                 \ })
         autocmd Filetype sh setlocal omnifunc=lsp#complete
-        " autocmd Filetype sh let b:vcm_tab_complete="omni"
     augroup END
 endif
 
@@ -60,21 +57,19 @@ let g:lsp_highlight_references_enabled = 1
 let g:lsp_async_completion=1
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(lsp-definition)
-nmap <silent> ge <Plug>(lsp-declaration)
-nmap <silent> gy <Plug>(lsp-type-definition)
+nmap <silent> gd <Plug>(lsp-peek-definition)
+nmap <silent> gD <Plug>(lsp-definition)
+nmap <silent> ge <Plug>(lsp-peek-declaration)
+nmap <silent> gE <Plug>(lsp-declaration)
+nmap <silent> gy <Plug>(lsp-peek-type-definition)
+nmap <silent> gY <Plug>(lsp-type-definition)
+nmap <silent> gi <Plug>(lsp-peek-implementation)
 nmap <silent> gi <Plug>(lsp-implementation)
 nmap <silent> gr <Plug>(lsp-references)
 nmap <silent> gh <Plug>(lsp-hover)
-" Remap for rename current word
-nmap <leader> rn <Plug>(lsp-rename)
+nmap <leader> gr <Plug>(lsp-rename)
 
-" " Remap for format selected region
 xmap <leader>f  <Plug>(lsp-document-format)
 nmap <leader>f  <Plug>(lsp-document-format)
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(lsp-codeaction-selected)
-nmap <leader>a  <Plug>(lsp-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(lsp-code-action)
+nmap <leader>a  <Plug>(lsp-codeaction)
