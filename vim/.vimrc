@@ -59,16 +59,16 @@ if g:use_plugins
     if has('nvim-0.4')
         Plug 'norcalli/nvim-colorizer.lua'
     endif
+    Plug 'lifepillar/vim-mucomplete'
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
     if g:is_ide
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'dense-analysis/ale'
-        Plug 'SirVer/ultisnips'
-        Plug 'honza/vim-snippets'
         Plug 'lervag/vimtex'
-        Plug 'prabirshrestha/async.vim'
-        Plug 'prabirshrestha/vim-lsp'
-        Plug 'ajh17/VimCompletesMe'
     endif
     " Initialize plugin system
     call plug#end()

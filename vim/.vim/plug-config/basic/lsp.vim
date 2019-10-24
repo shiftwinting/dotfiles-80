@@ -14,7 +14,6 @@ if executable('ccls')
             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
             \ })
         autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
-        autocmd Filetype c,cpp let b:vcm_tab_complete="omni"
     augroup END
 endif
 
@@ -27,7 +26,6 @@ if executable('clangd')
             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
             \ })
         autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
-        autocmd Filetype c,cpp let b:vcm_tab_complete="omni"
     augroup END
 endif
 
@@ -40,7 +38,6 @@ if executable('pyls')
             \ 'whitelist': ['python'],
             \ })
         autocmd Filetype python setlocal omnifunc=lsp#complete
-        autocmd Filetype python let b:vcm_tab_complete="omni"
     augroup END
 endif
 
@@ -53,7 +50,7 @@ if executable('bash-language-server')
                 \ 'whitelist': ['sh'],
                 \ })
         autocmd Filetype sh setlocal omnifunc=lsp#complete
-        autocmd Filetype sh let b:vcm_tab_complete="omni"
+        " autocmd Filetype sh let b:vcm_tab_complete="omni"
     augroup END
 endif
 
