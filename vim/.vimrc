@@ -62,8 +62,9 @@ if g:use_plugins
     Plug 'lifepillar/vim-mucomplete'
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
-    Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
+    Plug 'SirVer/ultisnips'
+    Plug 'rhysd/git-messenger.vim'
     if g:is_ide
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
         Plug 'ludovicchabant/vim-gutentags'
