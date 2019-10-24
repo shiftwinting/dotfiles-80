@@ -16,3 +16,10 @@ let g:vimtex_compiler_latexmk = {
     \  'callback' : 0,
     \}
 nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+
+
+augroup texomni
+    autocmd!
+    autocmd Filetype tex let b:vcm_omni_pattern = g:vimtex#re#neocomplete
+    autocmd Filetype python let b:vcm_tab_complete="omni"
+augroup END
