@@ -73,8 +73,11 @@ if g:use_plugins
     endif
     " Initialize plugin system
     call plug#end()
+    runtime! plug-config/basic/**.vim
+    if g:is_ide
+        runtime! plug-config/ide/**.vim
+    end
 endif
 
-runtime! plug-config/**/*.vim
 set exrc
 set secure
