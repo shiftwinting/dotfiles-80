@@ -1,4 +1,4 @@
-if !g:use_plugins || !g:is_ide || exists('g:loaded_markdown_preview_config')
+if !g:use_plugins || exists('g:loaded_markdown_preview_config')
     finish
 endif
 let g:loaded_markdown_preview_config = 1

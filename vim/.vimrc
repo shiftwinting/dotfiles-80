@@ -1,13 +1,7 @@
 let g:use_plugins = 1
-let g:is_ide = 1
-
-if !g:use_plugins
-    let g:is_ide = 0
-endif
 
 let mapleader = "\<Space>"
 let maplocalleader = ","
-let g:start = '/bin/bash'
 
 if g:use_plugins
     if empty(glob('~/.vim/autoload/plug.vim'))
@@ -23,7 +17,6 @@ if g:use_plugins
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-scriptease'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-abolish'
@@ -34,8 +27,8 @@ if g:use_plugins
     Plug 'bkad/CamelCaseMotion'
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
@@ -65,18 +58,14 @@ if g:use_plugins
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
     Plug 'rhysd/git-messenger.vim'
-    if g:is_ide
-        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    if executable('ctags') || executable('ctags-exuberant')
         Plug 'ludovicchabant/vim-gutentags'
-        Plug 'dense-analysis/ale'
-        Plug 'lervag/vimtex'
     endif
-    " Initialize plugin system
+    Plug 'dense-analysis/ale'
+    Plug 'lervag/vimtex'
     call plug#end()
-    runtime! plug-config/basic/**.vim
-    if g:is_ide
-        runtime! plug-config/ide/**.vim
-    end
+    runtime! plug-config/**.vim
 endif
 
 set exrc

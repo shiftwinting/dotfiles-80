@@ -1,4 +1,4 @@
-if !g:use_plugins || !g:is_ide || exists('g:loaded_ultisnips_config')
+if !g:use_plugins || exists('g:loaded_ultisnips_config')
     finish
 endif
 let g:loaded_ultisnips_config = 1

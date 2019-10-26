@@ -31,7 +31,7 @@ else
     set inccommand=nosplit
 endif
 
-if has('termguicolors')
+if has('termguicolors') && &term =~ '256color'
     if !has('nvim')
         " set Vim-specific sequences for RGB colors
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -124,8 +124,4 @@ endif
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-augroup compl
-    autocmd!
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup end
 set completeopt=menuone,preview,noinsert,noselect

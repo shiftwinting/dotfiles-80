@@ -20,3 +20,8 @@ augroup reload
     autocmd BufWritePost *.Xkeymap !xkbcomp % $DISPLAY
     autocmd BufWritePost *user-dirs.dirs,*user-dirs.locale !xdg-user-dirs-update
 augroup END
+
+augroup compl
+    autocmd!
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup end
