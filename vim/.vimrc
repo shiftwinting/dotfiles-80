@@ -1,13 +1,32 @@
 let g:use_plugins = 1
 
-let mapleader = "\<Space>"
-let maplocalleader = ","
+let mapleader = ' '
+let maplocalleader = ','
+
+set statusline=
+" tail of filename
+set statusline+=%t
+" [help] flag
+set statusline+=\ %h
+" modified flag
+set statusline+=%m
+" readonly flag
+set statusline+=%r
+" preview window flag
+set statusline+=%w
+" separation point
+set statusline+=%=
+set statusline+=%y
+set statusline+=(%l/%L)
+set statusline+=\ %P
+" separation point
+set statusline+=%=
 
 if g:use_plugins
     if empty(glob('~/.vim/autoload/plug.vim'))
-        if !executable("curl")
-            echoerr "You have to install curl or first install vim-plug yourself!"
-            execute "q!"
+        if !executable('curl')
+            echoerr 'You have to install curl or first install vim-plug yourself!'
+            execute 'q!'
         endif
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -27,8 +46,6 @@ if g:use_plugins
     Plug 'bkad/CamelCaseMotion'
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'

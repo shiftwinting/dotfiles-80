@@ -36,8 +36,8 @@ if ! shopt -oq posix; then
 fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1="\[\033[38;5;184m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;78m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;190m\]\w\[$(tput sgr0)\]$(__git_ps1 " (%s)")\[\033[38;5;15m\][\$?]\\$ \[$(tput sgr0)\]"
-
+PS1="\[\033[38;5;184m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;78m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;190m\]\w\[$(tput sgr0)\]$(__git_ps1 " (%s)")\[\033[38;5;15m\][\$?]\\$ \[$(tput sgr0)\]"
+export PS1
 shopt -s autocd
 
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
