@@ -42,6 +42,8 @@ if g:use_plugins
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-endwise'
+    Plug 'rstacruz/vim-closer'
     Plug 'haya14busa/incsearch.vim'
     Plug 'bkad/CamelCaseMotion'
     Plug 'romainl/vim-qf'
@@ -69,6 +71,7 @@ if g:use_plugins
     if has('nvim-0.4')
         Plug 'norcalli/nvim-colorizer.lua'
     endif
+    Plug 'machakann/vim-highlightedyank'
     Plug 'lifepillar/vim-mucomplete'
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
