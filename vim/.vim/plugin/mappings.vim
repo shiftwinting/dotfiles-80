@@ -1,3 +1,4 @@
+scriptencoding 'utf-8'
 if exists('g:loaded_mappings')
     finish
 endif
@@ -7,8 +8,6 @@ nnoremap <silent> <Space> <Nop>
 
 " Don't use Ex mode, use Q for running macros
 nnoremap Q @q
-
-" nnoremap <silent> <esc><esc> :<c-u>nohlsearch<CR><CR>
 
 " make an accidental ; press also enter command mode
 nnoremap ; :
@@ -49,4 +48,3 @@ nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 nnoremap <silent> <leader>x :wall<cr>
 nnoremap <silent> <leader>z :wqall<cr>
 nnoremap <silent> <leader>q :quitall<cr>
-nnoremap <F1> :h<space>

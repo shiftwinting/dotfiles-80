@@ -18,7 +18,7 @@ if !has('nvim')
     set showcmd		" display incomplete commands
     set ttyfast
     set ttymouse=xterm2
-    if &term =~ '256color'
+    if &term =~# '256color'
 	" disable Background Color Erase (BCE) so that color schemes
 	" render properly when inside 256-color tmux and GNU screen.
 	" see also http://sunaku.github.io/vim-256color-bce.html
@@ -31,7 +31,7 @@ else
     set inccommand=nosplit
 endif
 
-if has('termguicolors') && &term =~ '256color'
+if has('termguicolors') && &term =~# '256color'
     if !has('nvim')
         " set Vim-specific sequences for RGB colors
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -112,12 +112,12 @@ let g:is_posix=1
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-if !exists(":DiffOrig")
+if !exists(':DiffOrig')
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
 
-if has('nvim-0.3.2') || has("patch-8.1.0360")
+if has('nvim-0.3.2') || has('patch-8.1.0360')
     set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 endif
 
