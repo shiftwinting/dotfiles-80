@@ -5,9 +5,6 @@ else
     PATH="$PATH":/sbin
     PATH="$HOME"/.local/bin:"$PATH"
     PATH="$HOME"/bin:"$PATH"
-    PATH="$HOME"/.yarn/bin:"$PATH"
-    PATH="$HOME"/.config/yarn/global/node_modules/.bin:"$PATH"
-    PATH="$HOME"/.gem/ruby/2.6.0/bin:"$PATH"
     PATH="$HOME"/.fzf/bin:"$PATH"
     export PATH
     MANPATH="/usr/local/man:$MANPATH"
@@ -16,8 +13,6 @@ else
 
     IFACE=$(iface.sh) && export IFACE
     export INTERFACE="$IFACE"
-    [ -r "$HOME"/.sconsify/.cred ] && SCONSIFY_PASSWORD=$(cat "$HOME"/.sconsify/.cred) && export SCONSIFY_PASSWORD
-
     export ENV_SOURCED=yes
 fi
 
