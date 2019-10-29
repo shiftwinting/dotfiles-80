@@ -11,19 +11,30 @@ if executable('clangd')
             \ 'cmd': {server_info->['clangd', '-background-index']},
             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
             \ })
-        autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
     augroup END
-elseif executable('ccls')
-    augroup ccls
+endif
+" if executable('ccls')
+"     augroup ccls
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"             \ 'name': 'ccls',
+"             \ 'cmd': {server_info->['ccls']},
+"             \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+"             \ 'initialization_options': {},
+"             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+"             \ })
+"     augroup END
+" endif
+if executable('cquery')
+    augroup cquery
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'ccls',
-            \ 'cmd': {server_info->['ccls']},
-            \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-            \ 'initialization_options': {},
-            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-            \ })
-        autocmd Filetype c,cpp setlocal omnifunc=lsp#complete
+        \ 'name': 'cquery',
+        \ 'cmd': {server_info->['cquery']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
     augroup END
 endif
 
