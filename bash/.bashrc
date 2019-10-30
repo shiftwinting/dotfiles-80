@@ -3,6 +3,11 @@
 # for examples
 . ~/.shinit
 
+if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ] && [[ $- =~ i ]]; then
+    tmux attach-session -t ssh || tmux new-session -s ssh
+    exit
+fi
+
 [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec fish
 
 # don't put duplicate lines or lines starting with space in the history.
