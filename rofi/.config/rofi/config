@@ -45,9 +45,10 @@ rofi.terminal:                       st
 ! "Disable history in run/ssh" Set from: Default
 rofi.disable-history:                false
 ! "Use sorting" Set from: Default
-! rofi.sort:                           false
+rofi.sort:                           true
 ! "Use levenshtein sorting also for fuzzy matching" Set from: Default
-! rofi.levenshtein-sort:               false
+rofi.levenshtein-sort:               false
+rofi.sorting-method:                 fzf
 ! "Set case-sensitivity" Set from: Default
 ! rofi.case-sensitive:                 false
 ! "Cycle through the results list" Set from: Default
@@ -65,7 +66,7 @@ rofi.parse-hosts:                    true
 ! "Set the modi to combine in combi mode" Set from: Default
 rofi.combi-modi:                     window,run,drun
 ! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
-rofi.matching:                       normal
+rofi.matching:                       fuzzy
 ! "Tokenize input string" Set from: Default
 ! rofi.tokenize:                       true
 ! "Monitor id to show on" Set from: Default
