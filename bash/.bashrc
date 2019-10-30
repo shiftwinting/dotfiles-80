@@ -7,7 +7,7 @@ if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ] && [[ $- =~ i ]]; then
     tmux attach-session -t ssh || tmux new-session -s ssh
     exit
 else
-    # [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec fish
+    [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec fish
     :
 fi
 
