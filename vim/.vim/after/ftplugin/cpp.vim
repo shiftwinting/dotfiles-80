@@ -1,4 +1,5 @@
 setlocal commentstring=//\ %s
+let b:start = g:start
 augroup my_cpp
     autocmd!
     autocmd BufWritePost config.h !make clean install
