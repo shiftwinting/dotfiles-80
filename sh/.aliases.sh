@@ -10,7 +10,7 @@ alias egrep='egrep --color=auto'
 
 alias gs='git status'
 alias gc='git commit'
-alias gck='git commit'
+alias gck='git checkout'
 alias gpull='git pull'
 alias gpush='git push'
 alias gd='git diff'
