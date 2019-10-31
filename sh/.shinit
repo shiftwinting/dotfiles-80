@@ -20,8 +20,13 @@ fi
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.aliases, instead of adding them here directly.
-if [ -r ~/.aliases.sh ]; then
-    . ~/.aliases.sh
+if [ -r ~/.aliases ]; then
+    . ~/.aliases
 fi
 
 tput smkx
+
+if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
+    tmux attach-session -t ssh || tmux new-session -s ssh
+    exit
+fi

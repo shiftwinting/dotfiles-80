@@ -3,10 +3,7 @@
 # for examples
 . ~/.shinit
 
-if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ] && [[ $- =~ i ]]; then
-    tmux attach-session -t ssh || tmux new-session -s ssh
-    exit
-else
+if [ "$(hostname)" = "garry" ] || [ "$(hostname)" = "dev-004p" ]; then
     [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec fish
     :
 fi

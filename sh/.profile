@@ -20,12 +20,14 @@ if [ ! "$DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
     fi
 fi
 
-if [ -n "$BASH" ] && [ -z "$DISPLAY" ]; then
-    . ~/.bashrc
-else
-    . ~/.shinit
-fi
-
-if [ "$TERM" = "tmux-256color" ]; then
-    . ~/.bashrc
+if [ -z "$DISPLAY" ] && [ -t 0 ]; then
+    if [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
+        exec sh -c "tmux attach-session -t tty || tmux new-session -s tty"
+    else
+        if [ -n "$BASH" ]; then
+            . ~/.bashrc
+        else
+            . ~/.shinit
+        fi
+    fi
 fi

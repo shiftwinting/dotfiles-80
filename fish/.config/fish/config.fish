@@ -44,8 +44,8 @@ set -xg fish_pager_color_description '555'  'yellow'
 set -xg fish_pager_color_prefix cyan
 set -xg fish_pager_color_progress cyan
 
-if test -f ~/.aliases.sh
-    source ~/.aliases.sh
+if test -f ~/.aliases
+    source ~/.aliases
 end
 
 theme_gruvbox dark hard
