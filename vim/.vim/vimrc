@@ -68,6 +68,7 @@ if g:use_plugins
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'dag/vim-fish'
+    Plug 'solarnz/thrift.vim'
     if has('nvim-0.4')
         Plug 'norcalli/nvim-colorizer.lua'
     endif
