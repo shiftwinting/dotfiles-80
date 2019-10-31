@@ -27,6 +27,5 @@ fi
 tput smkx
 
 if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
-    tmux attach-session -t ssh || tmux new-session -s ssh
-    exit
+    exec sh -c "tmux attach-session -t ssh || tmux new-session -s ssh"
 fi
