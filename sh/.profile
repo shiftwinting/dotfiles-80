@@ -23,11 +23,11 @@ fi
 if [ -z "$DISPLAY" ] && [ -t 0 ]; then
     if [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
         exec sh -c "tmux attach-session -t tty || tmux new-session -s tty"
-    else
-        if [ -n "$BASH" ]; then
-            . ~/.bashrc
-        else
-            . ~/.shinit
-        fi
     fi
+fi
+
+if [ -n "$BASH" ]; then
+    . ~/.bashrc
+else
+    . ~/.shinit
 fi
