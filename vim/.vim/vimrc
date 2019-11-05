@@ -1,4 +1,5 @@
 let g:use_plugins = 1
+let g:start = '/bin/bash'
 
 let mapleader = ' '
 let maplocalleader = ','
