@@ -50,3 +50,8 @@ nnoremap <silent> <leader>z :wqall<cr>
 nnoremap <silent> <leader>q :quitall<cr>
 
 tnoremap <Esc> <C-\><C-n>
+
+inoremap jj <esc>
+inoremap kk <esc>
+inoremap jk <esc>
+inoremap kj <esc>

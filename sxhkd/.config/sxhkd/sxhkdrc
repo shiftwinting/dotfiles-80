@@ -66,3 +66,6 @@ mod4+g
 
 mod4+shift+c
     showclip
+
+mod4+n;{r,k}
+    record {start,stop}
