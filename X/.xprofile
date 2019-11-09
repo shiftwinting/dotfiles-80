@@ -3,9 +3,10 @@
 [ -r ~/.env.sh ] && . ~/.env.sh
 systemctl --user import-environment PATH
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
+dbus-update-activation-environment --systemd DISPLAY
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
-kb-setup.sh
+kb-setup.sh &
 [ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
 sxhkd &
 numlockx &

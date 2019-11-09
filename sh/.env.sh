@@ -6,6 +6,7 @@ else
     PATH="$HOME"/.local/bin:"$PATH"
     PATH="$HOME"/bin:"$PATH"
     PATH="$HOME"/.fzf/bin:"$PATH"
+    PATH="$HOME"/.vim/plugged/vim-mathpix/bin:"$PATH"
     export PATH
     MANPATH="/usr/local/man:$MANPATH"
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
@@ -37,3 +38,6 @@ export EMAIL_CLIENT='neomutt'
 export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
 export NO_AT_BRIDGE=1
 export SCREENLOCKER='i3lock-fancy'
+export MATHPIX_GROUP="mrsommerfeld_pm_me"
+export MATHPIX_ID="mrsommerfeld_pm_me"
+export MATHPIX_KEY="788001c074fadc6419af"

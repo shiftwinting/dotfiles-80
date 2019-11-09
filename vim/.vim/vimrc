@@ -86,6 +86,7 @@ if g:use_plugins
     endif
     Plug 'dense-analysis/ale'
     Plug 'lervag/vimtex'
+    Plug 'ekiim/vim-mathpix'
     call plug#end()
     runtime! plug-config/**.vim
 endif
