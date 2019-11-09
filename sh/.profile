@@ -12,6 +12,9 @@
 systemctl --user import-environment PATH
 [ -r ~/.env.sh ] && . ~/.env.sh
 
+sudo -n loadkeys ~/dotfiles/tty/caps2esc.map
+sudo -n kbdrate -s -d 250 -r 30 > /dev/null
+
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
         if [ "$(hostname)" = "garry" ]; then
@@ -19,7 +22,7 @@ if [ ! "$DISPLAY" ]; then
         elif [ "$(hostname)" = "dev-004p" ]; then
             exec startx -- -keeptty
         fi
-    elif [ "$XDG_VTNR" != "6" ] && [ -t 0 ] && [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
+    elif [ "$XDG_VTNR" = "2" ] && [ -t 0 ] && [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
         command -v tmux > /dev/null 2>&1 && exec tmux new-session -A -s tty
     fi
 fi

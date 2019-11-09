@@ -59,6 +59,7 @@ video/x-theora=mpv.desktop
 video/x-matroska=mpv.desktop
 video/webm=mpv.desktop
 video/mp2t=mpv.desktop
+x-scheme-handler/msteams=teams-for-linux.desktop
 
 [Added Associations]
 audio/aac=mpv.desktop;

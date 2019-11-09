@@ -28,6 +28,10 @@ alias gmerge='git merge'
 alias sys='sudo systemctl'
 alias sysu='systemctl --user'
 
+alias reboot="sudo systemctl reboot"
+alias poweroff="sudo systemctl poweroff"
+alias halt="sudo systemctl halt"
+
 alias please='sudo !!'
 alias rtfm='man'
 alias gimme='sudo chown $USER:$USER'
