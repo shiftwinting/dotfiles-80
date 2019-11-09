@@ -25,6 +25,9 @@ alias gdiff='git difftool'
 alias gmt='git mergetool'
 alias gmerge='git merge'
 
+alias sys='sudo systemctl'
+alias sysu='systemctl --user'
+
 alias please='sudo !!'
 alias rtfm='man'
 alias gimme='sudo chown $USER:$USER'

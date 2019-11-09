@@ -12,17 +12,15 @@
 systemctl --user import-environment PATH
 [ -r ~/.env.sh ] && . ~/.env.sh
 
-if [ ! "$DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
-    if [ "$(hostname)" = "garry" ]; then
-        exec nvidia-xrun ~/.xinitrc
-    else
-        exec startx -- -keeptty
-    fi
-fi
-
-if [ -z "$DISPLAY" ] && [ -t 0 ]; then
-    if [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
-        exec sh -c "tmux attach-session -t tty || tmux new-session -s tty"
+if [ ! "$DISPLAY" ]; then
+    if  [ "$XDG_VTNR" = "1" ]; then
+        if [ "$(hostname)" = "garry" ]; then
+            exec nvidia-xrun ~/.xinitrc
+        elif [ "$(hostname)" = "dev-004p" ]; then
+            exec startx -- -keeptty
+        fi
+    elif [ "$XDG_VTNR" != "6" ] && [ -t 0 ] && [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
+        command -v tmux > /dev/null 2>&1 && exec tmux new-session -A -s tty
     fi
 fi
 
