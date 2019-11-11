@@ -67,10 +67,12 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
         fi
 fi
 
-function zle-line-init () { echoti smkx }
-function zle-line-finish () { echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
+if [ -n "$DISPLAY" ]; then
+    function zle-line-init () { echoti smkx }
+    function zle-line-finish () { echoti rmkx }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -81,19 +83,21 @@ zle -N down-line-or-beginning-search
 
 zshcache_time="$(date +%s%N)"
 
-autoload -Uz add-zsh-hook
+if [ $(hostname) = "garry" ]; then
+    autoload -Uz add-zsh-hook
 
-rehash_precmd() {
-  if [[ -a /var/cache/zsh/pacman ]]; then
-    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
-    if (( zshcache_time < paccache_time )); then
-      rehash
-      zshcache_time="$paccache_time"
+    rehash_precmd() {
+    if [[ -a /var/cache/zsh/pacman ]]; then
+        local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
+        if (( zshcache_time < paccache_time )); then
+        rehash
+        zshcache_time="$paccache_time"
+        fi
     fi
-  fi
-}
+    }
 
-add-zsh-hook -Uz precmd rehash_precmd
+    add-zsh-hook -Uz precmd rehash_precmd
+fi
 
 exit_zsh() { exit }
 zle -N exit_zsh
