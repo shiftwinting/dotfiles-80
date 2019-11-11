@@ -9,7 +9,11 @@ case $- in
 esac
 
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-source /usr/share/git/completion/git-prompt.sh
+if [ $(hostname) = "garry" ]; then
+    . /usr/share/git/completion/git-prompt.sh
+else
+    . /usr/lib/git-core/git-sh-prompt
+fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
