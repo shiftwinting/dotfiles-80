@@ -61,8 +61,10 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	function zle_application_mode_stop {
 		echoti rmkx
 	}
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+        if [ $(hostname) = "garry" ]; then
+            add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+            add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+        fi
 fi
 
 function zle-line-init () { echoti smkx }
@@ -97,4 +99,8 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ $(hostname) = "garry" ]; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
