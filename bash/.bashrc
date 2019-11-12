@@ -3,9 +3,7 @@
 # for examples
 . ~/.shinit
 
-if [ "$(hostname)" = "garry" ] || [ "$(hostname)" = "dev-004p" ]; then
-    [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec zsh
-fi
+exists zsh && [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec zsh
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

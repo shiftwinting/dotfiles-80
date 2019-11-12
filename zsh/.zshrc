@@ -4,7 +4,7 @@
 autoload -U colors
 colors
 setopt PROMPT_SUBST
-PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1 " (%s)")%(?..%{$fg[red]%}[%?%{$reset_color%}]) %(!.#.>) '
+PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1 " (%s)")%(?..[%{$fg[red]%}%?%{$reset_color%}]) %(!.#.>) '
 
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
