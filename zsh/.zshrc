@@ -103,8 +103,18 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
 
+bash() {
+    export USE_BASH="yes"
+    command bash
+}
+
+
+
 if [ $(hostname) = "garry" ]; then
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    safesource /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+safesource ~/.fzf/shell/completion.zsh
+safesource ~/.fzf/shell/key-bindings.zsh

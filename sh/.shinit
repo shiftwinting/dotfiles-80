@@ -8,11 +8,19 @@ case $- in
           ;;
 esac
 
+exists() {
+    command -v "$1" > /dev/null 2>&1
+}
+
+safesource() {
+    [ -r "$1" ] && . "$1"
+}
+
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 if [ $(hostname) = "garry" ]; then
-    . /usr/share/git/completion/git-prompt.sh
+    safesource /usr/share/git/completion/git-prompt.sh
 else
-    . /usr/lib/git-core/git-sh-prompt
+    safesource /usr/lib/git-core/git-sh-prompt
 fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
@@ -22,18 +30,13 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 PS1="\[\033[38;1;32m\]\u\[$(tput sgr0)\]\[\033[38;1;37m\]@\[$(tput sgr0)\]\[\033[38;1;36m\]\h\[$(tput sgr0)\]\[\033[38;1;37m\]:\[$(tput sgr0)\]\[\033[38;0;33m\]\w\[$(tput sgr0)\]$(__git_ps1 " (%s)")[\[\033[38;0;31m\]\$?\[$(tput sgr0)\]]\$ "
 export PS1
 
-[ -r ~/.env.sh ] && . ~/.env.sh
+safesource ~/.env
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.aliases, instead of adding them here directly.
-if [ -r ~/.aliases ]; then
-    . ~/.aliases
-fi
+safesource ~/.aliases
 
 # numlock
 tput smkx
 
 if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
-    command -v tmux > /dev/null 2>&1 && exec tmux new-session -A -s ssh
+    exists tmux && exec tmux new-session -A -s ssh
 fi

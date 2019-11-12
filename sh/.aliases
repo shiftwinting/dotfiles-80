@@ -53,3 +53,12 @@ alias ports='netstat -tulpena'
 
 alias ndiff='nvim -d'
 alias nview='nvim -R'
+
+cs() {
+    cd "$@"
+    ls -lAhl
+}
+
+_fzf_compgen_path() {
+  eval "$FZF_DEFAULT_COMMAND" "$1"
+}

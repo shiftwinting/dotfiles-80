@@ -70,6 +70,7 @@ if g:use_plugins
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'dag/vim-fish'
     Plug 'solarnz/thrift.vim'
+    Plug 'christoomey/vim-tmux-navigator'
     if has('nvim-0.4')
         Plug 'norcalli/nvim-colorizer.lua'
     endif

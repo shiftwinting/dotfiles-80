@@ -5,7 +5,6 @@
 
 if [ "$(hostname)" = "garry" ] || [ "$(hostname)" = "dev-004p" ]; then
     [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec zsh
-    :
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -41,3 +40,6 @@ fi
 shopt -s autocd
 
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
+
+safesource ~/.fzf/shell/completion.bash
+safesource ~/.fzf/shell/key-bindings.bash

@@ -16,12 +16,6 @@ nnoremap ; :
 " but not Vi-compatible), rather than act as yy
 nnoremap <silent> Y y$
 
-nnoremap <silent> <c-h> <c-w>h
-nnoremap <silent> <c-j> <c-w>j
-nnoremap <silent> <c-k> <c-w>k
-nnoremap <silent> <c-l> <c-w>l
-
-
 " highlight last inserted text
 nnoremap <silent> gV `[v`]
 
