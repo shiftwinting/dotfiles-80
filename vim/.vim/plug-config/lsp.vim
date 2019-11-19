@@ -3,6 +3,8 @@ if !g:use_plugins || exists('g:loaded_lsp_config')
 endif
 let g:loaded_lsp_config = 1
 
+let s:findjson = {... -> fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h')}
+
 if executable('clangd')
     augroup clangd
         autocmd!
@@ -13,18 +15,21 @@ if executable('clangd')
             \ })
     augroup END
 endif
-" if executable('ccls')
-"     augroup ccls
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"             \ 'name': 'ccls',
-"             \ 'cmd': {server_info->['ccls']},
-"             \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-"             \ 'initialization_options': {},
-"             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-"             \ })
-"     augroup END
-" endif
+if executable('ccls')
+    augroup ccls
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                \   'name': 'ccls',
+                \   'cmd': {... -> ['ccls']},
+                \   'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                \   'root_uri': s:findjson,
+                \   'initialization_options': {
+                \      'cache': {'directory' : '/tmp/ccls_cache/cache'},
+                \      'completion': {'detailedLabel': v:false}
+                \   }
+                \ })
+    augroup END
+endif
 if executable('cquery')
     augroup cquery
         autocmd!

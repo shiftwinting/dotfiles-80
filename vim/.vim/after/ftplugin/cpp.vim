@@ -5,7 +5,7 @@ augroup my_cpp
     autocmd BufWritePost config.h !make clean install
 augroup END
 
-if executable('clangd') || executable('cquery')
+if executable('clangd') || executable('cquery') || executable('ccls')
     setlocal omnifunc=lsp#complete
 endif
 let b:ale_linters = ['ccls', 'clangcheck', 'clangd', 'clangtidy', 'cppcheck', 'flawfinder']
