@@ -87,7 +87,6 @@ if g:use_plugins
     endif
     Plug 'dense-analysis/ale'
     Plug 'lervag/vimtex'
-    Plug 'psliwka/vim-smoothie'
     Plug 'mzlogin/vim-markdown-toc'
     call plug#end()
     runtime! plug-config/**.vim
