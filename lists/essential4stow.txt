@@ -1,12 +1,9 @@
 bash
-cava
-fish
-gdb
 git
 lf
-mypy
 nvim
 scripts
 sh
 tmux
 vim
+zsh

@@ -3,9 +3,6 @@ set -e
 
 current_wd=$(pwd)
 
-sudo gem install neovim
-sudo npm install -g neovim
-
 if [ ! -d 'st' ]; then
     git clone git@github.com:ruifm/st.git
     (
