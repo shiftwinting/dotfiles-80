@@ -1,9 +1,16 @@
 #!/usr/bin/env sh
 
-setxkbmap -layout es
+[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
+if [ "$(hostname)" = "halley" ]; then
+    setxkbmap -layout no
+else
+    setxkbmap -layout es
+fi
 setxkbmap -option "caps:swapescape"
 xcape -e "Control_L=Escape"
-xmodmap ~/.Xmodmap
+if [ "$(hostname)" != "halley" ]; then
+    xmodmap ~/.Xmodmap
+fi
 xset r rate 250 30
 
 xkb_id=$(xinput --list --id-only "SONiX USB DEVICE" 2> /dev/null) || exit 0

@@ -27,7 +27,7 @@ fi
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share
 mkdir -p ~/.config
-mkdir -p ~/.vim
+mkdir -p ~/.vim/spell
 
 ~/dotfiles/scripts/bin/stow_all.sh
 

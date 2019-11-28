@@ -7,12 +7,23 @@ dbus-update-activation-environment --systemd DISPLAY
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
 export SSH_AUTH_SOCK
 kb-setup.sh &
-[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
 sxhkd &
 numlockx &
 nm-applet &
 # blueman-applet &
 feh --bg-center ~/dotfiles/wallpapers/arch.png &
-[ -r ~/.hostrc ] && . ~/.hostrc &
-nvidia-settings --load-config-only &
-nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
+if [ "$(hostname)" = "garry" ]; then
+    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
+    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
+    nvidia-settings --load-config-only &
+    nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
+elif [ "$(hostname)" = "halley" ]; then
+    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+    protonmail-bridge --no-window &
+# elif [ "$(hostname)" = "dev-004p" ]; then
+#     synclient HorizTwoFingerScroll=1
+#     synclient VertScrollDelta=-77
+#     synclient HorizScrollDelta=-77
+#     synclient PalmDetect=1
+fi
