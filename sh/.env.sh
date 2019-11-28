@@ -14,6 +14,7 @@ else
 
     IFACE=$(iface.sh) && export IFACE
     export INTERFACE="$IFACE"
+    export DISTRO="$(lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | grep "^ID" | cut -d= -f2 || uname -om)"
     export ENV_SOURCED=yes
 fi
 

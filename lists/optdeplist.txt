@@ -3,7 +3,6 @@ cronie
 dmenu
 ell
 gnome-keyring
-lib32-libpulse
 llvm
 lynx
 mesa-vdpau

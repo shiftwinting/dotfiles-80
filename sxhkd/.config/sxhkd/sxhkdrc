@@ -32,10 +32,10 @@ mod4+{Left,Down,Right}
     mediactl {previous,play-pause,next}
 
 XF86MonBrightness{Down,Up}
-    light -{U,A} 5  && pkill -RTMIN+2 i3blocks
+    sudo light -{U,A} 5  && pkill -RTMIN+2 i3blocks
 
 mod4+{Prior,Next}
-    light -{U,A} 5  && pkill -RTMIN+2 i3blocks
+    sudo light -{U,A} 5  && pkill -RTMIN+2 i3blocks
 
 XF86Display
     xset dpms force off

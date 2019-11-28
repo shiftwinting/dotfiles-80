@@ -38,7 +38,7 @@ interval=18000
 signal=5
 
 [mailbox]
-label=📬
+label=
 interval=180
 signal=12
 
@@ -75,10 +75,10 @@ interval=10
 separator=false
 markup=pango
 
-[gpu-temp]
-interval=10
-separator=false
-markup=pango
+# [gpu-temp]
+# interval=10
+# separator=false
+# markup=pango
 
 [battery]
 interval=30
@@ -95,7 +95,7 @@ separator=false
 [wifi]
 command=~/repos/i3blocks-contrib/wifi/wifi
 #INTERFACE=wlp3s0
-label=wifi:
+label=
 interval=10
 separator=false
 

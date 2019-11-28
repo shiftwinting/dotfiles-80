@@ -4,7 +4,9 @@
 #
 # global xinitrc file, used by all X sessions started by xinit (startx)
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
+if [ "$(hostname)" != "halley" ]; then
+    xrandr --setprovideroutputsource modesetting NVIDIA-0
+fi
 xrandr --auto
 
 systemctl --user import-environment DISPLAY

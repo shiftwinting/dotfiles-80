@@ -20,5 +20,5 @@ else
 	color="#00ff00"
 fi
 
-LABEL="🌡"
+LABEL=""
 printf "<span color='%s'>%s%s°</span>\n" "$color" "$LABEL" "$temp"

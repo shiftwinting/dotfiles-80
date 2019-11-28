@@ -16,8 +16,12 @@ safesource() {
     [ -r "$1" ] && . "$1"
 }
 
+safesource ~/.env.sh
+
+safesource ~/.aliases
+
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-if [ "$(hostname)" = "garry" ]; then
+if [ "$DISTRO" = "arch" ]; then
     safesource /usr/share/git/completion/git-prompt.sh
 else
     safesource /usr/lib/git-core/git-sh-prompt
@@ -29,10 +33,6 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 
 PS1="\[\033[38;1;32m\]\u\[$(tput sgr0)\]\[\033[38;1;37m\]@\[$(tput sgr0)\]\[\033[38;1;36m\]\h\[$(tput sgr0)\]\[\033[38;1;37m\]:\[$(tput sgr0)\]\[\033[38;0;33m\]\w\[$(tput sgr0)\]$(__git_ps1 " (%s)")[\[\033[38;0;31m\]\$?\[$(tput sgr0)\]]\$ "
 export PS1
-
-safesource ~/.env.sh
-
-safesource ~/.aliases
 
 # numlock
 tput smkx
