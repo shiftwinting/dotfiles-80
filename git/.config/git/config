@@ -2,6 +2,7 @@
 	email = ruifmarques@pm.me
 	name = Rui Marques
         username = ruifm
+        signingkey = 15B7C6C3FFFAE83A
 [push]
 	default = simple
 [core]
