@@ -21,11 +21,7 @@ safesource ~/.env.sh
 safesource ~/.aliases
 
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-if [ "$DISTRO" = "arch" ]; then
-    safesource /usr/share/git/completion/git-prompt.sh
-else
-    safesource /usr/lib/git-core/git-sh-prompt
-fi
+safesource /usr/share/git/completion/git-prompt.sh || safesource /usr/lib/git-core/git-sh-prompt
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
