@@ -39,5 +39,7 @@ shopt -s autocd
 
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
-safesource ~/.fzf/shell/completion.bash
-safesource ~/.fzf/shell/key-bindings.bash
+if exists fzf; then
+    safesource /usr/share/fzf/completion.bash || safesource ~/.fzf/shell/completion.bash
+    safesource /usr/share/fzf/key-bindings.bash || safesource ~/.fzf/shell/key-bindings.bash
+fi

@@ -2,11 +2,15 @@
 if [ -n "$ENV_SOURCED" ]; then
     :
 else
-    PATH="$PATH":/sbin
+    if [ -z "$OLDPATH" ]; then
+        export OLDPATH="$PATH"
+    else
+        PATH="$OLDPATH"
+    fi
     PATH="$HOME"/.local/bin:"$PATH"
-    PATH="$HOME"/bin:"$PATH"
-    PATH="$HOME"/.fzf/bin:"$PATH"
-    PATH="$HOME"/.vim/plugged/vim-mathpix/bin:"$PATH"
+    if ! [ -x "/usr/bin/fzf" ] && ! [ -x "/usr/local/bin/fzf" ]; then
+        PATH="$HOME"/.fzf/bin:"$PATH"
+    fi
     export PATH
     MANPATH="/usr/local/man:$MANPATH"
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
@@ -14,7 +18,6 @@ else
 
     IFACE=$(iface.sh) && export IFACE
     export INTERFACE="$IFACE"
-    export DISTRO="$(lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | grep "^ID" | cut -d= -f2 || uname -om)"
     export ENV_SOURCED=yes
 fi
 
@@ -41,6 +44,4 @@ export EMAIL_CLIENT='neomutt'
 export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
 export NO_AT_BRIDGE=1
 export SCREENLOCKER='i3lock-fancy'
-export MATHPIX_GROUP="mrsommerfeld_pm_me"
-export MATHPIX_ID="mrsommerfeld_pm_me"
-export MATHPIX_KEY="788001c074fadc6419af"
+export MOZ_WEBRENDER=1

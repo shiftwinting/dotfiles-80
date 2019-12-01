@@ -108,13 +108,9 @@ bash() {
     command bash
 }
 
+safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh || safesource /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-if [ $(hostname) = "garry" ]; then
-    safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-    safesource /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if exists fzf; then
+    safesource /usr/share/fzf/key-bindings.zsh || safesource ~/.fzf/shell/key-bindings.zsh
+    safesource /usr/share/fzf/completion.zsh || safesource ~/.fzf/shell/completion.zsh
 fi
-
-safesource ~/.fzf/shell/completion.zsh
-safesource ~/.fzf/shell/key-bindings.zsh

@@ -35,8 +35,6 @@ cscope.in.out
 cscope.po.out
 
 # C++
-# Prerequisites
-*.d
 
 # Compiled Object files
 *.slo
