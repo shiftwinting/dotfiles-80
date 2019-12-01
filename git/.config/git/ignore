@@ -67,8 +67,6 @@ cscope.po.out
 *.app
 
 # C
-# Prerequisites
-*.d
 
 # Object files
 *.o
