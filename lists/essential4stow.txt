@@ -4,6 +4,7 @@ lf
 nvim
 scripts
 sh
+ssh
 tmux
 vim
 zsh

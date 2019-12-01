@@ -10,8 +10,12 @@ mkdir -p ~/.local/share/nvim
 mkdir -p ~/.config
 mkdir -p ~/.vim/spell
 
+cp -r ~/dotfiles/systemd ~/.config
+systemctl --user enable --now tmux@ssh
+systemctl --user enable --now tmux@tty
+
 if [ ! -d 'st' ]; then
-    git clone git@github.com:ruifm/st.git
+    git clone git@github.com:ruifm/st.git && git clone https://github.com/ruifm/st.git
     (
     cd st || exit
     make install
@@ -23,7 +27,7 @@ fi
 [ ! -d 'i3blocks-contrib' ] && git clone https://github.com/vivien/i3blocks-contrib.git
 
 if [ ! -d 'surf' ]; then
-    git clone git@github.com:ruifm/surf.git
+    git clone git@github.com:ruifm/surf.git && git clone https://github.com/ruifm/surf.git
     (
     cd surf || exit
     make install

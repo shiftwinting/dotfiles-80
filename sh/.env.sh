@@ -25,7 +25,6 @@ export ENV="$HOME"/.shinit
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
-export SSH_KEY_PATH="$HOME"/.ssh/rsa_id
 export OPENER='xdg-open'
 export FZF_BASE=$HOME/.fzf/bin/fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
