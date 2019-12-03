@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+git config --local user.name "Rui Marques"
+git config --local user.username "rui.marques"
+git config --local user.email "rui.marques@cinfo.es"
+git config --local user.signingkey 50922F2BF8D05472
+git config --local gpg.program gpg2
