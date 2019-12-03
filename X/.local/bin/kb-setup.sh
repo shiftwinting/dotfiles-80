@@ -10,7 +10,7 @@ else
 fi
 setxkbmap -option "caps:swapescape"
 xcape -e "Control_L=Escape"
-if [ "$(hostname)" != "halley" ]; then
+if [ "$(hostname)" = "garry" ]; then
     xmodmap ~/.Xmodmap
 fi
 xset r rate 250 30
