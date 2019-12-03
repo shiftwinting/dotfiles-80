@@ -3,6 +3,8 @@
 [ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
 if [ "$(hostname)" = "halley" ]; then
     setxkbmap -layout no
+elif [ "$(hostname)" = "liselle" ]; then
+    setxkbmap -layout us
 else
     setxkbmap -layout es
 fi

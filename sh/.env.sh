@@ -44,3 +44,4 @@ export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
 export NO_AT_BRIDGE=1
 export SCREENLOCKER='i3lock-fancy'
 export MOZ_WEBRENDER=1
+export LD_LIBRARY_PATH='/usr/local/lib'

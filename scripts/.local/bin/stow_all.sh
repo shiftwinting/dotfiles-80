@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-~/dotfiles/scripts/stow_essential.sh
-~/dotfiles/scripts/stow_others.sh
+~/dotfiles/scripts/.local/bin/stow_essential.sh
+~/dotfiles/scripts/.local/bin/stow_others.sh
