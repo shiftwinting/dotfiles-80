@@ -51,7 +51,6 @@ if executable('pyls')
             \ 'cmd': {server_info->['pyls']},
             \ 'whitelist': ['python'],
             \ })
-        autocmd Filetype python setlocal omnifunc=lsp#complete
     augroup END
 endif
 
@@ -63,7 +62,6 @@ if executable('bash-language-server')
                 \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
                 \ 'whitelist': ['sh'],
                 \ })
-        autocmd Filetype sh setlocal omnifunc=lsp#complete
     augroup END
 endif
 

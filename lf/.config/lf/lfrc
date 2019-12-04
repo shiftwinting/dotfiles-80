@@ -142,3 +142,5 @@ cmd paste &{{
 
 map H :set hidden toggle
 map S $$SHELL
+
+set period 1
