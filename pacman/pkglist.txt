@@ -26,7 +26,6 @@ dashbinsh
 discord
 dosfstools
 dunst
-e2fsprogs
 earlyoom
 efibootmgr
 fakeroot
@@ -46,7 +45,6 @@ informant
 intel-ucode
 iptables-nft
 irqbalance
-iwd
 lf
 libtool
 light
@@ -144,7 +142,6 @@ transmission-remote-cli-git
 ttf-computer-modern-fonts
 ttf-dejavu
 ttf-font-awesome
-ttf-font-awesome-4
 unzip
 usbutils
 vim
