@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+alias sudo='sudo '
+
 alias ls='ls --color=auto'
 alias ll='ls -lhG'
 alias la='ls -AlhG'
