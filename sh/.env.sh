@@ -26,6 +26,7 @@ else
     export LD_LIBRARY_PATH
     IFACE=$(iface.sh) && export IFACE
     export INTERFACE="$IFACE"
+    export GPG_TTY=$(tty)
     export ENV_SOURCED=yes
 fi
 
