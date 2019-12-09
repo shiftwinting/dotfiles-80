@@ -6,7 +6,7 @@ colors
 setopt PROMPT_SUBST
 PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1 " (%s)")%(?..[%{$fg[red]%}%?%{$reset_color%}]) %(!.#.>) '
 
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.zsh-history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch notify
@@ -108,7 +108,18 @@ bash() {
     command bash
 }
 
+setopt interactivecomments
+
 safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh || safesource /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [ -n "$ZSH_HIGHLIGHT_STYLES" ]; then
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+    ZSH_HIGHLIGHT_STYLES[comment]='fg=yellow'
+fi
+
+safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh || safesource /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh || safesource /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 if exists fzf; then
     safesource /usr/share/fzf/key-bindings.zsh || safesource ~/.fzf/shell/key-bindings.zsh
