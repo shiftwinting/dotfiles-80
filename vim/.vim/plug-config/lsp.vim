@@ -81,7 +81,7 @@ nmap <silent> gi <Plug>(lsp-peek-implementation)
 nmap <silent> gi <Plug>(lsp-implementation)
 nmap <silent> gr <Plug>(lsp-references)
 nmap <silent> gh <Plug>(lsp-hover)
-nmap <leader> gr <Plug>(lsp-rename)
+nmap <silent> gR <Plug>(lsp-rename)
 
 xmap <leader>f  <Plug>(lsp-document-format)
 nmap <leader>f  <Plug>(lsp-document-format)
