@@ -3,8 +3,6 @@
 [ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
 if [ "$(hostname)" = "halley" ]; then
     setxkbmap -layout no
-elif [ "$(hostname)" = "liselle" ]; then
-    setxkbmap -layout us
 else
     setxkbmap -layout es
 fi
@@ -15,6 +13,13 @@ if [ "$(hostname)" = "garry" ]; then
 fi
 xset r rate 250 30
 
-xkb_id=$(xinput --list --id-only "SONiX USB DEVICE" 2> /dev/null) || exit 0
+setlayout() {
+    ids=$(xinput --list | sed -ne '/Virtual core keyboard/{:a' -e 'n;p;ba' -e '}' | grep "$1" | sed -n 's/.*id=\([0-9]\+\).*/\1/p')
+    for i in $ids
+    do
+        setxkbmap -device "$i" -layout "$2"
+    done
+ }
 
-[ -n "$xkb_id" ] && setxkbmap -device "$xkb_id" -layout us
+setlayout "Kingston HyperX Alloy FPS Pro Mechanical Gaming Keyboard" us
+setlayout "SONiX USB DEVICE" us
