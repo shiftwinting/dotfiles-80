@@ -110,16 +110,20 @@ bash() {
 
 setopt interactivecomments
 
-safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh || safesource /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh || safesource ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [ -n "$ZSH_HIGHLIGHT_STYLES" ]; then
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
     ZSH_HIGHLIGHT_STYLES[comment]='fg=yellow'
 fi
 
-safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh || safesource /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh || safesource ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh || safesource /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh || safesource ~/repos/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+if [ "$(hostname)" = "liselle" ]; then
+    fpath=(~/repos/zsh-completions $fpath)
+fi
 
 if exists fzf; then
     safesource /usr/share/fzf/key-bindings.zsh || safesource ~/.fzf/shell/key-bindings.zsh
