@@ -7,6 +7,8 @@ mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/nvim
 mkdir -p ~/.config
 mkdir -p ~/.vim/spell
+mkdir -p ~/.gnupg
+mkdir -p ~/.ssh/sockets
 
 cp -r ~/dotfiles/systemd ~/.config
 systemctl --user enable --now tmux@ssh

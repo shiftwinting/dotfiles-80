@@ -29,7 +29,9 @@ else
     export ENV_SOURCED=yes
 fi
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
+export GPG_AGENT_INFO=1
 export ENV="$HOME"/.shinit
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
