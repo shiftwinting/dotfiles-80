@@ -107,6 +107,11 @@ set gdefault
 
 set path+=**
 
+if &synmaxcol == 3000
+  " Lowering this improves performance in files with long lines.
+  set synmaxcol=500
+endif
+
 let g:is_posix=1
 
 " highlight merge conflict markers
