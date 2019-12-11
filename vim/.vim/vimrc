@@ -44,6 +44,7 @@ if g:use_plugins
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-endwise'
+    Plug 'rstacruz/vim-closer'
     Plug 'haya14busa/incsearch.vim'
     Plug 'bkad/CamelCaseMotion'
     Plug 'romainl/vim-qf'
