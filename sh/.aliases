@@ -59,6 +59,7 @@ alias ports='netstat -tulpena'
 
 alias ndiff='nvim -d'
 alias nview='nvim -R'
+alias ngit='nvim +G'
 
 alias python='python3'
 alias pip='pip3'
