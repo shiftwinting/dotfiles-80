@@ -62,9 +62,7 @@ endif
 set showmode
 set number
 set cursorline
-if g:use_plugins
-    set colorcolumn=80
-endif
+set colorcolumn=82
 set lazyredraw
 if has('signcolumn')
     " Always draw the signcolumn.
@@ -86,7 +84,7 @@ set splitbelow
 set splitright
 
 set linebreak    "Wrap lines at convenient points
-set textwidth=79
+set textwidth=81
 
 set spelllang=en,pt_pt,es_es
 set spellfile=$HOME/.vim/spell/en.utf-8.add

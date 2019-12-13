@@ -1,3 +1,4 @@
 setlocal spell
 setlocal complete+=kspell
-let b:undo_ftplugin .= '|setlocal spell< complete<'
+set commentstring=#\ %s
+let b:undo_ftplugin .= '|setlocal spell< complete< commentstring<'
