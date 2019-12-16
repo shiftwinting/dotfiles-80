@@ -555,5 +555,3 @@ pythontex-files-*/
 
 # ccls
 .ccls-cache/*
-
-*_rui.json

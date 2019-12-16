@@ -17,6 +17,7 @@ let g:ale_fix_on_save = 0
 
 nmap <silent> [w <Plug>(ale_previous_wrap)
 nmap <silent> ]w <Plug>(ale_next_wrap)
+nmap <silent> <leader>af <Plug>(ale_fix)
 let g:ale_close_preview_on_insert = 1
 
 function! LinterStatus() abort

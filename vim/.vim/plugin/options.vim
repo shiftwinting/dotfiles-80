@@ -124,4 +124,4 @@ if has('nvim-0.3.2') || has('patch-8.1.0360')
     set diffopt=filler,internal,indent-heuristic
 endif
 
-set completeopt=menuone,preview,noselect
+set completeopt=menuone,preview,noinsert,noselect

@@ -4,7 +4,7 @@ endif
 let g:loaded_asyncomplete_config = 1
 
 imap <c-space> <Plug>(asyncomplete_force_refresh)
-let g:asyncomplete_popup_delay = 300
+" let g:asyncomplete_popup_delay = 300
 let g:asyncomplete_auto_completeopt = 0
 if executable('python3') && (has('nvim') || has('python3'))
     augroup async_ulti

@@ -4,6 +4,7 @@ endif
 let g:loaded_lsp_config = 1
 
 let s:findjson = {... -> fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h')}
+let g:lsp_text_edit_enabled=0
 
 if executable('clangd')
     augroup clangd
@@ -14,8 +15,7 @@ if executable('clangd')
             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
             \ })
     augroup END
-endif
-if executable('ccls')
+elseif executable('ccls')
     augroup ccls
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
@@ -29,8 +29,7 @@ if executable('ccls')
                 \   }
                 \ })
     augroup END
-endif
-if executable('cquery')
+elseif executable('cquery')
     augroup cquery
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
