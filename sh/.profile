@@ -17,7 +17,6 @@ if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
         if [ "$(hostname)" = "garry" ]; then
             exec nvidia-xrun ~/.xinitrc
-        # elif [ "$(hostname)" = "dev-004p" ]; then
         else
             exec startx -- -keeptty
         fi
