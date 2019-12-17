@@ -1,6 +1,7 @@
 bash
 git
 gpg
+htop
 lf
 mutt
 nvim
