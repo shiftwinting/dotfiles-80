@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=nvim
-Comment=Literally the future of victim
+Comment=Literally the future of vim
 Exec=st -e nvim %F
 Icon=vim
 MimeType=text/plain;
