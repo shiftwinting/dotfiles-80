@@ -66,8 +66,7 @@
 st.termname:     st-256color
 ! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
 st.shell:        /bin/sh
-*.font: mono:size=18:antialias=true
-st.font2: FontAwesome:size=14:antialias=true
+*.font: mono:size=17:antialias=true
 
 st.xfps:              120
 st.actionfps:         30
