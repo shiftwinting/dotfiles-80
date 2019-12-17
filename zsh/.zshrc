@@ -81,6 +81,8 @@ zle -N down-line-or-beginning-search
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
+bindkey \^U backward-kill-line
+
 zshcache_time="$(date +%s%N)"
 
 if [ $(hostname) = "garry" ]; then
