@@ -59,7 +59,7 @@ mod4+p
     $TERMINAL -e python3 -i -c 'from numpy import *'
 
 mod4+o;{m,a,s,t,r,v}
-    {spowrap,ace,stream,twitch,$TERMINAL -e rtv,tv}
+    {spowrap,ace,stream,twitch,$TERMINAL -e tuir,tv}
 
 mod4+g
     ducksearch

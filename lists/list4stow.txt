@@ -9,11 +9,11 @@ latexmk
 mpv
 pulseaudio
 rofi
-rtv
 scripts
 streamlink
 sxhkd
 transmission
+tuir
 X
 youtube-dl
 zathura
