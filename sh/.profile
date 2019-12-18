@@ -15,11 +15,7 @@ systemctl --user import-environment PATH
 
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
-        if [ "$(hostname)" = "garry" ]; then
-            exec nvidia-xrun ~/.xinitrc
-        else
-            exec startx -- -keeptty
-        fi
+        exec startx -- -keeptty
     else
         [ -r ~/dotfiles/tty/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/tty/caps2esc.map > /dev/null
         sudo -n kbdrate -s -d 250 -r 30 > /dev/null
