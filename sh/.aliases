@@ -12,7 +12,7 @@ alias egrep='egrep --color=auto'
 
 alias gs='git status'
 alias gc='git commit'
-alias gck='git checkout'
+alias gco='git checkout'
 alias gpull='git pull'
 alias gpush='git push'
 alias gd='git diff'
@@ -26,6 +26,10 @@ alias gr='git remote'
 alias gdiff='git difftool'
 alias gmt='git mergetool'
 alias gmerge='git merge'
+alias gr='git rebase'
+alias gclone='git clone'
+alias gz='git stash'
+alias gzp='git stash pop'
 
 alias sys='sudo systemctl'
 alias sysu='systemctl --user'
@@ -69,7 +73,7 @@ alias p2='python2'
 
 cs() {
     cd "$@"
-    ls -lAhl
+    ls -lAh
 }
 
 _fzf_compgen_path() {
