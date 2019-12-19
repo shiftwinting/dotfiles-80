@@ -10,6 +10,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias g='git'
 alias gs='git status'
 alias gc='git commit'
 alias gco='git checkout'
@@ -22,11 +23,11 @@ alias ga='git add'
 alias gca='git commit -a'
 alias gsub='git submodule'
 alias gsubf='git submodule foreach'
-alias gr='git remote'
+alias grt='git remote'
 alias gdiff='git difftool'
 alias gmt='git mergetool'
 alias gmerge='git merge'
-alias gr='git rebase'
+alias grm='git rebase'
 alias gclone='git clone'
 alias gz='git stash'
 alias gzp='git stash pop'
@@ -48,6 +49,7 @@ alias mkdir='mkdir -p'
 alias du='du -h'
 alias df='df -h'
 alias visudo='sudo -E visudo'
+alias se='se'
 
 alias pacopt='comm -13 <(pacman -Qqdt | sort) <(pacman -Qqdtt | sort)'
 alias pacinstalled='comm -23 <(pacman -Qeq | sort) <(pacman -Qgq base-devel xorg-apps texlive-most | sort)'
@@ -61,21 +63,16 @@ alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify
 alias sub='subliminal download -l en'
 alias ports='netstat -tulpena'
 
+alias n='nvim'
+alias ns='nvim -S'
 alias ndiff='nvim -d'
 alias nview='nvim -R'
 alias ngit='nvim +G'
+
+alias v='vim'
 
 alias python='python3'
 alias pip='pip3'
 alias p3='python3'
 alias py='python3'
 alias p2='python2'
-
-cs() {
-    cd "$@"
-    ls -lAh
-}
-
-_fzf_compgen_path() {
-  eval "$FZF_DEFAULT_COMMAND" "$1"
-}

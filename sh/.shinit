@@ -16,6 +16,15 @@ safesource() {
     [ -r "$1" ] && . "$1"
 }
 
+cs() {
+    cd "$@" || return
+    ls -lAh
+}
+
+_fzf_compgen_path() {
+  eval "$FZF_DEFAULT_COMMAND" "$1"
+}
+
 safesource ~/.env.sh
 
 safesource ~/.aliases

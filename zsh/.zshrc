@@ -17,6 +17,7 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1
+zstyle ':completion:*' completer _expand_alias _complete _ignored
 setopt COMPLETE_ALIASES
 _comp_options+=(globdots)		# Include hidden files.
 
