@@ -26,16 +26,6 @@ fi
 
 [ ! -d 'i3blocks-contrib' ] && git clone https://github.com/vivien/i3blocks-contrib.git
 
-if [ ! -d 'surf' ]; then
-    git clone https://github.com/ruifm/surf.git
-    (
-    cd surf || exit
-    make install
-    git remote add upstream https://git.suckless.org/surf
-    git remote update
-    )
-fi
-
 ~/dotfiles/scripts/.local/bin/stow_all.sh
 
 cd "$current_wd" || exit
