@@ -132,3 +132,5 @@ if exists fzf; then
     safesource /usr/share/fzf/key-bindings.zsh || safesource ~/.fzf/shell/key-bindings.zsh
     safesource /usr/share/fzf/completion.zsh || safesource ~/.fzf/shell/completion.zsh
 fi
+
+alias please='sudo $(fc -ln -1)'

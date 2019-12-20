@@ -9,8 +9,6 @@ export SSH_AUTH_SOCK
 kb-setup.sh &
 sxhkd &
 numlockx &
-nm-applet &
-# blueman-applet &
 feh --bg-center ~/dotfiles/wallpapers/arch.png &
 if [ "$(hostname)" = "garry" ]; then
     xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
