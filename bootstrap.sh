@@ -13,6 +13,7 @@ mkdir -p ~/.ssh/sockets
 cp -r ~/dotfiles/systemd ~/.config
 systemctl --user enable --now tmux@ssh
 systemctl --user enable --now tmux@tty
+systemctl --user enable --now mpris-proxy
 
 if [ ! -d 'st' ]; then
     git clone https://github.com/ruifm/st.git

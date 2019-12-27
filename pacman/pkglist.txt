@@ -53,6 +53,7 @@ libtool
 light
 linux
 linux-firmware
+lshw
 m4
 make
 man-db
@@ -79,8 +80,8 @@ pkgstats
 playerctl
 protonmail-bridge
 pulseaudio
-pulseaudio-bluetooth
 pulseaudio-jack
+pulseaudio-modules-bt-git
 python-autopep8
 python-language-server
 python-matplotlib

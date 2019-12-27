@@ -4,6 +4,7 @@ cronie
 ell
 freeglut
 gnome-keyring
+libldac
 libusb-compat
 lynx
 openmp
