@@ -1,8 +1,10 @@
 abook
+aspell
 cronie
 ell
 freeglut
 gnome-keyring
+libusb-compat
 lynx
 openmp
 pam-gnupg-git
@@ -10,6 +12,7 @@ perl-file-mimeinfo
 pulseaudio-alsa
 python-pynvim
 systemd-resolvconf
+tcl
 urlview-git
 w3m
 zathura-djvu

@@ -27,7 +27,6 @@ sudo systemctl enable --now cronie
 sudo systemctl enable --now earlyoom
 sudo systemctl enable --now irqbalance
 sudo systemctl enable --now iwd
-sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now nftables
 sudo systemctl enable --now ntpd
 sudo systemctl enable --now numLockOnTty
