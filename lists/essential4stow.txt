@@ -1,4 +1,5 @@
 bash
+ctags
 git
 gpg
 htop

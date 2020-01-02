@@ -21,7 +21,6 @@ ccls
 clang
 cmake
 cpupower
-ctags
 dashbinsh
 dhcpcd
 discord
@@ -134,6 +133,7 @@ transmission-remote-cli-git
 ttf-computer-modern-fonts
 ttf-dejavu
 tuir
+universal-ctags-git
 unzip
 usbutils
 vim
