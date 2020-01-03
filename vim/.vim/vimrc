@@ -74,6 +74,7 @@ if g:use_plugins
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'vimwiki/vimwiki'
     Plug 'dense-analysis/ale'
     Plug 'lervag/vimtex'
     Plug 'mzlogin/vim-markdown-toc'
