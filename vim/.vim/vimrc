@@ -64,6 +64,7 @@ if g:use_plugins
     Plug 'rhysd/clever-f.vim'
     if has('nvim')
         Plug 'lambdalisue/suda.vim'
+        Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
     else
         Plug 'markonm/traces.vim'
     endif
@@ -72,8 +73,6 @@ if g:use_plugins
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
-    Plug 'dag/vim-fish'
-    Plug 'solarnz/thrift.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'dense-analysis/ale'
     Plug 'lervag/vimtex'
