@@ -90,7 +90,6 @@ python-pygments
 python-scipy
 reflector
 ripgrep
-rivalcfg-git
 rofi
 rsync
 scrot
