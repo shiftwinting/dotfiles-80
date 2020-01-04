@@ -42,7 +42,6 @@ i3blocks
 i3lock-fancy-git
 i7z
 informant
-intel-ucode
 iptables-nft
 irqbalance
 iwd
