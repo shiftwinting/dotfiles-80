@@ -47,10 +47,12 @@ irqbalance
 iwd
 jq
 lf
+libtool
 light
 linux
 linux-firmware
 lshw
+m4
 make
 man-db
 man-pages
