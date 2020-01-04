@@ -63,7 +63,6 @@ neofetch
 neovim
 nerd-fonts-inconsolata
 nmap
-nodejs-neovim
 ntp
 numlockx
 openssh
@@ -94,7 +93,6 @@ ripgrep
 rivalcfg-git
 rofi
 rsync
-ruby-neovim
 scrot
 shellcheck
 signal-desktop-bin
