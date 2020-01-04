@@ -1,5 +1,6 @@
 acestream-launcher
 acpi
+acpid
 aic94xx-firmware
 arandr
 arc-gtk-theme
@@ -7,9 +8,9 @@ arch-audit
 autoconf
 automake
 base
+bash
 bash-completion
 bash-language-server
-bdf-unifont
 biber
 binutils
 bison
@@ -35,7 +36,6 @@ flex
 fzf
 gcc
 git
-groff
 htop
 i3-wm
 i3blocks
@@ -48,12 +48,10 @@ irqbalance
 iwd
 jq
 lf
-libtool
 light
 linux
 linux-firmware
 lshw
-m4
 make
 man-db
 man-pages
@@ -72,6 +70,7 @@ openvpn
 overdue
 pacman-cleanup-hook
 pacman-contrib
+page-git
 patch
 pavucontrol
 pkgconf
