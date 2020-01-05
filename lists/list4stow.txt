@@ -4,7 +4,6 @@ fontconfig
 gtk
 i3
 i3blocks
-gtk
 latexmk
 mpv
 newsboat
