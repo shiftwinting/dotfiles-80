@@ -7,6 +7,7 @@ gnome-keyring
 libldac
 libusb-compat
 lynx
+ocl-icd
 openmp
 pam-gnupg-git
 perl-file-mimeinfo
@@ -16,6 +17,8 @@ systemd-resolvconf
 tcl
 urlview-git
 w3m
+xorg-xdpyinfo
+xorg-xwininfo
 zathura-djvu
 zathura-pdf-mupdf
 zathura-ps
