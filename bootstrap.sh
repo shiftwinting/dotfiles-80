@@ -19,7 +19,6 @@ if [ ! -d 'st' ]; then
     git clone https://github.com/ruifm/st.git
     (
     cd st || exit
-    make install
     git remote add upstream https://git.suckless.org/st
     git remote update
     )
