@@ -5,12 +5,13 @@ mkdir -p ~/repos && cd ~/repos
 
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/nvim
-mkdir -p ~/.config
+mkdir -p ~/.config/mpv
 mkdir -p ~/.vim/spell
 mkdir -p ~/.gnupg
 mkdir -p ~/.ssh/sockets
+mkdir -p ~/.config/systemd/user
 
-cp -r ~/dotfiles/systemd ~/.config
+cp ~/dotfiles/systemd/* ~/.config/systemd/user
 systemctl --user enable --now tmux@ssh
 systemctl --user enable --now tmux@tty
 
@@ -26,6 +27,6 @@ fi
 
 [ ! -d 'i3blocks-contrib' ] && git clone https://github.com/vivien/i3blocks-contrib.git
 
-~/dotfiles/scripts/.local/bin/stow_all.sh
+cd ~/dotfiles && stow -R home
 
 cd "$current_wd" || exit

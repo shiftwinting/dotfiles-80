@@ -22,8 +22,7 @@ reflector --country Spain --country Portugal --country France --latest 20 --age 
 
 cd ~/dotfiles
 
-sudo stow -t /etc -R pacman
-stow -R makepkg
+sudo stow -t /etc -R etc
 
 sudo systemctl enable --now cpupower
 sudo systemctl enable --now cronie
