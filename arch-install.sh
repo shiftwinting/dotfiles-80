@@ -5,6 +5,8 @@ current_wd="$(pwd)"
 
 mkdir -p ~/repos && cd ~/repos
 
+yay -Syu --needed base-devel pacman-contrib
+
 if [ ! -d 'yay' ]; then
     git clone https://aur.archlinux.org/yay.git
     (
@@ -21,6 +23,7 @@ reflector --country Spain --country Portugal --country France --latest 20 --age 
 cd ~/dotfiles
 
 sudo stow -t /etc -R pacman
+stow -R makepkg
 
 sudo systemctl enable --now cpupower
 sudo systemctl enable --now cronie
