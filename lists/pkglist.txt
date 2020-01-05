@@ -96,6 +96,7 @@ rsync
 scrot
 shellcheck
 spotify
+st-ruifm-git
 stow
 strace
 streamlink
