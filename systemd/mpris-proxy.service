@@ -6,4 +6,4 @@ Type=simple
 ExecStart=/usr/bin/mpris-proxy
 
 [Install]
-WantedBy=default.target
+WantedBy=bluetooth.target
