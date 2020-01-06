@@ -58,8 +58,8 @@ mod4+w
 mod4+p
     $TERMINAL -e python3 -i -c 'from numpy import *'
 
-mod4+o;{m,a,s,r,v,e}
-    {spowrap,ace,stream,$TERMINAL -e tuir,tv,$TERMINAL -e neomutt}
+mod4+o;{m,a,s,r,v,e,n}
+    {spowrap,ace,stream,$TERMINAL -e tuir,tv,$TERMINAL -e neomutt, $TERMINAL -e newsboat}
 
 mod4+g
     ducksearch
