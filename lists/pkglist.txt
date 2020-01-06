@@ -87,7 +87,6 @@ python-matplotlib
 python-pillow
 python-pip
 python-pycodestyle
-python-pygments
 python-scipy
 reflector
 ripgrep
