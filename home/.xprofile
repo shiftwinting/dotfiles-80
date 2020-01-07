@@ -15,10 +15,14 @@ if [ "$(hostname)" = "garry" ]; then
     xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
     nvidia-settings --load-config-only &
     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
+    protonmail-bridge --no-window &
 elif [ "$(hostname)" = "halley" ]; then
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
     protonmail-bridge --no-window &
+elif [ "$(hostname)" = "liselle" ]; then
+    nvidia-settings --load-config-only &
+    nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
 # elif [ "$(hostname)" = "dev-004p" ]; then
 #     synclient HorizTwoFingerScroll=1
 #     synclient VertScrollDelta=-77
