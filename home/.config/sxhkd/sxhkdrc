@@ -53,7 +53,7 @@ mod4+shift+f
     $TERMINAL -e $FILE_MANAGER
 
 mod4+w
-    $BROWSER
+    firefox
 
 mod4+p
     $TERMINAL -e python3 -i -c 'from numpy import *'
