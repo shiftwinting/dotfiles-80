@@ -14,8 +14,6 @@ bash-language-server
 biber
 binutils
 bison
-bluez
-bluez-utils
 boost
 cava
 clang
@@ -129,6 +127,7 @@ universal-ctags-git
 unzip
 usbutils
 vim
+w3m
 weechat
 wget
 which
