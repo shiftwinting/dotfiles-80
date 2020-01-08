@@ -3,7 +3,6 @@ aspell
 cronie
 ell
 freeglut
-gnome-keyring
 libldac
 libusb-compat
 lynx
@@ -16,7 +15,6 @@ python-pynvim
 systemd-resolvconf
 tcl
 urlview-git
-w3m
 xorg-xdpyinfo
 xorg-xwininfo
 zathura-djvu
