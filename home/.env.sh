@@ -53,6 +53,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export BROWSER='w3m'
 export TERMINAL='st'
 export VISUAL="$EDITOR"
+# Set STATUSBAR for the mailsync script
+export STATUSBAR="i3blocks"
 # Suppress Gnome Accessibility bus warnings in gtk apps
 export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
