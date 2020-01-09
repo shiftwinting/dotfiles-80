@@ -86,6 +86,7 @@ python-pillow
 python-pip
 python-pycodestyle
 python-scipy
+rainbowstream
 reflector
 ripgrep
 rofi

@@ -8,11 +8,11 @@ pgrep -x rofi && exit
 choice=$(echo "" | rofi -lines 0 -dmenu -i -p "Search DuckDuckGo:") || exit 1
 
 if [ "$choice" = ""  ]; then
-    $BROWSER "https://duckduckgo.com"
+    firefox "https://duckduckgo.com"
 else
     if echo "$choice" | grep "^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+\.[a-zA-Z]+(/)?.*$"; then
-        $BROWSER "$choice"
+        firefox "$choice"
     else
-        $BROWSER "https://duckduckgo.com/?q=$choice&t=ffab&atb=v1-1"
+        firefox "https://duckduckgo.com/?q=$choice&t=ffab&atb=v1-1"
     fi
 fi

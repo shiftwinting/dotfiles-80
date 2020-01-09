@@ -24,8 +24,6 @@ else
         LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     fi
     export LD_LIBRARY_PATH
-    IFACE=$(iface.sh) && export IFACE
-    export INTERFACE="$IFACE"
     export ENV_SOURCED=yes
 fi
 
@@ -54,15 +52,20 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --cycle --color=dark --c
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export BROWSER='w3m'
 export TERMINAL='st'
-export VIDEO_PLAYER='mpv'
-export IMAGE_VIEWER='sxiv'
-export PDF_READER='zathura'
 export VISUAL="$EDITOR"
-export FILE_MANAGER="lf"
-export VISUAL_FILE_MANAGER="$TERMINAL -e $FILE_MANAGER"
-export EMAIL_CLIENT='neomutt'
-export VISUAL_EMAIL_CLIENT="$TERMINAL -e $EMAIL_CLIENT"
+# Suppress Gnome Accessibility bus warnings in gtk apps
 export NO_AT_BRIDGE=1
-export SCREENLOCKER='i3lock-fancy'
+# Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
-export STATUSBAR='i3blocks'
+if [ "$(hostname)" = "halley" ]; then
+# set in new intel iris HD driver for VA-API video hw decoding
+    export LIBVA_DRIVER_NAME="iHD"
+    export MESA_LOADER_DRIVER_OVERRIDE="iris"
+fi
+if [ "$(hostname)" = "garry" ]; then
+    IFACE=wlo1
+elif [ "$(hostname)" = "halley" ]; then
+    IFACE=wlan0
+fi
+export IFACE
+export INTERFACE="$IFACE"

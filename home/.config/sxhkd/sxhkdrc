@@ -41,7 +41,7 @@ XF86Display
     xset dpms force off
 
 mod4+shift+g
-    lock.sh
+    ducksearch
 
 @Print
     scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
@@ -50,7 +50,7 @@ shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
 mod4+shift+f
-    $TERMINAL -e $FILE_MANAGER
+    $TERMINAL -e lf
 
 mod4+w
     firefox
@@ -58,11 +58,11 @@ mod4+w
 mod4+p
     $TERMINAL -e python3 -i -c 'from numpy import *'
 
-mod4+o;{m,a,s,r,v,e,n}
-    {spowrap,ace,stream,$TERMINAL -e tuir,tv,$TERMINAL -e neomutt, $TERMINAL -e newsboat}
+mod4+o;{m,a,s,r,v,e,n,t}
+    {spowrap,ace,stream,$TERMINAL -e tuir,tv,$TERMINAL -e neomutt, $TERMINAL -e newsboat,$TERMINAL -e rainbowstream}
 
 mod4+g
-    ducksearch
+    locknpause
 
 mod4+shift+c
     showclip

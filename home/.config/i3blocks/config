@@ -99,12 +99,6 @@ label=
 interval=10
 separator=false
 
-[nm-vpn]
-command=~/repos/i3blocks-contrib/nm-vpn/nm-vpn
-label=VPN:
-interval=5
-separator=false
-
 [essid]
 command=~/repos/i3blocks-contrib/essid/essid
 interval=60

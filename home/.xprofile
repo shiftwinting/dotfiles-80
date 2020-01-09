@@ -1,23 +1,23 @@
 #!/bin/sh
 
 [ -r ~/.env.sh ] && . ~/.env.sh
-systemctl --user import-environment PATH
+systemctl --user import-environment
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
-dbus-update-activation-environment --systemd DISPLAY
+dbus-update-activation-environment --systemd --all
 export SSH_AUTH_SOCK
-kb-setup.sh &
+feh --bg-center ~/dotfiles/wallpapers/arch.png &
+kb-setup &
 sxhkd &
 numlockx &
-feh --bg-center ~/dotfiles/wallpapers/arch.png &
 if [ "$(hostname)" = "garry" ]; then
-    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
-    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
+    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1 &
+    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1 &
     nvidia-settings --load-config-only &
     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
     protonmail-bridge --no-window &
 elif [ "$(hostname)" = "halley" ]; then
-    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
+    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1 &
     protonmail-bridge --no-window &
 elif [ "$(hostname)" = "liselle" ]; then
     nvidia-settings --load-config-only &
