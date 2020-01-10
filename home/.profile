@@ -8,25 +8,26 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# source environment variables
-systemctl --user import-environment PATH
-[ -r ~/.env.sh ] && . ~/.env.sh
-
+# shellcheck source=/dev/null
+[ -r  ~/.env.sh ] && . ~/.env.sh
 
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
         exec startx -- -keeptty
     else
-        [ -r ~/dotfiles/lists/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/tty/caps2esc.map > /dev/null
+        [ -r ~/dotfiles/lists/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/lists/caps2esc.map > /dev/null
         sudo -n kbdrate -s -d 250 -r 30 > /dev/null
         if [ "$XDG_VTNR" = "2" ] && [ -t 0 ] && [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
-            command -v tmux > /dev/null 2>&1 && exec tmux new-session -A -s tty
+            exists tmux && exec tmux new-session -A -s tty
         fi
     fi
 fi
 
+systemctl --user import-environment
+dbus-update-activation-environment --systemd --all
+
 if [ -n "$BASH" ]; then
-    . ~/.bashrc
+    safesource ~/.bashrc
 else
-    . ~/.shinit
+    safesource ~/.shinit
 fi

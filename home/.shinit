@@ -8,13 +8,8 @@ case $- in
           ;;
 esac
 
-exists() {
-    command -v "$1" > /dev/null 2>&1
-}
-
-safesource() {
-    [ -r "$1" ] && . "$1"
-}
+# shellcheck source=/dev/null
+[ -r  ~/.env.sh ] && . ~/.env.sh
 
 cs() {
     cd "$@" || return
@@ -24,8 +19,6 @@ cs() {
 _fzf_compgen_path() {
   eval "$FZF_DEFAULT_COMMAND" "$1"
 }
-
-safesource ~/.env.sh
 
 safesource ~/.aliases
 

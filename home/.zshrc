@@ -1,4 +1,5 @@
-. ~/.shinit
+# shellcheck source=/dev/null
+[ -r ~/.shinit ] && . ~/.shinit
 
 # Enable colors and change prompt:
 autoload -U colors

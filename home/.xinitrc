@@ -9,6 +9,6 @@ if [ "$(hostname)" != "halley" ]; then
 fi
 xrandr --auto
 
-# invoke global X session script
-[ -f ~/.xprofile ] && . ~/.xprofile &
+# shellcheck source=/dev/null
+[ -r  ~/.xprofile ] && . ~/.xprofile &
 exec i3

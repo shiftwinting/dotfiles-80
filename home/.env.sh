@@ -1,4 +1,14 @@
 #! /bin/sh
+
+safesource() {
+# shellcheck source=/dev/null
+    [ -f "$1" ] && . "$1"
+}
+
+exists() {
+    command -v "$1" > /dev/null 2>&1
+}
+
 if [ -n "$ENV_SOURCED" ]; then
     :
 else
@@ -31,15 +41,16 @@ GPG_TTY=$(tty)
 export GPG_TTY
 export GPG_AGENT_INFO=1
 export ENV="$HOME"/.shinit
-export EDITOR='nvim'
-if command -v "nvim" > /dev/null 2>&1; then
+if exists nvim; then
     EDITOR='nvim'
-elif command -v "vim" > /dev/null 2>&1; then
+elif exists vim; then
     EDITOR='vim'
 else
     EDITOR='vi'
 fi
-if command -v "page" > /dev/null 2>&1; then
+export EDITOR
+export VISUAL="$EDITOR"
+if exists page; then
     export PAGER="page -q 90000"
     export MANPAGER="page -C -e 'au User PageDisconnect sleep 100m|%y p|enew! |bd! #|pu p|set ft=man'"
 fi
@@ -50,9 +61,14 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --cycle --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export BROWSER='w3m'
+
+if exists w3m; then
+    BROWSER='w3m'
+else
+    BROWSER='firefox'
+fi
+export BROWSER
 export TERMINAL='st'
-export VISUAL="$EDITOR"
 # Set STATUSBAR for the mailsync script
 export STATUSBAR="i3blocks"
 # Suppress Gnome Accessibility bus warnings in gtk apps

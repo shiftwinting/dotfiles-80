@@ -1,10 +1,10 @@
 #!/bin/sh
 
-[ -r ~/.env.sh ] && . ~/.env.sh
+# shellcheck source=/dev/null
+[ -r  ~/.env.sh ] && . ~/.env.sh
 systemctl --user import-environment
 [ -f ~/.Xresources ] && xrdb ~/.Xresources
 dbus-update-activation-environment --systemd --all
-export SSH_AUTH_SOCK
 feh --bg-center ~/dotfiles/wallpapers/arch.png &
 kb-setup &
 sxhkd &
@@ -18,6 +18,7 @@ if [ "$(hostname)" = "garry" ]; then
 elif [ "$(hostname)" = "halley" ]; then
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1 &
+    xinput set-prop "ELAN Touchscreen" "Device Enabled" 0 &
     protonmail-bridge --no-window &
 elif [ "$(hostname)" = "liselle" ]; then
     nvidia-settings --load-config-only &
