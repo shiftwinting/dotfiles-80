@@ -4,7 +4,7 @@
     // After 120 minutes, the stream will automatically hangup
     "HEARTBEAT_TIMEOUT" : 120,
     // Image on term
-    "IMAGE_ON_TERM" : true,
+    "IMAGE_ON_TERM" : false,
     // Resize image to fit on terminal view
     "IMAGE_RESIZE_TO_FIT" : true,
     // Themes

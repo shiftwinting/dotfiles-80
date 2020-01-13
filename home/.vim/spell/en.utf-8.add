@@ -337,3 +337,12 @@ opencv
 npp
 ftb
 overridable
+CINFO
+metadata
+EKF
+dt
+EKFWrapper
+jacobian
+RealSpace
+bboxes
+openCV
