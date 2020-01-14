@@ -75,11 +75,11 @@ export STATUSBAR="i3blocks"
 export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
-if [ "$(hostname)" = "halley" ]; then
-# set in new intel iris HD driver for VA-API video hw decoding
-    export LIBVA_DRIVER_NAME="iHD"
-    export MESA_LOADER_DRIVER_OVERRIDE="iris"
-fi
+# if [ "$(hostname)" = "halley" ]; then
+# # set in new intel iris HD driver for VA-API video hw decoding
+#     export LIBVA_DRIVER_NAME="iHD"
+#     export MESA_LOADER_DRIVER_OVERRIDE="iris"
+# fi
 if [ "$(hostname)" = "garry" ]; then
     IFACE=wlo1
 elif [ "$(hostname)" = "halley" ]; then
