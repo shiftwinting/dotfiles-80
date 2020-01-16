@@ -110,6 +110,8 @@ if &synmaxcol == 3000
   set synmaxcol=500
 endif
 
+set nostartofline
+
 let g:is_posix=1
 
 " highlight merge conflict markers
