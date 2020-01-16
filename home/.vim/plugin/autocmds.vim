@@ -25,3 +25,8 @@ augroup compl
     autocmd!
     autocmd CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 augroup end
+
+augroup restore-cursor
+    autocmd!
+    autocmd VimLeave * set guicursor=a:block-blinkon0
+augroup END
