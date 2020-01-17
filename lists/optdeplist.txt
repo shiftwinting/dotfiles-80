@@ -4,6 +4,7 @@ cronie
 ell
 freeglut
 libldac
+libnotify
 libusb-compat
 lynx
 ocl-icd
