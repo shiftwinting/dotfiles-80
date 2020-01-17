@@ -1,0 +1,4 @@
+set geoip off
+set reverse-dns off
+
+set tui.theme gruvbox.theme

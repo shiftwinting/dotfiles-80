@@ -1,0 +1,6 @@
+intel-gpu-tools
+intel-media-driver
+intel-ucode
+libvdpau-va-gl
+mesa
+xf86-video-intel

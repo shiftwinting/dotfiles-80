@@ -8,7 +8,6 @@ arch-audit
 autoconf
 automake
 base
-bash
 bash-completion
 bash-language-server
 biber
@@ -93,8 +92,10 @@ rofi
 rsync
 scrot
 shellcheck
+socat
 spotify
 st-ruifm-git
+stig
 stow
 strace
 streamlink
@@ -120,7 +121,6 @@ thermald
 tldr
 tmux
 transmission-cli
-transmission-remote-cli-git
 ttf-computer-modern-fonts
 ttf-dejavu
 tuir
