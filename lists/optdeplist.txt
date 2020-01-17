@@ -4,6 +4,7 @@ cronie
 ell
 freeglut
 libldac
+libnotify
 libusb-compat
 lynx
 ocl-icd
@@ -11,7 +12,9 @@ openmp
 pam-gnupg-git
 perl-file-mimeinfo
 pulseaudio-alsa
+python-lockfile
 python-pynvim
+python-setproctitle
 systemd-resolvconf
 tcl
 urlview-git
