@@ -153,23 +153,23 @@ set $darkgray #1d2021
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        font pango:mono, pango:FontAwesome
-        position top
-	status_command i3blocks
-        colors {
-        # bar background color
-        background $darkgray
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-        }
-}
+# bar {
+#         font pango:mono, pango:FontAwesome
+#         position top
+# 	status_command i3blocks
+#         colors {
+#         # bar background color
+#         background $darkgray
+#         # text color used for blocks that do not have a color specified.
+#         statusline $yellow
+#         # workspaces section
+#         #                    border  backgr. text
+#         focused_workspace    $aqua $aqua $darkgray
+#         inactive_workspace   $darkgray $darkgray $yellow
+#         active_workspace     $darkgray $darkgray $yellow
+#         urgent_workspace     $red $red $bg
+#         }
+# }
 
 #start of window title bars & borders section
 

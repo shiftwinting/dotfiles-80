@@ -9,6 +9,7 @@ feh --bg-center ~/dotfiles/wallpapers/arch.png &
 kb-setup &
 sxhkd &
 numlockx &
+launch-polybar &
 if [ "$(hostname)" = "garry" ]; then
     xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1 &
     xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1 &
