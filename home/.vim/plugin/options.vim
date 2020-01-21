@@ -4,9 +4,9 @@ endif
 let g:loaded_options = 1
 
 if !has('nvim')
-    silent !mkdir -p $XDG_CACHE_HOME/vim-undo
-    silent !mkdir -p $XDG_CACHE_HOME/vim-backup
-    silent !mkdir -p $XDG_CACHE_HOME/vim-swap
+    silent !mkdir -p ~/.cache/vim-undo
+    silent !mkdir -p ~/.cache/vim-backup
+    silent !mkdir -p ~/.cache/vim-swap
     set belloff=all
     set cscopeverbose
     set nofsync
@@ -46,9 +46,9 @@ endif
 " poor mans version control
 set writebackup
 set hidden
-set undodir=$XDG_CACHE_HOME/vim-undo
-set backupdir=$XDG_CACHE_HOME/vim-backup
-set directory=$XDG_CACHE_HOME/vim-swap
+set undodir=~/.cache/vim-undo
+set backupdir=~/.cache/vim-backup
+set directory=~/.cache/vim-swap
 if has('persistent_undo')
     set undofile
 endif

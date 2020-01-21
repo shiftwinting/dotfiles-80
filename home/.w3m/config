@@ -28,7 +28,7 @@ auto_image 1
 max_load_image 4
 ext_image_viewer 1
 image_scale 100
-imgdisplay w3mimgdisplay
+imgdisplay feh
 image_map_list 1
 fold_line 0
 show_lnum 0
@@ -42,22 +42,24 @@ image_color green
 form_color red
 mark_color cyan
 bg_color terminal
-active_style 0
+active_style 1
 active_color cyan
-visited_anchor 0
+visited_anchor 1
 visited_color magenta
 pagerline 10000
 use_history 1
 history 100
 save_hist 1
-confirm_qq 1
+confirm_qq 0
 close_tab_back 1
 mark 0
-emacs_like_lineedit 0
+emacs_like_lineedit 1
 vi_prec_num 1
-mark_all_pages 0
+mark_all_pages 1
 wrap_search 1
 ignorecase_search 1
+use_migemo 1
+migemo_command cmigemo -q -d /usr/share/cmigemo/utf-8/migemo-dict
 use_mouse 0
 reverse_mouse 0
 relative_wheel_scroll 0
@@ -75,9 +77,18 @@ index_file
 mime_types ~/.mime.types, /usr/etc/mime.types
 mailcap ~/.mailcap, ~/.w3m/mailcap, /usr/etc/w3m/mailcap
 urimethodmap ~/.w3m/urimethodmap, /usr/etc/w3m/urimethodmap
+editor nvim
 mailto_options 1
 mailer /usr/bin/neomutt
 extbrowser /usr/bin/firefox
+extbrowser2 
+extbrowser3 chromium %s &
+extbrowser4 epiphany %s &
+extbrowser5 konqueror %s &
+extbrowser6 curl -L -O -C - %s &
+extbrowser7 wget -c
+extbrowser8 url=%s && printf %s "$url" | xsel && printf %s "$url" | xsel -b &
+extbrowser9 mpv %s &
 bgextviewer 1
 use_lessopen 0
 passwd_file ~/.w3m/passwd
@@ -103,6 +114,7 @@ max_news 50
 use_proxy 0
 http_proxy 
 https_proxy 
+gopher_proxy 
 ftp_proxy 
 no_proxy 
 noproxy_netaddr 1
