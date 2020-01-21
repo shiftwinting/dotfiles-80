@@ -1,5 +1,7 @@
+# ignore unavailable videos
 -i
-
+# not interested in getting videos with a resolution higher than 1080p
+-f bestvideo[height<=?1080]+bestaudio/best
 # Get All Subs to SRT
 --write-sub
 --convert-subs srt
