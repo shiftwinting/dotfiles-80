@@ -1,5 +1,5 @@
 # shellcheck source=/dev/null
-[ -r ~/.shinit ] && . ~/.shinit
+[ -r  ~/.config/sh/shinit ] && . ~/.config/sh/shinit
 
 # Enable colors and change prompt:
 autoload -U colors
@@ -7,7 +7,7 @@ colors
 setopt PROMPT_SUBST
 PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}$(__git_ps1 " (%s)")%(?..[%{$fg[red]%}%?%{$reset_color%}]) %(!.#.>) '
 
-HISTFILE=~/.zsh-history
+HISTFILE="$XDG_CACHE_HOME"/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch notify

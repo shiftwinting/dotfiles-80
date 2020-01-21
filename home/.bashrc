@@ -3,10 +3,11 @@
 # for examples
 
 # shellcheck source=/dev/null
-[ -r ~/.shinit ] && . ~/.shinit
+[ -r  ~/.config/sh/shinit ] && . ~/.config/sh/shinit
 
 exists zsh && [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec zsh
 
+HISTFILE="$XDG_CACHE_HOME"/bash_history
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

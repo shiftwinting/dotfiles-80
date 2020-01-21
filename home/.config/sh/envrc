@@ -37,10 +37,16 @@ else
     export ENV_SOURCED=yes
 fi
 
+# tell gpg which tty one is using so that it can prompt for pw
 GPG_TTY=$(tty)
 export GPG_TTY
 export GPG_AGENT_INFO=1
-export ENV="$HOME"/.shinit
+# set XDG env vars
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_CACHE_HOME="$HOME"/.cache
+# set ENV var to tell sh shell where its config file is
+export ENV="$XDG_CONFIG_HOME"/sh/shinit
 if exists nvim; then
     EDITOR='nvim'
 elif exists vim; then
@@ -75,11 +81,13 @@ export STATUSBAR="i3blocks"
 export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
+# set in new intel iris HD driver for VA-API video hw decoding
 # if [ "$(hostname)" = "halley" ]; then
-# # set in new intel iris HD driver for VA-API video hw decoding
 #     export LIBVA_DRIVER_NAME="iHD"
 #     export MESA_LOADER_DRIVER_OVERRIDE="iris"
 # fi
+
+# set a var with the name of the wifi interface
 if [ "$(hostname)" = "garry" ]; then
     IFACE=wlo1
 elif [ "$(hostname)" = "halley" ]; then
@@ -87,3 +95,16 @@ elif [ "$(hostname)" = "halley" ]; then
 fi
 export IFACE
 export INTERFACE="$IFACE"
+# set sxhkd shell to sh for faster response times
+export SXHKD_SHELL="sh"
+# Java: use system anti-aliased fonts and make swing use the GTK look and feel: 
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+# cleanup ~
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export NOTMUCH_CONFIG="$HOME/.config/notmuch/config"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export INPUTRC="$HOME/.config/sh/inputrc"
+export ZDOTDIR="$HOME/.config/zsh"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/password-store
+export LESSHISTFILE="-"

@@ -28,10 +28,10 @@ alert = #bd2c40
 [bar/mybar]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 27
+height = 24
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+; radius = 0
 fixed-center = false
 
 background = ${colors.background}
@@ -44,25 +44,25 @@ border-size = 4
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
 font-0 = mono:size=10;1
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm i3 xkeyboard
-modules-center = player-mpris-tail
-modules-right = filesystem xbacklight pulseaudio memory cpu system-nvidia-smi wlan eth battery temperature date
+modules-left = bspwm i3 xkeyboard xwindow
+modules-center = mpris torrent
+modules-right = mailbox weather backlight-acpi filesystem pulseaudio memory cpu temperature gpu-usage gpu-temp wlan eth battery date
 
 tray-position = right
-tray-padding = 2
+tray-padding = 0
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -72,8 +72,8 @@ tray-padding = 2
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+; cursor-click = pointer
+; cursor-scroll = ns-resize
 enable-ipc = true
 
 [module/xwindow]
@@ -232,7 +232,7 @@ interface = enp3s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "IP:"
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -257,7 +257,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume = VOL%percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = muted
@@ -318,8 +318,9 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 80
 
-format = <ramp> <label>
-format-underline = #f50a4d
+format = <label>
+format-underline = #f90000
+; format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -332,15 +333,35 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/player-mpris-tail]
+[module/mpris]
 type = custom/script
-exec = ~/repos/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{icon} {artist} - {title}'
+exec = ~/dotfiles/barscripts/mpris.py -f '{artist} - {title}'
 tail = true
 
-[module/system-nvidia-smi]
+[module/gpu-usage]
 type = custom/script
-exec = sh ~/repos/polybar-scripts/polybar-scripts/system-nvidia-smi/system-nvidia-smi.sh
-interval = 10
+exec = ~/dotfiles/barscripts/gpu-usage
+interval = 5
+
+[module/gpu-temp]
+type = custom/script
+exec = ~/dotfiles/barscripts/gpu-temp
+interval = 22
+
+[module/torrent]
+type = custom/script
+exec = ~/dotfiles/barscripts/torrent
+interval = 30
+
+[module/mailbox]
+type = custom/script
+exec = ~/dotfiles/barscripts/mailbox
+interval = 30
+
+[module/weather]
+type = custom/script
+exec = ~/dotfiles/barscripts/weather
+interval = 30
 
 [settings]
 screenchange-reload = true

@@ -9,7 +9,7 @@
 #umask 022
 
 # shellcheck source=/dev/null
-[ -r  ~/.env.sh ] && . ~/.env.sh
+[ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then

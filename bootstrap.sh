@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 current_wd="$(pwd)"
 
-mkdir -p ~/repos && cd ~/repos
+mkdir -p ~/repos
+cd ~/repos || exit
 
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/nvim
@@ -10,6 +11,10 @@ mkdir -p ~/.vim/spell
 mkdir -p ~/.gnupg
 mkdir -p ~/.ssh/sockets
 mkdir -p ~/.config/systemd/user
+mkdir -p ~/.config/notmuch-config
+mkdir -p ~/.config/wget
+mkdir -p ~/.config/zsh
+mkdir -p ~/.cache
 
 cp ~/dotfiles/systemd/* ~/.config/systemd/user
 systemctl --user enable --now tmux@ssh
@@ -24,7 +29,6 @@ if [ ! -d 'st' ]; then
     )
 fi
 
-[ ! -d 'i3blocks-contrib' ] && git clone https://github.com/vivien/i3blocks-contrib.git
 
 cd ~/dotfiles && stow -R home
 

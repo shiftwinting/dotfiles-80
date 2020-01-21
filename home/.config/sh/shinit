@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 # If not running interactively, don't do anything
 case $- in
     *i*) stty -ixon
@@ -9,7 +7,7 @@ case $- in
 esac
 
 # shellcheck source=/dev/null
-[ -r  ~/.env.sh ] && . ~/.env.sh
+[ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 
 cs() {
     cd "$@" || return
@@ -20,7 +18,7 @@ _fzf_compgen_path() {
   eval "$FZF_DEFAULT_COMMAND" "$1"
 }
 
-safesource ~/.aliases
+safesource "$XDG_CONFIG_HOME"/sh/aliases
 
 # [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 safesource /usr/share/git/completion/git-prompt.sh || safesource /usr/lib/git-core/git-sh-prompt
