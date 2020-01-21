@@ -28,6 +28,8 @@ dbus-update-activation-environment --systemd --all
 
 if [ -n "$BASH" ]; then
     safesource ~/.bashrc
+elif [ -n "$ZSH_VERSION" ]; then
+    safesource "$XDG_CONFIG_HOME"/zsh/.zshrc
 else
-    safesource ~/.shinit
+    safesource "$XDG_CONFIG_HOME"/sh/shinit
 fi

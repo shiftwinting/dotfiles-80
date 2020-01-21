@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if command -v transmission-remote > /dev/null 2>&1; then
-    transmission-remote -l | grep % |
+    pgrep transmission-remote > /dev/null 2>&1 && transmission-remote -l | grep % |
             sed " # This first sed command is to ensure a desirable order with sort
             s/.*Stopped.*/A/g;
             s/.*Seeding.*/Z/g;
