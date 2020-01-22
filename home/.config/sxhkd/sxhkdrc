@@ -14,34 +14,31 @@ mod4+e
     emoji
 
 XF86Audio{Lower,Raise}Volume
-    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%  && pkill -RTMIN+1 i3blocks
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 mod4+{minus,plus}
-    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%  && pkill -RTMIN+1 i3blocks
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle  && pkill -RTMIN+1 i3blocks
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 mod4+shift+m
-    pactl set-sink-mute @DEFAULT_SINK@ toggle  && pkill -RTMIN+1 i3blocks
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86Audio{Prev,Play,Next}
-    mediactl {previous,play-pause,next}
+    playerctl {previous,play-pause,next}
 
 mod4+{Left,Down,Right}
-    mediactl {previous,play-pause,next}
+    playerctl {previous,play-pause,next}
 
 XF86MonBrightness{Down,Up}
-    sudo light -{U,A} 5  && pkill -RTMIN+2 i3blocks
+    sudo light -{U,A} 5
 
 mod4+{Prior,Next}
-    sudo light -{U,A} 5  && pkill -RTMIN+2 i3blocks
+    sudo light -{U,A} 5
 
 XF86Display
     xset dpms force off
-
-mod4+shift+g
-    ducksearch
 
 @Print
     scrot -q 100 -t 10 -s '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
@@ -58,8 +55,8 @@ mod4+w
 mod4+p
     $TERMINAL -e python3 -i -c 'from numpy import *'
 
-mod4+o;{m,a,s,r,v,e,n,t}
-    {spowrap,ace,stream,$TERMINAL -e tuir,tv,$TERMINAL -e neomutt, $TERMINAL -e newsboat,$TERMINAL -e rainbowstream}
+mod4+o;{m,s,r,e,n,t}
+    {spowrap,stream,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap}
 
 mod4+g
     locknpause

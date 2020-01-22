@@ -14,6 +14,7 @@ biber
 binutils
 bison
 boost
+bspwm
 cava
 clang
 cmake
@@ -34,7 +35,6 @@ gcc
 git
 htop
 i3-wm
-i3blocks
 i3lock-fancy-git
 informant
 iptables-nft
@@ -73,11 +73,13 @@ pigz
 pkgconf
 pkgstats
 playerctl
+polybar
 protonmail-bridge
 pulseaudio
 pulseaudio-jack
 pulseaudio-modules-bt-git
 python-autopep8
+python-dbus
 python-language-server
 python-matplotlib
 python-pillow

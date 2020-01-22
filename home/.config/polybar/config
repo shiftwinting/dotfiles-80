@@ -54,8 +54,8 @@ font-0 = mono:size=10;1
 ; font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3 xkeyboard xwindow
-modules-center = mpris torrent
-modules-right = mailbox weather backlight-acpi filesystem pulseaudio memory cpu temperature gpu-usage gpu-temp wlan eth battery date
+modules-center = mpris
+modules-right = mailbox weather filesystem pulseaudio memory cpu temperature gpu-usage gpu-temp wlan eth battery date
 
 tray-position = right
 tray-padding = 0
@@ -212,7 +212,7 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid%:%local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -349,11 +349,6 @@ type = custom/script
 exec = ~/dotfiles/barscripts/gpu-temp
 interval = 22
 
-[module/torrent]
-type = custom/script
-exec = ~/dotfiles/barscripts/torrent
-interval = 30
-
 [module/mailbox]
 type = custom/script
 exec = ~/dotfiles/barscripts/mailbox
@@ -373,7 +368,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
