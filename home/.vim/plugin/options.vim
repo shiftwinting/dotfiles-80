@@ -123,7 +123,7 @@ if !exists(':DiffOrig')
 endif
 
 if has('nvim-0.3.2') || has('patch-8.1.0360')
-    set diffopt=filler,internal,indent-heuristic
+    set diffopt=filler,internal,indent-heuristic,hiddenoff,iblank,iwhiteall,algorithm:histogram
 endif
 
 set completeopt=menuone,preview,noinsert,noselect
