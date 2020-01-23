@@ -44,6 +44,7 @@ if g:use_plugins
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-apathy'
     Plug 'rstacruz/vim-closer'
     Plug 'vhdirk/vim-cmake'
     Plug 'andymass/vim-matchup'
