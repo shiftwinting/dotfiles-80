@@ -1,43 +1,43 @@
-mod4+Return
+super+Return
     $TERMINAL
 
-mod4+space
+super+space
     cd "$(xcwd)" && $TERMINAL
 
-mod4+m
+super+r
     rofi -show run
 
-mod4+d
+super+d
     cd ~/dotfiles && eval $FZF_DEFAULT_COMMAND | rofi -width 90 -dmenu -p dotfiles | xargs -d '\n' -r $TERMINAL -e $EDITOR
 
-mod4+a
+super+a
     rg --files | rofi -width 90 -dmenu -p home | xargs -r xdg-open
 
-mod4+e
+super+e
     emoji
 
 XF86Audio{Lower,Raise}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
-mod4+{minus,plus}
+super+{minus,plus}
     pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
 
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-mod4+shift+m
+super+shift+m
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86Audio{Prev,Play,Next}
     playerctl {previous,play-pause,next}
 
-mod4+{Left,Down,Right}
+super+{Left,Down,Right}
     playerctl {previous,play-pause,next}
 
 XF86MonBrightness{Down,Up}
     sudo light -{U,A} 5
 
-mod4+{Prior,Next}
+super+{Prior,Next}
     sudo light -{U,A} 5
 
 XF86Display
@@ -49,14 +49,14 @@ XF86Display
 shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
-mod4+o;{m,s,r,e,n,t,f,w,p}
+super+o;{m,s,r,e,n,t,f,w,p}
     {spowrap,stream,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e python3 -i -c 'from numpy import *'}
 
-mod4+g
+super+shift+s
     locknpause
 
-mod4+shift+c
+super+alt+c
     showclip
 
-mod4+n;{r,k}
+super+alt+n;{r,k}
     record {start,stop}
