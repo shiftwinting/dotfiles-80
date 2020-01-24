@@ -9,9 +9,7 @@ exists() {
     command -v "$1" > /dev/null 2>&1
 }
 
-if [ -n "$ENV_SOURCED" ]; then
-    :
-else
+if [ -z "$ENV_SOURCED" ]; then
     if [ -z "$OLDPATH" ]; then
         export OLDPATH="$PATH"
     else
@@ -34,7 +32,7 @@ else
         LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     fi
     export LD_LIBRARY_PATH
-    export ENV_SOURCED=yes
+    export ENV_SOURCED="$0"
 fi
 
 # tell gpg which tty one is using so that it can prompt for pw

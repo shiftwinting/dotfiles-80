@@ -18,6 +18,8 @@ augroup END
 augroup reload
     autocmd!
     autocmd BufWritePost *.Xkeymap !xkbcomp % $DISPLAY
+    autocmd BufWritePost *bspwmrc !bspc wm --restart
+    autocmd BufWritePost */polybar/config !launch-polybar
     autocmd BufWritePost *user-dirs.dirs,*user-dirs.locale !xdg-user-dirs-update
 augroup END
 

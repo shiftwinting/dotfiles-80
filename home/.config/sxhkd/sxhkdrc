@@ -1,6 +1,9 @@
 mod4+Return
     $TERMINAL
 
+mod4+space
+    cd "$(xcwd)" && $TERMINAL
+
 mod4+m
     rofi -show run
 
@@ -8,7 +11,7 @@ mod4+d
     cd ~/dotfiles && eval $FZF_DEFAULT_COMMAND | rofi -width 90 -dmenu -p dotfiles | xargs -d '\n' -r $TERMINAL -e $EDITOR
 
 mod4+a
-    rg --files | rofi -width 90 -dmenu -p home | xargs -r $OPENER
+    rg --files | rofi -width 90 -dmenu -p home | xargs -r xdg-open
 
 mod4+e
     emoji
@@ -46,17 +49,8 @@ XF86Display
 shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
-mod4+shift+f
-    $TERMINAL -e lf
-
-mod4+w
-    firefox
-
-mod4+p
-    $TERMINAL -e python3 -i -c 'from numpy import *'
-
-mod4+o;{m,s,r,e,n,t}
-    {spowrap,stream,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap}
+mod4+o;{m,s,r,e,n,t,f,w,p}
+    {spowrap,stream,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e python3 -i -c 'from numpy import *'}
 
 mod4+g
     locknpause

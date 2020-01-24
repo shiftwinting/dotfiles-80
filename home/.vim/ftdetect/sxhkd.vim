@@ -1,2 +1,2 @@
-autocmd BufNewFile,BufFilePre,BufRead *sxhkrc setfiletype sxhkd
+autocmd BufNewFile,BufFilePre,BufRead *sxhkdrc setfiletype sxhkd
 

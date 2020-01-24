@@ -37,10 +37,10 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 1
 line-color = #f00
 
-border-size = 4
+border-size = 0
 border-color = #00000000
 
 padding-left = 0
@@ -61,8 +61,8 @@ tray-position = right
 tray-padding = 0
 ;tray-background = #0063ff
 
-;wm-restack = bspwm
-wm-restack = i3
+wm-restack = bspwm
+; wm-restack = i3
 
 ;override-redirect = true
 

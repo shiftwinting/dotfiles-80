@@ -7,4 +7,4 @@ xrandr --auto
 
 # shellcheck source=/dev/null
 [ -r  ~/.xprofile ] && . ~/.xprofile &
-exec i3
+exec bspwm
