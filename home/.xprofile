@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 # xinitrc file, used by all X sessions started by xinit (startx)
 
 if [ "$(hostname)" != "halley" ]; then
