@@ -10,6 +10,7 @@ feh --bg-center --no-fehbg ~/dotfiles/wallpapers/arch.png &
 launch-polybar &
 kb-setup &
 sxhkd &
+dunst &
 numlockx &
 
 if [ "$(hostname)" = "garry" ]; then

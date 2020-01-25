@@ -11,7 +11,7 @@ super+d
     cd ~/dotfiles && eval $FZF_DEFAULT_COMMAND | rofi -width 90 -dmenu -p dotfiles | xargs -d '\n' -r $TERMINAL -e $EDITOR
 
 super+a
-    rg --files | rofi -width 90 -dmenu -p home | xargs -r xdg-open
+    rofi -modi windowcd -show windowcd
 
 super+e
     emoji
