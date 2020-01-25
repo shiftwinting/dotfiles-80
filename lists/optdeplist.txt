@@ -20,6 +20,4 @@ tcl
 urlview-git
 xorg-xdpyinfo
 xorg-xwininfo
-zathura-djvu
 zathura-pdf-mupdf
-zathura-ps

@@ -1,6 +1,8 @@
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/shinit ] && . ~/.config/sh/shinit
 
+safesource /usr/share/git/completion/git-prompt.sh || safesource /usr/lib/git-core/git-sh-prompt
+
 # Enable colors and change prompt:
 autoload -U colors
 colors

@@ -3,7 +3,6 @@ acpi
 acpid
 aic94xx-firmware
 arandr
-arc-gtk-theme
 arch-audit
 autoconf
 automake
@@ -144,6 +143,7 @@ xorg-xinput
 xorg-xmodmap
 xorg-xrandr
 xorg-xrdb
+xorg-xsetroot
 yay
 youtube-dl
 zathura

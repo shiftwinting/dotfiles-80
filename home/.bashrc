@@ -7,6 +7,13 @@
 
 exists zsh && [ -z "$BASH_EXECUTION_STRING" ] && [ -z "$USE_BASH" ] && exec zsh
 
+
+safesource /usr/share/git/completion/git-prompt.sh || safesource /usr/lib/git-core/git-sh-prompt
+
+PS1="\[\033[38;1;32m\]\u\[$(tput sgr0)\]\[\033[38;1;37m\]@\[$(tput sgr0)\]\[\033[38;1;36m\]\h\[$(tput sgr0)\]\[\033[38;1;37m\]:\[$(tput sgr0)\]\[\033[38;0;33m\]\w\[$(tput sgr0)\]$(__git_ps1 " (%s)")[\[\033[38;0;31m\]\$?\[$(tput sgr0)\]]\$ "
+export PS1
+
+
 HISTFILE="$XDG_CACHE_HOME"/bash_history
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
