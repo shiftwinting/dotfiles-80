@@ -1,7 +1,6 @@
 acestream-launcher
 acpi
 acpid
-aic94xx-firmware
 arandr
 arch-audit
 autoconf
@@ -33,7 +32,6 @@ fzf
 gcc
 git
 htop
-i3-wm
 i3lock-fancy-git
 informant
 iptables-nft
@@ -109,12 +107,9 @@ texinfo
 texlab
 texlive-bibtexextra
 texlive-core
-texlive-fontsextra
 texlive-formatsextra
 texlive-latexextra
 texlive-pictures
-texlive-pstricks
-texlive-publishers
 texlive-science
 textlint
 thermald
