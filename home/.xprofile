@@ -21,7 +21,7 @@ if [ "$(hostname)" = "garry" ]; then
     xrandr --output HDMI-0 --mode 1920x1080 --rate 144 &
     nvidia-settings --load-config-only &
     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
-    protonmail-bridge --no-window &
+    # protonmail-bridge --no-window &
 elif [ "$(hostname)" = "halley" ]; then
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1 &
