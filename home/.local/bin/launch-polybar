@@ -5,6 +5,11 @@ killall -q polybar
 # If all your bars have ipc enabled, you can also use 
 # polybar-msg cmd quit
 
+if [ "$(hostname)" = "garry" ]; then
+    MONITOR="HDMI-0" polybar --reload mybar &
+    exit
+fi
+
 # Launch bars
 if command -v "xrandr" > /dev/null 2>&1; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
