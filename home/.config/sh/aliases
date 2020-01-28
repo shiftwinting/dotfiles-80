@@ -41,7 +41,7 @@ alias halt="sudo systemctl halt"
 
 alias please='sudo !!'
 alias rtfm='man'
-alias gimme='sudo chown $USER:$USER'
+alias gimme='sudo chown $USER:$(id -gn $USER)'
 alias free='free -h'
 alias ...='cd ../..'
 alias ....='cd ../../..'
