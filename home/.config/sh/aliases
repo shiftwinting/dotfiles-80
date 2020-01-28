@@ -52,7 +52,8 @@ alias visudo='sudo -E visudo'
 alias se='se'
 
 alias pacopt='comm -13 <(pacman -Qqdt | sort) <(pacman -Qqdtt | sort)'
-alias pacinstalled='comm -23 <(pacman -Qeq | sort) <(pacman -Qgq base-devel xorg-apps texlive-most | sort)'
+alias pacinstalled='comm -23 <(pacman -Qeq | sort) <(pacman -Qgq base-devel | sort)'
+alias mirrorupdate='sudo reflector --country Spain --country Portugal --country France --latest 20 --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist; sudo rm -f /etc/pacman.d/mirrorlist.pacnew'
 
 alias ipecho='curl ipecho.net/plain; echo'
 alias ccat='pygmentize'
