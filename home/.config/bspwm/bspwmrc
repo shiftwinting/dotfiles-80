@@ -4,7 +4,7 @@
 # bspc rule -r "*"
 
 if [ "$(hostname)" = "garry" ]; then
-    bspc monitor 'eDP1-1' --remove
+    bspc monitor 'eDP-1-1' --remove
     bspc monitor 'HDMI-0' -d 1 2 3 4 5 6 7 8 9 10
 elif [ "$(hostname)" = "liselle" ]; then
     bspc monitor 'HDMI-0' -d 1 2 3 4 5
