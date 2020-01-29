@@ -7,7 +7,7 @@ else
     setxkbmap -layout es
 fi
 setxkbmap -option "caps:swapescape"
-xcape -e "Control_L=Escape"
+xcape -e "Control_L=Escape" &
 if [ "$(hostname)" = "garry" ]; then
     xmodmap ~/.Xmodmap
 fi
