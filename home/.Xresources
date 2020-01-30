@@ -68,8 +68,8 @@ st.termname:     st-256color
 st.shell:        /bin/sh
 *.font: mono:size=17:antialias=true
 
-st.xfps:              120
-st.actionfps:         30
+st.xfps:              60
+st.actionfps:         60
 ! Kerning / character bounding-box height multiplier
 st.chscale:           1.0
 ! Kerning / character bounding-box width multiplier
