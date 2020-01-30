@@ -1,6 +1,5 @@
 acestream-launcher
 acpid
-arandr
 arch-audit
 base
 bash-completion
@@ -62,6 +61,7 @@ pulseaudio-jack
 pulseaudio-modules-bt-git
 python-autopep8
 python-dbus
+python-gobject
 python-language-server
 python-matplotlib
 python-pillow
