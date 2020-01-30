@@ -6,6 +6,11 @@ if [ "$(hostname)" != "halley" ]; then
 fi
 xrandr --auto
 
+if [ "$(hostname)" = "garry" ]; then
+    xrandr --output eDP-1-1 --off
+    xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
+fi
+
 # shellcheck source=/dev/null
 [ -r  ~/.xprofile ] && . ~/.xprofile &
 exec bspwm
