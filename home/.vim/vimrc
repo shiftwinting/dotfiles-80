@@ -72,7 +72,6 @@ if g:use_plugins
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'octol/vim-cpp-enhanced-highlight'
-    Plug 'mboughaba/i3config.vim'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'vimwiki/vimwiki'
@@ -89,10 +88,9 @@ if g:use_plugins
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
+    Plug 'mattn/vim-lsp-settings'
     Plug 'yami-beta/asyncomplete-omni.vim'
-    Plug 'Shougo/neco-vim'
-    Plug 'prabirshrestha/asyncomplete-necovim.vim'
+    Plug 'prabirshrestha/asyncomplete-file.vim'
     if executable('ctags') || executable('ctags-exuberant')
         Plug 'ludovicchabant/vim-gutentags'
         Plug 'prabirshrestha/asyncomplete-tags.vim'
@@ -101,6 +99,8 @@ if g:use_plugins
         Plug 'SirVer/ultisnips'
         Plug 'honza/vim-snippets'
         Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+        Plug 'thomasfaingnaert/vim-lsp-snippets'
+        Plug 'thomasfaingnaert/vim-lsp-ultisnips'
     endif
     call plug#end()
     runtime! plug-config/**.vim
