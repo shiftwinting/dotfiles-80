@@ -45,7 +45,7 @@ nnoremap <silent> <leader>x :wall<cr>
 nnoremap <silent> <leader>z :wqall<cr>
 nnoremap <silent> <leader>q :quitall<cr>
 
-tnoremap <Esc> <C-\><C-n>
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
 inoremap jj <esc>
 inoremap kk <esc>

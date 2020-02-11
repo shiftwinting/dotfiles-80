@@ -1,1 +1,1 @@
-nnoremap q :quit<cr>
+nnoremap <buffer> q :quit<cr>

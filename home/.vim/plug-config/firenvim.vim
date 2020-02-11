@@ -15,3 +15,11 @@ let g:firenvim_config = {
 
 nnoremap <Esc><Esc> :call firenvim#focus_page()<CR>
 nnoremap <C-z> :call firenvim#hide_frame()<CR>
+
+augroup send_cr
+    autocmd!
+    autocmd BufEnter riot.im_* inoremap <CR> <Esc>:w<CR>:call firenvim#press_keys("<LT>CR>")<CR>ggdGa
+    autocmd BufEnter chat.google.com_* inoremap <CR> <Esc>:w<CR>:call firenvim#press_keys("<LT>CR>")<CR>ggdGa
+    autocmd BufEnter hangouts.google.com_* inoremap <CR> <Esc>:w<CR>:call firenvim#press_keys("<LT>CR>")<CR>ggdGa
+    autocmd BufEnter *whatsapp.com_* inoremap <CR> <Esc>:w<CR>:call firenvim#press_keys("<LT>CR>")<CR>ggdGa
+augroup end
