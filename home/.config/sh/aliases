@@ -35,10 +35,6 @@ alias gzp='git stash pop'
 alias sys='sudo systemctl'
 alias sysu='systemctl --user'
 
-alias reboot="sudo systemctl reboot"
-alias poweroff="sudo systemctl poweroff"
-alias halt="sudo systemctl halt"
-
 alias please='sudo !!'
 alias rtfm='man'
 alias gimme='sudo chown $USER:$(id -gn $USER)'
@@ -77,3 +73,5 @@ alias pip='pip3'
 alias p3='python3'
 alias py='python3'
 alias p2='python2'
+
+alias camop='build/bin/camop -c /tmp/test.json -M "tcp://127.0.0.1:7779" -B "tcp://127.0.0.1:5533" -P "tcp://127.0.0.1:8086" -S "." --log-level INFO -m'
