@@ -102,7 +102,6 @@ ttf-dejavu
 tuir
 universal-ctags-git
 unzip
-vim
 w3m
 weechat
 wget
