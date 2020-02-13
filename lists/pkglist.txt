@@ -19,7 +19,7 @@ efibootmgr
 feh
 firefox
 firefox-sync
-fzf
+fzf-git
 git
 htop
 i3lock-fancy-rapid-git
