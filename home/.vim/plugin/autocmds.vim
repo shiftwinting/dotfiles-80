@@ -35,5 +35,5 @@ augroup END
 
 augroup terminal_buff
     autocmd!
-    autocmd TermOpen * setlocal laststatus=0 noruler nonumber norelativenumber | startinsert
+    autocmd TermOpen * startinsert
 augroup END
