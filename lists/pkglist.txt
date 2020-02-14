@@ -19,7 +19,7 @@ efibootmgr
 feh
 firefox
 firefox-sync
-fzf
+fzf-git
 git
 htop
 i3lock-fancy-rapid-git
@@ -102,7 +102,6 @@ ttf-dejavu
 tuir
 universal-ctags-git
 unzip
-vim
 w3m
 weechat
 wget
