@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
-# bspc rule -r "*"
+bspc rule -r "*"
 
 if [ "$(hostname)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
     bspc monitor 'eDP-1-1' --remove
