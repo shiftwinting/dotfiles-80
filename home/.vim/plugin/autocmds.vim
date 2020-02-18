@@ -39,7 +39,7 @@ if has("terminal")
             autocmd!
             autocmd TermOpen * startinsert
         augroup END
-    else
+    elif exists("#TerminalOpen")
         augroup terminal_buff
             autocmd!
             autocmd TerminalOpen * startinsert
