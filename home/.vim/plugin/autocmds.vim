@@ -34,8 +34,15 @@ augroup restore-cursor
 augroup END
 
 if has("terminal")
-    augroup terminal_buff
-        autocmd!
-        autocmd TermOpen * startinsert
-    augroup END
+    if has("nvim")
+        augroup terminal_buff
+            autocmd!
+            autocmd TermOpen * startinsert
+        augroup END
+    else
+        augroup terminal_buff
+            autocmd!
+            autocmd TerminalOpen * startinsert
+        augroup END
+    endif
 endif
