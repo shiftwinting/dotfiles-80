@@ -26,7 +26,9 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.cache/fzf-history'
 let g:fzf_buffers_jump = 1
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+if has("nvim") || has("popupwin")
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+endif
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --hidden -g "!.git/*" --column --line-number --no-heading --color=always --smart-case %s || true'
