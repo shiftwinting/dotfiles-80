@@ -25,3 +25,5 @@ bspc config pointer_follows_monitor true
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config removal_adjustment true
+
+bspc rule -a Debug desktop="2"

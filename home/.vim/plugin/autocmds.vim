@@ -33,7 +33,9 @@ augroup restore-cursor
     autocmd VimLeave * set guicursor=a:block-blinkon0
 augroup END
 
-augroup terminal_buff
-    autocmd!
-    autocmd TermOpen * startinsert
-augroup END
+if has("terminal")
+    augroup terminal_buff
+        autocmd!
+        autocmd TermOpen * startinsert
+    augroup END
+endif
