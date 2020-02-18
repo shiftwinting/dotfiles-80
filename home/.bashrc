@@ -1,6 +1,12 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+case $- in
+    *i*) stty -ixon
+        ;;
+      *) return
+          ;;
+esac
 
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/shinit ] && . ~/.config/sh/shinit

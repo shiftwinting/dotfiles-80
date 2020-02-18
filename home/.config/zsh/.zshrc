@@ -1,3 +1,10 @@
+case $- in
+    *i*) stty -ixon
+        ;;
+      *) return
+          ;;
+esac
+
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/shinit ] && . ~/.config/sh/shinit
 
