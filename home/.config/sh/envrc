@@ -27,7 +27,7 @@ if [ -z "$ENV_SOURCED" ]; then
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
     export MANPATH
 
-    LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+    LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$LD_LIBRARY_PATH"
     if [ "$(hostname)" = "liselle" ]; then
         LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     fi
