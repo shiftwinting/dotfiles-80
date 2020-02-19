@@ -4,8 +4,6 @@
 
 display-setup
 
-systemctl --user import-environment
-dbus-update-activation-environment --systemd --all
 [ -r ~/.Xresources ] && xrdb ~/.Xresources
 
 xsetroot -cursor_name left_ptr &

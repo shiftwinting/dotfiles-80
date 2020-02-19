@@ -10,6 +10,7 @@
 
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
+dbus-update-activation-environment --systemd --all
 
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
@@ -22,9 +23,6 @@ if [ ! "$DISPLAY" ]; then
         fi
     fi
 fi
-
-systemctl --user import-environment
-dbus-update-activation-environment --systemd --all
 
 if [ -n "$BASH" ]; then
     safesource ~/.bashrc
