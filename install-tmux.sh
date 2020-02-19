@@ -2,7 +2,7 @@
 set -e
 
 mkdir -p ~/.local/bin
-mkdir -p ~/.local/share
+mkdir -p ~/.local/share/man
 mkdir -p ~/.local/etc
 mkdir -p ~/.local/include
 mkdir -p ~/.local/lib
