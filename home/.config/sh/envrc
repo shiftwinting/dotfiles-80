@@ -75,11 +75,6 @@ export STATUSBAR="i3blocks"
 export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
-# fix broken widevine video playback browser plugin that started crashing for
-# some reason (https://bugzilla.mozilla.org/show_bug.cgi?id=1569456)
-if [ "$(hostname)" != "liselle" ]; then
-    export MOZ_DISABLE_GMP_SANDBOX=1
-fi
 # set in new intel iris HD driver for VA-API video hw decoding
 # if [ "$(hostname)" = "halley" ]; then
 #     export LIBVA_DRIVER_NAME="iHD"
