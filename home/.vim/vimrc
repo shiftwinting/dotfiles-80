@@ -53,9 +53,7 @@ if g:use_plugins
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'airblade/vim-gitgutter'
-    if !executable('/usr/bin/fzf') && !executable('/usr/local/bin/fzf')
-        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-    endif
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'luochen1990/rainbow'

@@ -5,6 +5,7 @@ case $- in
           ;;
 esac
 
+ttyctl -f
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/shinit ] && . ~/.config/sh/shinit
 
@@ -94,24 +95,6 @@ zle -N down-line-or-beginning-search
 
 bindkey \^U backward-kill-line
 
-zshcache_time="$(date +%s%N)"
-
-if [ $(hostname) = "garry" ]; then
-    autoload -Uz add-zsh-hook
-
-    rehash_precmd() {
-    if [[ -a /var/cache/zsh/pacman ]]; then
-        local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
-        if (( zshcache_time < paccache_time )); then
-        rehash
-        zshcache_time="$paccache_time"
-        fi
-    fi
-    }
-
-    add-zsh-hook -Uz precmd rehash_precmd
-fi
-
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
@@ -122,6 +105,33 @@ bash() {
 }
 
 setopt interactivecomments
+
+autoload -Uz add-zsh-hook
+
+xterm_title_precmd () {
+	print -Pn -- '\e]2;%~\a'
+}
+
+xterm_title_preexec () {
+	print -Pn -- '\e]2;%~ %# ' && print -n -- "${(q)1}\a"
+}
+
+if [[ "$TERM" == (st*|screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*) ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
+	add-zsh-hook -Uz preexec xterm_title_preexec
+fi
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':completion:*:*:cdr:*:*' menu selection
+
+autoload -Uz run-help
+unalias run-help
+alias help=run-help
+
+autoload -Uz run-help-git
+autoload -Uz run-help-ip
+autoload -Uz run-help-sudo
 
 safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh || safesource ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -139,8 +149,8 @@ if [ "$(hostname)" = "liselle" ]; then
 fi
 
 if exists fzf; then
-    safesource /usr/share/fzf/key-bindings.zsh || safesource ~/.fzf/shell/key-bindings.zsh
-    safesource /usr/share/fzf/completion.zsh || safesource ~/.fzf/shell/completion.zsh
+    safesource ~/.fzf/shell/key-bindings.zsh
+    safesource ~/.fzf/shell/completion.zsh
 fi
 
 alias please='sudo $(fc -ln -1)'
