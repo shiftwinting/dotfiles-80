@@ -12,9 +12,9 @@ mkdir -p ~/.local/libexec
 current_wd="$(pwd)"
 cd /tmp
 
-wget "https://github.com/neovim/neovim/archive/v0.4.3.tar.gz"
-tar xf v0*.tar.gz
-cd neovim*/
+git clone https://github.com/neovim/neovim
+cd neovim
+git checkout release-0.4
 make -j4 CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX="$HOME"/.local install
 
 cd "$current_wd"
