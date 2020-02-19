@@ -12,7 +12,8 @@ mkdir -p ~/.local/libexec
 current_wd="$(pwd)"
 cd "$HOME"/.local/bin
 
-wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage nvim
+wget https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
+mv nvim.appimage nvim
 chmod u+x nvim
 
 cd "$current_wd"
