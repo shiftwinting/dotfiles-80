@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 set -e
 
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/man
 mkdir -p ~/.local/share/nvim
