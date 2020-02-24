@@ -28,7 +28,6 @@ irqbalance
 iwd
 jq
 lf
-light
 linux
 linux-firmware
 man-db
@@ -67,7 +66,6 @@ python-pillow
 python-pip
 python-pycodestyle
 python-scipy
-rainbowstream
 reflector
 ripgrep
 rofi

@@ -34,12 +34,6 @@ XF86Audio{Prev,Play,Next}
 super+{Left,Down,Right}
     playerctl {previous,play-pause,next}
 
-XF86MonBrightness{Down,Up}
-    sudo light -{U,A} 5
-
-super+{Prior,Next}
-    sudo light -{U,A} 5
-
 XF86Display
     xset dpms force off
 
