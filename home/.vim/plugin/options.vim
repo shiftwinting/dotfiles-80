@@ -4,20 +4,25 @@ endif
 let g:loaded_options = 1
 
 if !has('nvim')
-    silent !mkdir -p ~/.cache/vim-undo
     silent !mkdir -p ~/.cache/vim-backup
-    silent !mkdir -p ~/.cache/vim-swap
+    set backupdir=~/.cache/vim-backup
     set belloff=all
     set cscopeverbose
+    silent !mkdir -p ~/.cache/vim-swap
+    set directory=~/.cache/vim-swap
     set nofsync
     set hlsearch         " Turns on highlighting for matched search patterns
     if exists('+langnoremap')
         set langnoremap
     endif
     set shortmess+=F
+    set shortmess-=S
     set showcmd		" display incomplete commands
+    set sidescroll=1
     set ttyfast
     set ttymouse=xterm2
+    silent !mkdir -p ~/.cache/vim-undo
+    set undodir=~/.cache/vim-undo
     if &term =~# '256color'
 	" disable Background Color Erase (BCE) so that color schemes
 	" render properly when inside 256-color tmux and GNU screen.
@@ -36,6 +41,7 @@ if has('termguicolors') && &term =~# '256color'
         " set Vim-specific sequences for RGB colors
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        set background=dark
     endif
     set termguicolors
     if has('nvim-0.4')
@@ -46,19 +52,19 @@ endif
 " poor mans version control
 set writebackup
 set hidden
-set undodir=~/.cache/vim-undo
-set backupdir=~/.cache/vim-backup
-set directory=~/.cache/vim-swap
 if has('persistent_undo')
     set undofile
 endif
 set backup
 set swapfile
 
-set background=dark
+if !has('nvim')
+    set background=dark
+endif
 if !g:use_plugins
     colorscheme desert
 endif
+
 set showmode
 set number
 set cursorline
@@ -70,7 +76,8 @@ if has('signcolumn')
 endif
 set showtabline=2
 
-set ignorecase smartcase
+set ignorecase
+set smartcase
 set showmatch
 
 set softtabstop=4        " Sets the tab size to 4
@@ -112,6 +119,11 @@ endif
 
 set nostartofline
 
+set completeopt=menuone,preview,noinsert,noselect
+
+set scrolloff=999
+set sidescrolloff=999
+
 let g:is_posix=1
 
 " highlight merge conflict markers
@@ -125,5 +137,3 @@ endif
 if has('nvim-0.3.2') || has('patch-8.1.0360')
     set diffopt=filler,internal,indent-heuristic,hiddenoff,iblank,iwhiteall,algorithm:histogram
 endif
-
-set completeopt=menuone,preview,noinsert,noselect

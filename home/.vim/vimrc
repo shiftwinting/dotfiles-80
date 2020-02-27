@@ -5,7 +5,7 @@ let mapleader = ' '
 let maplocalleader = ','
 
 set statusline=
-" tail of filename
+" filename
 set statusline+=%f
 " [help] flag
 set statusline+=\ %h
@@ -20,10 +20,10 @@ set statusline+=%=
 set statusline+=%y
 set statusline+=(%l/%L)
 set statusline+=\ %P
-" separation point
-set statusline+=%=
 
 if g:use_plugins
+    " separation point
+    set statusline+=%=
     if empty(glob('~/.vim/autoload/plug.vim'))
         if !executable('curl')
             echoerr 'You have to install curl or first install vim-plug yourself!'
