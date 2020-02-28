@@ -8,7 +8,6 @@ else
     xmodmap ~/.Xmodmap
 fi
 setxkbmap -option "caps:swapescape"
-xcape -e "Control_L=Escape" &
 xset r rate 250 30
 
 setlayout() {
@@ -34,9 +33,4 @@ elif [ "$(hostname)" = "halley" ]; then
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
     xinput set-prop "ELAN Touchscreen" "Device Enabled" 0
-# elif [ "$(hostname)" = "dev-004p" ]; then
-#     synclient HorizTwoFingerScroll=1
-#     synclient VertScrollDelta=-77
-#     synclient HorizScrollDelta=-77
-#     synclient PalmDetect=1
 fi

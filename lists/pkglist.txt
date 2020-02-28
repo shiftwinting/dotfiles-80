@@ -74,7 +74,6 @@ scrot
 shellcheck-static
 socat
 spotify
-stig
 stow
 strace
 streamlink
@@ -94,15 +93,13 @@ thermald
 tldr
 tmux
 transmission-cli
+tremc-git
 ttf-computer-modern-fonts
 ttf-dejavu
 tuir
 universal-ctags-git
-unzip
 w3m
-weechat
 wget
-xcape
 xcwd-git
 xdg-user-dirs
 xdotool
