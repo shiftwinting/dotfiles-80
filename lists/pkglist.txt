@@ -12,10 +12,8 @@ cmake
 cpupower
 dashbinsh
 dhcpcd
-dosfstools
 dunst
 earlyoom
-efibootmgr
 feh
 firefox
 firefox-sync
@@ -23,7 +21,6 @@ git
 htop
 i3lock-fancy-rapid-git
 informant
-iptables-nft
 irqbalance
 iwd
 jq
@@ -41,7 +38,6 @@ nerd-fonts-inconsolata
 newsboat
 nmap
 ntp
-numlockx
 openssh
 overdue
 pacman-cleanup-hook
@@ -61,8 +57,6 @@ python-autopep8
 python-dbus
 python-gobject
 python-language-server
-python-matplotlib
-python-pillow
 python-pip
 python-pycodestyle
 python-scipy
@@ -72,16 +66,13 @@ rofi
 rsync
 scrot
 shellcheck-static
-socat
 spotify
 stow
-strace
 streamlink
 st-ruifm-git
 subliminal
 sxhkd
 sxiv
-systemd-numlockontty
 texlab
 texlive-bibtexextra
 texlive-core
