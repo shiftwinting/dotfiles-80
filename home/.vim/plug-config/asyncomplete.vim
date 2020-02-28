@@ -3,7 +3,7 @@ if !g:use_plugins || exists('g:loaded_asyncomplete_config')
 endif
 let g:loaded_asyncomplete_config = 1
 
-imap <c-space> <Plug>(asyncomplete_force_refresh)
+imap <M-space> <Plug>(asyncomplete_force_refresh)
 " let g:asyncomplete_popup_delay = 300
 let g:asyncomplete_auto_completeopt = 0
 if executable('python3') && (has('nvim') || has('python3'))
@@ -14,20 +14,6 @@ if executable('python3') && (has('nvim') || has('python3'))
             \ 'whitelist': ['*'],
             \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
             \ }))
-    augroup END
-endif
-
-if executable('ctags') || executable('ctags-exuberant')
-    augroup async_ctags
-        autocmd!
-        autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tags#get_source_options({
-        \ 'name': 'tags',
-        \ 'whitelist': ['c'],
-        \ 'completor': function('asyncomplete#sources#tags#completor'),
-        \ 'config': {
-        \    'max_file_size': 50000000,
-        \  },
-        \ }))
     augroup END
 endif
 

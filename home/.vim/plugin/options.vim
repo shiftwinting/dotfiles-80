@@ -80,10 +80,11 @@ set ignorecase
 set smartcase
 set showmatch
 
-set softtabstop=4        " Sets the tab size to 4
 set expandtab        " Tab key inserts spaces instead of tabs
-set shiftwidth=4     " Sets spaces used for (auto)indent
 set shiftround
+set shiftwidth=0
+set softtabstop=-1
+set tabstop=4
 
 set nofoldenable
 

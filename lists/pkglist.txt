@@ -4,10 +4,8 @@ arch-audit
 base
 bash-completion
 bash-language-server
-biber
 bspwm
 cava
-clang
 cmake
 cpupower
 dashbinsh
@@ -72,13 +70,6 @@ st-ruifm-git
 subliminal
 sxhkd
 sxiv
-texlab
-texlive-bibtexextra
-texlive-core
-texlive-formatsextra
-texlive-latexextra
-texlive-pictures
-texlive-science
 thermald
 tldr
 tmux
@@ -87,7 +78,6 @@ tremc-git
 ttf-computer-modern-fonts
 ttf-dejavu
 tuir
-universal-ctags-git
 w3m
 wget
 xcwd-git

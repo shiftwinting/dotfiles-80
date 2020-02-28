@@ -1,0 +1,4 @@
+python-matplotlib
+python-pillow
+python-opencv
+python-tqdm

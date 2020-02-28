@@ -67,7 +67,6 @@ if g:use_plugins
     endif
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
-    Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'vimwiki/vimwiki'
@@ -87,9 +86,8 @@ if g:use_plugins
     Plug 'mattn/vim-lsp-settings'
     Plug 'yami-beta/asyncomplete-omni.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
-    if executable('ctags') || executable('ctags-exuberant')
-        Plug 'ludovicchabant/vim-gutentags'
-        Plug 'prabirshrestha/asyncomplete-tags.vim'
+    if executable('ccls') || executable('cquery')
+        Plug 'jackguo380/vim-lsp-cxx-highlight'
     endif
     if executable('python3') && (has('nvim') || has('python3'))
         Plug 'SirVer/ultisnips'

@@ -1,3 +1,5 @@
+let b:start = g:start
+
 augroup my_cmake
     autocmd! BufWritePost <buffer>
     autocmd BufWritePost <buffer> CMake

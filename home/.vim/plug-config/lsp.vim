@@ -6,32 +6,37 @@ let g:loaded_lsp_config = 1
 let s:findjson = {... -> fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h')}
 let g:lsp_text_edit_enabled=0
 
-" if executable('ccls')
-"     augroup ccls
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"                 \   'name': 'ccls',
-"                 \   'cmd': {... -> ['ccls']},
-"                 \   'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-"                 \   'root_uri': s:findjson,
-"                 \   'initialization_options': {
-"                 \      'cache': {'directory' : '/tmp/ccls_cache/cache'},
-"                 \      'completion': {'detailedLabel': v:false}
-"                 \   }
-"                 \ })
-"     augroup END
-" elseif executable('cquery')
-"     augroup cquery
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"         \ 'name': 'cquery',
-"         \ 'cmd': {server_info->['cquery']},
-"         \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-"         \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
-"         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-"         \ })
-"     augroup END
-" endif
+if executable('ccls')
+    augroup ccls
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                \   'name': 'ccls',
+                \   'cmd': {server_info-> ['ccls']},
+                \   'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                \   'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+                \   'initialization_options': {
+                \       'cache': {'directory' : '/tmp/ccls_cache/cache'},
+                \       'completion': {'detailedLabel': v:false},
+                \       'highlight': { 'lsRanges' : v:true },
+                \   }
+                \ })
+    augroup END
+elseif executable('cquery')
+    augroup cquery
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'cquery',
+        \ 'cmd': {server_info->['cquery']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': {
+        \   'cacheDirectory': '/tmp/cquery/cache',
+        \   'highlight': { 'enabled' : v:true },
+        \   'emitInactiveRegions': v:true,
+        },
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
+    augroup END
+endif
 
 let g:lsp_fold_enabled = 0
 let g:lsp_diagnostics_enabled = 0
