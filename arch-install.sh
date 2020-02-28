@@ -30,12 +30,13 @@ sudo systemctl enable --now earlyoom
 sudo systemctl enable --now irqbalance
 sudo systemctl enable --now dhcpcd
 sudo systemctl enable --now iwd
-sudo systemctl enable --now nftables
 sudo systemctl enable --now ntpd
-sudo systemctl enable --now numLockOnTty
 sudo systemctl enable --now sshd
 sudo systemctl enable --now thermald
 sudo systemctl enable --now acpid
+
+
+sudo pacman -S --asdeps efibootmgr
 
 boot_disk="sda"
 boot_partition=1

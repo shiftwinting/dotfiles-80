@@ -52,7 +52,6 @@ polybar
 protonmail-bridge
 pulseaudio
 pulseaudio-jack
-pulseaudio-modules-bt-git
 python-autopep8
 python-dbus
 python-gobject
