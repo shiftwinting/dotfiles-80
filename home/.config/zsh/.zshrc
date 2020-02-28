@@ -126,9 +126,6 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
 autoload -Uz run-help
-if [[ "$(hostname)" != "liselle" ]]; then
-    unalias run-help
-fi
 alias help=run-help
 
 autoload -Uz run-help-git
