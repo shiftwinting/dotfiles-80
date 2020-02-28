@@ -7,7 +7,7 @@ display-setup
 [ -r ~/.Xresources ] && xrdb ~/.Xresources
 
 xsetroot -cursor_name left_ptr &
-feh --bg-center --no-fehbg ~/dotfiles/wallpapers/arch.png &
+# feh --bg-center --no-fehbg ~/dotfiles/wallpapers/arch.png &
 launch-polybar &
 sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
 input-setup &
