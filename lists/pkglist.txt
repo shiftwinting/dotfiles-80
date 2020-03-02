@@ -12,7 +12,6 @@ dashbinsh
 dhcpcd
 dunst
 earlyoom
-feh
 firefox
 firefox-sync
 git
@@ -41,7 +40,6 @@ overdue
 pacman-cleanup-hook
 pacman-contrib
 page-git
-pavucontrol
 pbzip2
 pigz
 pkgstats
@@ -49,7 +47,7 @@ playerctl
 polybar
 protonmail-bridge
 pulseaudio
-pulseaudio-jack
+pulsemixer
 python-autopep8
 python-dbus
 python-gobject
