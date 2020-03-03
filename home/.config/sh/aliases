@@ -55,8 +55,7 @@ alias curl='curl -L --create-dirs -C -'
 alias ipecho='curl ipecho.net/plain; echo'
 alias ccat='pygmentize'
 alias copy="xclip -selection clipboard; xclip -selection clipboard -o"
-alias countframes='ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames
--of default=nokey=1:noprint_wrappers=1'
+alias countframes='ffprobe -v error -select_streams v:0 -show_entries stream=nb_frames -of default=nokey=1:noprint_wrappers=1'
 
 alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
 alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files'
