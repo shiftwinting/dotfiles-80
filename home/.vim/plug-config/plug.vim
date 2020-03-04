@@ -7,6 +7,6 @@ augroup plug
     autocmd!
     autocmd VimEnter *
         \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-        \|   PlugInstall --sync | q | source $MYVIMRC
+        \|   PlugInstall --sync | quit | source $MYVIMRC
         \| endif
 augroup END

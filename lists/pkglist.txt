@@ -4,6 +4,7 @@ arch-audit
 base
 bash-completion
 bash-language-server
+bc
 bspwm
 cava
 cmake
@@ -11,6 +12,7 @@ cpupower
 dashbinsh
 dhcpcd
 dunst
+dust
 earlyoom
 firefox
 firefox-sync
