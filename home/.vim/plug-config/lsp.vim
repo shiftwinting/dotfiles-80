@@ -3,9 +3,6 @@ if !g:use_plugins || exists('g:loaded_lsp_config')
 endif
 let g:loaded_lsp_config = 1
 
-let s:findjson = {... -> fnamemodify(findfile('compile_commands.json', expand('%:p') . ';'), ':p:h')}
-let g:lsp_text_edit_enabled=0
-
 if executable('ccls')
     augroup ccls
         autocmd!
