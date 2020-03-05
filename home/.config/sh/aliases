@@ -80,3 +80,5 @@ alias p2='python2'
 alias ta='tmux new-session -Ad -s'
 
 alias cpa='bin/camop -M "tcp://127.0.0.1:7779" -B "tcp://127.0.0.1:5533" -P "tcp://127.0.0.1:8086" -S "." -c /tmp/test.json  -m'
+alias escore='python enable_scoreboard.py "tcp://127.0.0.1:7779" "tcp://127.0.0.1:8086"'
+alias ecamop='python enable_camop_service2.py "tcp://127.0.0.1:5533" "tcp://127.0.0.1:8086" controller start'

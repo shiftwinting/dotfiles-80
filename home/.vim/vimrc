@@ -32,6 +32,12 @@ if g:use_plugins
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     endif
+
+    function! Cond(cond, ...)
+        let opts = get(a:000, 0, {})
+        return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+    endfunction
+    let g:has_cpp_ls = executable('ccls') || executable('cquery')
     call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-repeat'
@@ -59,12 +65,9 @@ if g:use_plugins
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'wellle/targets.vim'
     Plug 'rhysd/clever-f.vim'
-    if has('nvim')
-        Plug 'lambdalisue/suda.vim'
-        Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-    else
-        Plug 'markonm/traces.vim'
-    endif
+    Plug 'lambdalisue/suda.vim', Cond(has('nvim'))
+    Plug 'glacambre/firenvim', Cond(has('nvim'), {'do': { _ -> firenvim#install(0)}})
+    Plug 'markonm/traces.vim', Cond(!has('nvim'))
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'kovetskiy/sxhkd-vim'
@@ -76,9 +79,7 @@ if g:use_plugins
     Plug 'rhysd/git-messenger.vim'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     Plug 'machakann/vim-highlightedyank'
-    if has('nvim-0.4')
-        Plug 'norcalli/nvim-colorizer.lua'
-    endif
+    Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
@@ -86,18 +87,15 @@ if g:use_plugins
     Plug 'mattn/vim-lsp-settings'
     Plug 'yami-beta/asyncomplete-omni.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
-    if executable('ccls') || executable('cquery')
-        Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': 'cpp'}
-    endif
-    if executable('python3') && (has('nvim') || has('python3'))
-        Plug 'SirVer/ultisnips'
-        Plug 'honza/vim-snippets'
-        Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-        Plug 'thomasfaingnaert/vim-lsp-snippets'
-        Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-    endif
+    Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(g:has_cpp_ls, {'for': 'cpp'})
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+    Plug 'thomasfaingnaert/vim-lsp-snippets'
+    Plug 'thomasfaingnaert/vim-lsp-ultisnips'
     call plug#end()
     runtime! plug-config/**.vim
+    colorscheme gruvbox8
 endif
 
 set exrc

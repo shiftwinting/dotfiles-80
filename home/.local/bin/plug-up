@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 stty -ixoff
-nvim +PlugUpgrade +PlugUpdate
+$EDITOR +PlugUpgrade +PlugUpdate
 stty -ixon

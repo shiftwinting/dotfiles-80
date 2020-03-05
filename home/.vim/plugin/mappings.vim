@@ -31,7 +31,7 @@ vnoremap <silent> <c-e> $
 " the unnamed (ie. default) register, that register content is not replaced by
 " the visual selection you just pasted over–which is the default behavior.
 " This enables the user to yank some text and paste it over several places in
-" a row, without using a named register (eg. "ay, "ap etc.).
+" a row, without using a named register
 vnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
 
 set pastetoggle=<c-p>
@@ -39,11 +39,15 @@ set pastetoggle=<c-p>
 " Find and Replace binds
 nnoremap <leader>s :<c-u>%s/
 vnoremap <leader>s :s/
+nnoremap <leader>gs :<c-u>%s/<c-r>"/
+vnoremap <leader>gs :s/<c-r>"/
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 
 nnoremap <silent> <leader>x :wall<cr>
 nnoremap <silent> <leader>z :wqall<cr>
 nnoremap <silent> <leader>q :quitall<cr>
+nnoremap <silent> <localleader>x :update<cr>
+nnoremap <silent> <localleader>q :quit<cr>
 
 tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
