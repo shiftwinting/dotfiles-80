@@ -35,19 +35,7 @@ sudo systemctl enable --now sshd
 sudo systemctl enable --now thermald
 sudo systemctl enable --now acpid
 
-
-sudo pacman -S --asdeps efibootmgr
-
-boot_disk="sda"
-boot_partition=1
-root_partition="sda2"
-
-printf "Boot disk (without /dev/ part): " && read -r boot_disk
-printf "Boot partition number : " && read -r boot_partition
-printf "Root partition (e.g. sda2) : " && read -r root_partition
-
-unicode_arg="'root=/dev/$root_partition rw initrd=\\intel-ucode.img initrd=\\initramfs-linux.img quiet mitigations=off nowatchdog'"
-sudo efibootmgr --disk /dev/"$boot_disk" --part "$boot_partition" --create --label "Arch Linux" --loader /vmlinuz-linux --unicode "$unicode_arg" --verbose
+~/dotfiles/create-efi.sh
 
 cd "$current_wd" || exit
 
