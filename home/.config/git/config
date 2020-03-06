@@ -1,34 +1,32 @@
 [user]
 	email = ruifmarques@pm.me
 	name = Rui Marques
-        username = ruifm
-        signingkey = 15B7C6C3FFFAE83A
+    username = ruifm
+    signingkey = 15B7C6C3FFFAE83A
 [push]
 	default = simple
+    followTags = true
 [core]
-	editor = nvim
 	whitespace = fix,trailing-space,cr-at-eol
-	excludesfile = ~/.config/git/ignore
+    autocrlf = input
 [web]
 	browser = firefox
 [diff]
-        tool = nvimdiff2
-        algorithm = histogram
-[difftool "nvimdiff2"]
-        cmd = nvim -d $LOCAL $REMOTE
-        trustExitCode = true
+    tool = vimdiff2
+    algorithm = histogram
+[difftool "vimdiff2"]
+    cmd = $EDITOR -d $LOCAL $REMOTE
+    trustExitCode = true
 [rebase]
-        autoStash = true
+    autoStash = true
 [merge]
-        tool = nfugitive
-            # if not using a tool name with builtin support, must supply mergetool cmd
-                # as below
-[mergetool "nvimdiff4"]
-        cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[mergetool "nfugitive"]
-        cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
+    tool = fugitive
+[mergetool "vimdiff4"]
+    cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "fugitive"]
+    cmd = $EDITOR -f -c "Gvdiffsplit!" "$MERGED"
 [commit]
 	verbose = true
-        gpgsign = true
-[gpg]
-        program = gpg2
+    gpgsign = true
+[status]
+    showUntrackedFiles = all
