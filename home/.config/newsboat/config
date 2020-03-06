@@ -1,5 +1,5 @@
 auto-reload yes
-reload-time 30
+reload-time 10
 
 bind-key j next
 bind-key k prev
