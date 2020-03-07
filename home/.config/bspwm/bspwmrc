@@ -5,6 +5,7 @@ bspc rule -r "*"
 
 if [ "$(hostname)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
     bspc monitor 'eDP-1-1' --remove
+    bspc config pointer_motion_interval 7
 fi
 
 if [ "$(hostname)" = "liselle" ]; then
@@ -27,3 +28,7 @@ bspc config gapless_monocle true
 bspc config removal_adjustment true
 
 bspc rule -a Debug desktop="2"
+bspc rule -a Steam desktop="1"
+bspc rule -a discord desktop="2"
+bspc rule -a Spotify desktop="5"
+bspc rule -a csgo_linux64 desktop="10"

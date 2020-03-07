@@ -1,0 +1,7 @@
+discord
+lib32-gamemode
+linux-headers
+linux-fsync
+linux-fsync-headers
+steam
+steam-fonts
