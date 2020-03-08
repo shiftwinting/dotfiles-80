@@ -11,6 +11,5 @@ if [ "$(hostname)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
     xrandr --output eDP-1-1 --off
     xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
 elif [ "$(hostname)" = "halley" ] && xrandr --query | grep "HDMI-1 connected"; then
-    xrandr --output HDMI-1 --same-as eDP-1
-    xrandr --output HDMI-1 --primary
+    xrandr --output HDMI-1 --above eDP-1
 fi

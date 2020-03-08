@@ -16,6 +16,7 @@ mkdir -p ~/.ssh/sockets
 mkdir -p ~/.config/systemd/user
 mkdir -p ~/.config/notmuch-config
 mkdir -p ~/.config/wget
+mkdir -p ~/.config/spotify-tui
 touch ~/.config/wget/wgetrc
 mkdir -p ~/.config/zsh
 mkdir -p ~/.cache
