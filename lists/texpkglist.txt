@@ -1,4 +1,3 @@
-biber
 texlab
 texlive-bibtexextra
 texlive-core

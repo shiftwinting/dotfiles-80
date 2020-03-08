@@ -5,6 +5,7 @@ base
 bash-completion
 bash-language-server
 bc
+bitwarden-rofi-git
 bspwm
 cava
 cmake
@@ -17,6 +18,7 @@ earlyoom
 firefox
 firefox-sync
 git
+go
 htop
 i3lock-fancy-rapid-git
 informant
@@ -61,9 +63,11 @@ reflector
 ripgrep
 rofi
 rsync
+rust
 scrot
 shellcheck-static
-spotify
+spotifyd-full
+spotify-tui
 stow
 streamlink
 st-ruifm-git
