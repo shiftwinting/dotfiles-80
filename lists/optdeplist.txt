@@ -3,6 +3,7 @@ aspell
 cronie
 ell
 freeglut
+gnome-keyring
 libldac
 libnotify
 libusb-compat

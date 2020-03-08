@@ -15,6 +15,7 @@ if [ -z "$ENV_SOURCED" ]; then
     else
         PATH="$OLDPATH"
     fi
+
     PATH="$HOME"/.local/bin:"$PATH"
     if ! [ -x "/usr/bin/fzf" ] && ! [ -x "/usr/local/bin/fzf" ]; then
         PATH="$HOME"/.fzf/bin:"$PATH"
@@ -22,16 +23,20 @@ if [ -z "$ENV_SOURCED" ]; then
     if [ "$(hostname)" = "liselle" ]; then
         PATH=/usr/local/cuda/bin:"$PATH"
     fi
+
     export PATH
     MANPATH="/usr/local/man:$MANPATH"
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
     export MANPATH
 
-    LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$LD_LIBRARY_PATH"
     if [ "$(hostname)" = "liselle" ]; then
         LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+    elif [ "$(hostname)" = "garry" ]; then
+        LD_LIBRARY_PATH="/usr/lib32/nvidia:/usr/lib/nvidia:$LD_LIBRARY_PATH"
     fi
+    LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH
+
     export ENV_SOURCED="$0"
 fi
 
@@ -99,6 +104,11 @@ export INTERFACE="$IFACE"
 export SXHKD_SHELL="sh"
 # Java: use system anti-aliased fonts and make swing use the GTK look and feel: 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+if [ "$(hostname)" != "liselle" ]; then
+    export SSL_CERT_DIR="/etc/ssl/certs"
+fi
+export vblank_mode=0
 # cleanup ~
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
