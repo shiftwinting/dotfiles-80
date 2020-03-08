@@ -7,7 +7,7 @@ else
     setxkbmap -layout es
     xmodmap ~/.Xmodmap
 fi
-setxkbmap -option "caps:swapescape"
+setxkbmap -option "caps:escape"
 xset r rate 250 30
 
 setlayout() {
