@@ -29,6 +29,9 @@ bspc config pointer_follows_monitor true
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config removal_adjustment true
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
 
 bspc rule -a Debug desktop="2"
 bspc rule -a Steam desktop="1"
