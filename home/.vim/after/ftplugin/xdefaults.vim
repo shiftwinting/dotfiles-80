@@ -1,7 +1,7 @@
 setlocal commentstring=!\ %s
 augroup my_xdefaults
-    autocmd!
-    autocmd BufWritePost *.Xresources,*.Xdefaults !xrdb %
+    autocmd! BufWritePost <buffer>
+    autocmd BufWritePost <buffer> !xrdb %
 augroup END
 
 let b:undo_ftplugin .= '|setlocal commentstring< | autocmd! my_xdefaults'

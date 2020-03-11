@@ -6,7 +6,7 @@ let g:loaded_asyncomplete_config = 1
 imap <M-space> <Plug>(asyncomplete_force_refresh)
 " let g:asyncomplete_popup_delay = 300
 let g:asyncomplete_auto_completeopt = 0
-if executable('python3') && (has('nvim') || has('python3'))
+if has('python3')
     augroup async_ulti
         autocmd!
         autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
@@ -16,6 +16,15 @@ if executable('python3') && (has('nvim') || has('python3'))
             \ }))
     augroup END
 endif
+
+augroup async_omni
+    autocmd!
+    autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+        \ 'name': 'omni',
+        \ 'whitelist': ['*'],
+        \ 'completor': function('asyncomplete#sources#omni#completor')
+        \  }))
+augroup END
 
 function! s:check_back_space() abort
     let col = col('.') - 1

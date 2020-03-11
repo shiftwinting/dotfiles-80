@@ -1,7 +1,7 @@
-if !g:use_plugins || exists('g:loaded_lsp_config')
+if !g:use_plugins || exists('g:loaded_vim_lsp_config') || has('nvim-0.5')
     finish
 endif
-let g:loaded_lsp_config = 1
+let g:loaded_vim_lsp_config = 1
 
 if executable('ccls')
     augroup ccls
@@ -36,7 +36,7 @@ elseif executable('cquery')
 endif
 
 let g:lsp_fold_enabled = 0
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_enabled = 1
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_async_completion=1
 
