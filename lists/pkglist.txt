@@ -38,6 +38,7 @@ neovim-git
 nerd-fonts-inconsolata
 newsboat
 nmap
+npm
 ntp
 openssh
 overdue
