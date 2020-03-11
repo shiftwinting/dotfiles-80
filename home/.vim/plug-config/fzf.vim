@@ -43,4 +43,3 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <silent><leader>F :Files<CR>
 nnoremap <silent><leader>B :Buffers<CR>
 nnoremap <silent><leader>R :RG<CR>
-nnoremap <silent><leader>T :Tags<CR>

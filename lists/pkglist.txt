@@ -34,7 +34,7 @@ megacmd-bin
 mpv
 mutt-wizard-git
 neofetch
-neovim
+neovim-git
 nerd-fonts-inconsolata
 newsboat
 nmap

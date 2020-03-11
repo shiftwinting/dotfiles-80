@@ -2,7 +2,7 @@
 # /home/sommerfeld/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Tue Jan 14 19:54:42 2020
+# Generated on Mon Mar  9 16:47:37 2020
 #
 
 # ConfigProperties:
@@ -13,13 +13,13 @@ SliderTextEntries = Yes
 IncludeDisplayNameInConfigFile = No
 ShowQuitDialog = No
 UpdateRulesOnProfileNameChange = Yes
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 
 # Attributes:
 
-0/SyncToVBlank=1
+0/SyncToVBlank=0
 0/LogAniso=0
 0/FSAA=0
 0/TextureClamping=1
