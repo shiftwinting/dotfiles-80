@@ -21,6 +21,7 @@ git
 go
 htop
 i3lock-fancy-rapid-git
+imagemagick
 informant
 irqbalance
 iwd
