@@ -15,7 +15,7 @@ dbus-update-activation-environment --systemd --all
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
         exec startx -- -keeptty
-    elif [ -z "$SSH_TTY" ]; then
+    elif [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ]; then
         [ -r ~/dotfiles/lists/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/lists/caps2esc.map > /dev/null
         sudo -n kbdrate -s -d 250 -r 30 > /dev/null
         if [ "$XDG_VTNR" = "2" ] && [ -t 0 ] && [ -z "$TMUX" ]; then
