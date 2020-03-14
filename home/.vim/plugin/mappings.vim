@@ -58,7 +58,9 @@ inoremap kj <esc>
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+if !has('nvim-0.5')
+    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+endif
 
 if !has('nvim')
     command! SW :w !sudo tee % > /dev/null
