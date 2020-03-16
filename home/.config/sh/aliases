@@ -1,14 +1,26 @@
 #!/usr/bin/env sh
+cs() {
+    cd "$@" || return
+    ls -lAh
+}
+
+whichkey() {
+    xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+}
+
 
 alias sudo='sudo '
 
-alias ls='ls --color=auto'
-alias ll='ls -lhG'
-alias la='ls -AlhG'
+alias ls='ls --color=always'
+alias ll='ls --color=always -lhG'
+alias la='ls --color=always -AlhG'
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=always'
+alias diff='diff --color=always'
+alias dmesg='dmesg --color=always'
+alias lsip="ip a | grep -E '\<inet\>'"
 
 alias g='git'
 alias gs='git status'
@@ -85,6 +97,6 @@ alias py='python3'
 alias p='python3'
 alias p2='python2'
 
-alias ta='tmux new-session -Ad -s'
+alias ta='tmux new-session -A -s'
 
 alias cpa='bin/camop -U "tcp://127.0.0.1:5556" -P "tcp://127.0.0.1:5555" -S "." -c /tmp/test.json  -m'

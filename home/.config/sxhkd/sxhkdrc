@@ -43,8 +43,8 @@ XF86Display
 shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
-super+o;{m,s,r,e,n,t,f,w,p,b}
-    {spowrap,stream,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e python3 -i -c 'from numpy import *',bwmenu --auto-lock "-1" -c 30}
+super+o;{m,s,r,e,n,t,f,w,p,b,h}
+    {spowrap,stream,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e python3 -i -c 'from numpy import *',bwmenu --auto-lock "-1" -c 30, $TERMINAL -e htop}
 
 super+shift+s
     locknpause
@@ -52,5 +52,8 @@ super+shift+s
 super+alt+c
     showclip
 
-super+alt+n;{r,k}
-    record {start,stop}
+super+alt+{i,n}
+	xrandr --output eDP-1 --rotate {inverted,normal}
+
+super+{F7,F8}
+	systemctl --user {start, stop} caminv

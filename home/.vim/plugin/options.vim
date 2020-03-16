@@ -55,7 +55,6 @@ set hidden
 if has('persistent_undo')
     set undofile
 endif
-set backup
 set swapfile
 
 if !has('nvim')
@@ -120,7 +119,7 @@ endif
 
 set nostartofline
 
-set completeopt=menuone,preview,noinsert,noselect
+set completeopt=menuone,noinsert,noselect
 
 set scrolloff=999
 set sidescrolloff=999

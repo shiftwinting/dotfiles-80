@@ -49,16 +49,18 @@ nnoremap <silent> <leader>q :quitall<cr>
 nnoremap <silent> <localleader>x :update<cr>
 nnoremap <silent> <localleader>q :quit<cr>
 
-tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
+tnoremap <silent><expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 
-inoremap jj <esc>
-inoremap kk <esc>
-inoremap jk <esc>
-inoremap kj <esc>
+inoremap <silent> jj <esc>
+inoremap <silent> kk <esc>
+inoremap <silent> jk <esc>
+inoremap <silent> kj <esc>
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <silent> <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+if !has('nvim-0.5')
+    inoremap <silent> <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+endif
 
 if !has('nvim')
     command! SW :w !sudo tee % > /dev/null

@@ -10,28 +10,20 @@ exists() {
 }
 
 if [ -z "$ENV_SOURCED" ]; then
-    if [ -z "$OLDPATH" ]; then
-        export OLDPATH="$PATH"
-    else
-        PATH="$OLDPATH"
-    fi
+    [ -z "$OLDPATH" ] && export OLDPATH="$PATH" || PATH="$OLDPATH"
 
     PATH="$HOME"/.local/bin:"$PATH"
-    if ! [ -x "/usr/bin/fzf" ] && ! [ -x "/usr/local/bin/fzf" ]; then
-        PATH="$HOME"/.fzf/bin:"$PATH"
-    fi
-    if [ "$(hostname)" = "liselle" ]; then
-        PATH=/usr/local/cuda/bin:"$PATH"
-    fi
+    ! [ -x "/usr/bin/fzf" ] && ! [ -x "/usr/local/bin/fzf" ] && PATH="$HOME"/.fzf/bin:"$PATH"
+
+    [ "$(hostname)" = "liselle" ] && PATH=/usr/local/cuda/bin:"$PATH"
 
     export PATH
+
     MANPATH="/usr/local/man:$MANPATH"
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
     export MANPATH
 
-    if [ "$(hostname)" = "liselle" ]; then
-        LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-    fi
+    [ "$(hostname)" = "liselle" ] && LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH
 
@@ -57,12 +49,37 @@ else
 fi
 export EDITOR
 export VISUAL="$EDITOR"
-if exists page; then
-    export PAGER="page -q 90000"
-    export MANPAGER="page -C -e 'au User PageDisconnect sleep 100m|%y p|enew! |bd! #|pu p|set ft=man'"
-fi
+# # Get color support for 'less'
+[ -f /usr/bin/source-highlight-esc.sh ] && export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS="--RAW-CONTROL-CHARS"
+LESS_TERMCAP_mb="$(tput bold; tput setaf 2)" # green
+export LESS_TERMCAP_mb
+LESS_TERMCAP_md="$(tput bold; tput setaf 6)" # cyan
+export LESS_TERMCAP_md
+LESS_TERMCAP_me="$(tput sgr0)"
+export LESS_TERMCAP_me
+LESS_TERMCAP_so="$(tput bold; tput setaf 3; tput setab 4)" # yellow on blue
+export LESS_TERMCAP_so
+LESS_TERMCAP_se="$(tput rmso; tput sgr0)"
+export LESS_TERMCAP_se
+LESS_TERMCAP_us="$(tput smul; tput bold; tput setaf 7)" # white
+export LESS_TERMCAP_us
+LESS_TERMCAP_ue="$(tput rmul; tput sgr0)"
+export LESS_TERMCAP_ue
+LESS_TERMCAP_mr="$(tput rev)"
+export LESS_TERMCAP_mr
+LESS_TERMCAP_mh="$(tput dim)"
+export LESS_TERMCAP_mh
+LESS_TERMCAP_ZN="$(tput ssubm)"
+export LESS_TERMCAP_ZN
+LESS_TERMCAP_ZV="$(tput rsubm)"
+export LESS_TERMCAP_ZV
+LESS_TERMCAP_ZO="$(tput ssupm)"
+export LESS_TERMCAP_ZO
+LESS_TERMCAP_ZW="$(tput rsupm)"
+export LESS_TERMCAP_ZW
+
 export LANG=en_US.UTF-8
-export ARCHFLAGS="-arch x86_64"
 export OPENER='xdg-open'
 if exists rg; then
     export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
@@ -114,9 +131,8 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
-if [ -z "$SSH_TTY" ]; then
-    export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-fi
+[ -z "$SSH_TTY" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
