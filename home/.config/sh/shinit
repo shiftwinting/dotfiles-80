@@ -10,11 +10,6 @@ esac
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 
-cs() {
-    cd "$@" || return
-    ls -lAh
-}
-
 _fzf_compgen_path() {
   eval "$FZF_DEFAULT_COMMAND" "$1"
 }
