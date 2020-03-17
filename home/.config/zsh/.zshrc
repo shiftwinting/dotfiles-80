@@ -32,6 +32,8 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 setopt COMPLETE_ALIASES
 _comp_options+=(globdots)		# Include hidden files.
 
+setopt rmstarsilent
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
