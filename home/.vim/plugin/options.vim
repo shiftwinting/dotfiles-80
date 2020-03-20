@@ -55,7 +55,6 @@ set hidden
 if has('persistent_undo')
     set undofile
 endif
-set backup
 set swapfile
 
 if !has('nvim')
