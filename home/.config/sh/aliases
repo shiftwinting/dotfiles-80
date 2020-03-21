@@ -11,13 +11,15 @@ whichkey() {
 
 alias sudo='sudo '
 
-alias ls='ls --color=auto'
-alias ll='ls -lhG'
-alias la='ls -AlhG'
+alias ls='ls --color=always'
+alias ll='ls --color=always -lhG'
+alias la='ls --color=always -AlhG'
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=always'
+alias diff='diff --color=always'
+alias dmesg='dmesg --color=always'
 
 alias g='git'
 alias gs='git status'
