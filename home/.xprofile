@@ -12,6 +12,4 @@ launch-polybar &
 sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
 input-setup &
 dunst &
-if [ "$(hostname)" = "halley" ]; then
-    protonmail-bridge --no-window &
-fi
+[ "$(hostname)" = "halley" ] && protonmail-bridge --no-window &

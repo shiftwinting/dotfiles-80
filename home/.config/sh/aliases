@@ -96,6 +96,6 @@ alias py='python3'
 alias p='python3'
 alias p2='python2'
 
-alias ta='tmux new-session -Ad -s'
+alias ta='tmux new-session -A -s'
 
 alias cpa='bin/camop -U "tcp://127.0.0.1:5556" -P "tcp://127.0.0.1:5555" -S "." -c /tmp/test.json  -m'
