@@ -5,6 +5,7 @@ let g:loaded_completion_nvim_config = 1
 
 let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_enable_auto_hover = 0
+let g:completion_auto_change_source = 1
 
 function! s:check_back_space() abort
     let col = col('.') - 1
