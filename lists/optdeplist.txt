@@ -9,12 +9,12 @@ libusb-compat
 lynx
 ocl-icd
 openmp
+openresolv
 pam-gnupg-git
 perl-file-mimeinfo
 pulseaudio-alsa
 python-lockfile
 python-pynvim
-systemd-resolvconf
 urlview-git
 xorg-xdpyinfo
 xorg-xwininfo
