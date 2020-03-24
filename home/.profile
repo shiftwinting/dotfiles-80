@@ -10,7 +10,6 @@
 
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
-dbus-update-activation-environment --systemd --all
 
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
@@ -31,3 +30,4 @@ elif [ -n "$ZSH_VERSION" ]; then
 else
     safesource "$XDG_CONFIG_HOME"/sh/shinit
 fi
+dbus-update-activation-environment --systemd --all
