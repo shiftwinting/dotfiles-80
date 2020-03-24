@@ -9,7 +9,6 @@ libusb-compat
 lynx
 ocl-icd
 openmp
-openresolv
 pam-gnupg-git
 perl-file-mimeinfo
 pulseaudio-alsa

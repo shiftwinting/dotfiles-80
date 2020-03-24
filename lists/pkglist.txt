@@ -11,7 +11,6 @@ cava
 cmake
 cpupower
 dashbinsh
-dhcpcd
 discord
 dosfstools
 dunst
