@@ -26,8 +26,7 @@ if !has('nvim')
 	" render properly when inside 256-color tmux and GNU screen.
 	" see also http://sunaku.github.io/vim-256color-bce.html
 	set t_ut=
-	set viminfo+=$XDG_CACHE_HOME/vim/viminfo
-	set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+    set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
     endif
 else
     let g:python_host_prog='/usr/bin/python2'
