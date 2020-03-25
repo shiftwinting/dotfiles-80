@@ -4,12 +4,11 @@ endif
 let g:loaded_options = 1
 
 if !has('nvim')
-    silent !mkdir -p ~/.cache/vim-backup
-    set backupdir=~/.cache/vim-backup
+    set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
     set belloff=all
     set cscopeverbose
-    silent !mkdir -p ~/.cache/vim-swap
-    set directory=~/.cache/vim-swap
+    set directory=$XDG_CACHE_HOME/vim/swap | call mkdir(&directory, 'p', 0700)
+	set viewdir=$XDG_CACHE_HOME/vim/view   | call mkdir(&viewdir, 'p', 0700)
     set nofsync
     set hlsearch         " Turns on highlighting for matched search patterns
     if exists('+langnoremap')
@@ -21,13 +20,14 @@ if !has('nvim')
     set sidescroll=1
     set ttyfast
     set ttymouse=xterm2
-    silent !mkdir -p ~/.cache/vim-undo
-    set undodir=~/.cache/vim-undo
+    set undodir=$XDG_DATA_HOME/vim/undo | call mkdir(&undodir, 'p', 0700)
     if &term =~# '256color'
 	" disable Background Color Erase (BCE) so that color schemes
 	" render properly when inside 256-color tmux and GNU screen.
 	" see also http://sunaku.github.io/vim-256color-bce.html
 	set t_ut=
+	set viminfo+=$XDG_CACHE_HOME/vim/viminfo
+	set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
     endif
 else
     let g:python_host_prog='/usr/bin/python2'

@@ -1,8 +1,4 @@
 #!/usr/bin/env sh
 
-if [ "$(hostname)" = "liselle" ]; then
-    dbus-launch --autolaunch="$(cat /var/lib/dbus/machine-id)" spotify &
-else
-    spotify &
-fi
+$TERMINAL -e spt &
 $TERMINAL -e cava &

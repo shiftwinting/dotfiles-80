@@ -10,19 +10,16 @@ mkdir -p ~/.local/include
 mkdir -p ~/.local/lib
 mkdir -p ~/.local/libexec
 mkdir -p ~/.config/mpv/watch_later
-mkdir -p ~/.vim/spell
 mkdir -p ~/.ssh/sockets
 mkdir -p ~/.config/systemd/user
 mkdir -p ~/.config/notmuch-config
 mkdir -p ~/.config/wget
-touch ~/.config/wget/wgetrc
 mkdir -p ~/.config/spotify-tui
 mkdir -p ~/.config/aspell
 mkdir -p ~/.config/bash-completion
 mkdir -p ~/.config/cargo
 mkdir -p ~/.config/nv
 mkdir -p ~/.config/less
-touch ~/.config/wget/lesskey
 mkdir -p ~/.local/share/terminfo
 mkdir -p ~/.config/X11
 mkdir -p ~/.config/tmux
@@ -32,12 +29,16 @@ mkdir -p ~/.local/share/calcurse
 mkdir -p ~/.config/gdb
 mkdir -p ~/.config/nvidia
 mkdir -p ~/.config/zsh
-mkdir -p ~/.cache
 mkdir -p ~/.config/npm
+mkdir -p ~/.config/isync
 mkdir -p ~/.cache/npm
 mkdir -p ~/.local/share/npm
+mkdir -p ~/.local/share/wineprefixes/default
+mkdir -p ~/.cache/vim/undo
+mkdir -p ~/.cache/vim/swap
+mkdir -p ~/.cache/vim/backup
 
-cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
+# cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
 # cd ~/repos || exit
 # systemctl --user enable --now tmux@ssh
