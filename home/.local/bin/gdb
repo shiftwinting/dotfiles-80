@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+/usr/bin/gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init "$@"

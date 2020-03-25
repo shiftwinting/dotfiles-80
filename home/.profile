@@ -30,4 +30,3 @@ elif [ -n "$ZSH_VERSION" ]; then
 else
     safesource "$XDG_CONFIG_HOME"/sh/shinit
 fi
-dbus-update-activation-environment --systemd --all

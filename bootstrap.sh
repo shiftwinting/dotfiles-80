@@ -37,7 +37,7 @@ mkdir -p ~/.config/npm
 mkdir -p ~/.cache/npm
 mkdir -p ~/.local/share/npm
 
-# cp ~/dotfiles/systemd/* ~/.config/systemd/user
+cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
 # cd ~/repos || exit
 # systemctl --user enable --now tmux@ssh
