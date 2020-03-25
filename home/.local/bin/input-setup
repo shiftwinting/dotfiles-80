@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-[ -r ~/.Xkeymap ] && xkbcomp ~/.Xkeymap "$DISPLAY"
+[ -r ~/.config/X11/Xkeymap ] && xkbcomp ~/.config/X11/Xkeymap "$DISPLAY"
 if [ "$(hostname)" = "halley" ]; then
     setxkbmap -layout no
 else
     setxkbmap -layout es
-    xmodmap ~/.Xmodmap
+    xmodmap ~/.config/X11/Xmodmap
 fi
 setxkbmap -option "caps:escape"
 xset r rate 250 30
