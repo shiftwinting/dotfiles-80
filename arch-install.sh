@@ -24,11 +24,14 @@ cd ~/dotfiles
 
 sudo stow -t /etc -R etc
 
+sudo cp systemd/network/* /etc/systemd/network/
+
 sudo systemctl enable --now cpupower
 sudo systemctl enable --now cronie
 sudo systemctl enable --now earlyoom
 sudo systemctl enable --now irqbalance
-sudo systemctl enable --now dhcpcd
+sudo systemctl enable --now systemd-networkd
+sudo systemctl enable --now systemd-resolved
 sudo systemctl enable --now iwd
 sudo systemctl enable --now ntpd
 sudo systemctl enable --now sshd

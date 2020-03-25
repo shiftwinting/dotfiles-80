@@ -4,7 +4,7 @@
 
 display-setup
 
-[ -r ~/.Xresources ] && xrdb ~/.Xresources
+[ -r ~/.config/X11/Xresources ] && xrdb ~/.config/X11/Xresources
 
 xsetroot -cursor_name left_ptr &
 # feh --bg-center --no-fehbg ~/dotfiles/wallpapers/arch.png &

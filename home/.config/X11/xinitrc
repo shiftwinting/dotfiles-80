@@ -2,5 +2,5 @@
 # xinitrc file, used by all X sessions started by xinit (startx)
 
 # shellcheck source=/dev/null
-[ -r  ~/.xprofile ] && . ~/.xprofile &
+[ -r  ~/.config/X11/xprofile ] && . ~/.config/X11/xprofile &
 exec bspwm

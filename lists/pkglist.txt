@@ -51,7 +51,7 @@ pigz
 pkgstats
 playerctl
 polybar
-protonmail-bridge
+protonmail-bridge-bin
 pulseaudio
 pulsemixer
 python-autopep8
