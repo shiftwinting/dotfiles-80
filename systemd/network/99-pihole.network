@@ -1,0 +1,9 @@
+[Match]
+Name=w*
+SSID=CemFios_5
+
+[Network]
+DNS=192.168.1.203
+
+[DHCP]
+UseDNS=false
