@@ -2,7 +2,6 @@
 current_wd="$(pwd)"
 
 mkdir -p ~/repos/aur
-
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/share/nvim
 mkdir -p ~/.local/etc
@@ -30,6 +29,7 @@ mkdir -p ~/.config/gdb
 mkdir -p ~/.config/nvidia
 mkdir -p ~/.config/zsh
 mkdir -p ~/.config/npm
+mkdir -p ~/.config/vim/spell
 mkdir -p ~/.config/isync
 mkdir -p ~/.cache/npm
 mkdir -p ~/.local/share/npm
