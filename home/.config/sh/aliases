@@ -72,7 +72,7 @@ alias countframes='ffprobe -v error -select_streams v:0 -show_entries stream=nb_
 alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
 alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files'
 alias sub='subliminal download -l en'
-alias ports='ss -tup'
+alias ports='sudo ss -tupn'
 alias c='clear'
 
 alias n='nvim'
