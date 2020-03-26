@@ -1,5 +1,0 @@
-[Match]
-Name=e*
-
-[DHCP]
-RouteMetric=10
