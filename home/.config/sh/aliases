@@ -73,6 +73,7 @@ alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify
 alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files'
 alias sub='subliminal download -l en'
 alias ports='ss -atun'
+alias c='clear'
 
 alias n='nvim'
 alias ns='nvim -S'
