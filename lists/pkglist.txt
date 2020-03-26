@@ -19,6 +19,7 @@ earlyoom
 firefox
 firefox-sync
 git
+gnu-netcat
 go
 htop
 i3lock-fancy-rapid-git
