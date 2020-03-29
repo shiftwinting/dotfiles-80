@@ -150,8 +150,8 @@ if [ "$(hostname)" = "liselle" ]; then
 fi
 
 if exists fzf; then
-    safesource ~/.fzf/shell/key-bindings.zsh
-    safesource ~/.fzf/shell/completion.zsh
+    safesource ~/.local/share/fzf/shell/key-bindings.zsh
+    safesource ~/.local/share/fzf/shell/completion.zsh
 fi
 
 alias please='sudo $(fc -ln -1)'
