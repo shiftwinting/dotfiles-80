@@ -1,9 +1,39 @@
-! hard contrast: *background: #1d2021
+*.font: mono:size=17:antialias=true:autohint=true
+
+! These are all possible options, presented with default values.
+! st will fallback to *.option if st.option is not present.
+! see src/config.h for more information about option meanings.
+
+
+st.borderpx:  2
+! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
+st.shell:        /bin/sh
+! Kerning / character bounding-box height multiplier
+st.chscale:           1.0
+! Kerning / character bounding-box width multiplier
+st.cwscale:           1.0
+st.doubleclicktimeout: 300
+st.tripleclicktimeout: 600
+st.xfps:              60
+st.actionfps:         60
+! blinking timeout for terminal and cursor blinking (0 disables)
+st.blinktimeout:      800
+! bell volume. Value between -100 and 100. (0 disables)
+st.cursorthickness: 2
+st.bellvolume:        0
+st.cursorshape: 2
+
+! gruvbox-dark theme
+! hard contrast:
 *background: #1d2021
-! soft contrast: *background: #32302f
+! medium
+! *background: ##282828
+! soft contrast: 
+! *background: #32302f
 *foreground: #ebdbb2
+*cursorColor: #ebdbb2
 ! Black + DarkGrey
-*color0:  #282828
+*color0:  #1d2021
 *color8:  #928374
 ! DarkRed + Red
 *color1:  #cc241d
@@ -25,6 +55,7 @@
 *color14: #8ec07c
 ! LightGrey + White
 *color7:  #a89984
+*color15: #ebdbb2
 
 ! Others
 *color24:  #076678
@@ -57,24 +88,3 @@
 *color246: #a89984
 *color248: #bdae93
 *color250: #d5c4a1
-
-! These are all possible options, presented with default values.
-! st will fallback to *.option if st.option is not present.
-! see src/config.h for more information about option meanings.
-
-! These options only take effect on startup.
-st.termname:     st-256color
-! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
-st.shell:        /bin/sh
-*.font: mono:size=17:antialias=true
-
-st.xfps:              60
-st.actionfps:         60
-! Kerning / character bounding-box height multiplier
-st.chscale:           1.0
-! Kerning / character bounding-box width multiplier
-st.cwscale:           1.0
-! blinking timeout for terminal and cursor blinking (0 disables)
-st.blinktimeout:      800
-! bell volume. Value between -100 and 100. (0 disables)
-st.bellvolume:        0

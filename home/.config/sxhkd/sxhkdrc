@@ -25,8 +25,11 @@ super+{minus,plus}
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-super+shift+m
+super+m
     pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super+shift+m
+    pactl set-source-mute 1 toggle
 
 XF86Audio{Prev,Play,Next}
     playerctl {previous,play-pause,next}
