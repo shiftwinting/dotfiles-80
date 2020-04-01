@@ -9,7 +9,7 @@
 	"pacmanbin": "pacman",
 	"pacmanconf": "/etc/pacman.conf",
 	"redownload": "no",
-	"rebuild": "no",
+	"rebuild": "tree",
 	"batchinstall": false,
 	"answerclean": "",
 	"answerdiff": "Installed",
@@ -36,7 +36,7 @@
 	"pgpfetch": true,
 	"upgrademenu": false,
 	"cleanmenu": true,
-	"diffmenu": false,
+	"diffmenu": true,
 	"editmenu": false,
 	"combinedupgrade": false,
 	"useask": false
