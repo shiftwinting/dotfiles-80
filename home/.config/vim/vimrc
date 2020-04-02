@@ -64,6 +64,8 @@ if g:use_plugins
     Plug 'junegunn/fzf.vim'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'luochen1990/rainbow'
+    Plug 'unblevable/quick-scope'
+    Plug 'justinmk/vim-sneak'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'wellle/targets.vim'
@@ -100,7 +102,7 @@ if g:use_plugins
     Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
-    colorscheme gruvbox8
+    colorscheme gruvbox8_hard
 endif
 
 set exrc

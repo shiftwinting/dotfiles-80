@@ -10,7 +10,8 @@ nnoremap <silent> <Space> <Nop>
 nnoremap Q @q
 
 " make an accidental ; press also enter command mode
-nnoremap ; :
+" temporarily disabled to to vim-sneak plugin
+" nnoremap ; :
 
 " Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 " but not Vi-compatible), rather than act as yy
