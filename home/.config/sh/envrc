@@ -109,12 +109,16 @@ export MOZ_WEBRENDER=1
 
 # set a var with the name of the wifi interface
 if [ "$(hostname)" = "garry" ]; then
-    IFACE=wlo1
+    export WLAN=wlo1
+	export ETH=enp3s0
 elif [ "$(hostname)" = "halley" ]; then
-    IFACE=wlan0
+    export WLAN=wlan0
+    export ETH=enp0s20u2
+else
+    export WLAN=wlan0
+    export ETH=eth0
 fi
 export IFACE
-export INTERFACE="$IFACE"
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
 # Java: use system anti-aliased fonts and make swing use the GTK look and feel: 
@@ -131,7 +135,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
-[ -z "$SSH_TTY" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+[ "$XDG_RUNTIME_DIR" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export VIMINIT=":source $XDG_CONFIG_HOME/vim/vimrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"

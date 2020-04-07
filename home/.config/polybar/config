@@ -55,7 +55,7 @@ font-0 = mono:size=10;1
 
 modules-left = bspwm xkeyboard xwindow
 modules-center = mpris
-modules-right = mailbox weather filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
+modules-right = mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
 
 tray-position = right
 tray-padding = 0
@@ -221,7 +221,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = ${env:IFACE:wlan0}
+interface = ${env:WLAN:wlan0}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -243,7 +243,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = ${env:ETH:eth0}
 interval = 3.0
 
 format-connected-underline = #55aa55
