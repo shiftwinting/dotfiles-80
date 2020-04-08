@@ -5,42 +5,45 @@ let g:loaded_nvim_lsp_config = 1
 
 if executable('bash-language-server')
 lua <<
-require'nvim_lsp'.bashls.setup{on_attach=require'completion'.on_attach}
+require'nvim_lsp'.bashls.setup{}
+.
+endif
+if executable('clangd')
+lua <<
+require'nvim_lsp'.clangd.setup{}
 .
 endif
 if executable('ccls')
 lua <<
-require'nvim_lsp'.ccls.setup{on_attach=require'completion'.on_attach,
+require'nvim_lsp'.ccls.setup{
   init_options = {
     highlight = {
-      lsRanges = true;
+        lsRanges = true;
+    },
+    completion = {
+        detailedLabel = false;
     }
   }
 }
 .
 endif
-if executable('clangd')
-lua <<
-require'nvim_lsp'.clangd.setup{on_attach=require'completion'.on_attach}
-.
-endif
 if executable('jsonls')
 lua <<
-require'nvim_lsp'.jsonls.setup{on_attach=require'completion'.on_attach}
+require'nvim_lsp'.jsonls.setup{}
 .
 endif
 if executable('pyls')
 lua <<
-require'nvim_lsp'.pyls.setup{on_attach=require'completion'.on_attach}
+require'nvim_lsp'.pyls.setup{}
 .
 endif
 if executable('texlab')
 lua <<
-require'nvim_lsp'.texlab.setup{on_attach=require'completion'.on_attach}
+require'nvim_lsp'.texlab.setup{}
 .
 endif
 lua <<
-require'nvim_lsp'.vimls.setup{on_attach=require'completion'.on_attach}
+require'nvim_lsp'.vimls.setup{}
 .
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
