@@ -34,6 +34,7 @@ bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
 bspc rule -a mpv sticky=on
+bspc rule -a Zathura state=tiled
 bspc rule -a Debug desktop="2"
 bspc rule -a Steam desktop="9"
 bspc rule -a discord desktop="9"
