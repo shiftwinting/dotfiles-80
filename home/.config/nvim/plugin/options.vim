@@ -35,18 +35,6 @@ else
     set inccommand=nosplit
 endif
 
-if has('termguicolors') && &term =~# '256color'
-    if !has('nvim')
-        " set Vim-specific sequences for RGB colors
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-        set background=dark
-    endif
-    set termguicolors
-    if has('nvim-0.4')
-        lua require'colorizer'.setup()
-    endif
-endif
 
 " poor mans version control
 set writebackup

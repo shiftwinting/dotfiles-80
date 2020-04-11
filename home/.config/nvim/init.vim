@@ -27,6 +27,16 @@ if !has('nvim')
     let &packpath = &runtimepath
 endif
 
+if has('termguicolors')
+    if !has('nvim')
+        " set Vim-specific sequences for RGB colors
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        set background=dark
+    endif
+    set termguicolors
+endif
+
 if g:use_plugins
     " separation point
     set statusline+=%=
@@ -103,10 +113,6 @@ if g:use_plugins
     Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
-    if !exists('g:colorscheme_loaded')
-        colorscheme gruvbox8_hard
-    endif
-    let g:colorscheme_loaded=1
 endif
 
 set exrc

@@ -59,7 +59,7 @@ modules-right = mailbox filesystem pulseaudio cpu memory temperature gpu-usage g
 
 tray-position = right
 tray-padding = 0
-;tray-background = #0063ff
+; tray-background = #0063ff
 
 wm-restack = bspwm
 ; wm-restack = i3
