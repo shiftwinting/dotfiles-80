@@ -111,6 +111,10 @@ set completeopt=menuone,noinsert,noselect
 set scrolloff=999
 set sidescrolloff=999
 
+if has('clipboard')
+    set clipboard+=unnamedplus
+endif
+
 let g:is_posix=1
 
 " highlight merge conflict markers
