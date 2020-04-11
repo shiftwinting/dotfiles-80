@@ -137,7 +137,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
 [ "$XDG_RUNTIME_DIR" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
-export VIMINIT=":source $XDG_CONFIG_HOME/vim/vimrc"
+export VIMINIT=":source $XDG_CONFIG_HOME/nvim/init.vim"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export NMBGIT="$XDG_DATA_HOME/notmuch/nmbug"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"

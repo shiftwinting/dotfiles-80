@@ -4,11 +4,13 @@ endif
 let g:loaded_options = 1
 
 if !has('nvim')
-    set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
+    set backupdir=$XDG_DATA_HOME/nvim/backup | call mkdir(&backupdir, 'p', 0700)
+    set directory=$XDG_DATA_HOME/nvim/swap | call mkdir(&directory, 'p', 0700)
+	set viewdir=$XDG_DATA_HOME/nvim/view   | call mkdir(&viewdir, 'p', 0700)
+    set undodir=$XDG_DATA_HOME/nvim/undo | call mkdir(&undodir, 'p', 0700)
+    set viminfo+='1000,n$XDG_DATA_HOME/nvim/viminfo
     set belloff=all
     set cscopeverbose
-    set directory=$XDG_CACHE_HOME/vim/swap | call mkdir(&directory, 'p', 0700)
-	set viewdir=$XDG_CACHE_HOME/vim/view   | call mkdir(&viewdir, 'p', 0700)
     set nofsync
     set hlsearch         " Turns on highlighting for matched search patterns
     if exists('+langnoremap')
@@ -20,13 +22,11 @@ if !has('nvim')
     set sidescroll=1
     set ttyfast
     set ttymouse=xterm2
-    set undodir=$XDG_DATA_HOME/vim/undo | call mkdir(&undodir, 'p', 0700)
     if &term =~# '256color'
 	" disable Background Color Erase (BCE) so that color schemes
 	" render properly when inside 256-color tmux and GNU screen.
 	" see also http://sunaku.github.io/vim-256color-bce.html
 	set t_ut=
-    set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
     endif
 else
     let g:python_host_prog='/usr/bin/python2'
@@ -93,7 +93,7 @@ set linebreak    "Wrap lines at convenient points
 set textwidth=80
 
 set spelllang=en,pt_pt,es_es
-set spellfile=$HOME/.vim/spell/en.utf-8.add
+set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
 
 " Better display for messages
 set cmdheight=2

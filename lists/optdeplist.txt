@@ -1,5 +1,4 @@
 abook
-aspell
 cronie
 ell
 freeglut
@@ -9,12 +8,11 @@ libusb-compat
 libxft-rgba
 lynx
 ocl-icd
-openmp
 pam-gnupg-git
 perl-file-mimeinfo
 pulseaudio-alsa
 python-lockfile
-python-pynvim
+systemd-resolvconf
 urlview-git
 xorg-xdpyinfo
 xorg-xwininfo

@@ -38,6 +38,7 @@ mpv
 mutt-wizard-git
 neofetch
 neovim-git
+neovim-remote
 nerd-fonts-inconsolata
 newsboat
 nmap
