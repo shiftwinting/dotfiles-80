@@ -102,10 +102,11 @@ export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
 # set in new intel iris HD driver for VA-API video hw decoding
-# if [ "$(hostname)" = "halley" ]; then
-#     export LIBVA_DRIVER_NAME="iHD"
-#     export MESA_LOADER_DRIVER_OVERRIDE="iris"
-# fi
+if [ "$(hostname)" = "halley" ]; then
+    export LIBVA_DRIVER_NAME="iHD"
+    export MESA_LOADER_DRIVER_OVERRIDE="iris"
+    export VAAPI_MPEG4_ENABLED=true
+fi
 
 # set a var with the name of the wifi interface
 if [ "$(hostname)" = "garry" ]; then
