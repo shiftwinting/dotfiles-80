@@ -19,13 +19,13 @@ case $choice in
     ;;
     "rtp-internacional") streamlink https://www.rtp.pt/play/direto/rtpinternacional best
     ;;
-    "la-1") streamlink http://www.rtve.es/directo/la-1 best
+    "la-1") mpv http://www.rtve.es/directo/la-1
     ;;
-    "la-2") streamlink http://www.rtve.es/directo/la-2 best
+    "la-2") mpv http://www.rtve.es/directo/la-2
     ;;
-    "tdp") streamlink http://www.rtve.es/directo/teledeporte best
+    "tdp") mpv http://www.rtve.es/directo/teledeporte
     ;;
-    "24h") streamlink http://www.rtve.es/directo/canal-24h best
+    "24h") mpv http://www.rtve.es/directo/canal-24h
     ;;
     "euronews") streamlink https://www.euronews.com/live best
     ;;
