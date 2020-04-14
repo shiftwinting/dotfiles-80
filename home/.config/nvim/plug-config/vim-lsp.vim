@@ -41,17 +41,14 @@ let g:lsp_highlight_references_enabled = 1
 let g:lsp_async_completion=1
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(lsp-peek-definition)
+nmap <silent> gd <Plug>(lsp-declaration)
 nmap <silent> gD <Plug>(lsp-definition)
-nmap <silent> ge <Plug>(lsp-peek-declaration)
-nmap <silent> gE <Plug>(lsp-declaration)
-nmap <silent> gy <Plug>(lsp-peek-type-definition)
-nmap <silent> gY <Plug>(lsp-type-definition)
-nmap <silent> gi <Plug>(lsp-peek-implementation)
-nmap <silent> gI <Plug>(lsp-implementation)
+nmap <silent> gpd <Plug>(lsp-peek-definition)
+nmap <silent> gtd <Plug>(lsp-type-definition)
+nmap <silent> gi <Plug>(lsp-implementation)
 nmap <silent> gr <Plug>(lsp-references)
-nmap <silent> gh <Plug>(lsp-hover)
 nmap <silent> gR <Plug>(lsp-rename)
+nmap <silent> gh <Plug>(lsp-hover)
 
 xmap <leader>f  <Plug>(lsp-document-format)
 nmap <leader>f  <Plug>(lsp-document-format)
