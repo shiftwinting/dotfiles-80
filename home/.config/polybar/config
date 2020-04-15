@@ -53,7 +53,7 @@ font-0 = mono:size=10;1
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm xkeyboard xwindow
+modules-left = bspwm
 modules-center = mpris
 modules-right = mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
 
@@ -243,7 +243,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 ; Accumulate values from all interfaces
 ; when querying for up/downspeed rate
 ; Default: false
-; accumulate-stats = true
+accumulate-stats = true
 
 ; Consider an `UNKNOWN` interface state as up.
 ; Some devices like USB network adapters have 
@@ -259,7 +259,7 @@ interval = 3.0
 format-connected-underline = #55aa55
 format-connected-prefix = "IP:"
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%(%linkspeed%)|D:%downspeed%|U:%upspeed%
+label-connected = %local_ip%(%linkspeed%)
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
@@ -391,7 +391,7 @@ interval = 5
 [module/mailbox]
 type = custom/script
 exec = ~/dotfiles/barscripts/mailbox 2> /dev/null
-interval = 5
+interval = 1000
 
 [settings]
 screenchange-reload = true
