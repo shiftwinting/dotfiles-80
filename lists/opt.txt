@@ -6,7 +6,6 @@ libldac
 libnotify
 libusb-compat
 libxft-rgba
-libva-vdpau-driver-vp9-git
 lynx
 ocl-icd
 pam-gnupg-git

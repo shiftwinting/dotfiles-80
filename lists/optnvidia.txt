@@ -1,2 +1,3 @@
 opencl-nvidia
 lib32-nvidia-utils
+libva-vdpau-driver-vp9-git
