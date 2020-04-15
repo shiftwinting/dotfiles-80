@@ -85,6 +85,7 @@ ttf-computer-modern-fonts
 ttf-dejavu
 tuir
 udisks2
+urlview-git
 w3m
 wget
 wireguard-tools
