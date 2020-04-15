@@ -29,6 +29,7 @@ irqbalance
 iwd
 jq
 lf
+libvdpau-va-gl
 linux
 linux-firmware
 man-db
@@ -56,13 +57,8 @@ polybar
 protonmail-bridge-bin
 pulseaudio
 pulsemixer
-python-autopep8
 python-dbus
 python-gobject
-python-language-server
-python-pip
-python-pycodestyle
-python-scipy
 reflector
 ripgrep
 rofi
@@ -90,6 +86,7 @@ tuir
 udisks2
 w3m
 wget
+wireguard-tools
 xcwd-git
 xdg-user-dirs
 xdotool

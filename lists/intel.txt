@@ -1,4 +1,5 @@
 intel-gpu-tools
+intel-hybrid-codec-driver
 intel-ucode
 libvdpau-va-gl
 mesa

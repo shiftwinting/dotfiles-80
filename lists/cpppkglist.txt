@@ -1,4 +1,0 @@
-ccls
-clang
-cmake
-conan

@@ -6,7 +6,7 @@ libldac
 libnotify
 libusb-compat
 libxft-rgba
-lynx
+libva-vdpau-driver-vp9-git
 ocl-icd
 pam-gnupg-git
 perl-file-mimeinfo

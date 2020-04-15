@@ -1,0 +1,9 @@
+ccls
+clang
+cmake
+conan
+cppcheck
+cquery
+flawfinder
+gdb
+uncrustify
