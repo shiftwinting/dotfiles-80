@@ -42,8 +42,8 @@ neovim-git
 neovim-remote
 nerd-fonts-inconsolata
 newsboat
+ninja
 nmap
-npm
 ntp
 openssh
 overdue
@@ -75,6 +75,7 @@ st-ruifm-git
 subliminal
 sxhkd
 sxiv
+tcpdump
 thermald
 tldr
 tmux
