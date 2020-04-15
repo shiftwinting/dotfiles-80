@@ -30,4 +30,4 @@ COMMAND linkhandler
 
 
 # Quit urlview after launch
-QUITONLAUNCH
+# QUITONLAUNCH
