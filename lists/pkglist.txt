@@ -49,6 +49,7 @@ openssh
 overdue
 pacman-cleanup-hook
 pacman-contrib
+pandoc-bin
 pbzip2
 pigz
 pkgstats
