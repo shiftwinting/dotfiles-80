@@ -115,6 +115,8 @@ if has('clipboard')
     set clipboard+=unnamedplus
 endif
 
+set wildmode=longest,full
+
 let g:is_posix=1
 
 " highlight merge conflict markers
