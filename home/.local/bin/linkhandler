@@ -20,8 +20,14 @@ case "$1" in
 		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid toradd "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	magnet*)
 		setsid toradd "$1" >/dev/null 2>&1 & ;;
+	acestream*)
+		setsid acestream-launcher "$1" >/dev/null 2>&1 & ;;
 	*rss|*xml)
 		setsid rssadd "$1" >/dev/null 2>&1 & ;;
+	*rss|*xml)
+		setsid rssadd "$1" >/dev/null 2>&1 & ;;
+	mailto*)
+		setsid neomutt "$1" >/dev/null 2>&1 & ;;
 	*)
 		if [ -f "$1" ]; then
                     "$EDITOR $1"
@@ -29,5 +35,3 @@ case "$1" in
                     w3m "$1"
                 fi ;;
 esac
-
-
