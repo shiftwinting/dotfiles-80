@@ -6,7 +6,6 @@ libldac
 libnotify
 libusb-compat
 libxft-rgba
-lynx
 ocl-icd
 pam-gnupg-git
 perl-file-mimeinfo

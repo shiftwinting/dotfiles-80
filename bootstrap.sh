@@ -18,6 +18,7 @@ mkdir -p ~/.config/aspell
 mkdir -p ~/.config/bash-completion
 mkdir -p ~/.config/cargo
 mkdir -p ~/.config/nv
+mkdir -p ~/.config/mutt/accounts
 mkdir -p ~/.config/less
 mkdir -p ~/.local/share/terminfo
 mkdir -p ~/.config/X11

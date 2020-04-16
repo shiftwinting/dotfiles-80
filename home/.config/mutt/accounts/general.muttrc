@@ -1,0 +1,5 @@
+# vim: filetype=neomuttrc
+macro compose K "| pandoc -o /tmp/neomutt-alternative.html<enter><attach-file>/tmp/neomutt-alternative.html<enter><tag-entry><previous-entry><tag-entry><group-alternatives>"
+set use_envelope_from = yes
+set signature = ̃~/.local/share/main.signature
+set mailcap_path = ~/.mailcap
