@@ -109,17 +109,15 @@ if [ "$(hostname)" = "halley" ]; then
 fi
 
 # set a var with the name of the wifi interface
-if [ "$(hostname)" = "garry" ]; then
-    export WLAN=wlo1
-	export ETH=enp3s0
-elif [ "$(hostname)" = "halley" ]; then
-    export WLAN=wlan0
-    export ETH=enp0s20u2
-else
-    export WLAN=wlan0
-    export ETH=eth0
-fi
-export IFACE
+for f in /sys/class/net/*; do
+    d="$(basename $f)"
+    case $d in
+        e*) export ETH=$d
+            ;;
+        wl*) export WAN=$d
+            ;;
+    esac
+done
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
 # Java: use system anti-aliased fonts and make swing use the GTK look and feel:
