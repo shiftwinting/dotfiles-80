@@ -1,34 +1,11 @@
 *.font: mono:size=17:antialias=true:autohint=true
 
-! These are all possible options, presented with default values.
-! st will fallback to *.option if st.option is not present.
-! see src/config.h for more information about option meanings.
-
-
-st.borderpx:  2
-! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
-st.shell:        /bin/sh
-! Kerning / character bounding-box height multiplier
-st.chscale:           1.0
-! Kerning / character bounding-box width multiplier
-st.cwscale:           1.0
-st.doubleclicktimeout: 300
-st.tripleclicktimeout: 600
-st.xfps:              60
-st.actionfps:         60
-! blinking timeout for terminal and cursor blinking (0 disables)
-st.blinktimeout:      800
-! bell volume. Value between -100 and 100. (0 disables)
-st.cursorthickness: 2
-st.bellvolume:        0
-st.cursorshape: 2
-
 ! gruvbox-dark theme
 ! hard contrast:
 *background: #1d2021
 ! medium
 ! *background: ##282828
-! soft contrast: 
+! soft contrast:
 ! *background: #32302f
 *foreground: #ebdbb2
 *cursorColor: #ebdbb2

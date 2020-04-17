@@ -4,6 +4,7 @@ cmake
 conan
 cppcheck
 cquery
+doxygen
 flawfinder
 gdb
 uncrustify
