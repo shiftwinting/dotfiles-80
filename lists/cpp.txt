@@ -8,3 +8,4 @@ doxygen
 flawfinder
 gdb
 uncrustify
+vcpkg-git
