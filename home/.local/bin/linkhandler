@@ -30,8 +30,10 @@ case "$1" in
 		setsid neomutt "$1" >/dev/null 2>&1 & ;;
 	*)
 		if [ -f "$1" ]; then
-                    "$EDITOR $1"
-		else
-                    w3m "$1"
-                fi ;;
+            "$EDITOR $1"
+        elif pgrep firefox >/dev/null 2>&1; then
+            firefox "$1" >/dev/null 2>&1 &
+        else
+            w3m "$1"
+        fi ;;
 esac
