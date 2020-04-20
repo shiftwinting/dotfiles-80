@@ -90,7 +90,7 @@ if g:use_plugins
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'dense-analysis/ale'
-    Plug 'lervag/vimtex'
+    Plug 'lervag/vimtex', {'for': 'tex'}
     Plug 'mzlogin/vim-markdown-toc'
     Plug 'rhysd/git-messenger.vim'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
