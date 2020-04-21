@@ -119,6 +119,8 @@ set wildmode=longest,full
 
 let g:is_posix=1
 
+let g:netrw_home=expand("$XDG_DATA_HOME/nvim")
+
 " highlight merge conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 

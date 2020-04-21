@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
+# shellcheck source=/dev/null
+[ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 
 # Terminate already running bar instances
 killall -q polybar
-# If all your bars have ipc enabled, you can also use 
+# If all your bars have ipc enabled, you can also use
 # polybar-msg cmd quit
 
 # Launch bars
