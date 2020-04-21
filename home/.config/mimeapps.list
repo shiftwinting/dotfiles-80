@@ -74,7 +74,7 @@ text/x-tex=nvim.desktop
 
 application/x-shellscript=nvim.desktop
 application/x-bittorrent=transmission.desktop
-application/pdf=zathura-pdf-poppler.desktop;org.pwmt.zathura-pdf-mupdf.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
 application/postscript=zathura-pdf-poppler.desktop;org.pwmt.zathura-pdf-mupdf.desktop
 application/rss+xml=rss.desktop
 
