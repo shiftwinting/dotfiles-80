@@ -19,9 +19,6 @@ require'nvim_lsp'.ccls.setup{
   init_options = {
     highlight = {
         lsRanges = true;
-    },
-    completion = {
-        detailedLabel = false;
     }
   }
 }
