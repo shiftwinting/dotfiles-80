@@ -16,6 +16,7 @@ dosfstools
 dunst
 dust
 earlyoom
+fd
 firefox
 firefox-sync
 git
@@ -69,7 +70,7 @@ scrot
 shellcheck-static
 source-highlight
 spotifyd-full
-spotify-tui
+spotify-tui-bin
 stow
 streamlink
 st-ruifm-git
@@ -86,6 +87,7 @@ ttf-computer-modern-fonts
 ttf-dejavu
 tuir
 udisks2
+unzip
 urlview-git
 w3m
 wget

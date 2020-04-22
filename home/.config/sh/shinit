@@ -14,6 +14,10 @@ _fzf_compgen_path() {
   eval "$FZF_DEFAULT_COMMAND" "$1"
 }
 
+_fzf_compgen_dir() {
+  eval "$FZF_DIRS_COMMAND" "$1"
+}
+
 safesource "$XDG_CONFIG_HOME"/sh/aliases
 
 # numlock

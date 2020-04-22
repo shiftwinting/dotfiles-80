@@ -152,6 +152,13 @@ fi
 if exists fzf; then
     safesource ~/.local/share/fzf/shell/key-bindings.zsh
     safesource ~/.local/share/fzf/shell/completion.zsh
+
+    fzf-history-widget-accept() {
+        fzf-history-widget
+        zle accept-line
+    }
+    zle     -N     fzf-history-widget-accept
+    bindkey '^X^R' fzf-history-widget-accept
 fi
 
 alias please='sudo $(fc -ln -1)'
