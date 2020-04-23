@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
-! pgrep -x transmission-da >/dev/null && transmission-daemon && notify-send "Starting torrent daemon..." &
+if ! pgrep -x transmission-da >/dev/null; then
+    transmission-daemon && notify-send "Starting torrent daemon..." &
+    sleep 2
+fi
 
-sleep 2 && $TERMINAL -e tremc
+$TERMINAL -e tremc
