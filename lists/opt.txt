@@ -2,6 +2,7 @@ abook
 cronie
 ell
 freeglut
+glu
 libldac
 libnotify
 libusb-compat

@@ -56,7 +56,7 @@ pigz
 pkgstats
 playerctl
 polybar
-protonmail-bridge-bin
+protonmail-bridge-nogui
 pulseaudio
 pulsemixer
 python-dbus
