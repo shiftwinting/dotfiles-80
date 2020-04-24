@@ -22,17 +22,17 @@ set statusline+=(%l/%L)
 set statusline+=\ %P
 
 if !has('nvim')
+    set background=dark
     set runtimepath^=~/.config/nvim,~/.local/share/nvim/site
     set runtimepath+=~/.local/share/nvim/site/after,~/.config/nvim/after
     let &packpath = &runtimepath
 endif
 
-if has('termguicolors')
+if has('termguicolors') && &term!="linux" && ($DISPLAY!="" || $SSH_TTY!="")
     if !has('nvim')
         " set Vim-specific sequences for RGB colors
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-        set background=dark
     endif
     set termguicolors
 endif

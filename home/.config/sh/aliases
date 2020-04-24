@@ -98,6 +98,9 @@ alias py='python3'
 alias p='python3'
 alias p2='python2'
 
-alias ta='tmux new-session -A -s'
+alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+alias ta='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf new-session -A -s'
+
+alias qr='qrencode -o /tmp/qr.png | sxiv /tmp/qr.png'
 
 alias cpa='bin/camop -U "tcp://127.0.0.1:5556" -P "tcp://127.0.0.1:5555" -S "." -c /tmp/test.json  -m'

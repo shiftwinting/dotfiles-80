@@ -61,11 +61,13 @@ pulseaudio
 pulsemixer
 python-dbus
 python-gobject
+qrencode
 reflector
 ripgrep
 rofi
 rsync
 rust
+scli-git
 scrot
 shellcheck-static
 source-highlight

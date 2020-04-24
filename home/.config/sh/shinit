@@ -24,7 +24,7 @@ safesource "$XDG_CONFIG_HOME"/sh/aliases
 tput smkx
 
 if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ]; then
-    exists tmux && exec tmux new-session -A -s ssh
+    exists tmux && exec tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf new-session -A -s ssh
 fi
 
 PS1="[\$?]\$ "
