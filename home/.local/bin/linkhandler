@@ -1,39 +1,37 @@
 #!/usr/bin/env sh
 
-# Feed script a url or file location.
-# If an image, it will view in sxiv,
-# if a video or gif, it will view in mpv
-# if a music file or pdf, it will download,
-# otherwise it opens link in browser.
-
 # If no url given. Opens browser. For using script as $BROWSER.
-[ -z "$1" ] && exit
+if [ -z "$1" ]; then
+    url=$(xclip -o -selection clipboard)
+else
+    url="$1"
+fi
 
-case "$1" in
+case "$url" in
 	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*twitch.tv*)
-		setsid mpv -quiet "$1" >/dev/null 2>&1 & ;;
+		setsid mpv -quiet "$url" >/dev/null 2>&1 & ;;
 	*png|*jpg|*jpe|*jpeg|*gif)
-		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///")" && setsid sxiv -a "/tmp/$(echo "$url" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*pdf|*ps|*epub)
-		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid zathura "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///")" && setsid zathura "/tmp/$(echo "$url" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*torrent)
-		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && setsid toradd "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
+		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///")" && setsid toradd "/tmp/$(echo "$url" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	magnet*)
-		setsid toradd "$1" >/dev/null 2>&1 & ;;
+		setsid toradd "$url" >/dev/null 2>&1 & ;;
 	acestream*)
-		setsid acestream-launcher "$1" >/dev/null 2>&1 & ;;
+		setsid acestream-launcher "$url" >/dev/null 2>&1 & ;;
 	*rss|*xml)
-		setsid rssadd "$1" >/dev/null 2>&1 & ;;
+		setsid rssadd "$url" >/dev/null 2>&1 & ;;
 	*rss|*xml)
-		setsid rssadd "$1" >/dev/null 2>&1 & ;;
+		setsid rssadd "$url" >/dev/null 2>&1 & ;;
 	mailto*)
-		setsid neomutt "$1" >/dev/null 2>&1 & ;;
+		setsid neomutt "$url" >/dev/null 2>&1 & ;;
 	*)
-		if [ -f "$1" ]; then
+		if [ -f "$url" ]; then
             "$EDITOR $1"
         elif pgrep firefox >/dev/null 2>&1; then
-            firefox "$1" >/dev/null 2>&1 &
+            firefox "$url" >/dev/null 2>&1 &
         else
-            w3m "$1"
+            w3m "$url"
         fi ;;
 esac
