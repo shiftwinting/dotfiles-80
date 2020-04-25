@@ -42,8 +42,6 @@ mkdir -p ~/.cache/vim/backup
 # cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
 # cd ~/repos || exit
-# systemctl --user enable --now tmux@ssh
-# systemctl --user enable --now tmux@tty
 
 # if [ ! -d 'st' ]; then
 #     git clone https://github.com/ruifm/st.git
