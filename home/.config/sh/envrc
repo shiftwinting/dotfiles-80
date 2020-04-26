@@ -49,6 +49,8 @@ else
 fi
 export EDITOR
 export VISUAL="$EDITOR"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 # # Get color support for 'less'
 [ -f /usr/bin/source-highlight-esc.sh ] && export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS="--RAW-CONTROL-CHARS"
