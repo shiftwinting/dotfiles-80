@@ -26,6 +26,7 @@ video/x-youtube; mpv '%s'; test=test -n "$DISPLAY"
 # Mpv is a simple and effective video streamer
 video/*; mpv '%s'; test=test -n "$DISPLAY"
 
+application/pdf; curl %s -o /tmp/tuir.pdf && zathura /tmp/tui.pdf; test=test -n "$DISPLAY"
 ###############################################################################
 # Commands below this point will attempt to display media directly in the
 # terminal when a desktop is not available (e.g. inside of an SSH session)
@@ -38,14 +39,6 @@ image/*; w3m -o 'ext_image_viewer=off' '%s'; needsterminal
 # Don't have a solution for albums yet
 image/x-imgur-album; echo
 
-# 256 color images using half-width unicode characters
-# Much higher quality that img2txt, but must be built from source
-# https://github.com/rossy/img2xterm
-image/*; curl -s '%s' | convert -resize 80x80 - jpg:/tmp/tuir.jpg && img2xterm /tmp/tuir.jpg; needsterminal; copiousoutput
-
-# Display images in classic ascii using img2txt and lib-caca
-image/*; curl -s '%s' | convert - jpg:/tmp/tuir.jpg && img2txt -f utf8 /tmp/tuir.jpg; needsterminal; copiousoutput
-
 # Full motion videos - requires a framebuffer to view
 video/x-youtube; mpv -vo drm -quiet '%s'; needsterminal
 video/*; mpv -vo drm -quiet '%s'; needsterminal
@@ -53,5 +46,3 @@ video/*; mpv -vo drm -quiet '%s'; needsterminal
 # Ascii videos
 video/x-youtube; youtube-dl -q -o - '%s' | mplayer -cache 8192 -vo caca -quiet -; needsterminal
 video/*; wget '%s' -O - | mplayer -cache 8192 -vo caca -quiet -; needsterminal
-
-application/pdf; curl %s -o /tmp/tuir.pdf && zathura /tmp/tui.pdf; test=test -n "$DISPLAY"
