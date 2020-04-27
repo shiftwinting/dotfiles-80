@@ -35,6 +35,7 @@ if has('termguicolors') && &term!="linux" && ($DISPLAY!="" || $SSH_TTY!="")
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     endif
     set termguicolors
+    set pumblend=20
 endif
 
 if g:use_plugins

@@ -20,6 +20,7 @@ if !has('nvim')
     set shortmess-=S
     set showcmd		" display incomplete commands
     set sidescroll=1
+    set nostartofline
     set ttyfast
     set ttymouse=xterm2
     if &term =~# '256color'
@@ -31,8 +32,6 @@ if !has('nvim')
 else
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python3'
-    set wildoptions=tagfile
-    set inccommand=nosplit
 endif
 
 
@@ -104,7 +103,6 @@ if &synmaxcol == 3000
   set synmaxcol=500
 endif
 
-set nostartofline
 
 set completeopt=menuone,noinsert,noselect
 
@@ -116,6 +114,10 @@ if has('clipboard')
 endif
 
 set wildmode=longest,full
+
+set cpoptions-=_
+
+set nojoinspaces
 
 let g:is_posix=1
 
