@@ -41,7 +41,7 @@ mutt-wizard-git
 neofetch
 neovim-git
 neovim-remote
-nerd-fonts-inconsolata
+nerd-fonts-dejavu-complete
 newsboat
 ninja
 nmap
