@@ -20,7 +20,6 @@ inoremap <silent><expr> <TAB>
 
 augroup completion-nvim
     " this one is which you're most likely to use?
-    autocmd! 
-    autocmd BufEnter * lua require'completion'.on_attach()
+    autocmd!
+    autocmd BufEnter * lua if jit ~= nil then require'completion'.on_attach() end
 augroup end
-
