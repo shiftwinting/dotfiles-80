@@ -46,8 +46,8 @@ XF86Display
 shift+@Print
     scrot -q 100 -t 10 '%Y-%m-%d-%H-%M-%S.png' -e 'mv $f ~/pics/screenshots'
 
-super+o;{m,s,r,e,n,t,f,w,p,b,h}
-    {spowrap,linkhandler,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e python3 -i -c 'from math import *',bwmenu --auto-lock "-1" -c 30, $TERMINAL -e htop}
+super+o;{m,s,r,e,n,t,f,w,p,b,h,0}
+    {spowrap,linkhandler,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e python3 -i -c 'from math import *',bwmenu --auto-lock "-1" -c 30, $TERMINAL -e htop, printf "¯\_(⊙_ʖ⊙)_/¯" | xclip -selection clipboard}
 
 super+shift+s
     locknpause

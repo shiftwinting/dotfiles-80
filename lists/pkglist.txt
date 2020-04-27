@@ -18,7 +18,6 @@ dust
 earlyoom
 fd
 firefox
-firefox-sync
 git
 gnu-netcat
 go
@@ -41,12 +40,12 @@ mutt-wizard-git
 neofetch
 neovim-git
 neovim-remote
-nerd-fonts-dejavu-complete
 newsboat
 ninja
 nmap
 ntp
 openssh
+otf-latinmodern-math
 overdue
 pacman-cleanup-hook
 pacman-contrib
@@ -85,8 +84,8 @@ tldr
 tmux
 transmission-cli
 tremc-git
-ttf-computer-modern-fonts
 ttf-dejavu
+ttf-fira-code
 tuir
 udisks2
 unzip
