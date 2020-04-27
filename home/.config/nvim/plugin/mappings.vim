@@ -33,7 +33,12 @@ vnoremap <silent> <c-e> $
 " the visual selection you just pasted over–which is the default behavior.
 " This enables the user to yank some text and paste it over several places in
 " a row, without using a named register
-vnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
+" vnoremap <silent> p p:if v:register == '"'<Bar>let @@=@0<Bar>endif<cr>
+vnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
+
+vnoremap <silent> <leader>p "_dP
+nnoremap <silent> <leader>p "_dP
+noremap <silent> <leader>c "_c
 
 set pastetoggle=<c-p>
 
