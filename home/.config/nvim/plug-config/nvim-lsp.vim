@@ -10,16 +10,20 @@ require'nvim_lsp'.bashls.setup{}
 endif
 if executable('clangd')
 lua <<
-require'nvim_lsp'.clangd.setup{}
+require'nvim_lsp'.clangd.setup{
+    init_options = {
+        semanticHighlighting = true
+    }
+}
 .
 endif
 if executable('ccls')
 lua <<
 require'nvim_lsp'.ccls.setup{
-  init_options = {
-    highlight = {
-        lsRanges = true;
-    }
+    init_options = {
+        highlight = {
+            lsRanges = true;
+        }
   }
 }
 .
