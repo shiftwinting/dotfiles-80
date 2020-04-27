@@ -3,4 +3,8 @@ if !g:use_plugins || exists('g:loaded_colorizer_config') || !has('nvim-0.4') || 
 endif
 let g:loaded_colorizer_config = 1
 
-lua require'colorizer'.setup()
+lua <<
+if jit ~= nil then
+    require'colorizer'.setup()
+end
+.
