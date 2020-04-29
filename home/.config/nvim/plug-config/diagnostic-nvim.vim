@@ -5,8 +5,8 @@ let g:loaded_diagnostic_nvim_config = 1
 
 let g:diagnostic_insert_delay = 1
 
-nnoremap g] :NextDiagnostic<cr>
-nnoremap g[ :PrevDiagnostic<cr>
+nnoremap ]g :NextDiagnostic<cr>
+nnoremap [g :PrevDiagnostic<cr>
 nnoremap gw :OpenDiagnostic<cr>
 
 augroup diagnostic-nvim
