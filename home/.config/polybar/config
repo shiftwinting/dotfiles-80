@@ -231,7 +231,7 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 format-connected-font = 2
-label-connected = %essid%(%signal%%):%local_ip%|D:%downspeed%|U:%upspeed%
+label-connected = %essid%(%signal%%):%local_ip%|⬇%downspeed%|⬆%upspeed%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
