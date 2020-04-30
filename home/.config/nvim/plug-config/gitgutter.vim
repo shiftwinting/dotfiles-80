@@ -5,7 +5,6 @@ let g:loaded_gitgutter_config = 1
 
 let g:gitgutter_sign_allow_clobber = 1
 let g:gitgutter_diff_args = '-w'
-let g:gitgutter_override_sign_column_highlight = 1
 let g:gitgutter_highlight_linenrs = 1
 
 " Your vimrc
