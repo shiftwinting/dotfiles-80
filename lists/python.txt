@@ -13,8 +13,10 @@ python-language-server
 python-matplotlib
 python-pillow
 python-pip
+python-pipenv
 python-prospector
 python-pylint
 python-pyls-isort-git
 python-scipy
 python-tqdm
+ipython
