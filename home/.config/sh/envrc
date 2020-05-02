@@ -118,6 +118,8 @@ fi
 for f in /sys/class/net/*; do
     d="$(basename $f)"
     case $d in
+        bond0) export NETBOND=$d
+            ;;
         e*) export ETH=$d
             ;;
         wl*) export WAN=$d
