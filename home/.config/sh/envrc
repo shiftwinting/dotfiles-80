@@ -118,7 +118,7 @@ fi
 for f in /sys/class/net/*; do
     d="$(basename $f)"
     case $d in
-        bond0) export NETBOND=$d
+        bond0) export BOND=$d
             ;;
         e*) export ETH=$d
             ;;
@@ -126,6 +126,15 @@ for f in /sys/class/net/*; do
             ;;
     esac
 done
+
+if [ -z "$BOND" ]; then
+    if [ "$ETH" ]; then
+        export BOND=$ETH
+    elif [ "$WAN" ]; then
+        export BOND=$WAN
+    fi
+fi
+
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
 # Java: use system anti-aliased fonts and make swing use the GTK look and feel:

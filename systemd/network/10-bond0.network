@@ -2,7 +2,7 @@
 Name=bond0
 
 [Network]
-DHCP=yes
+DHCP=ipv4
 MulticastDNS=yes
 # DNS=1.1.1.2
 # DNS=192.168.1.203

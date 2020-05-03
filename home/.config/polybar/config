@@ -259,7 +259,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = ${env:NETBOND:env:ETH:eth0}
+interface = ${env:BOND:eth0}
 interval = 3.0
 
 format-connected-underline = ${colors.secondary}

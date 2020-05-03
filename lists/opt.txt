@@ -6,7 +6,7 @@ glu
 libldac
 libnotify
 libusb-compat
-libxft-rgba
+libxft-bgra
 ocl-icd
 pam-gnupg-git
 perl-file-mimeinfo
