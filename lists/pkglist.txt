@@ -26,6 +26,7 @@ htop
 i3lock-fancy-rapid-git
 imagemagick
 informant
+ipython
 irqbalance
 iwd
 jq
@@ -71,10 +72,10 @@ ripgrep
 rofi
 rsync
 rust
-s-nail
 scli-git
 scrot
 shellcheck-static
+s-nail
 source-highlight
 spotifyd-full
 spotify-tui-bin
