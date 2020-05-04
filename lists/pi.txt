@@ -5,7 +5,7 @@ ddclient
 fail2ban
 fcgiwrap
 firmware-raspberrypi
-inetutils
+goaccess
 haveged
 linux-aarch64
 linux-aarch64-headers
@@ -15,6 +15,7 @@ pi-hole-server
 raspberrypi-bootloader
 raspberrypi-userland-aarch64-git
 uboot-raspberrypi
+uboot-tools
 unbound
 wd719x-firmware
 xf86-video-fbturbo-git

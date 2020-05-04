@@ -1,5 +1,6 @@
 acestream-launcher
 acpid
+alsa-utils
 arch-audit
 base
 bash-completion
@@ -36,6 +37,7 @@ man-db
 man-pages
 megacmd-bin
 mpv
+msmtp-mta
 mutt-wizard-git
 neofetch
 neovim-git
@@ -52,6 +54,7 @@ overdue
 pacman-cleanup-hook
 pacman-contrib
 pandoc-bin
+pass
 pbzip2
 pigz
 pkgstats
@@ -68,6 +71,7 @@ ripgrep
 rofi
 rsync
 rust
+s-nail
 scli-git
 scrot
 shellcheck-static
