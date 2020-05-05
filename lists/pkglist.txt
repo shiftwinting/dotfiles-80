@@ -26,6 +26,7 @@ htop
 i3lock-fancy-rapid-git
 imagemagick
 informant
+ipcalc
 ipython
 irqbalance
 iwd
@@ -50,6 +51,7 @@ nmap
 noto-fonts-emoji
 ntp
 openssh
+otf-font-awesome
 otf-latinmodern-math
 overdue
 pacman-cleanup-hook
@@ -58,6 +60,7 @@ pandoc-bin
 pass
 pbzip2
 pigz
+pkgfile
 pkgstats
 playerctl
 polybar
@@ -93,6 +96,7 @@ transmission-cli
 tremc-git
 ttf-dejavu
 ttf-fira-code
+ttf-font-awesome
 tuir
 udisks2
 unzip

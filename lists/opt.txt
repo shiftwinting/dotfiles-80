@@ -3,7 +3,6 @@ cronie
 ell
 freeglut
 glu
-libldac
 libnotify
 libusb-compat
 libxft-bgra
