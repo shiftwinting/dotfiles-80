@@ -2,7 +2,6 @@ abook
 cronie
 ell
 freeglut
-glu
 libnotify
 libusb-compat
 libxft-bgra
@@ -10,7 +9,6 @@ ocl-icd
 pam-gnupg-git
 perl-file-mimeinfo
 pulseaudio-alsa
-python-lockfile
 systemd-resolvconf
 xorg-xdpyinfo
 xorg-xwininfo
