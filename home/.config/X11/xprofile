@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 # shellcheck source=/dev/null
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
+systemctl --user import-environment PATH DISPLAY XAUTHORITY
 
 display-setup
 
@@ -12,3 +13,4 @@ launch-polybar &
 sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
 input-setup &
 dunst &
+automute &
