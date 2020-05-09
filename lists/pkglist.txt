@@ -77,7 +77,7 @@ rsync
 rust
 scli-git
 scrot
-shellcheck-static
+shellcheck-bin
 s-nail
 source-highlight
 spotifyd-full
@@ -85,7 +85,7 @@ spotify-tui-bin
 stow
 streamlink
 st-ruifm-git
-subliminal
+subliminal-git
 sxhkd
 sxiv
 tcpdump
