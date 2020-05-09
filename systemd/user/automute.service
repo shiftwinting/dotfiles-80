@@ -1,0 +1,12 @@
+[Unit]
+Description=Automute unactive windows
+Wants=graphical.target
+After=graphical.target
+
+[Service]
+ExecStart=%h/.local/bin/automute
+Restart=always
+RestartSec=12
+
+[Install]
+WantedBy=default.target

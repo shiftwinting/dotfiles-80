@@ -1,16 +1,35 @@
 #!/usr/bin/env sh
 
-LAST_WIN_ACTIVE=""
+unmute_all() {
+    for i in $(pacmd list-sink-inputs | awk '/index: /{print $2}'); do
+        pactl set-sink-input-mute "$i" false
+    done
+    exit
+}
+
+trap unmute_all INT TERM
+
+mute_all() {
+    for i in $(pacmd list-sink-inputs | awk '/index: /{print $2}'); do
+        pactl set-sink-input-mute "$i" true
+    done
+}
+
 while :
 do
-    sleep 0.25
-    win="$(xdotool getwindowfocus getwindowpid)"
-    if [ "$LAST_WIN_ACTIVE" != "$win" ]; then
-        focus_index=$(pacmd list-sink-inputs | awk '/index:/{si = $2}; /'"$win"'/{print si; exit}')
-        [ -n "$focus_index" ] && pactl set-sink-input-mute "$focus_index" false
-        unfocus_index=$(pacmd list-sink-inputs | awk '/index:/{si = $2}; /'"$LAST_WIN_ACTIVE"'/{print si; exit}')
-        [ -n "$focus_index" ] && [ -n "$unfocus_index" ] && pactl set-sink-input-mute "$unfocus_index" true
-        LAST_WIN_ACTIVE="$win"
+    focus_pid="$(xdotool getwindowfocus getwindowpid)"
+    if [ "$unfocus_pid" != "$focus_pid" ]; then
+        focus_index=$(pacmd list-sink-inputs | awk '/index:/{si = $2}; /'"$focus_pid"'/{print si; exit}')
+        unfocus_index=$(pacmd list-sink-inputs | awk '/index:/{si = $2}; /'"$unfocus_pid"'/{print si; exit}')
+        if [ "$focus_index" ]; then
+            if [ "$unfocus_index" ]; then
+                pactl set-sink-input-mute "$unfocus_index" true
+            else
+                mute_all
+            fi
+            pactl set-sink-input-mute "$focus_index" false
+        fi
+        unfocus_pid="$focus_pid"
     fi
+    sleep 0.25
 done
-
