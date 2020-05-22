@@ -46,3 +46,10 @@ if has("terminal")
         augroup END
     endif
 endif
+
+if has('nvim-0.5')
+    augroup nvim_highlight
+        autocmd!
+        autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+    augroup END
+endif

@@ -95,7 +95,7 @@ if g:use_plugins
     Plug 'mzlogin/vim-markdown-toc'
     Plug 'rhysd/git-messenger.vim'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-    Plug 'machakann/vim-highlightedyank'
+    Plug 'machakann/vim-highlightedyank', Cond(!has('nvim-0.5'))
     Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'

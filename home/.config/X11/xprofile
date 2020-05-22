@@ -13,4 +13,3 @@ launch-polybar &
 sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
 input-setup &
 dunst &
-automute &
