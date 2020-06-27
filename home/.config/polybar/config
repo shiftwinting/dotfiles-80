@@ -52,13 +52,13 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = mono:size=10;1
+font-0 = mono:size=9;1
 font-1 = NotoMono Nerd Font Mono:size=10;2
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
-modules-center = mpris
+modules-center = mpris xwindow
 modules-right = mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
 
 tray-position = right
@@ -83,6 +83,7 @@ enable-ipc = true
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+label-maxlen = 20
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -265,7 +266,7 @@ interval = 3.0
 format-connected-underline = ${colors.secondary}
 format-connected-prefix = "IP:"
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%(%linkspeed%)|⬇%downspeed%|⬆%upspeed%
+label-connected = %local_ip%|⬇%downspeed%|⬆%upspeed%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
@@ -381,6 +382,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 exec = ~/dotfiles/barscripts/mpris.py -f '{artist} - {title}' 2> /dev/null
 tail = true
+ label-maxlen = 20
 
 [module/gpu-usage]
 type = custom/script

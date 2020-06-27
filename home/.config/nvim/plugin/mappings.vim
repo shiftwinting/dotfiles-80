@@ -40,8 +40,6 @@ vnoremap <silent> <leader>p "_dP
 nnoremap <silent> <leader>p "_dP
 noremap <silent> <leader>c "_c
 
-set pastetoggle=<c-p>
-
 " Find and Replace binds
 nnoremap <leader>s :<c-u>%s/
 vnoremap <leader>s :s/

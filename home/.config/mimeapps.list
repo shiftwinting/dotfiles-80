@@ -80,3 +80,5 @@ application/rss+xml=rss.desktop
 
 x-scheme-handler/magnet=transmission.desktop
 x-scheme-handler/mailto=neomutt.desktop
+
+application/msword-template=xdot.desktop

@@ -67,7 +67,9 @@ if g:use_plugins
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-apathy'
+    Plug 'skywind3000/asyncrun.vim'
     Plug 'vhdirk/vim-cmake'
+    Plug 'rhysd/vim-llvm'
     Plug 'andymass/vim-matchup'
     Plug 'haya14busa/incsearch.vim'
     Plug 'bkad/CamelCaseMotion'
@@ -94,27 +96,35 @@ if g:use_plugins
     Plug 'lervag/vimtex', {'for': 'tex'}
     Plug 'mzlogin/vim-markdown-toc'
     Plug 'rhysd/git-messenger.vim'
+    Plug 'kana/vim-textobj-user'
+        Plug 'Julian/vim-textobj-variable-segment'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
     Plug 'machakann/vim-highlightedyank', Cond(!has('nvim-0.5'))
     Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'honza/vim-snippets'
-    Plug 'SirVer/ultisnips'
-    Plug 'prabirshrestha/async.vim', Cond(!has('nvim-0.5'))
+        Plug 'SirVer/ultisnips'
     Plug 'prabirshrestha/asyncomplete.vim', Cond(!has('nvim-0.5'))
-    Plug 'yami-beta/asyncomplete-omni.vim', Cond(!has('nvim-0.5'))
-    Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!has('nvim-0.5'))
-    Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(!has('nvim-0.5'))
-    Plug 'thomasfaingnaert/vim-lsp-snippets', Cond(!has('nvim-0.5'))
-    Plug 'thomasfaingnaert/vim-lsp-ultisnips', Cond(!has('nvim-0.5'))
+        Plug 'yami-beta/asyncomplete-omni.vim', Cond(!has('nvim-0.5'))
+        Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!has('nvim-0.5'))
+        Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(!has('nvim-0.5'))
+        Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!has('nvim-0.5'))
     Plug 'prabirshrestha/vim-lsp', Cond(!has('nvim-0.5'))
-    Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!has('nvim-0.5'))
-    Plug 'mattn/vim-lsp-settings', Cond(!has('nvim-0.5'))
+        Plug 'thomasfaingnaert/vim-lsp-snippets', Cond(!has('nvim-0.5'))
+        Plug 'thomasfaingnaert/vim-lsp-ultisnips', Cond(!has('nvim-0.5'))
+        Plug 'mattn/vim-lsp-settings', Cond(!has('nvim-0.5'))
     Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(g:has_cpp_ls, {'for': 'cpp'})
     Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
-    Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
-    Plug 'haorenW1025/diagnostic-nvim', Cond(has('nvim-0.5'))
+        Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
+            " Plug 'vigoux/completion-treesitter', Cond(has('nvim-0.5'))
+            Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
+        Plug 'haorenW1025/diagnostic-nvim', Cond(has('nvim-0.5'))
+    " Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
+    Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
+    if has('nvim-0.5')
+		luafile ~/.config/nvim/init.lua
+	endif
 endif
 
 set exrc

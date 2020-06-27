@@ -36,19 +36,7 @@ map O $mimeopen --ask $f
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
 cmd open ${{
-    case $(file --mime-type $f -b) in
-        text/*) $EDITOR $fx;;
-        # *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)
-        #     mntdir="$f-archivemount"
-        #     [ ! -d "$mntdir" ] && {
-        #         mkdir "$mntdir"
-        #         archivemount "$f" "$mntdir"
-        #         echo "$mntdir" >> "/tmp/__lf_archivemount_$id"
-        #     }
-        #     lf -remote "send $id cd \"$mntdir\""
-        #     lf -remote "send $id reload"
-        #     ;;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+        for f in $fx; do linkhandler $f > /dev/null 2> /dev/null & done;;
     esac
 }}
 

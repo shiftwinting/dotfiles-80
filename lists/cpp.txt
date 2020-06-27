@@ -1,11 +1,10 @@
 ccls
 clang
 cmake
+cmake-language-server
 conan
 cppcheck
-cquery
 doxygen
 flawfinder
 gdb
 uncrustify
-vcpkg-git

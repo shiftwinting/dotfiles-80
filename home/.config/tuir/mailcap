@@ -26,7 +26,7 @@ video/x-youtube; mpv '%s'; test=test -n "$DISPLAY"
 # Mpv is a simple and effective video streamer
 video/*; mpv '%s'; test=test -n "$DISPLAY"
 
-application/pdf; curl %s -o /tmp/tuir.pdf && zathura /tmp/tui.pdf; test=test -n "$DISPLAY"
+application/pdf; wget -O /tmp/tuir.pdf %s && zathura /tmp/tuir.pdf; test=test -n "$DISPLAY"
 ###############################################################################
 # Commands below this point will attempt to display media directly in the
 # terminal when a desktop is not available (e.g. inside of an SSH session)

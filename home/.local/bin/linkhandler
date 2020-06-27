@@ -8,7 +8,7 @@ else
 fi
 
 case "$url" in
-	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*twitch.tv*)
+	*mkv|*webm|*mp4|*mp3|*ogg|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*twitch.tv*)
 		setsid mpv -quiet "$url" >/dev/null 2>&1 & ;;
 	*png|*jpg|*jpe|*jpeg|*gif)
 		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///")" && setsid sxiv -a "/tmp/$(echo "$url" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
@@ -26,6 +26,8 @@ case "$url" in
 		setsid rssadd "$url" >/dev/null 2>&1 & ;;
 	mailto*)
 		setsid neomutt "$url" >/dev/null 2>&1 & ;;
+	*.dot)
+		setsid xdot "$url" >/dev/null 2>&1 & ;;
 	*)
 		if [ -f "$url" ]; then
             "$EDITOR $1"

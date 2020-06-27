@@ -1,5 +1,5 @@
 [user]
-	email = ruifmarques@pm.me
+	email = mail@ruimarques.xyz
 	name = Rui Marques
     username = ruifm
     signingkey = 15B7C6C3FFFAE83A
@@ -19,6 +19,8 @@
     trustExitCode = true
 [rebase]
     autoStash = true
+[pull]
+	ff = only
 [merge]
     tool = fugitive
 [mergetool "vimdiff4"]
