@@ -2,9 +2,9 @@ ccls
 clang
 cmake
 cmake-language-server
-conan
 cppcheck
 doxygen
 flawfinder
 gdb
+ninja
 uncrustify

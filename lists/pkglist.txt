@@ -12,7 +12,6 @@ cava
 cmake
 cpupower
 dashbinsh
-discord
 dosfstools
 dunst
 dust
@@ -20,9 +19,11 @@ earlyoom
 fd
 firefox
 git
+github-cli
 gnu-netcat
 go
 htop
+hub
 i3lock-fancy-rapid-git
 imagemagick
 informant
@@ -35,10 +36,13 @@ lf
 libvdpau-va-gl
 linux
 linux-firmware
+linux-headers
 man-db
 man-pages
 megacmd-bin
 mpv
+mpv-acestream
+mpv-mpris
 msmtp-mta
 mutt-wizard-git
 neofetch
@@ -49,7 +53,7 @@ newsboat
 ninja
 nmap
 noto-fonts-emoji
-ntp
+npm
 openssh
 otf-font-awesome
 otf-latinmodern-math
@@ -69,7 +73,9 @@ pulseaudio
 pulsemixer
 python-dbus
 python-gobject
+qrcp-bin
 qrencode
+qt5ct
 reflector
 ripgrep
 rofi
@@ -78,6 +84,7 @@ rust
 scli-git
 scrot
 shellcheck-bin
+sloccount
 s-nail
 source-highlight
 spotifyd-full
@@ -116,8 +123,9 @@ xorg-xrandr
 xorg-xrdb
 xorg-xsetroot
 yay
-youtube-dl
+youtube-dl-git
 zathura
+zoom
 zsh
 zsh-autosuggestions
 zsh-completions

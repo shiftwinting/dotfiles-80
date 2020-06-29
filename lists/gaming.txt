@@ -1,7 +1,10 @@
 discord
+dxvk-bin
+gamemode
 lib32-gamemode
-linux-headers
-linux-fsync
-linux-fsync-headers
+lutris
+proton-ge-custom-bin
 steam
 steam-fonts
+supertuxkart
+teamspeak3

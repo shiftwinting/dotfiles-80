@@ -1,6 +1,5 @@
 abook
 cronie
-ell
 freeglut
 libnotify
 libusb-compat
