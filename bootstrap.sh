@@ -39,21 +39,9 @@ mkdir -p ~/.cache/vim/undo
 mkdir -p ~/.cache/vim/swap
 mkdir -p ~/.cache/vim/backup
 
-# cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
-
-# cd ~/repos || exit
-
-# if [ ! -d 'st' ]; then
-#     git clone https://github.com/ruifm/st.git
-#     (
-#     cd st || exit
-#     git remote add upstream https://git.suckless.org/st
-#     git remote update
-#     )
-# fi
-
+cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
 cd ~/dotfiles || exit
-stow -R home || ~/.local/bin/stow -R home
+stow -R home
 
 cd "$current_wd" || exit

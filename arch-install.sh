@@ -3,7 +3,7 @@ set -e
 
 current_wd="$(pwd)"
 
-mkdir -p ~/repos && cd ~/repos
+mkdir -p ~/repos/aur && cd ~/repos/aur
 
 yay -Syu --needed base-devel pacman-contrib
 
@@ -15,10 +15,10 @@ if [ ! -d 'yay' ]; then
     )
 fi
 
-yay -Syu --needed "$(cat ~/dotfiles/pacman/pkglist.txt)"
-yay -S --needed --asdeps "$(cat ~/dotfiles/pacman/optdeplist.txt)"
+yay -Syu --needed "$(cat ~/dotfiles/lists/pkglist.txt)"
+yay -S --needed --asdeps "$(cat ~/dotfiles/lists/opt.txt)"
 
-reflector --country Spain --country Portugal --country France --latest 20 --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist; rm -f /etc/pacman.d/mirrorlist.pacnew
+sudo reflector --country Spain --country Portugal --country France --age 12 --completion-percent 100 --sort score --cache-timeout 0 --connection-timeout 2 --fastest 10 --verbose --save /etc/pacman.d/mirrorlist
 
 cd ~/dotfiles
 
@@ -32,8 +32,8 @@ sudo systemctl enable --now earlyoom
 sudo systemctl enable --now irqbalance
 sudo systemctl enable --now systemd-networkd
 sudo systemctl enable --now systemd-resolved
+sudo systemctl enable --now systemd-resolved
 sudo systemctl enable --now iwd
-sudo systemctl enable --now ntpd
 sudo systemctl enable --now sshd
 sudo systemctl enable --now thermald
 sudo systemctl enable --now acpid
