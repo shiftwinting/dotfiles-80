@@ -39,7 +39,7 @@ mkdir -p ~/.cache/vim/undo
 mkdir -p ~/.cache/vim/swap
 mkdir -p ~/.cache/vim/backup
 
-cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
+cp -r ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
 cd ~/dotfiles || exit
 stow -R home

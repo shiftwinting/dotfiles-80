@@ -29,6 +29,9 @@ if [ "$(hostname)" = "garry" ]; then
     do
         xinput --set-prop "$i" 'libinput Accel Profile Enabled' 0, 1
     done
+elif [ "$(hostname)" = "hercules" ]; then
+    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
+    xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
 elif [ "$(hostname)" = "halley" ]; then
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
