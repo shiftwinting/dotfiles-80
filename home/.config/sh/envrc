@@ -15,15 +15,12 @@ if [ -z "$ENV_SOURCED" ]; then
     PATH="$HOME"/.local/bin:"$PATH"
     ! [ -x "/usr/bin/fzf" ] && ! [ -x "/usr/local/bin/fzf" ] && PATH="$HOME"/.local/share/fzf/bin:"$PATH"
 
-    [ "$(hostname)" = "liselle" ] && PATH=/usr/local/cuda/bin:"$PATH"
-
     export PATH
 
     MANPATH="/usr/local/man:$MANPATH"
     MANPATH="$HOME"/.local/share/man:"$MANPATH"
     export MANPATH
 
-    [ "$(hostname)" = "liselle" ] && LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH
 

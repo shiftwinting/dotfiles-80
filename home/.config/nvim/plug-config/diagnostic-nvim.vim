@@ -8,9 +8,3 @@ let g:diagnostic_insert_delay = 1
 nnoremap ]g :NextDiagnosticCycle<cr>
 nnoremap [g :PrevDiagnosticCycle<cr>
 nnoremap gw :OpenDiagnostic<cr>
-
-augroup diagnostic-nvim
-    " this one is which you're most likely to use?
-    autocmd!
-    autocmd BufEnter * lua if jit ~= nil then require'diagnostic'.on_attach() end
-augroup end

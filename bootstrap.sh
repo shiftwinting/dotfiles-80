@@ -25,6 +25,7 @@ mkdir -p ~/.config/X11
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/abook
 mkdir -p ~/.config/calcurse
+mkdir -p ~/.config/iptyhon/profile_default
 mkdir -p ~/.local/share/calcurse
 mkdir -p ~/.config/gdb
 mkdir -p ~/.config/nvidia
@@ -39,7 +40,7 @@ mkdir -p ~/.cache/vim/undo
 mkdir -p ~/.cache/vim/swap
 mkdir -p ~/.cache/vim/backup
 
-cp ~/dotfiles/systemd/user/* ~/.config/systemd/user
+cp -r ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
 cd ~/dotfiles || exit
 stow -R home

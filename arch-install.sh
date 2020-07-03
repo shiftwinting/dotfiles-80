@@ -15,8 +15,8 @@ if [ ! -d 'yay' ]; then
     )
 fi
 
-yay -Syu --needed "$(cat ~/dotfiles/lists/pkglist.txt)"
-yay -S --needed --asdeps "$(cat ~/dotfiles/lists/opt.txt)"
+yay -Syu --needed $(cat ~/dotfiles/lists/pkglist.txt)
+yay -S --needed --asdeps $(cat ~/dotfiles/lists/opt.txt)
 
 sudo reflector --country Spain --country Portugal --country France --age 12 --completion-percent 100 --sort score --cache-timeout 0 --connection-timeout 2 --fastest 10 --verbose --save /etc/pacman.d/mirrorlist
 

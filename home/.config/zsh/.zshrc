@@ -75,10 +75,8 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	function zle_application_mode_stop {
 		echoti rmkx
 	}
-        if [ $(hostname) = "garry" ]; then
-            add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-            add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-        fi
+    add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 if [ -n "$DISPLAY" ]; then
@@ -144,10 +142,6 @@ fi
 safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh || safesource ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh || safesource ~/repos/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-if [ "$(hostname)" = "liselle" ]; then
-    fpath=(~/repos/zsh-completions $fpath)
-fi
 
 if exists fzf; then
     safesource ~/.local/share/fzf/shell/key-bindings.zsh

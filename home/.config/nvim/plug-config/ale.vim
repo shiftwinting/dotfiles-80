@@ -13,7 +13,7 @@ let g:ale_cpp_ccls_init_options = {
 \ }
 
 " Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 nmap <silent> [w <Plug>(ale_previous_wrap)
 nmap <silent> ]w <Plug>(ale_next_wrap)
@@ -32,5 +32,3 @@ function! LinterStatus() abort
     \   all_errors
     \)
 endfunction
-
-set statusline+=%{LinterStatus()}
