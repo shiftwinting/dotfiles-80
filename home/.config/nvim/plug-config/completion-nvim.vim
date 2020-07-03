@@ -30,8 +30,3 @@ inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
   \ completion#trigger_completion()
-
-augroup completion-nvim
-    autocmd!
-    autocmd BufEnter * lua if jit ~= nil then require'completion'.on_attach() end
-augroup end

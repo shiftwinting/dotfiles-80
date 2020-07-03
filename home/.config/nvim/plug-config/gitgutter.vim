@@ -3,7 +3,6 @@ if !g:use_plugins || exists('g:loaded_gitgutter_config')
 endif
 let g:loaded_gitgutter_config = 1
 
-let g:gitgutter_sign_allow_clobber = 1
 let g:gitgutter_diff_args = '-w'
 let g:gitgutter_highlight_linenrs = 1
 

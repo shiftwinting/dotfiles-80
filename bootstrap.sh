@@ -25,6 +25,7 @@ mkdir -p ~/.config/X11
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/abook
 mkdir -p ~/.config/calcurse
+mkdir -p ~/.config/iptyhon/profile_default
 mkdir -p ~/.local/share/calcurse
 mkdir -p ~/.config/gdb
 mkdir -p ~/.config/nvidia
