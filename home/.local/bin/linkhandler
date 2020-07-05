@@ -10,6 +10,9 @@ fi
 case "$url" in
 	*mkv|*webm|*mp4|*mp3|*ogg|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*twitch.tv*)
 		setsid mpv -quiet "$url" >/dev/null 2>&1 & ;;
+	*lbry*)
+        lbry_url=$(curl "$url" | grep embed | sed 's/.*embed\(.*\)">.*/\1/' | cut -d '"' -f1 | awk -v prefix="https://cdn.lbryplayer.xyz/api/v2/streams/free" '{print prefix $0}')
+		setsid mpv -quiet "$lbry_url" >/dev/null 2>&1 & ;;
 	*png|*jpg|*jpe|*jpeg|*gif)
 		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///")" && setsid sxiv -a "/tmp/$(echo "$url" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
 	*pdf|*ps|*epub)
@@ -20,8 +23,6 @@ case "$url" in
 		setsid toradd "$url" >/dev/null 2>&1 & ;;
 	acestream*)
 		setsid acestream-launcher "$url" >/dev/null 2>&1 & ;;
-	*rss|*xml)
-		setsid rssadd "$url" >/dev/null 2>&1 & ;;
 	*rss|*xml)
 		setsid rssadd "$url" >/dev/null 2>&1 & ;;
 	mailto*)
