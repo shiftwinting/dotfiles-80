@@ -7,6 +7,6 @@ if has('nvim-0.5')
     augroup end
 endif
 
-let b:ale_linters = ['clangtidy', 'cppcheck', 'flawfinder']
+let b:ale_linters = ['clangtidy']
 let b:ale_fixers = ['clang-format', 'clangtidy', 'uncrustify', 'remove_trailing_lines', 'trim_whitespace']
 let b:undo_ftplugin .= '| setlocal omnifunc< commentstring<'

@@ -32,3 +32,5 @@ function! LinterStatus() abort
     \   all_errors
     \)
 endfunction
+
+set statusline+=%{LinterStatus()}

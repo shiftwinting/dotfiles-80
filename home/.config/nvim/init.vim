@@ -119,7 +119,7 @@ if g:use_plugins
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
         Plug 'haorenW1025/diagnostic-nvim', Cond(has('nvim-0.5'))
     " Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
-    Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
+    " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
     if has('nvim-0.5')
