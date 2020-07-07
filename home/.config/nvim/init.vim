@@ -115,10 +115,10 @@ if g:use_plugins
     Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(g:has_cpp_ls, {'for': 'cpp'})
     Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
         Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
-            " Plug 'vigoux/completion-treesitter', Cond(has('nvim-0.5'))
+            Plug 'vigoux/completion-treesitter', Cond(has('nvim-0.5'))
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
         Plug 'haorenW1025/diagnostic-nvim', Cond(has('nvim-0.5'))
-    " Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
+    Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
     " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim

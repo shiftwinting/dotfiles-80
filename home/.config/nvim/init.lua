@@ -19,7 +19,18 @@ require'nvim_lsp'.clangd.setup{
     -- callbacks = lsp_status.extensions.clangd.setup(),
     on_attach = on_attach_vim,
     -- capabilities = lsp_status.capabilities,
+    capabilities = {
+        textDocument = {
+            completion = {
+                completionItem = {
+                snippetSupport = true
+                }
+            }
+        }
+    },
     init_options = {
+        usePlaceholders = true,
+        completeUnimported = true,
         semanticHighlighting = true,
         clangdFileStatus = true
     }
@@ -30,6 +41,9 @@ require'nvim_lsp'.ccls.setup{
     init_options = {
         highlight = {
             lsRanges = true;
+        },
+        client = {
+            snippetSupport = true
         }
   }
 }
@@ -48,6 +62,15 @@ require'nvim_lsp'.texlab.setup{
 require'nvim_lsp'.vimls.setup{
     -- on_attach = on_attach_vim,
     -- capabilities = lsp_status.capabilities
+   capabilities = {
+    textDocument = {
+      completion = {
+        completionItem = {
+          snippetSupport = true
+        }
+      }
+    }
+  } 
 }
 require'nvim_lsp'.diagnosticls.setup{
     -- on_attach = on_attach_vim,
@@ -62,20 +85,20 @@ require'nvim_lsp'.cmake.setup{
     -- capabilities = lsp_status.capabilities
 }
 
--- require'nvim-treesitter.configs'.setup {
---     highlight = {
---         enable = true,                    -- false will disable the whole extension
---         disable = {},        -- list of language that will be disabled
---     },
---     incremental_selection = {
---         enable = true,
---         disable = {},
---         keymaps = {                       -- mappings for incremental selection (visual mappings)
---           init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
---           node_incremental = "grn",       -- increment to the upper named parent
---           scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
---           node_decremental = "grm",      -- decrement to the previous node
---         }
---     },
---     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
--- }
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,                    -- false will disable the whole extension
+        disable = {},        -- list of language that will be disabled
+    },
+    incremental_selection = {
+        enable = true,
+        disable = {},
+        keymaps = {                       -- mappings for incremental selection (visual mappings)
+          init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
+          node_incremental = "grn",       -- increment to the upper named parent
+          scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
+          node_decremental = "grm",      -- decrement to the previous node
+        }
+    },
+    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+}
