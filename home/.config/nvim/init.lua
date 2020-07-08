@@ -11,14 +11,18 @@ local on_attach_vim = function()
   -- lsp_status.on_attach()
 end
 
-require'nvim_lsp'.bashls.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
-require'nvim_lsp'.clangd.setup{
+local lsp = require'nvim_lsp'
+
+lsp.util.default_config = vim.tbl_extend(
+    "force",
+    lsp.util.default_config, {
+        on_attach = on_attach_vim
+    }
+)
+
+lsp.bashls.setup{}
+lsp.clangd.setup{
     -- callbacks = lsp_status.extensions.clangd.setup(),
-    on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities,
     capabilities = {
         textDocument = {
             completion = {
@@ -35,9 +39,7 @@ require'nvim_lsp'.clangd.setup{
         clangdFileStatus = true
     }
 }
-require'nvim_lsp'.ccls.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities,
+lsp.ccls.setup{
     init_options = {
         highlight = {
             lsRanges = true;
@@ -45,23 +47,12 @@ require'nvim_lsp'.ccls.setup{
         client = {
             snippetSupport = true
         }
-  }
+    }
 }
-require'nvim_lsp'.jsonls.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
-require'nvim_lsp'.pyls.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
-require'nvim_lsp'.texlab.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
-require'nvim_lsp'.vimls.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
+lsp.jsonls.setup{}
+lsp.pyls.setup{}
+lsp.texlab.setup{}
+lsp.vimls.setup{
    capabilities = {
     textDocument = {
       completion = {
@@ -72,18 +63,8 @@ require'nvim_lsp'.vimls.setup{
     }
   } 
 }
-require'nvim_lsp'.diagnosticls.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
-require'nvim_lsp'.html.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
-require'nvim_lsp'.cmake.setup{
-    -- on_attach = on_attach_vim,
-    -- capabilities = lsp_status.capabilities
-}
+lsp.html.setup{}
+lsp.cmake.setup{}
 
 require'nvim-treesitter.configs'.setup {
     highlight = {
@@ -97,8 +78,22 @@ require'nvim-treesitter.configs'.setup {
           init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
           node_incremental = "grn",       -- increment to the upper named parent
           scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
-          node_decremental = "grm",      -- decrement to the previous node
+          node_decremental = "grm",       -- decrement to the previous node
         }
+    },
+    refactor = {
+      highlight_defintions = {
+        enable = true
+      },
+      smart_rename = {
+        enable = true,
+        smart_rename = "grr"              -- mapping to rename reference under cursor
+      },
+      navigation = {
+        enable = true,
+        goto_definition = "gnd",          -- mapping to go to definition of symbol under cursor
+        list_definitions = "gnD"          -- mapping to list all definitions in current file
+      }
     },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }

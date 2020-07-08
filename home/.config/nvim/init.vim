@@ -86,7 +86,6 @@ if g:use_plugins
     Plug 'wellle/targets.vim'
     Plug 'rhysd/clever-f.vim'
     Plug 'lambdalisue/suda.vim', Cond(has('nvim'))
-    Plug 'glacambre/firenvim', Cond(has('nvim'), {'do': { _ -> firenvim#install(0)}})
     Plug 'markonm/traces.vim', Cond(!has('nvim'))
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
@@ -112,7 +111,6 @@ if g:use_plugins
         Plug 'thomasfaingnaert/vim-lsp-snippets', Cond(!has('nvim-0.5'))
         Plug 'thomasfaingnaert/vim-lsp-ultisnips', Cond(!has('nvim-0.5'))
         Plug 'mattn/vim-lsp-settings', Cond(!has('nvim-0.5'))
-    Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(g:has_cpp_ls, {'for': 'cpp'})
     Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
         Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'vigoux/completion-treesitter', Cond(has('nvim-0.5'))
