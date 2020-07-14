@@ -11,7 +11,7 @@ mkdir -p ~/.local/libexec
 mkdir -p ~/.config/mpv/watch_later
 mkdir -p ~/.ssh/sockets
 mkdir -p ~/.config/systemd/user
-mkdir -p ~/.config/notmuch-config
+mkdir -p ~/.config/notmuch
 mkdir -p ~/.config/wget
 mkdir -p ~/.config/spotify-tui
 mkdir -p ~/.config/aspell
