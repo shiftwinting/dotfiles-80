@@ -78,3 +78,5 @@ endif
 if !has('nvim')
     command! SW :w !sudo tee % > /dev/null
 endif
+
+nnoremap <leader>h :write <bar> edit <bar> TSBufEnable highlight<cr>
