@@ -163,7 +163,7 @@ dkms.conf
 
 # CMake
 cmake-build-*/
-build-*/
+build*/
 
 # File-based project format
 *.iws
@@ -556,4 +556,7 @@ pythontex-files-*/
 *.sta
 
 # ccls
-.ccls-cache/*
+.ccls-cache/
+
+# clangd
+.clangd/

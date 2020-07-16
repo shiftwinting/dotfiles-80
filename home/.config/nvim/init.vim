@@ -64,6 +64,7 @@ if g:use_plugins
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-apathy'
@@ -118,6 +119,7 @@ if g:use_plugins
         Plug 'haorenW1025/diagnostic-nvim', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
+    Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-bash'}
     " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
