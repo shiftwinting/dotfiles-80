@@ -120,6 +120,8 @@ if g:use_plugins
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-bash'}
+    Plug 'liuchengxu/vista.vim'
+    Plug 'tpope/vim-projectionist'
     " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
