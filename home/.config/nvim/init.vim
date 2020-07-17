@@ -87,7 +87,6 @@ if g:use_plugins
     Plug 'wellle/targets.vim'
     Plug 'rhysd/clever-f.vim'
     Plug 'lambdalisue/suda.vim', Cond(has('nvim'))
-    Plug 'markonm/traces.vim', Cond(!has('nvim'))
     Plug 'pboettch/vim-cmake-syntax'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'kovetskiy/sxhkd-vim'
@@ -99,19 +98,9 @@ if g:use_plugins
     Plug 'kana/vim-textobj-user'
         Plug 'Julian/vim-textobj-variable-segment'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-    Plug 'machakann/vim-highlightedyank', Cond(!has('nvim-0.5'))
     Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'honza/vim-snippets'
         Plug 'SirVer/ultisnips'
-    Plug 'prabirshrestha/asyncomplete.vim', Cond(!has('nvim-0.5'))
-        Plug 'yami-beta/asyncomplete-omni.vim', Cond(!has('nvim-0.5'))
-        Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!has('nvim-0.5'))
-        Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(!has('nvim-0.5'))
-        Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!has('nvim-0.5'))
-    Plug 'prabirshrestha/vim-lsp', Cond(!has('nvim-0.5'))
-        Plug 'thomasfaingnaert/vim-lsp-snippets', Cond(!has('nvim-0.5'))
-        Plug 'thomasfaingnaert/vim-lsp-ultisnips', Cond(!has('nvim-0.5'))
-        Plug 'mattn/vim-lsp-settings', Cond(!has('nvim-0.5'))
     Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
         Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'vigoux/completion-treesitter', Cond(has('nvim-0.5'))
