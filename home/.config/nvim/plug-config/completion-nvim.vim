@@ -14,8 +14,10 @@ imap  <c-k> <Plug>(completion_prev_source)
 let g:completion_chain_complete_list = {
     \   'default': {
     \       'default': [
-    \           {'complete_items': ['lsp', 'buffers', 'ts']},
+    \           {'complete_items': ['lsp']},
     \           {'complete_items': ['snippet']},
+    \           {'complete_items': ['ts']},
+    \           {'complete_items': ['buffers']},
     \       ],
     \       'string' : [
     \           {'complete_items': ['path'], 'triggered_only': ['/']}
