@@ -33,4 +33,4 @@ function! LinterStatus() abort
     \)
 endfunction
 
-set statusline+=%{LinterStatus()}
+" set statusline+=%{LinterStatus()}

@@ -5,8 +5,6 @@ let mapleader = ' '
 let maplocalleader = ','
 
 set statusline=
-" filename
-set statusline+=%f
 " [help] flag
 set statusline+=\ %h
 " modified flag
@@ -15,11 +13,9 @@ set statusline+=%m
 set statusline+=%r
 " preview window flag
 set statusline+=%w
-" separation point
-set statusline+=%=
-set statusline+=%y
-set statusline+=(%l/%L)
-set statusline+=\ %P
+" set statusline+=%y
+" set statusline+=(%l/%L)
+" set statusline+=\ %P
 
 if !has('nvim')
     set background=dark
@@ -39,8 +35,6 @@ if has('termguicolors') && &term!="linux" && ($DISPLAY!="" || $SSH_TTY!="")
 endif
 
 if g:use_plugins
-    " separation point
-    set statusline+=%=
     if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
         if !executable('curl')
             echoerr 'You have to install curl or first install vim-plug yourself!'
@@ -111,7 +105,7 @@ if g:use_plugins
     Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-bash'}
     Plug 'liuchengxu/vista.vim'
     Plug 'tpope/vim-projectionist'
-    " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
+    Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
     if has('nvim-0.5')

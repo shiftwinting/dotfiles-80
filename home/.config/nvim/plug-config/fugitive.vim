@@ -3,4 +3,4 @@ if !g:use_plugins || exists('g:loaded_fugitive_config')
 endif
 let g:loaded_fugitive_config = 1
 
-set statusline+=%{FugitiveStatusline()}
+set statusline+=%{FugitiveHead()}
