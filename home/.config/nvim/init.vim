@@ -13,9 +13,11 @@ set statusline+=%m
 set statusline+=%r
 " preview window flag
 set statusline+=%w
-" set statusline+=%y
+set statusline+=%y
+set statusline+=col:%c
 " set statusline+=(%l/%L)
 " set statusline+=\ %P
+set statusline+=%=
 
 if !has('nvim')
     set background=dark
