@@ -33,7 +33,7 @@ case "$url" in
 		setsid toradd "$local_url"  >/dev/null 2>&1 & ;;
 	magnet:*)
 		setsid toradd "$url" >/dev/null 2>&1 & ;;
-	*.rss|*.xml)
+	*rss*|*feed*|http*.xml|http*.atom)
 		setsid rssadd "$url" >/dev/null 2>&1 & ;;
 	mailto:*)
 		setsid neomutt "$url" >/dev/null 2>&1 & ;;

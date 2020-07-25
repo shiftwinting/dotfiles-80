@@ -1,5 +1,9 @@
 auto-reload yes
 reload-time 10
+feed-sort-order lastupdated
+notify-always yes
+reload-threads 4
+always-display-description yes
 
 bind-key j next
 bind-key k prev

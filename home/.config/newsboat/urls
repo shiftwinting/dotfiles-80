@@ -1,14 +1,25 @@
-https://ruimarques.xyz/index.xml
-https://www.archlinux.org/feeds/news/
-https://lukesmith.xyz/rss.xml
-https://notrelated.xyz/rss
-https://lukesmith.xyz/youtube.xml
-https://videos.lukesmith.xyz/feeds/videos.xml?accountId=3
-https://vimtricks.substack.com/feed
-https://neovim.io/news.xml
-https://www.phoronix.com/rss.php tech
+https://ruimarques.xyz/index.xml blog
+https://lukesmith.xyz/rss.xml blog
+http://tpo.pe/feed blog
+https://www.preposterousuniverse.com/blog/category/biggest-ideas-in-the-universe/rss blog
+https://vimtricks.substack.com/feed blog
+https://writings.stephenwolfram.com/feed blog
 https://www.xkcd.com/rss.xml comics
+http://feeds.bbci.co.uk/news/video_and_audio/world/rss.xml news
+https://github.com/neovim/neovim/commits.atom github
+https://www.phoronix.com/rss.php tech
+https://neovim.io/news.xml tech
+http://static.fsf.org/fsforg/rss/blogs.xml tech
+http://www.fsf.org/static/fsforg/rss/news.xml tech
+https://www.archlinux.org/feeds/news tech
+https://pi-hole.net/feed tech
+https://www.eff.org/rss tech
 http://showrss.info/user/231357.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
+https://notrelated.xyz/rss podcast
+http://benbenandblue.libsyn.com/rss podcast
+https://lukesmith.xyz/youtube.xml youtube
+https://videos.lukesmith.xyz/feeds/videos.xml?accountId=3 youtube
+http://www.cgpgrey.com/blog?format=rss youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCpFcHE36IoySjYj1Rytxyog youtube
@@ -45,3 +56,40 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC9RM-iSvTu1uPJb8X5yp3EQ you
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdBK94H6oZT2Q7l0-b0xmMg youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYJdpnjuSWVOLgGT9fIzL0g youtube
+https://nitter.net/insoniascarvao/rss twitter
+https://nitter.net/DonHaci/rss twitter
+https://nitter.net/3kliksphilip/rss twitter
+https://nitter.net/CSGO/rss twitter
+https://nitter.net/TheWarOwl/rss twitter
+https://nitter.net/AndreMuchagata/rss twitter
+https://nitter.net/SYouknowwhat/rss twitter
+https://nitter.net/ThatPrivacyGuy/rss twitter
+https://nitter.net/sawggofficial/rss twitter
+https://nitter.net/Neovim/rss twitter
+https://nitter.net/justinmk/rss twitter
+https://nitter.net/noamchomskyT/rss twitter
+https://nitter.net/stroustrup/rss twitter
+https://nitter.net/Kasparov63/rss twitter
+https://nitter.net/iamjohnoliver/rss twitter
+https://nitter.net/SethMacFarlane/rss twitter
+https://nitter.net/seanmcarroll/rss twitter
+https://nitter.net/b0rk/rss twitter
+https://nitter.net/MortenLinderud/rss twitter
+https://nitter.net/m_strise/rss twitter
+https://nitter.net/tpope/rss twitter
+https://nitter.net/BoredElonMusk/rss twitter
+https://nitter.net/BartCButler/rss twitter
+https://nitter.net/Snowden/rss twitter
+https://nitter.net/Exurb1a/rss twitter
+https://nitter.net/SamFromWendover/rss twitter
+https://nitter.net/veritasium/rss twitter
+https://nitter.net/ben_eater/rss twitter
+https://nitter.net/minutephysics/rss twitter
+https://nitter.net/tweetsauce/rss twitter
+https://nitter.net/3blue1brown/rss twitter
+https://nitter.net/elonmusk/rss twitter
+https://nitter.net/Linus__Torvalds/rss twitter
+https://nitter.net/timberners_lee/rss twitter
+https://nitter.net/goodfellow_ian/rss twitter
+https://twitchrss.appspot.com/vod/teej_dv twitch
+https://twitchrss.appspot.com/vod/ashkankiani twitch
