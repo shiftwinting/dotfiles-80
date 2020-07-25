@@ -9,11 +9,10 @@ https://freedom-to-tinker.com/rss blog
 http://rss.slashdot.org/Slashdot/slashdotYourRightsOnline blog
 https://hasbrouck.org/blog/index.rdf blog
 https://www.xkcd.com/rss.xml comics
-http://feeds.bbci.co.uk/news/video_and_audio/world/rss.xml news
-https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada news
-https://wwww.noticiasaominuto.com/rss/pais news
+https://www.noticiasaominuto.com/rss/ultima-hora news
 https://github.com/neovim/neovim/commits.atom github
 https://www.phoronix.com/rss.php tech
+http://ftr.fivefilters.org/makefulltextfeed.php?url=sec%3A%2F%2Fwww.phoronix.com%2Frss.php&max=3&links=footnotes&exc=&summary=1&submit=Create+Feed tech
 https://neovim.io/news.xml tech
 http://static.fsf.org/fsforg/rss/blogs.xml tech
 http://www.fsf.org/static/fsforg/rss/news.xml tech
