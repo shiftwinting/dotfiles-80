@@ -382,7 +382,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 exec = ~/dotfiles/barscripts/mpris.py -f '{artist} - {title}' 2> /dev/null
 tail = true
- label-maxlen = 20
+label-maxlen = 40
 
 [module/gpu-usage]
 type = custom/script
