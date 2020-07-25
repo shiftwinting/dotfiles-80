@@ -4,8 +4,14 @@ http://tpo.pe/feed blog
 https://www.preposterousuniverse.com/blog/category/biggest-ideas-in-the-universe/rss blog
 https://vimtricks.substack.com/feed blog
 https://writings.stephenwolfram.com/feed blog
+https://sink.io/feed blog
+https://freedom-to-tinker.com/rss blog
+http://rss.slashdot.org/Slashdot/slashdotYourRightsOnline blog
+https://hasbrouck.org/blog/index.rdf blog
 https://www.xkcd.com/rss.xml comics
 http://feeds.bbci.co.uk/news/video_and_audio/world/rss.xml news
+https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada news
+https://wwww.noticiasaominuto.com/rss/pais news
 https://github.com/neovim/neovim/commits.atom github
 https://www.phoronix.com/rss.php tech
 https://neovim.io/news.xml tech
@@ -13,7 +19,7 @@ http://static.fsf.org/fsforg/rss/blogs.xml tech
 http://www.fsf.org/static/fsforg/rss/news.xml tech
 https://www.archlinux.org/feeds/news tech
 https://pi-hole.net/feed tech
-https://www.eff.org/rss tech
+https://www.eff.org/rss/updates.xml tech
 http://showrss.info/user/231357.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
 https://notrelated.xyz/rss podcast
 http://benbenandblue.libsyn.com/rss podcast
@@ -48,8 +54,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCEKJKJ3FO-9SFv5x5BzyxhQ you
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCimiUgDLbi6P17BdaCZpVbg youtube
-https://www.youtube.com/feeds/videos.xml?channel_id=UC127Qy2ulgASLYvW4AuHJZQ youtube
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2C_jShtL725hvbm1arSV9w youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUHW94eEFW7hkUMVaZz4eDg youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCOWcZ6Wicl-1N34H0zZe38w youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9RM-iSvTu1uPJb8X5yp3EQ youtube
@@ -91,5 +95,7 @@ https://nitter.net/elonmusk/rss twitter
 https://nitter.net/Linus__Torvalds/rss twitter
 https://nitter.net/timberners_lee/rss twitter
 https://nitter.net/goodfellow_ian/rss twitter
+https://nitter.net/tomscott/rss twitter
+https://nitter.net/notthebeeee/rss twitter
 https://twitchrss.appspot.com/vod/teej_dv twitch
 https://twitchrss.appspot.com/vod/ashkankiani twitch
