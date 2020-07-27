@@ -12,7 +12,6 @@ https://www.xkcd.com/rss.xml comics
 https://www.noticiasaominuto.com/rss/ultima-hora news
 https://github.com/neovim/neovim/commits.atom github
 https://www.phoronix.com/rss.php tech
-http://ftr.fivefilters.org/makefulltextfeed.php?url=sec%3A%2F%2Fwww.phoronix.com%2Frss.php&max=3&links=footnotes&exc=&summary=1&submit=Create+Feed tech
 https://neovim.io/news.xml tech
 http://static.fsf.org/fsforg/rss/blogs.xml tech
 http://www.fsf.org/static/fsforg/rss/news.xml tech
@@ -70,7 +69,6 @@ https://nitter.net/ThatPrivacyGuy/rss twitter
 https://nitter.net/sawggofficial/rss twitter
 https://nitter.net/Neovim/rss twitter
 https://nitter.net/justinmk/rss twitter
-https://nitter.net/noamchomskyT/rss twitter
 https://nitter.net/stroustrup/rss twitter
 https://nitter.net/Kasparov63/rss twitter
 https://nitter.net/iamjohnoliver/rss twitter
