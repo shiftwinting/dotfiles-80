@@ -3,13 +3,13 @@ https://lukesmith.xyz/rss.xml blog
 http://tpo.pe/feed blog
 https://www.preposterousuniverse.com/blog/category/biggest-ideas-in-the-universe/rss blog
 https://vimtricks.substack.com/feed blog
+https://vimways.org/index.xml blog
 https://writings.stephenwolfram.com/feed blog
 https://sink.io/feed blog
 https://freedom-to-tinker.com/rss blog
 http://rss.slashdot.org/Slashdot/slashdotYourRightsOnline blog
 https://hasbrouck.org/blog/index.rdf blog
 https://www.xkcd.com/rss.xml comics
-https://www.noticiasaominuto.com/rss/ultima-hora news
 https://github.com/neovim/neovim/commits.atom github
 https://www.phoronix.com/rss.php tech
 https://neovim.io/news.xml tech
@@ -96,3 +96,5 @@ https://nitter.net/tomscott/rss twitter
 https://nitter.net/notthebeeee/rss twitter
 https://twitchrss.appspot.com/vod/teej_dv twitch
 https://twitchrss.appspot.com/vod/ashkankiani twitch
+https://suckless.org/atom.xml
+https://codemadness.org/atom_content.xml
