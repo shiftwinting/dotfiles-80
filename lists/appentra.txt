@@ -1,6 +1,5 @@
 cuda
 hdf5
 gcc-fortran
-llvm
 openmp
 xdot

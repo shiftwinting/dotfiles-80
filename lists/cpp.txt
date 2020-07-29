@@ -1,10 +1,9 @@
-ccls
+ccache
 clang
 cmake
 cmake-language-server
-cppcheck
 doxygen
-flawfinder
 gdb
+lld
+lldb
 ninja
-uncrustify
