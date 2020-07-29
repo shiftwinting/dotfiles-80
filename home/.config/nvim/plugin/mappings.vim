@@ -39,6 +39,7 @@ vnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
 vnoremap <silent> <leader>p "_dP
 nnoremap <silent> <leader>p "_dP
 noremap <silent> <leader>c "_c
+noremap <silent> <leader>C "_C
 
 " Find and Replace binds
 nnoremap <leader>s :<c-u>%s/
