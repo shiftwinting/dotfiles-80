@@ -15,7 +15,6 @@ dashbinsh
 dosfstools
 dunst
 dust
-earlyoom
 fd
 firefox
 git
