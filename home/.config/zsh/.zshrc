@@ -132,20 +132,20 @@ autoload -Uz run-help-git
 autoload -Uz run-help-ip
 autoload -Uz run-help-sudo
 
-safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh || safesource ~/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [ -n "$ZSH_HIGHLIGHT_STYLES" ]; then
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
     ZSH_HIGHLIGHT_STYLES[comment]='fg=yellow'
 fi
 
-safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh || safesource ~/repos/zsh-autosuggestions/zsh-autosuggestions.zsh
+safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh || safesource ~/repos/zsh-history-substring-search/zsh-history-substring-search.zsh
+safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 if exists fzf; then
-    safesource ~/.local/share/fzf/shell/key-bindings.zsh
-    safesource ~/.local/share/fzf/shell/completion.zsh
+    safesource /etc/profile.d/fzf.zsh || safesource /usr/share/fzf/key-bindings.zsh
+    safesource /usr/share/zsh/site-functions/_fzf || safesource /usr/share/fzf/completion.zsh
 
     fzf-history-widget-accept() {
         fzf-history-widget

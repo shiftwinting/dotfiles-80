@@ -13,7 +13,6 @@ if [ -z "$ENV_SOURCED" ]; then
     [ -z "$OLDPATH" ] && export OLDPATH="$PATH" || PATH="$OLDPATH"
 
     PATH="$HOME"/.local/bin:"$PATH"
-    ! [ -x "/usr/bin/fzf" ] && ! [ -x "/usr/local/bin/fzf" ] && PATH="$HOME"/.local/share/fzf/bin:"$PATH"
 
     export PATH
 
