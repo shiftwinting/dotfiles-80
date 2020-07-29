@@ -11,7 +11,10 @@ nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gs <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gS    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gh    <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gH    <cmd>lua vim.lsp.buf.document_highlight()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gic    <cmd>lua vim.lsp.buf.incoming_calls()<CR>
+nnoremap <silent> goc    <cmd>lua vim.lsp.buf.outgoing_calls()<CR>
 nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
+xnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.range_formatting()<CR>
+nnoremap <silent> gca    <cmd>lua vim.lsp.buf.code_action()<CR>

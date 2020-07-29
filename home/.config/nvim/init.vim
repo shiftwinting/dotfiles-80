@@ -5,8 +5,10 @@ let mapleader = ' '
 let maplocalleader = ','
 
 set statusline=
+
+set statusline+=%f
 " [help] flag
-set statusline+=\ %h
+set statusline+=\%h
 " modified flag
 set statusline+=%m
 " readonly flag
@@ -14,7 +16,7 @@ set statusline+=%r
 " preview window flag
 set statusline+=%w
 set statusline+=%y
-set statusline+=col:%c
+" set statusline+=col:%c
 " set statusline+=(%l/%L)
 " set statusline+=\ %P
 set statusline+=%=
@@ -64,8 +66,8 @@ if g:use_plugins
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-apathy'
-    Plug 'skywind3000/asyncrun.vim'
     Plug 'vhdirk/vim-cmake'
+        Plug 'skywind3000/asyncrun.vim'
     Plug 'rhysd/vim-llvm'
     Plug 'andymass/vim-matchup'
     Plug 'haya14busa/incsearch.vim'
@@ -73,7 +75,6 @@ if g:use_plugins
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'airblade/vim-gitgutter'
-    Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --bin' }
     Plug 'junegunn/fzf.vim'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'luochen1990/rainbow'
@@ -87,7 +88,6 @@ if g:use_plugins
     Plug 'tmux-plugins/vim-tmux'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'christoomey/vim-tmux-navigator'
-    Plug 'dense-analysis/ale'
     Plug 'lervag/vimtex', {'for': 'tex'}
     Plug 'mzlogin/vim-markdown-toc'
     Plug 'rhysd/git-messenger.vim'
@@ -98,16 +98,15 @@ if g:use_plugins
     Plug 'honza/vim-snippets'
         Plug 'SirVer/ultisnips'
     Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
-        Plug 'haorenW1025/completion-nvim', Cond(has('nvim-0.5'))
-            Plug 'vigoux/completion-treesitter', Cond(has('nvim-0.5'))
+        Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
+            Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
-        Plug 'haorenW1025/diagnostic-nvim', Cond(has('nvim-0.5'))
+        Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
+        Plug 'liuchengxu/vista.vim'
+        Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-bash'}
-    Plug 'liuchengxu/vista.vim'
-    Plug 'tpope/vim-projectionist'
-    Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     call plug#end()
     runtime! plug-config/**.vim
     if has('nvim-0.5')
