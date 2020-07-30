@@ -9,6 +9,7 @@ bc
 bitwarden-rofi-git
 bspwm-git
 cava-git
+cmake
 cpupower
 dashbinsh
 dosfstools
@@ -26,6 +27,7 @@ htop
 hub
 i3lock-fancy-rapid-git
 imagemagick
+inetutils
 informant
 ipcalc
 ipython
@@ -44,7 +46,6 @@ megacmd-bin
 mpv
 mpv-acestream
 mpv-mpris
-msmtp-mta
 mutt-wizard-git
 neofetch
 neovim-git
@@ -86,7 +87,6 @@ scli-git
 scrot
 shellcheck-bin
 sloccount
-s-nail
 source-highlight
 spotifyd-full-git
 spotify-tui-bin

@@ -1,4 +1,4 @@
-alsa-utils
+authbind
 certbot-nginx
 cgit
 ddclient
@@ -7,7 +7,6 @@ fcgiwrap
 firmware-raspberrypi
 goaccess
 haveged
-inetutils
 linux-aarch64
 linux-aarch64-headers
 nginx-mainline

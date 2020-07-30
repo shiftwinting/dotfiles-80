@@ -1,9 +1,7 @@
 ccache
 clang
-cmake
 cmake-language-server
 doxygen
 gdb
 lld
 lldb
-ninja
