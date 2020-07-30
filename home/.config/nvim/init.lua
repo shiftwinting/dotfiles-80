@@ -72,9 +72,9 @@ lsp.cmake.setup{}
 lsp.sumneko_lua.setup{
     cmd = {"lua-language-server"};
 }
-require'nvim_lsp'.efm.setup{
-    filetypes = {"vim", "markdown", "rst", "sh", "json"}
-}
+-- require'nvim_lsp'.efm.setup{
+--     filetypes = {"vim", "markdown", "rst", "sh", "json"}
+-- }
 
 -- for use with `formatexpr` if called without parms
 -- @param start_line 1-indexed line
