@@ -72,10 +72,9 @@ lsp.cmake.setup{}
 lsp.sumneko_lua.setup{
     cmd = {"lua-language-server"};
 }
-
-vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+require'nvim_lsp'.efm.setup{
+    filetypes = {"vim", "markdown", "rst", "sh", "json"}
+}
 
 -- for use with `formatexpr` if called without parms
 -- @param start_line 1-indexed line
