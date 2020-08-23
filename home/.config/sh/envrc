@@ -38,12 +38,15 @@ export XDG_CACHE_HOME="$HOME"/.cache
 export ENV="$XDG_CONFIG_HOME"/sh/shinit
 if exists nvim; then
     EDITOR='nvim'
+    DIFFPROG='nvim -d'
 elif exists vim; then
     EDITOR='vim'
+    DIFFPROG='vim -d'
 else
     EDITOR='vi'
 fi
 export EDITOR
+export DIFFPROG
 export VISUAL="$EDITOR"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999

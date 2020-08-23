@@ -107,6 +107,8 @@ if g:use_plugins
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-bash'}
+    Plug 'rickhowe/diffchar.vim'
+    Plug 'rhysd/conflict-marker.vim'
     call plug#end()
     runtime! plug-config/**.vim
     if has('nvim-0.5')

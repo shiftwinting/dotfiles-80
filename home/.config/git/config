@@ -4,7 +4,7 @@
     username = ruifm
     signingkey = F95836893984D3B7
 [push]
-	default = simple
+	default = upstream
     followTags = true
 [core]
 	whitespace = fix,trailing-space,cr-at-eol
@@ -12,23 +12,38 @@
 [web]
 	browser = firefox
 [diff]
-    tool = vimdiff2
+    tool = nvimdiff
     algorithm = histogram
-[difftool "vimdiff2"]
-    cmd = $EDITOR -d $LOCAL $REMOTE
+    mnemonicPrefix = true
+    relative = true
+[difftool]
+    prompt = false
     trustExitCode = true
+[difftool "nvimdiff"]
+    cmd = $EDITOR -d $LOCAL $REMOTE
 [rebase]
     autoStash = true
+[fetch]
+    recurseSubmodules = on-demand
 [pull]
 	ff = only
 [merge]
-    tool = fugitive
+    tool = conflictmarker
 [mergetool "vimdiff4"]
     cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [mergetool "fugitive"]
-    cmd = $EDITOR -f -c "Gvdiffsplit!" "$MERGED"
+    cmd = $EDITOR -c "Gvdiffsplit!" "$MERGED"
+[mergetool "conflictmarker"]
+    cmd = $EDITOR "$MERGED"
 [commit]
 	verbose = true
     gpgsign = true
 [status]
     showUntrackedFiles = all
+    submoduleSummary = true
+[help]
+    autocorrect = 1
+[log]
+    abbrevCommit = true
+[github]
+    user = ruifm

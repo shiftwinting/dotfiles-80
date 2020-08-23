@@ -10,7 +10,6 @@ https://freedom-to-tinker.com/rss blog
 http://rss.slashdot.org/Slashdot/slashdotYourRightsOnline blog
 https://hasbrouck.org/blog/index.rdf blog
 https://www.xkcd.com/rss.xml comics
-https://github.com/neovim/neovim/commits.atom github
 https://www.phoronix.com/rss.php tech
 https://neovim.io/news.xml tech
 http://static.fsf.org/fsforg/rss/blogs.xml tech
@@ -95,5 +94,6 @@ https://nitter.net/tomscott/rss twitter
 https://nitter.net/notthebeeee/rss twitter
 https://twitchrss.appspot.com/vod/teej_dv twitch
 https://twitchrss.appspot.com/vod/ashkankiani twitch
+https://twitchrss.appspot.com/vod/beginbot twitch
 https://suckless.org/atom.xml
 https://codemadness.org/atom_content.xml
