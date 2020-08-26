@@ -1,16 +1,16 @@
 [user]
-	email = mail@ruimarques.xyz
-	name = Rui Marques
+    email = mail@ruimarques.xyz
+    name = Rui Marques
     username = ruifm
     signingkey = F95836893984D3B7
 [push]
-	default = upstream
+    default = upstream
     followTags = true
 [core]
-	whitespace = fix,trailing-space,cr-at-eol
+    whitespace = fix,trailing-space,cr-at-eol
     autocrlf = input
 [web]
-	browser = firefox
+    browser = firefox
 [diff]
     tool = nvimdiff
     algorithm = histogram
@@ -26,7 +26,7 @@
 [fetch]
     recurseSubmodules = on-demand
 [pull]
-	ff = only
+    ff = only
 [merge]
     tool = conflictmarker
 [mergetool "vimdiff4"]
@@ -36,7 +36,7 @@
 [mergetool "conflictmarker"]
     cmd = $EDITOR "$MERGED"
 [commit]
-	verbose = true
+    verbose = true
     gpgsign = true
 [status]
     showUntrackedFiles = all

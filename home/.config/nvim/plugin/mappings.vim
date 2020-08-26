@@ -42,17 +42,16 @@ noremap <silent> <leader>c "_c
 noremap <silent> <leader>C "_C
 
 " Find and Replace binds
-nnoremap <leader>s :<c-u>%s/
-vnoremap <leader>s :s/
-nnoremap <leader>gs :<c-u>%s/<c-r>"/
-vnoremap <leader>gs :s/<c-r>"/
-nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
+nnoremap <leader>s :<c-u>%Subvert/
+vnoremap <leader>s :Subvert/
+nnoremap <leader>gs :<c-u>%Subvert/<c-r>"/
+vnoremap <leader>gs :Subvert/<c-r>"/
+nnoremap <Leader>S :%Subvert/\<<C-r><C-w>\>/
 
 nnoremap <silent> <leader>x :wall<cr>
 nnoremap <silent> <leader>z :wqall<cr>
 nnoremap <silent> <leader>q :quitall<cr>
 nnoremap <silent> <localleader>x :update<cr>
-nnoremap <silent> <localleader>q :quit<cr>
 
 tnoremap <silent><expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
 

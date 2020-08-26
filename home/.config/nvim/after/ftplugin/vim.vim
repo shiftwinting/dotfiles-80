@@ -9,5 +9,6 @@ augroup my_vim
     autocmd! BufWritePost <buffer>
     autocmd BufWritePost <buffer> source %
 augroup END
+set tabstop=4
 
 let b:undo_ftplugin .= '| setlocal omnifunc< |autocmd! my_vim'

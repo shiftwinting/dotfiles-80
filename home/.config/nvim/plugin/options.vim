@@ -32,6 +32,7 @@ if !has('nvim')
 else
     let g:python_host_prog='/usr/bin/python2'
     let g:python3_host_prog='/usr/bin/python3'
+    set inccommand=nosplit
 endif
 
 
@@ -96,8 +97,6 @@ set commentstring=#\ %s
 
 set gdefault
 
-set path+=**
-
 if &synmaxcol == 3000
   " Lowering this improves performance in files with long lines.
   set synmaxcol=500
@@ -118,6 +117,9 @@ set wildmode=longest,full
 set cpoptions-=_
 
 set nojoinspaces
+
+set listchars+=trail:·
+set list
 
 let g:is_posix=1
 

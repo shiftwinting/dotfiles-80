@@ -23,10 +23,13 @@ lsp_status.config {
 
 lsp_status.register_progress()
 
+require('completion').addCompletionSource('vimtex', require('vimtex').complete_item)
+
 local on_attach_wrapper = function(client)
   require'completion'.on_attach()
   require'diagnostic'.on_attach()
   lsp_status.on_attach(client)
+  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()')
 end
 
 local lsp_cfg = require'nvim_lsp'
@@ -191,3 +194,64 @@ ts_cfg.setup {
     },
   },
 }
+
+local dap = require 'dap'
+dap.adapters.cpp = {
+  type = 'executable',
+  attach = {
+    pidProperty = "pid",
+    pidSelect = "ask"
+  },
+  command = 'lldb-vscode',
+  env = {
+    LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
+  },
+  name = "lldb"
+}
+
+local FindPython = function()
+  local cwd = vim.fn.getcwd()
+  if vim.fn.executable(cwd .. '/venv/bin/python') then
+    return cwd .. '/venv/bin/python'
+  elseif vim.fn.executable(cwd .. '/.venv/bin/python') then
+    return cwd .. '/.venv/bin/python'
+  else
+    return '/usr/bin/python'
+  end
+end
+
+dap.adapters.python = {
+  type = 'executable';
+  command = '/usr/bin/python';
+  args = { '-m', 'debugpy.adapter' };
+}
+
+dap.configurations.python = {
+  {
+    type = 'python';
+    request = 'launch';
+    name = "Launch file";
+    program = "${file}";
+    pythonPath = FindPython();
+  },
+}
+
+dap.repl.commands = {
+  continue = {'.continue', '.c'},
+  next_ = {'.next', '.n'},
+  into = {'.into'},
+  out = {'.out'},
+  scopes = {'.scopes'},
+  threads = {'.threads'},
+  frames = {'.frames'},
+  exit = {'exit', '.exit'},
+  up = {'.up'},
+  down = {'.down'},
+  goto_ = {'.goto'},
+}
+
+vim.cmd [[
+    command! -complete=file -nargs=* DebugC lua require "dap-cfg".start_c_debugger({<f-args>}, "lldb-vscode")
+]]
+
+vim.g.dap_virtual_text = 'all frames'

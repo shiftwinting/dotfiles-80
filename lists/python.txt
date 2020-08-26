@@ -1,4 +1,5 @@
 pyls-mypy
+python-debugpy
 python-language-server
 python-matplotlib
 python-pillow

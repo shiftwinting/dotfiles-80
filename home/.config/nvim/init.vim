@@ -1,11 +1,9 @@
 let g:use_plugins = 1
-let g:start = '/bin/bash'
 
 let mapleader = ' '
 let maplocalleader = ','
 
 set statusline=
-
 set statusline+=%f
 " [help] flag
 set statusline+=\%h
@@ -44,39 +42,36 @@ if g:use_plugins
             echoerr 'You have to install curl or first install vim-plug yourself!'
             execute 'quit!'
         endif
-        silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        silent !curl -fLo '~/.local/share/nvim/site/autoload/plug.vim' --create-dirs
+            \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     endif
 
     function! Cond(cond, ...)
         let opts = get(a:000, 0, {})
         return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
     endfunction
-    let g:has_cpp_ls = executable('ccls') || executable('cquery')
     call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'tpope/vim-sensible'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-obsession'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-dispatch'
+    Plug 'benmills/vimux'
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
+        Plug 'junegunn/gv.vim'
+        Plug 'tpope/vim-rhubarb'
     Plug 'tpope/vim-rsi'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-apathy'
     Plug 'vhdirk/vim-cmake'
         Plug 'skywind3000/asyncrun.vim'
-    Plug 'rhysd/vim-llvm'
     Plug 'andymass/vim-matchup'
     Plug 'haya14busa/incsearch.vim'
-    Plug 'bkad/CamelCaseMotion'
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf.vim'
-    Plug 'nathanaelkane/vim-indent-guides'
     Plug 'luochen1990/rainbow'
     Plug 'justinmk/vim-sneak'
     Plug 'editorconfig/editorconfig-vim'
@@ -84,16 +79,14 @@ if g:use_plugins
     Plug 'wellle/targets.vim'
     Plug 'rhysd/clever-f.vim'
     Plug 'lambdalisue/suda.vim', Cond(has('nvim'))
-    Plug 'pboettch/vim-cmake-syntax'
-    Plug 'tmux-plugins/vim-tmux'
     Plug 'kovetskiy/sxhkd-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'lervag/vimtex', {'for': 'tex'}
-    Plug 'mzlogin/vim-markdown-toc'
     Plug 'rhysd/git-messenger.vim'
     Plug 'kana/vim-textobj-user'
         Plug 'Julian/vim-textobj-variable-segment'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown'}
+    Plug 'iamcco/markdown-preview.nvim', {'do': { -> mkdp#util#install() }, 'for': 'markdown'}
     Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'honza/vim-snippets'
         Plug 'SirVer/ultisnips'
@@ -106,14 +99,19 @@ if g:use_plugins
         Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
-    Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-bash'}
+    Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
+        Plug 'theHamsta/nvim-dap-virtual-text', Cond(has('nvim-0.5'))
     Plug 'rickhowe/diffchar.vim'
     Plug 'rhysd/conflict-marker.vim'
+    Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
+        Plug 'Yggdroot/indentLine'
+    Plug 'sheerun/vim-polyglot'
+    " Plug 'dstein64/vim-startuptime'
     call plug#end()
     runtime! plug-config/**.vim
     if has('nvim-0.5')
-		luafile ~/.config/nvim/init.lua
-	endif
+        luafile ~/.config/nvim/init.lua
+    endif
 endif
 
 set exrc

@@ -9,6 +9,7 @@ endif
 "     autocmd! BufWritePost <buffer>
 "     autocmd BufWritePost <buffer> CMake
 " augroup END
+set tabstop=2
 
 " let b:undo_ftplugin .= '|autocmd! my_cmake'
 let b:undo_ftplugin .= '| setlocal omnifunc<'
