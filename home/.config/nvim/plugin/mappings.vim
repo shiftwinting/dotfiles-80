@@ -37,7 +37,8 @@ vnoremap <silent> <c-e> $
 vnoremap <silent> p p:let @+=@0<CR>:let @"=@0<CR>
 
 vnoremap <silent> <leader>p "_dP
-nnoremap <silent> <leader>p "_dP
+nnoremap <silent> <leader>d "_d
+nnoremap <silent> <leader>D "_D
 noremap <silent> <leader>c "_c
 noremap <silent> <leader>C "_C
 

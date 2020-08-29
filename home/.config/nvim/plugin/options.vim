@@ -133,3 +133,8 @@ endif
 if has('nvim-0.3.2') || has('patch-8.1.0360')
     set diffopt=filler,internal,indent-heuristic,hiddenoff,iblank,iwhiteall,algorithm:histogram
 endif
+
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+    set grepformat^=%f:%l:%c:%m
+endif

@@ -27,7 +27,6 @@ htop
 hub
 i3lock-fancy-rapid-git
 imagemagick
-inetutils
 informant
 ipcalc
 ipython
@@ -119,7 +118,6 @@ xdg-user-dirs
 xdotool
 xorg-server
 xorg-xev
-xorg-xinit
 xorg-xinput
 xorg-xmodmap
 xorg-xrandr

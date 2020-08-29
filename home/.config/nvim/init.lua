@@ -29,7 +29,7 @@ local on_attach_wrapper = function(client)
   require'completion'.on_attach()
   require'diagnostic'.on_attach()
   lsp_status.on_attach(client)
-  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()')
+  vim.api.nvim_command('autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()')
 end
 
 local lsp_cfg = require'nvim_lsp'
@@ -248,10 +248,17 @@ dap.repl.commands = {
   up = {'.up'},
   down = {'.down'},
   goto_ = {'.goto'},
+  capabilities = {'.capabilities'},
+    -- add your own commands
+  custom_commands = {
+    ['.echo'] = function(text)
+      dap.repl.append(text)
+    end
+    },
 }
 
 vim.cmd [[
     command! -complete=file -nargs=* DebugC lua require "dap-cfg".start_c_debugger({<f-args>}, "lldb-vscode")
 ]]
 
-vim.g.dap_virtual_text = 'all frames'
+vim.g.dap_virtual_text = true

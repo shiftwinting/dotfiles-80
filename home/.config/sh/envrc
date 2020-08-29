@@ -87,7 +87,7 @@ if exists fd; then
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_DIRS_COMMAND="fd --type d --follow --hidden --exclude .git"
 elif exists rg; then
-    export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.git/*'"
+    export FZF_DEFAULT_COMMAND="rg --files"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --cycle --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
@@ -107,7 +107,7 @@ export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
 # set in new intel iris HD driver for VA-API video hw decoding
-if [ "$(hostname)" = "halley" ]; then
+if [ "$(uname -n)" = "halley" ]; then
     export LIBVA_DRIVER_NAME="iHD"
     export MESA_LOADER_DRIVER_OVERRIDE="iris"
     export VAAPI_MPEG4_ENABLED=true
@@ -193,3 +193,4 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"

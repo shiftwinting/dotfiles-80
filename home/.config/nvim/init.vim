@@ -58,6 +58,7 @@ if g:use_plugins
     Plug 'tpope/vim-unimpaired'
     Plug 'benmills/vimux'
     Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-fugitive'
         Plug 'junegunn/gv.vim'
         Plug 'tpope/vim-rhubarb'
@@ -71,7 +72,6 @@ if g:use_plugins
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'airblade/vim-gitgutter'
-    Plug 'junegunn/fzf.vim'
     Plug 'luochen1990/rainbow'
     Plug 'justinmk/vim-sneak'
     Plug 'editorconfig/editorconfig-vim'
@@ -106,6 +106,7 @@ if g:use_plugins
     Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
         Plug 'Yggdroot/indentLine'
     Plug 'sheerun/vim-polyglot'
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
     " Plug 'dstein64/vim-startuptime'
     call plug#end()
     runtime! plug-config/**.vim

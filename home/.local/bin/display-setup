@@ -1,18 +1,18 @@
 #!/usr/bin/env sh
 
-if [ "$(hostname)" != "halley" ]; then
+if [ "$(uname -n)" != "halley" ]; then
     xrandr --setprovideroutputsource modesetting NVIDIA-0
     nvidia-settings --load-config-only &
     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
 fi
 xrandr --auto
 
-if [ "$(hostname)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
+if [ "$(uname -n)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
     xrandr --output eDP-1-1 --off
     xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
-elif [ "$(hostname)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
+elif [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
     xrandr --output eDP-1-1 --off
     xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
-elif [ "$(hostname)" = "halley" ] && xrandr --query | grep "HDMI-1 connected"; then
+elif [ "$(uname -n)" = "halley" ] && xrandr --query | grep "HDMI-1 connected"; then
     xrandr --output HDMI-1 --same-as eDP-1
 fi

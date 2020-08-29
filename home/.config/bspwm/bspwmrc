@@ -3,10 +3,10 @@
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
 
-if [ "$(hostname)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
+if [ "$(uname -n)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
     bspc monitor 'eDP-1-1' --remove
     bspc config pointer_motion_interval 7
-elif [ "$(hostname)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
+elif [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
     bspc monitor 'eDP-1-1' --remove
 fi
 
