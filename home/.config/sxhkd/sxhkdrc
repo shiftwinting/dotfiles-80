@@ -56,10 +56,16 @@ super+alt+c
     showclip
 
 super+alt+{i,n}
-	xrandr --output eDP-1 --rotate {inverted,normal}
+    xrandr --output eDP-1 --rotate {inverted,normal}
 
 super+{F7,F8}
-	systemctl --user {start, stop} caminv
+    systemctl --user {start, stop} caminv
 
-super+{F5,F6}
-	stream {start, stop}
+super+F5
+    stream
+
+super+F6
+    record
+
+super+shift+a
+    automute

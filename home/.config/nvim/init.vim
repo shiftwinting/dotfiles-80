@@ -59,6 +59,7 @@ if g:use_plugins
     Plug 'benmills/vimux'
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-dispatch'
+    Plug 'tpope/vim-git'
     Plug 'tpope/vim-fugitive'
         Plug 'junegunn/gv.vim'
         Plug 'tpope/vim-rhubarb'
@@ -80,6 +81,7 @@ if g:use_plugins
     Plug 'rhysd/clever-f.vim'
     Plug 'lambdalisue/suda.vim', Cond(has('nvim'))
     Plug 'kovetskiy/sxhkd-vim'
+    Plug 'tmux-plugins/vim-tmux'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'lervag/vimtex', {'for': 'tex'}
     Plug 'rhysd/git-messenger.vim'

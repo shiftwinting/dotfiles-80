@@ -93,6 +93,7 @@ stow
 streamlink
 st-ruifm-git
 subliminal-git
+sx
 sxhkd-git
 sxiv
 tcpdump
@@ -116,7 +117,6 @@ wireguard-tools
 xcwd-git
 xdg-user-dirs
 xdotool
-xorg-server
 xorg-xev
 xorg-xinput
 xorg-xmodmap

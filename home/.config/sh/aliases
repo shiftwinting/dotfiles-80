@@ -103,5 +103,3 @@ alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 alias ta='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf new-session -A -s'
 
 alias qr='qrencode -t UTF8'
-
-alias cpa='bin/camop -U "tcp://127.0.0.1:5556" -P "tcp://127.0.0.1:5555" -S "." -c /tmp/test.json  -m'

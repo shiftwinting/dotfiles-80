@@ -36,9 +36,6 @@ mkdir -p ~/.config/isync
 mkdir -p ~/.cache/npm
 mkdir -p ~/.local/share/npm
 mkdir -p ~/.local/share/wineprefixes/default
-mkdir -p ~/.cache/vim/undo
-mkdir -p ~/.cache/vim/swap
-mkdir -p ~/.cache/vim/backup
 
 cp -r ~/dotfiles/systemd/user/* ~/.config/systemd/user
 
