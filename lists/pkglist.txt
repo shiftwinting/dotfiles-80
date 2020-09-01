@@ -19,7 +19,6 @@ fd
 firefox
 fzf-git
 git
-github-cli
 gnu-netcat
 go
 gperf
@@ -37,13 +36,11 @@ lf
 libvdpau-va-gl
 linux
 linux-firmware
-linux-headers
 lua-language-server-git
 man-db
 man-pages
 megacmd-bin
 mpv
-mpv-acestream
 mpv-mpris
 mutt-wizard-git
 neofetch
@@ -74,7 +71,6 @@ pulseaudio
 pulsemixer
 python-dbus
 python-gobject
-qrcp-bin
 qrencode
 qt5ct
 reflector

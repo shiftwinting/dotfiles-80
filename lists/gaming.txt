@@ -1,7 +1,0 @@
-discord
-gamemode
-lib32-gamemode
-lutris
-proton-ge-custom-bin
-steam
-steam-fonts

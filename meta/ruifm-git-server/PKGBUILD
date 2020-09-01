@@ -1,0 +1,19 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-git-server
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's git-server metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'cgit'
+  'perl-cgi'
+  'python-markdown'
+  'python-pygments'
+)
+optdepends=(
+  'ruifm-webserver'
+)
+
+# vim: ts=2 sw=2 et:

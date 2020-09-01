@@ -1,3 +1,0 @@
-nvidia
-nvidia-settings
-nvidia-utils

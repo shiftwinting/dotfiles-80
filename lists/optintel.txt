@@ -1,4 +1,0 @@
-intel-media-sdk
-libva-intel-driver
-mesa-vdpau
-vulkan-intel

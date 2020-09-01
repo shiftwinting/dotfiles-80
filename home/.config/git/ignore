@@ -561,3 +561,10 @@ pythontex-files-*/
 
 # clangd
 .clangd/
+
+# pkgs
+
+.SRCINFO
+*.tar.gz
+*.zip
+*.tar.zst

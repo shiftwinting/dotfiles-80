@@ -1,2 +1,0 @@
-opencl-nvidia
-libva-vdpau-driver-vp9-git

@@ -1,5 +1,0 @@
-cuda
-hdf5
-gcc-fortran
-openmp
-xdot

@@ -1,0 +1,21 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-pi
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's pi metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'firmware-raspberrypi'
+  'haveged'
+  'linux-aarch64'
+  'linux-aarch64-headers'
+  'raspberrypi-bootloader'
+  'raspberrypi-userland-aarch64-git'
+  'wd719x-firmware'
+  'xf86-video-fbturbo-git'
+  'crda'
+)
+
+# vim: ts=2 sw=2 et:

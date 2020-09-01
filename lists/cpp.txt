@@ -1,7 +1,0 @@
-ccache
-clang
-cmake-language-server
-doxygen
-gdb
-lld
-lldb

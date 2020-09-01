@@ -1,4 +1,0 @@
-intel-gpu-tools
-intel-ucode
-libvdpau-va-gl
-mesa

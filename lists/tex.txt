@@ -1,8 +1,0 @@
-texlab
-texlive-bibtexextra
-texlive-core
-texlive-formatsextra
-texlive-latexextra
-texlive-pictures
-texlive-science
-

@@ -1,0 +1,19 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-cpp
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's cpp metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'ccache'
+  'clang'
+  'cmake-language-server'
+  'doxygen'
+  'gdb'
+  'lld'
+  'lldb'
+)
+
+# vim: ts=2 sw=2 et:

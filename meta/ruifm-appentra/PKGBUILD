@@ -1,0 +1,18 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-cpp
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's appentra dev metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'ruifm-cpp'
+  'cuda'
+  'hdf5'
+  'gcc-fortran'
+  'openmp'
+  'xdot'
+)
+
+# vim: ts=2 sw=2 et:

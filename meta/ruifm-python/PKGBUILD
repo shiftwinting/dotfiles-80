@@ -1,0 +1,24 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-python
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's python metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'pyls-mypy'
+  'python-debugpy'
+  'python-language-server'
+  'python-matplotlib'
+  'python-pillow'
+  'python-pipenv'
+  'python-pyls-isort-git'
+  'python-scipy'
+  'python-tqdm'
+  'autopep8'
+  'python-lockfile'
+  'yapf'
+)
+
+# vim: ts=2 sw=2 et:

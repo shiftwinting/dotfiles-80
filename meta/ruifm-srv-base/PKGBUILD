@@ -1,0 +1,16 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-srv-base
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's base server metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'authbind'
+  'ddclient'
+  'fail2ban'
+  'openssh'
+)
+
+# vim: ts=2 sw=2 et:

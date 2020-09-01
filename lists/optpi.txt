@@ -1,7 +1,0 @@
-crda
-perl-cgi
-php-cgi
-php-fpm
-python-pygments
-xclip
-xorg-xauth

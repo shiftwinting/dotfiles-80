@@ -1,0 +1,21 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-intel
+pkgver=2
+pkgrel=1
+pkgdesc="ruifm's intel metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'intel-gpu-tools'
+  'intel-hybrid-codec-driver'
+  'intel-ucode'
+  'libvdpau-va-gl'
+  'mesa'
+  'intel-media-sdk'
+  'libva-intel-driver'
+  'mesa-vdpau'
+  'vulkan-intel'
+)
+
+# vim: ts=2 sw=2 et:

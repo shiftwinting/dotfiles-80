@@ -94,19 +94,20 @@ if g:use_plugins
         Plug 'SirVer/ultisnips'
     Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
-            Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
         Plug 'liuchengxu/vista.vim'
         Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
+        " Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
+            Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
         Plug 'theHamsta/nvim-dap-virtual-text', Cond(has('nvim-0.5'))
     Plug 'rickhowe/diffchar.vim'
     Plug 'rhysd/conflict-marker.vim'
-    Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
-        Plug 'Yggdroot/indentLine'
+    Plug 'Yggdroot/indentLine'
+        Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
     Plug 'sheerun/vim-polyglot'
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
     " Plug 'dstein64/vim-startuptime'

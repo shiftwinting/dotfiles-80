@@ -1,0 +1,27 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-tex
+pkgver=2
+pkgrel=1
+pkgdesc="ruifm's LaTeX metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'texlab'
+  'texlive-bibtexextra'
+  'texlive-core'
+  'texlive-formatsextra'
+  'texlive-latexextra'
+  'texlive-pictures'
+  'texlive-science'
+  'texlive-fontsextra'
+  'texlive-games'
+  'texlive-humanities'
+  'texlive-music'
+  'texlive-pstricks'
+  'texlive-publishers'
+  'biber'
+  'ghostscript'
+)
+
+# vim: ts=2 sw=2 et:

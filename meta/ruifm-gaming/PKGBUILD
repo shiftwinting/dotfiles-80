@@ -1,0 +1,22 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-gaming
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's gaming metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'discord'
+  'gamemode'
+  'mangohud'
+  'steam'
+  'steam-fonts'
+)
+optdepends=(
+  'lib32-gamemode'
+  'lutris'
+  'proton-ge-custom-bin'
+)
+
+# vim: ts=2 sw=2 et:
