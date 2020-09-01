@@ -7,9 +7,10 @@ arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
-  'nvidia'
+  'nvidia-dkms'
   'nvidia-settings'
   'nvidia-utils'
+  'linux-headers'
   'opencl-nvidia'
   'libva-vdpau-driver-vp9-git'
 )

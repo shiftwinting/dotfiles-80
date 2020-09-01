@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-intel
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="ruifm's intel metapackage"
 arch=('any')
@@ -8,7 +8,6 @@ url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
   'intel-gpu-tools'
-  'intel-hybrid-codec-driver'
   'intel-ucode'
   'libvdpau-va-gl'
   'mesa'
