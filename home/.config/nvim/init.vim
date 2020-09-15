@@ -116,9 +116,9 @@ if g:use_plugins
         Plug 'nvim-lua/popup.nvim', Cond(has('nvim-0.5'))
             Plug 'nvim-lua/telescope.nvim', Cond(has('nvim-0.5'))
     Plug 'dstein64/vim-startuptime'
-    Plug 'tjdevries/nlua.nvim'
+    Plug 'tjdevries/nlua.nvim', Cond(has('nvim-0.5'))
     Plug 'euclidianAce/BetterLua.vim'
-    Plug 'norcalli/nvim_utils'
+    Plug 'norcalli/nvim_utils', Cond(has('nvim-0.5'))
     Plug 'sbdchd/neoformat'
     call plug#end()
     if has('nvim-0.5')
