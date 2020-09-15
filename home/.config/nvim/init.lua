@@ -42,7 +42,6 @@ lsp_cfg.util.default_config = vim.tbl_extend("force",
     on_attach = on_attach_wrapper,
     capabilities = lsp_status.capabilities
 })
-
 lsp_cfg.bashls.setup {}
 lsp_cfg.clangd.setup {
     cmd = {
@@ -71,61 +70,44 @@ lsp_cfg.texlab.setup {}
 lsp_cfg.vimls.setup {}
 lsp_cfg.html.setup {}
 lsp_cfg.cmake.setup {}
-lsp_cfg.diagnosticls.setup {
-    filetypes = {"vim", "sh", "lua"},
-    init_options = {
-        linters = {
-            shellcheck = {
-                command = "shellcheck",
-                debounce = 100,
-                args = {"--format", "json", "-"},
-                sourceName = "shellcheck",
-                parseJson = {
-                    line = "line",
-                    column = "column",
-                    endLine = "endLine",
-                    endColumn = "endColumn",
-                    message = "${message} [${code}]",
-                    security = "level"
-                },
-                securities = {
-                    error = "error",
-                    warning = "warning",
-                    note = "info"
+require('nlua.lsp').set_lsp(lsp_cfg)
+
+lsp_cfg.sumneko_lua.setup({
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+                -- TODO: Figure out how to get plugins here.
+                path = vim.split(package.path, ';')
+                -- path = {package.path},
+            },
+            completion = {
+                -- You should use real snippets
+                keywordSnippet = "Disable"
+            },
+            diagnostics = {
+                enable = true,
+                globals = {
+                    -- Neovim
+                    "vim", -- Busted
+                    "describe", "it", "before_each", "after_each", "teardown",
+                    "pending"
                 }
             },
-            vint = {
-                command = "vint",
-                debounce = 100,
-                args = {"--enable-neovim", "-"},
-                offsetLine = 0,
-                offsetColumn = 0,
-                sourceName = "vint",
-                formatLines = 1,
-                formatPattern = {
-                    "[^:]+:(\\d+):(\\d+):\\s*(.*)(\\r|\\n)*$",
-                    {line = 1, column = 2, message = 3}
+
+            workspace = {
+                library = {
+                    -- This loads the `lua` files from nvim into the runtime.
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true
                 }
             }
-        },
-        formatters = {
-            lua_format = {command = "lua-format", args = {"-i"}},
-            shfmt = {command = "shfmt"}
-        },
-        filetypes = {sh = "shellcheck", vim = "vint"},
-        formatFiletypes = {sh = "shfmt", lua = "lua_format"}
-    }
-}
+        }
+    },
 
-require("nlua.lsp.nvim").setup(require("nvim_lsp"), {
-    on_attach = on_attach_wrapper,
-    capabilities = lsp_status.capabilities
-    -- Include globals you want to tell the LSP are real :)
-    -- globals = {
-    --   -- Colorbuddy
-    --   "Color", "c", "Group", "g", "s",
-    -- }
+    filetypes = {"lua"},
+    cmd = {"lua-language-server"}
 })
+
 -- require'nvim_lsp'.efm.setup {
 --     filetypes = {"vim", "markdown", "rst", "sh", "json", "html", "lua"}
 -- }
