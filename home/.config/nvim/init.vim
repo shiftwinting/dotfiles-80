@@ -1,5 +1,7 @@
 let g:use_plugins = 1
 
+let g:polyglot_disabled = ['latex', 'lua', 'tex', 'sxhkd', 'tmux']
+
 let mapleader = ' '
 let maplocalleader = ','
 
@@ -73,6 +75,7 @@ if g:use_plugins
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'airblade/vim-gitgutter'
+    " Plug 'junegunn/fzf.vim'
     Plug 'luochen1990/rainbow'
     Plug 'justinmk/vim-sneak'
     Plug 'editorconfig/editorconfig-vim'
@@ -92,12 +95,12 @@ if g:use_plugins
     Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'honza/vim-snippets'
         Plug 'SirVer/ultisnips'
-    Plug 'neovim/nvim-lsp', Cond(has('nvim-0.5'))
+    Plug 'neovim/nvim-lspconfig', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
-        Plug 'liuchengxu/vista.vim'
         Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
+        Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
         " Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
@@ -109,10 +112,15 @@ if g:use_plugins
     Plug 'Yggdroot/indentLine'
         Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
     Plug 'sheerun/vim-polyglot'
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-    " Plug 'dstein64/vim-startuptime'
+    Plug 'nvim-lua/plenary.nvim', Cond(has('nvim-0.5'))
+        Plug 'nvim-lua/popup.nvim', Cond(has('nvim-0.5'))
+            Plug 'nvim-lua/telescope.nvim', Cond(has('nvim-0.5'))
+    Plug 'dstein64/vim-startuptime'
+    Plug 'tjdevries/nlua.nvim'
+    Plug 'euclidianAce/BetterLua.vim'
+    Plug 'norcalli/nvim_utils'
+    Plug 'sbdchd/neoformat'
     call plug#end()
-    runtime! plug-config/**.vim
     if has('nvim-0.5')
         luafile ~/.config/nvim/init.lua
     endif

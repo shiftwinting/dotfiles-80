@@ -58,8 +58,8 @@ font-1 = NotoMono Nerd Font Mono:size=10;2
 ; font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
-modules-center = mpris xwindow
-modules-right = mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
+modules-center = xwindow
+modules-right = viewers mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
 
 tray-position = right
 tray-padding = 0
@@ -403,6 +403,11 @@ interval = 5
 type = custom/script
 exec = ~/dotfiles/barscripts/mailbox 2> /dev/null
 interval = 1000
+
+[module/viewers]
+type = custom/script
+exec = count-viewers 2> /dev/null
+interval = 15
 
 [settings]
 screenchange-reload = true

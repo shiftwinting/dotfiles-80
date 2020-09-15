@@ -30,6 +30,9 @@ super + {t,shift + t,s,f}
 super + w;{m,l,s,p}
 	bspc node -g {marked,locked,sticky,private}
 
+super + alt + s;{b,n,a}
+	bspc node -l {below,normal,above}
+
 #
 # focus/swap
 #

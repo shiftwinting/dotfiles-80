@@ -1,18 +1,12 @@
 version: 2
+root-markers:
+  - .git/
 tools:
   vim-vint: &vim-vint
     lint-command: 'vint -'
     lint-stdin: true
     lint-formats:
       - '%f:%l:%c: %m'
-
-  markdown-markdownlint: &markdown-markdownlint
-    lint-command: 'markdownlint -s'
-    lint-stdin: true
-    lint-formats:
-      - '%f:%l %m'
-      - '%f:%l:%c %m'
-      - '%f: %l: %m'
 
   markdown-pandoc: &markdown-pandoc
     format-command: 'pandoc -f markdown -t gfm -sp --tab-stop=2'
@@ -27,15 +21,31 @@ tools:
       - '%f:%l:%c: %tarning: %m'
       - '%f:%l:%c: %tote: %m'
 
+  sh-shfmt: &sh-shfmt
+    format-command: 'shfmt -ci -s -bn'
+    format-stdin: true
+
   json-jq: &json-jq
     lint-command: 'jq .'
+    
+  html-prettier: &html-prettier
+    format-command: 'prettier --parser html'
+
+  css-prettier: &css-prettier
+    format-command: 'prettier --parser css'
+
+  json-prettier: &json-prettier
+    format-command: 'prettier --parser json'
+
+  lua-lua-format: &lua-lua-format
+    format-command: 'lua-format -i'
+    format-stdin: true
 
 languages:
   vim:
     - <<: *vim-vint
 
   markdown:
-    - <<: *markdown-markdownlint
     - <<: *markdown-pandoc
 
   rst:
@@ -43,5 +53,13 @@ languages:
 
   sh:
     - <<: *sh-shellcheck
+    - <<: *sh-shfmt
+
   json:
     - <<: *json-jq
+
+  html:
+    - <<: *html-prettier
+
+  lua:
+    - <<: *lua-lua-format
