@@ -100,7 +100,7 @@ if g:use_plugins
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
-        Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(has('nvim-0.5'))
+        " Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
         " Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))

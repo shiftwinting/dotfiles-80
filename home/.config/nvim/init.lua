@@ -95,12 +95,12 @@ lsp_cfg.clangd.setup {
         clangdFileStatus = true
     }
 }
-lsp_cfg.ccls.setup {
-    init_options = {
-        highlight = {lsRanges = true},
-        client = {snippetSupport = true}
-    }
-}
+-- lsp_cfg.ccls.setup {
+--     init_options = {
+--         highlight = {lsRanges = true},
+--         client = {snippetSupport = true}
+--     }
+-- }
 lsp_cfg.jsonls.setup {cmd = {"json-languageserver"}}
 lsp_cfg.pyls.setup {}
 lsp_cfg.texlab.setup {}
@@ -155,7 +155,7 @@ local ts_cfg = require "nvim-treesitter.configs"
 ts_cfg.setup {
     ensure_installed = "all", -- one of "all", "language", or a list of languages
     highlight = {
-        enable = false, -- false will disable the whole extension
+        enable = true, -- false will disable the whole extension
         disable = {"css"} -- list of language that will be disabled
     },
     incremental_selection = {
