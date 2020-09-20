@@ -1,6 +1,5 @@
 setlocal commentstring=//\ %s
 if has('nvim-0.5')
-    setlocal omnifunc=v:lua.vim.lsp.omnifunc
     " augroup cpp-fsync
     "     autocmd! BufWritePre <buffer>
     "     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
@@ -8,4 +7,4 @@ if has('nvim-0.5')
     nnoremap gH :ClangdSwitchSourceHeader<cr>
 endif
 
-let b:undo_ftplugin .= '| setlocal omnifunc< commentstring<'
+let b:undo_ftplugin .= '| setlocal commentstring<'
