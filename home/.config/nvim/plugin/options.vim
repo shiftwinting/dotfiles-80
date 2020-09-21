@@ -121,6 +121,8 @@ set nojoinspaces
 set listchars+=trail:·
 set list
 
+set title
+
 let g:is_posix=1
 
 let g:netrw_home=expand("$XDG_DATA_HOME/nvim")
