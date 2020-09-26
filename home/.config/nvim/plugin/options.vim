@@ -92,6 +92,16 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
+set shortmess-=f
+set shortmess-=i
+set shortmess-=l
+set shortmess-=m
+set shortmess-=n
+set shortmess-=r
+set shortmess-=w
+set shortmess-=x
+set shortmess+=a
+
 " Set commentstring globally for all undetected filetypes
 set commentstring=#\ %s
 
@@ -122,6 +132,9 @@ set listchars+=trail:·
 set list
 
 set title
+set signcolumn=auto:2
+
+set spelloptions=camel
 
 let g:is_posix=1
 

@@ -45,6 +45,8 @@
     autocorrect = 1
 [log]
     abbrevCommit = true
+[interactive]
+    singleKey = true
 [rerere]
     autoUpdate = true
 [github]

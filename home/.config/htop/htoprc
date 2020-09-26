@@ -27,4 +27,3 @@ left_meters=Uptime AllCPUs2 Blank Memory Memory
 left_meter_modes=2 1 2 1 2
 right_meters=CPU Memory
 right_meter_modes=3 3
-vim_mode=1

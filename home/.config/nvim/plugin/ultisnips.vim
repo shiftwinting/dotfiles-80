@@ -3,6 +3,6 @@ if !g:use_plugins || exists('g:loaded_ultisnips_config') || !has('python3')
 endif
 let g:loaded_ultisnips_config = 1
 
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-s>"
+let g:UltiSnipsExpandTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-z>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"

@@ -53,3 +53,10 @@ if has('nvim-0.5')
         autocmd TextYankPost * silent! lua vim.highlight.on_yank()
     augroup END
 endif
+
+
+let s:local_vimrc=".doit.vim"
+augroup local_vimrc
+    autocmd!
+    autocmd VimEnter * if filereadable(".doit.vim") | echo "sourcing local config" | source .doit.vim | endif
+augroup END

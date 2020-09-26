@@ -75,7 +75,6 @@ if g:use_plugins
     Plug 'romainl/vim-qf'
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'airblade/vim-gitgutter'
-    " Plug 'junegunn/fzf.vim'
     Plug 'luochen1990/rainbow'
     Plug 'justinmk/vim-sneak'
     Plug 'editorconfig/editorconfig-vim'
@@ -91,7 +90,7 @@ if g:use_plugins
     Plug 'kana/vim-textobj-user'
         Plug 'Julian/vim-textobj-variable-segment'
     Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown'}
-    Plug 'iamcco/markdown-preview.nvim', {'do': { -> mkdp#util#install() }, 'for': 'markdown'}
+    Plug 'npxbr/glow.nvim', {'for': 'markdown'}
     Plug 'norcalli/nvim-colorizer.lua', Cond(has('nvim-0.4'))
     Plug 'honza/vim-snippets'
         Plug 'SirVer/ultisnips'
@@ -101,6 +100,8 @@ if g:use_plugins
         Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
         " Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(has('nvim-0.5'))
+        Plug 'RishabhRD/popfix', Cond(has('nvim-0.5'))
+            Plug 'RishabhRD/nvim-lsputils', Cond(has('nvim-0.5'))
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
         " Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
@@ -125,6 +126,3 @@ if g:use_plugins
         luafile ~/.config/nvim/init.lua
     endif
 endif
-
-set exrc
-set secure
