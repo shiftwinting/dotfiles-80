@@ -5,6 +5,7 @@ notify-always yes
 reload-threads 4
 always-display-description yes
 show-read-feeds no
+text-width 80
 
 bind-key j next
 bind-key k prev
