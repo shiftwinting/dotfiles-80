@@ -18,6 +18,8 @@ super + y
 super + shift + g
 	bspc node -s newest.marked
 
+super + t
+	bspc node @parent -R 90
 #
 # state/flags
 #
