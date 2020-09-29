@@ -109,6 +109,17 @@ lsp_cfg.html.setup {}
 lsp_cfg.cmake.setup {}
 require('nlua.lsp').set_lsp(lsp_cfg)
 
+function GetLuaRuntime()
+    local result = {};
+    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+        local lua_path = path .. "/lua";
+        if vim.fn.isdirectory(lua_path) then
+            result[lua_path] = true
+        end
+    end
+    return result;
+end
+
 lsp_cfg.sumneko_lua.setup({
     settings = {
         Lua = {
@@ -127,17 +138,13 @@ lsp_cfg.sumneko_lua.setup({
                 globals = {
                     -- Neovim
                     "vim", -- Busted
-                    "nvim", -- Busted
                     "describe", "it", "before_each", "after_each", "teardown",
                     "pending"
                 }
             },
 
             workspace = {
-                library = {
-                    -- This loads the `lua` files from nvim into the runtime.
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true
-                }
+                library = GetLuaRuntime()
             }
         }
     },
@@ -282,7 +289,7 @@ vim.cmd [[
     command! -complete=file -nargs=* DebugC lua require "dap-cfg".start_c_debugger({<f-args>}, "lldb-vscode")
 ]]
 
-vim.g.dap_virtual_text = true
+vim.g.dap_virtual_text = 'all frames'
 
 vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler

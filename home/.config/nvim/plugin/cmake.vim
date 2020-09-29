@@ -10,4 +10,4 @@ let g:cmake_project_generator="Ninja"
 let g:cmake_c_compiler='/usr/bin/clang'
 let g:cmake_cxx_compiler='/usr/bin/clang++'
 let g:cmake_install_prefix='install'
-let g:cmake_usr_args='-DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
+" let g:cmake_usr_args='-DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
