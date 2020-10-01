@@ -103,6 +103,7 @@ ttf-fira-code
 ttf-font-awesome
 tuir
 udisks2
+unclutter
 unzip
 urlview-git
 vim-language-server
