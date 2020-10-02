@@ -107,16 +107,18 @@ lsp_cfg.texlab.setup {}
 lsp_cfg.vimls.setup {}
 lsp_cfg.html.setup {}
 lsp_cfg.cmake.setup {}
-require('nlua.lsp').set_lsp(lsp_cfg)
 
-function GetLuaRuntime()
+local function get_lua_runtime()
     local result = {};
     for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-        local lua_path = path .. "/lua";
+        local lua_path = path .. "/lua/";
         if vim.fn.isdirectory(lua_path) then
             result[lua_path] = true
         end
     end
+
+    -- This loads the `lua` files from nvim into the runtime.
+    result[vim.fn.expand("$VIMRUNTIME/lua")] = true
     return result;
 end
 
@@ -126,7 +128,7 @@ lsp_cfg.sumneko_lua.setup({
             runtime = {
                 version = "LuaJIT",
                 -- TODO: Figure out how to get plugins here.
-                path = vim.split(package.path, ';')
+                -- path = vim.split(package.path, ';')
                 -- path = {package.path},
             },
             completion = {
@@ -144,7 +146,9 @@ lsp_cfg.sumneko_lua.setup({
             },
 
             workspace = {
-                library = GetLuaRuntime()
+                library = get_lua_runtime(),
+                maxPreload = 1000,
+                preloadFileSize = 1000,
             }
         }
     },
