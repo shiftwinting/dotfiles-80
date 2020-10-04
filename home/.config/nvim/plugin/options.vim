@@ -134,7 +134,9 @@ set list
 set title
 set signcolumn=auto:2
 
-set spelloptions=camel
+if has('nvim-0.5')
+    set spelloptions=camel
+endif
 
 let g:is_posix=1
 

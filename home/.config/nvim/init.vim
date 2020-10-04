@@ -105,7 +105,7 @@ if g:use_plugins
     Plug 'nvim-treesitter/nvim-treesitter', Cond(has('nvim-0.5'))
         " Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
-        Plug 'nvim-treesitter/nvim-treesitter-refactor'
+        Plug 'nvim-treesitter/nvim-treesitter-refactor', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
         Plug 'theHamsta/nvim-dap-virtual-text', Cond(has('nvim-0.5'))
@@ -117,7 +117,7 @@ if g:use_plugins
     Plug 'nvim-lua/plenary.nvim', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/popup.nvim', Cond(has('nvim-0.5'))
             Plug 'nvim-lua/telescope.nvim', Cond(has('nvim-0.5'))
-    Plug 'dstein64/vim-startuptime'
+    " Plug 'dstein64/vim-startuptime'
     Plug 'tjdevries/nlua.nvim', Cond(has('nvim-0.5'))
     Plug 'euclidianAce/BetterLua.vim'
     Plug 'norcalli/nvim_utils', Cond(has('nvim-0.5'))
