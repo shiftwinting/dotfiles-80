@@ -13,12 +13,8 @@
 
 if [ ! "$DISPLAY" ]; then
     if  [ "$XDG_VTNR" = "1" ]; then
-        if [ "$(uname -n)" != "tau" ]; then
-            exists sx && exec sx
-            exists startx && exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
-        elif [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ] && [ -t 0 ] && [ -z "$TMUX" ]; then
-            exists tmux && exec tmux new-session -A -s tty
-        fi
+        exists sx && exec sx
+        exists startx && exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
     elif [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ]; then
         [ -r ~/dotfiles/lists/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/lists/caps2esc.map > /dev/null
         sudo -n kbdrate -s -d 250 -r 30 > /dev/null
