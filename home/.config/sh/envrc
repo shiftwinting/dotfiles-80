@@ -152,9 +152,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
-if [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ]; then
-    [ "$XDG_RUNTIME_DIR" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-fi
+[ "$XDG_RUNTIME_DIR" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export NMBGIT="$XDG_DATA_HOME/notmuch/nmbug"
