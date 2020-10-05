@@ -1,0 +1,10 @@
+[Unit]
+Description=Mailbox synchronization service
+
+[Service]
+Environment="GNUPGHOME=%h/.local/share/gnupg"
+Environment="PASSWORD_STORE_DIR=%h/.local/share/password-store"
+Environment="NOTMUCH_CONFIG=%h/.config/notmuch/config"
+Type=oneshot
+ExecStart=/usr/bin/mbsync -c %h/.config/isync/mbsyncrc -Va
+ExecStartPost=/usr/bin/notmuch new
