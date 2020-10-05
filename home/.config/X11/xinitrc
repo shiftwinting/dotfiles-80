@@ -2,6 +2,10 @@
 # xinitrc file, used by all X sessions started by xinit (startx)
 
 # shellcheck source=/dev/null
+[ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
+display-setup
+
+# shellcheck source=/dev/null
 [ -r  ~/.config/X11/xprofile ] && . ~/.config/X11/xprofile &
 if [ "$(uname -n)" != "tau" ]; then
     launch-polybar &

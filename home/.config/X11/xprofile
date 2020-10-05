@@ -3,8 +3,6 @@
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 systemctl --user import-environment PATH DISPLAY XAUTHORITY
 
-display-setup
-
 [ -r ~/.config/X11/Xresources ] && xrdb ~/.config/X11/Xresources
 
 xsetroot -cursor_name left_ptr &
