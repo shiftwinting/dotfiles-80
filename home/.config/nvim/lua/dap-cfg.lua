@@ -1,11 +1,11 @@
 local M = {}
 local last_gdb_config
 
-M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
+M.start_c_debugger = function(args)
     local dap = require "dap"
     if args and #args > 0 then
-        last_gdb_config = {
-            type = "cpp",
+        last_config = {
+            type = "lldb",
             name = args[1],
             request = "launch",
             program = table.remove(args, 1),
@@ -18,18 +18,15 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
               end
               return variables
             end,
-            externalConsole = true,
-            MIMode = mi_mode or "gdb",
-            MIDebuggerPath = mi_debugger_path
           }
     end
 
-    if not last_gdb_config then
-        print('No binary to debug set! Use ":DebugC <binary> <args>" or ":DebugRust <binary> <args>"')
+    if not last_config then
+        print('No binary to debug set! Use ":DebugC <binary> <args>"')
         return
     end
 
-    dap.run(last_gdb_config)
+    dap.run(last_config)
     dap.repl.open()
 end
 
