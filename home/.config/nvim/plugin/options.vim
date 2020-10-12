@@ -70,7 +70,7 @@ set expandtab        " Tab key inserts spaces instead of tabs
 set shiftround
 set shiftwidth=0
 set softtabstop=-1
-" set tabstop=4
+set tabstop=4
 
 set nofoldenable
 
