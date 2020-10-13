@@ -12,7 +12,7 @@
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 
 if [ ! "$DISPLAY" ]; then
-    if  [ "$XDG_VTNR" = "1" ]; then
+    if  [ "$XDG_VTNR" = "1" ] && [ "$(uname -n)" != "tau" ]; then
         exists sx && exec sx
         exists startx && exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
     elif [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ]; then
@@ -24,9 +24,9 @@ if [ ! "$DISPLAY" ]; then
     fi
 fi
 
-if [ -n "$BASH" ]; then
+if [ "$BASH" ]; then
     safesource ~/.bashrc
-elif [ -n "$ZSH_VERSION" ]; then
+elif [ "$ZSH_VERSION" ]; then
     safesource "$XDG_CONFIG_HOME"/zsh/.zshrc
 else
     safesource "$XDG_CONFIG_HOME"/sh/shinit

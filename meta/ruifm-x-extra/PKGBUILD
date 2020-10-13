@@ -1,16 +1,16 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
-pkgname=ruifm-bt
-pkgver=1
+pkgname=ruifm-x-extra
+pkgver=2
 pkgrel=1
-pkgdesc="ruifm's bluetooth metapackage"
+pkgdesc="ruifm's Xorg apps metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
-  'bluez-utils'
-  'ell'
-  'pulseaudio-modules-bt'
-  'libldac'
+  'firefox'
+  'zathura'
+  'zathura-pdf-mupdf'
+  'zoom'
 )
 
 # vim: ts=2 sw=2 et:

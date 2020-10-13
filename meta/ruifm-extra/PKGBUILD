@@ -1,0 +1,19 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-extra
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's extra metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'megacmd-bin'
+  'newsboat'
+  'pandoc-bin'
+  'scli-git'
+  'spotifyd-full-git'
+  'spotify-tui-bin'
+  'tuir'
+)
+
+# vim: ts=2 sw=2 et:

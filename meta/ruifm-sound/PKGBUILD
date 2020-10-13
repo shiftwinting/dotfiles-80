@@ -1,0 +1,18 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-sound
+pkgver=3
+pkgrel=1
+pkgdesc="ruifm's sound metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'alsa-utils'
+  'cava-git'
+  'playerctl'
+  'pulseaudio'
+  'pulseaudio-alsa'
+  'pulsemixer'
+)
+
+# vim: ts=2 sw=2 et:

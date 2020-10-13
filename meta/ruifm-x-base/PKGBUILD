@@ -1,0 +1,19 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-x-base
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's Xorg base metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'sx'
+  'unclutter-xfixes-git'
+  'xorg-xinput'
+  'xorg-xmodmap'
+  'xorg-xrandr'
+  'xorg-xrdb'
+  'xorg-xsetroot'
+)
+
+# vim: ts=2 sw=2 et:

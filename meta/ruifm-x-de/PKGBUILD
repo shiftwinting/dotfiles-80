@@ -1,0 +1,33 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-x-de
+pkgver=3
+pkgrel=1
+pkgdesc="ruifm's DE metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'bspwm-git'
+  'dunst'
+  'i3lock-fancy-rapid-git'
+  'libnotify'
+  'polybar'
+  'python-dbus'
+  'python-gobject'
+  'qt5ct'
+  'rofi'
+  'scrot'
+  'st-ruifm-git'
+  'sxhkd-git'
+  'sxiv'
+  'xcwd-git'
+  'xdotool'
+  'xorg-xdpyinfo'
+  'xorg-xev'
+  'xorg-xwininfo'
+)
+optdepends=(
+  'bitwarden-rofi-git'
+)
+
+# vim: ts=2 sw=2 et:

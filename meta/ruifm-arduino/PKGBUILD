@@ -1,16 +1,14 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
-pkgname=ruifm-bt
+pkgname=ruifm-arduino
 pkgver=1
 pkgrel=1
-pkgdesc="ruifm's bluetooth metapackage"
+pkgdesc="ruifm's arduino metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
-  'bluez-utils'
-  'ell'
-  'pulseaudio-modules-bt'
-  'libldac'
+  'arduino-avr-core'
+  'arduino-cli'
 )
 
 # vim: ts=2 sw=2 et:
