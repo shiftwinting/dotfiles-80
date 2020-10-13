@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'arch-audit'
   'base'
   'bash-completion'
+  'bat'
   'bc'
   'cmake'
   'cpupower'
