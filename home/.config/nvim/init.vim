@@ -123,6 +123,7 @@ if g:use_plugins
     Plug 'euclidianAce/BetterLua.vim'
     Plug 'norcalli/nvim_utils', Cond(has('nvim-0.5'))
     Plug 'sbdchd/neoformat'
+    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
     call plug#end()
     if has('nvim-0.5')
         luafile ~/.config/nvim/init.lua

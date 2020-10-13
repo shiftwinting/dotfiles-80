@@ -1,0 +1,15 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-stream
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's stream metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'ffmpeg'
+  'ncurses5-compat-libs'
+  'nim'
+)
+
+# vim: ts=2 sw=2 et:

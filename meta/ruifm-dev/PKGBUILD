@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-dev
-pkgver=2
+pkgver=4
 pkgrel=1
 pkgdesc="ruifm's dev metapackage"
 arch=('any')
@@ -8,10 +8,16 @@ url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
   'bash-language-server'
+  'lua-format'
   'lua-language-server-git'
+  'prettier'
   'shellcheck-bin'
+  'shfmt'
   'sloccount'
   'vim-language-server'
+  'vint'
+  'vscode-html-languageserver-bin'
+  'vscode-json-languageserver-bin'
 )
 
 # vim: ts=2 sw=2 et:
