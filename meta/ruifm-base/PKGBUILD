@@ -39,7 +39,6 @@ depends=(
   'man-db'
   'man-pages'
   'neofetch'
-  'neovim-git'
   'neovim-remote'
   'ninja'
   'nmap'
