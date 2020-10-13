@@ -56,7 +56,6 @@ depends=(
   'pkgfile'
   'pkgstats'
   'qrencode'
-  'reflector'
   'ripgrep'
   'rsync'
   'rust'
