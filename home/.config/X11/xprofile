@@ -11,3 +11,6 @@ xsetroot -cursor_name left_ptr &
 input-setup &
 unclutter &
 automute &
+if [ "$(uname -n)" != "tau" ]; then
+    launch-polybar &
+fi

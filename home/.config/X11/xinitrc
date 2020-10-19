@@ -3,7 +3,6 @@
 # shellcheck source=/dev/null
 [ -r  ~/.config/X11/xprofile ] && . ~/.config/X11/xprofile &
 if [ "$(uname -n)" != "tau" ]; then
-    launch-polybar &
     dunst &
     sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
     exec bspwm
