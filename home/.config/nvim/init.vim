@@ -107,6 +107,7 @@ if g:use_plugins
             Plug 'nvim-treesitter/completion-treesitter', Cond(has('nvim-0.5'))
         Plug 'nvim-treesitter/nvim-treesitter-refactor', Cond(has('nvim-0.5'))
         Plug 'nvim-treesitter/nvim-treesitter-textobjects', Cond(has('nvim-0.5'))
+        Plug 'romgrk/nvim-treesitter-context', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
         Plug 'theHamsta/nvim-dap-virtual-text', Cond(has('nvim-0.5'))

@@ -6,7 +6,9 @@ let g:loaded_completion_nvim_config = 1
 let g:completion_enable_snippet = 'UltiSnips'
 " let g:completion_matching_ignore_case = 1
 let g:completion_auto_change_source = 1
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
+let g:completion_enable_auto_paren=1
+let g:completion_trigger_on_delete = 1
 
 imap  <c-j> <Plug>(completion_next_source)
 imap  <c-k> <Plug>(completion_prev_source)
@@ -16,19 +18,19 @@ let g:completion_chain_complete_list = {
     \       'default': [
     \           {'complete_items': ['lsp', 'snippet']},
     \           {'complete_items': ['ts']},
-    \           {'complete_items': ['buffers']},
     \       ],
     \       'string' : [
     \           {'complete_items': ['path'], 'triggered_only': ['/']},
     \           {'complete_items': ['buffers']},
     \       ],
     \       'comment' : [
-    \           {'complete_items': ['buffers']}
+    \           {'complete_items': ['buffers', 'path']}
     \       ],
     \   },
     \   'tex': {
     \       'default': [
     \           {'complete_items': ['vimtex', 'lsp', 'snippet']},
+    \           {'complete_items': ['ts']},
     \           {'complete_items': ['buffers']},
     \       ],
     \       'comment' : [
@@ -37,12 +39,10 @@ let g:completion_chain_complete_list = {
     \   }
     \}
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ completion#trigger_completion()
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+        \ "\<Plug>(completion_confirm_completion)"  :
+        \ "\<c-e>\<CR>" : "\<CR>"

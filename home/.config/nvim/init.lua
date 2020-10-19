@@ -167,6 +167,7 @@ ts_cfg.setup {
     ensure_installed = "all", -- one of "all", "language", or a list of languages
     highlight = {
         enable = true, -- false will disable the whole extension
+        use_language_tree = true,
         disable = {} -- list of language that will be disabled
     },
     incremental_selection = {
