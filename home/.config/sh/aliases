@@ -49,9 +49,10 @@ alias gsp='git stash pop'
 alias gsd='git stash drop'
 alias gsl='git stash list'
 
-alias sys='sudo systemctl'
+alias sys='systemctl'
+alias ssys='sudo systemctl'
 alias sysu='systemctl --user'
-alias syst='systemctl status'
+alias sst='systemctl status'
 
 alias please='sudo !!'
 alias rtfm='man'
