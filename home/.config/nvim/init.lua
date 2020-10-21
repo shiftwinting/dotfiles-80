@@ -323,3 +323,10 @@ vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.ty
 vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
 vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
 vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+
+require('telescope').setup {
+  defaults = {
+        generic_sorter = require'telescope.sorters'.get_fzy_sorter,
+        file_sorter = require'telescope.sorters'.get_fzy_sorter
+  }
+}
