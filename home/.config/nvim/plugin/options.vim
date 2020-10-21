@@ -37,12 +37,11 @@ endif
 
 
 " poor mans version control
-set writebackup
 set hidden
 if has('persistent_undo')
     set undofile
 endif
-set swapfile
+set noswapfile
 
 if !has('nvim')
     set background=dark

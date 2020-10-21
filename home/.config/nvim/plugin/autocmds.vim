@@ -33,6 +33,11 @@ augroup restore-cursor
     autocmd VimLeave * set guicursor=a:block-blinkon0
 augroup END
 
+augroup silent-autoread
+    autocmd!
+    autocmd FocusGained,CursorHold ?* if getcmdwintype() == '' | checktime | endif
+augroup END
+
 if has("terminal")
     if has("nvim")
         augroup terminal_buff
