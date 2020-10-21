@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-extra
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="ruifm's extra metapackage"
 arch=('any')
@@ -10,7 +10,6 @@ depends=(
   'megacmd-bin'
   'newsboat'
   'pandoc-bin'
-  'scli-git'
   'spotifyd'
   'spotify-tui-bin'
   'tuir'
