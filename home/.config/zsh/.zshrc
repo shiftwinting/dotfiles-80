@@ -136,6 +136,10 @@ autoload -Uz run-help-git
 autoload -Uz run-help-ip
 autoload -Uz run-help-sudo
 
+set zle_bracketed_paste  # Explicitly restore this zsh default
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
 safesource /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [ -n "$ZSH_HIGHLIGHT_STYLES" ]; then

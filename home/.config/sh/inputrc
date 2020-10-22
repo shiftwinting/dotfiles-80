@@ -16,3 +16,5 @@ set colored-completion-prefix On
 set menu-complete-display-prefix On
 
 set echo-control-characters off
+
+set enable-bracketed-paste on
