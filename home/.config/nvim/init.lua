@@ -6,6 +6,8 @@ require "nvim_utils"
 -- @param end_line 1-indexed line
 -- @param timeout_ms optional
 function Formatexpr(start_line, end_line, timeout_ms)
+    timeout_ms = timeout_ms or 500
+
     if not start_line or not end_line then
         if vim.fn.mode() == 'i' or vim.fn.mode() == 'R' then
             -- `formatexpr` is also called when exceding
@@ -16,22 +18,28 @@ function Formatexpr(start_line, end_line, timeout_ms)
         start_line = vim.v.lnum
         end_line = start_line + vim.v.count - 1
     end
+
     if start_line > 0 and end_line > 0 then
         local params = {
-            textDocument = {uri = vim.uri_from_bufnr(0)},
+            textDocument = vim.lsp.util.make_text_document_params(),
             range = {
                 start = {line = start_line - 1, character = 0},
                 ["end"] = {line = end_line - 1, character = 0}
             }
         };
-        local result = vim.lsp.buf_request_sync(0,
-                                                "textDocument/rangeFormatting",
-                                                params, timeout_ms)
-        if result then
-            result = result[1].result
-            vim.lsp.util.apply_text_edits(result)
+        local client_results = vim.lsp.buf_request_sync(0,
+                                                        "textDocument/rangeFormatting",
+                                                        params, timeout_ms)
+
+        -- Apply the text edits from one and only one of the clients.
+        for _, response in pairs(client_results) do
+            if response.result then
+                vim.lsp.util.apply_text_edits(response.result, 0)
+                return 0
+            end
         end
     end
+
     -- do not run builtin formatter.
     return 0
 end
@@ -112,9 +120,7 @@ local function get_lua_runtime()
     local result = {};
     for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
         local lua_path = path .. "/lua/";
-        if vim.fn.isdirectory(lua_path) then
-            result[lua_path] = true
-        end
+        if vim.fn.isdirectory(lua_path) then result[lua_path] = true end
     end
 
     -- This loads the `lua` files from nvim into the runtime.
@@ -126,7 +132,7 @@ lsp_cfg.sumneko_lua.setup({
     settings = {
         Lua = {
             runtime = {
-                version = "LuaJIT",
+                version = "LuaJIT"
                 -- TODO: Figure out how to get plugins here.
                 -- path = vim.split(package.path, ';')
                 -- path = {package.path},
@@ -148,7 +154,7 @@ lsp_cfg.sumneko_lua.setup({
             workspace = {
                 library = get_lua_runtime(),
                 maxPreload = 1000,
-                preloadFileSize = 1000,
+                preloadFileSize = 1000
             }
         }
     },
@@ -179,18 +185,11 @@ ts_cfg.setup {
             node_decremental = "grm"
         }
     },
-    indent = {
-        enable = true
-    },
+    indent = {enable = true},
     refactor = {
-        highlight_definitions = { enable = true },
-        highlight_current_scope = { enable = true },
-        smart_rename = {
-            enable = true,
-            keymaps = {
-                smart_rename = "grr",
-            },
-        },
+        highlight_definitions = {enable = true},
+        highlight_current_scope = {enable = true},
+        smart_rename = {enable = true, keymaps = {smart_rename = "grr"}},
         navigation = {
             enable = true,
             keymaps = {
@@ -198,9 +197,9 @@ ts_cfg.setup {
                 list_definitions = "gnD",
                 list_definitions_toc = "gO",
                 goto_next_usage = "<a-*>",
-                goto_previous_usage = "<a-#>",
-            },
-        },
+                goto_previous_usage = "<a-#>"
+            }
+        }
     },
     textobjects = {
         select = {
@@ -247,9 +246,9 @@ ts_cfg.setup {
             enable = true,
             peek_definition_code = {
                 ["df"] = "@function.outer",
-                ["dF"] = "@class.outer",
-            },
-        },
+                ["dF"] = "@class.outer"
+            }
+        }
     }
 }
 
@@ -312,18 +311,26 @@ vim.cmd [[
 
 vim.g.dap_virtual_text = 'all frames'
 
-vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler
-vim.lsp.callbacks['textDocument/definition'] = require'lsputil.locations'.definition_handler
-vim.lsp.callbacks['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+vim.lsp.callbacks['textDocument/codeAction'] =
+    require'lsputil.codeAction'.code_action_handler
+vim.lsp.callbacks['textDocument/references'] =
+    require'lsputil.locations'.references_handler
+vim.lsp.callbacks['textDocument/definition'] =
+    require'lsputil.locations'.definition_handler
+vim.lsp.callbacks['textDocument/declaration'] =
+    require'lsputil.locations'.declaration_handler
+vim.lsp.callbacks['textDocument/typeDefinition'] =
+    require'lsputil.locations'.typeDefinition_handler
+vim.lsp.callbacks['textDocument/implementation'] =
+    require'lsputil.locations'.implementation_handler
+vim.lsp.callbacks['textDocument/documentSymbol'] =
+    require'lsputil.symbols'.document_handler
+vim.lsp.callbacks['workspace/symbol'] =
+    require'lsputil.symbols'.workspace_handler
 
 require('telescope').setup {
-  defaults = {
+    defaults = {
         generic_sorter = require'telescope.sorters'.get_fzy_sorter,
         file_sorter = require'telescope.sorters'.get_fzy_sorter
-  }
+    }
 }
