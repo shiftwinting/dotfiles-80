@@ -253,9 +253,6 @@ ts_cfg.setup {
     }
 }
 
--- https://github.com/nvim-treesitter/nvim-treesitter/issues/602#issuecomment-712916430
-require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
-
 local dap = require "dap"
 dap.adapters.lldb = {
     type = "executable",
