@@ -115,6 +115,8 @@ lsp_cfg.texlab.setup {}
 lsp_cfg.vimls.setup {}
 lsp_cfg.html.setup {}
 lsp_cfg.cmake.setup {}
+lsp_cfg.cssls.setup {}
+lsp_cfg.yamlls.setup {}
 
 local function get_lua_runtime()
     local result = {};
@@ -163,9 +165,12 @@ lsp_cfg.sumneko_lua.setup({
     cmd = {"lua-language-server"}
 })
 
--- require'nvim_lsp'.efm.setup {
---     filetypes = {"vim", "markdown", "rst", "sh", "json", "html", "lua"}
--- }
+require'nvim_lsp'.efm.setup {
+    filetypes = {
+        "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
+        "json", "csv", "lua"
+    }
+}
 
 local ts_cfg = require "nvim-treesitter.configs"
 
