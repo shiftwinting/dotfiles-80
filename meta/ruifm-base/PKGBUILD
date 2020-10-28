@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   'e2fsprogs'
   'fd'
   'freeglut'
-  'fzf-git'
+  'fzf'
   'git'
   'glow'
   'gnu-netcat'
