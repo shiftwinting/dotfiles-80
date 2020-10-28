@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-extra
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="ruifm's extra metapackage"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'spotifyd'
   'spotify-tui-bin'
   'tuir'
+  'v4l2loopback-dkms'
 )
 
 # vim: ts=2 sw=2 et:

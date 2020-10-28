@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-media
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="ruifm's media metapackage"
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
 
 optdepends=(
   'unified-remote-server'
+  'webtorrent-cli'
 )
 
 # vim: ts=2 sw=2 et:
