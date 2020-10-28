@@ -1,0 +1,15 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-webdev
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's webdev metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'prettier'
+  'vscode-css-languageserver-bin'
+  'vscode-html-languageserver-bin'
+)
+
+# vim: ts=2 sw=2 et:

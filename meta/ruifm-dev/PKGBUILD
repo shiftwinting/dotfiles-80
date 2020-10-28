@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-dev
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="ruifm's dev metapackage"
 arch=('any')
@@ -9,22 +9,21 @@ license=('GPL3')
 depends=(
   'bash-language-server'
   'checkmake'
-  'dockerfile-language-server-bin'
   'efm-langserver-git'
   'lua-format'
   'lua-language-server-git'
   'nodejs-markdownlint-cli'
-  'prettier'
   'shellcheck-bin'
   'shfmt'
   'sloccount'
   'vim-language-server'
   'vint'
-  'vscode-css-languageserver-bin'
-  'vscode-html-languageserver-bin'
   'vscode-json-languageserver-bin'
   'yaml-language-server-bin'
   'yamllint'
+)
+optdepends=(
+  'dockerfile-language-server-bin'
 )
 
 # vim: ts=2 sw=2 et:
