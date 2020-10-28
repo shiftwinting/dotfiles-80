@@ -150,6 +150,8 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 
+export PWA_TELEMETRY_OPTOUT=y
+
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
 [ "$XDG_RUNTIME_DIR" ] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
