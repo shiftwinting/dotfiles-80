@@ -106,6 +106,7 @@ export STATUSBAR="i3blocks"
 export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
 export MOZ_WEBRENDER=1
+export MOZ_X11_EGL=1
 # set in new intel iris HD driver for VA-API video hw decoding
 if [ "$(uname -n)" = "halley" ]; then
     export LIBVA_DRIVER_NAME="iHD"
