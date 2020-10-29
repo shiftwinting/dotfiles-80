@@ -3,29 +3,29 @@
 choice=$(printf "rtp1\nrtp2\nrtp3\nrtp-desporto-1\nrtp-desporto-2\nrtp-desporto-3\nrtp-desporto-4\nrtp-internacional\nla-1\nla-2\ntdp\n24h\neuronews" | rofi -dmenu -p tv)
 
 case $choice in
-    "rtp1") streamlink https://www.rtp.pt/play/direto/rtp1 best
+    "rtp1") streamlink https://www.rtp.pt/play/direto/rtp1
     ;;
-    "rtp2") streamlink https://www.rtp.pt/play/direto/rtp2 best
+    "rtp2") streamlink https://www.rtp.pt/play/direto/rtp2
     ;;
-    "rtp3") streamlink https://www.rtp.pt/play/direto/rtp3 best
+    "rtp3") streamlink https://www.rtp.pt/play/direto/rtp3
     ;;
-    "rtp-desporto-1") streamlink https://www.rtp.pt/play/direto/rtpdesporto1 best
+    "rtp-desporto-1") streamlink https://www.rtp.pt/play/direto/rtpdesporto1
     ;;
-    "rtp-desporto-2") streamlink https://www.rtp.pt/play/direto/rtpdesporto2 best
+    "rtp-desporto-2") streamlink https://www.rtp.pt/play/direto/rtpdesporto2
     ;;
-    "rtp-desporto-3") streamlink https://www.rtp.pt/play/direto/rtpdesporto3 best
+    "rtp-desporto-3") streamlink https://www.rtp.pt/play/direto/rtpdesporto3
     ;;
-    "rtp-desporto-4") streamlink https://www.rtp.pt/play/direto/rtpdesporto4 best
+    "rtp-desporto-4") streamlink https://www.rtp.pt/play/direto/rtpdesporto4
     ;;
-    "rtp-internacional") streamlink https://www.rtp.pt/play/direto/rtpinternacional best
+    "rtp-internacional") streamlink https://www.rtp.pt/play/direto/rtpinternacional
     ;;
-    "la-1") mpv http://www.rtve.es/directo/la-1
+    "la-1") streamlink http://www.rtve.es/directo/la-1
     ;;
-    "la-2") mpv http://www.rtve.es/directo/la-2
+    "la-2") streamlink http://www.rtve.es/directo/la-2
     ;;
-    "tdp") mpv http://www.rtve.es/directo/teledeporte
+    "tdp") streamlink http://www.rtve.es/directo/teledeporte
     ;;
-    "24h") mpv http://www.rtve.es/directo/canal-24h
+    "24h") streamlink http://www.rtve.es/directo/canal-24h
     ;;
     "euronews") streamlink https://www.euronews.com/live best
     ;;
