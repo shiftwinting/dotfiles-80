@@ -59,7 +59,7 @@ font-1 = NotoMono Nerd Font Mono:size=10;2
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = viewers mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
+modules-right = mailbox filesystem pulseaudio cpu memory temperature gpu-usage gpu-memory gpu-temp wlan eth battery date
 
 tray-position = right
 tray-padding = 0
@@ -83,7 +83,7 @@ enable-ipc = true
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:35:...%
-label-maxlen = 35
+label-maxlen = 25
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -324,8 +324,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = ADP1
+battery = ${env:BAT:BAT0}
+adapter = ${env:ADP:ADP1}
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>

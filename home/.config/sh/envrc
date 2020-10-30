@@ -100,8 +100,6 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export BROWSER='linkhandler'
 export TERMINAL='st'
-# Set STATUSBAR for the mailsync script
-export STATUSBAR="i3blocks"
 # Suppress Gnome Accessibility bus warnings in gtk apps
 export NO_AT_BRIDGE=1
 # Enable Webrender in firefox for video decode hw acceleration
@@ -134,6 +132,19 @@ if [ -z "$BOND" ]; then
         export BOND=$WAN
     fi
 fi
+
+# set a var with the battery name
+for f in /sys/class/power_supply/*; do
+    d="$(basename $f)"
+    case $d in
+        BAT*) export BAT=$d
+            ;;
+        ADP*) export ADP=$d
+            ;;
+        wl*) export WAN=$d
+            ;;
+    esac
+done
 
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
