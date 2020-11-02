@@ -29,9 +29,6 @@ user_pref("browser.uitour.enabled",				false);
 // PREF: Enable Firefox Tracking Protection
 user_pref("privacy.trackingprotection.enabled",			true);
 
-// PREF: Enable hardening against various fingerprinting vectors (Tor Uplift project) (disabled)
-// user_pref("privacy.resistFingerprinting",			true);
-
 // PREF: Disable the built-in PDF viewer
 user_pref("pdfjs.disabled",					true);
 
@@ -63,10 +60,6 @@ user_pref("signon.rememberSignons",				false);
 
 // PREF: Disable Downloading on Desktop
 user_pref("browser.download.folderList",			2);
-
-// PREF: Disable the "new tab page" feature and show a blank tab instead
-user_pref("browser.newtabpage.enabled",				false);
-user_pref("browser.newtab.url",					"about:blank");
 
 // PREF: Disable Activity Stream
 user_pref("browser.newtabpage.activity-stream.enabled",		false);

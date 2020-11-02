@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -84,6 +84,7 @@ depends=(
 optdepends=(
   'neovim'
   'neovim-remote'
+  'paru-git'
   'reflector'
   'thermald'
 )
