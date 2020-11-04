@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -40,6 +40,8 @@ depends=(
   'man-db'
   'man-pages'
   'neofetch'
+  'neovim'
+  'neovim-remote'
   'ninja'
   'nmap'
   'npm'
@@ -49,6 +51,7 @@ depends=(
   'pacman-cleanup-hook'
   'pacman-contrib'
   'pam-gnupg-git'
+  'paru'
   'pass'
   'pbzip2'
   'perl-file-mimeinfo'
@@ -82,9 +85,6 @@ depends=(
 )
 
 optdepends=(
-  'neovim'
-  'neovim-remote'
-  'paru-git'
   'reflector'
   'thermald'
 )
