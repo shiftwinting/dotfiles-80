@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -76,7 +76,6 @@ depends=(
   'wireguard-tools'
   'xdg-user-dirs'
   'yarn'
-  'yay'
   'zsh'
   'zsh-autosuggestions'
   'zsh-completions'
