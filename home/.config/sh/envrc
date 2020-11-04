@@ -113,8 +113,9 @@ if [ "$(uname -n)" = "halley" ]; then
 fi
 
 # set a var with the name of the wifi interface
-if stat /sys/class/net/* > /dev/null 2>&1; then
-    for f in /sys/class/net/*; do
+net_dir="/sys/class/net"
+if [ -d "$net_dir" ] && files=$(ls -qAL -- "$net_dir") && [ "$files" ]; then
+    for f in "$net_dir"/*; do
         d="$(basename "$f")"
         case $d in
             bond0) export BOND=$d
@@ -136,8 +137,9 @@ if [ -z "$BOND" ]; then
 fi
 
 # set a var with the battery name
-if stat /sys/class/power_supply/* > /dev/null 2>&1; then
-    for f in /sys/class/power_supply/*; do
+power_dir="/sys/class/power_supply"
+if [ -d "$power_dir" ] && files=$(ls -qAL -- "$power_dir") && [ "$files" ]; then
+    for f in "$power_dir"/*; do
         d="$(basename "$f")"
         case $d in
             BAT*) export BAT=$d
