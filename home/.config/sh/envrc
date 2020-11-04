@@ -113,17 +113,19 @@ if [ "$(uname -n)" = "halley" ]; then
 fi
 
 # set a var with the name of the wifi interface
-for f in /sys/class/net/*; do
-    d="$(basename $f)"
-    case $d in
-        bond0) export BOND=$d
-            ;;
-        e*) export ETH=$d
-            ;;
-        wl*) export WAN=$d
-            ;;
-    esac
-done
+if stat /sys/class/net/* > /dev/null 2>&1; then
+    for f in /sys/class/net/*; do
+        d="$(basename "$f")"
+        case $d in
+            bond0) export BOND=$d
+                ;;
+            e*) export ETH=$d
+                ;;
+            wl*) export WAN=$d
+                ;;
+        esac
+    done
+fi
 
 if [ -z "$BOND" ]; then
     if [ "$ETH" ]; then
@@ -134,17 +136,19 @@ if [ -z "$BOND" ]; then
 fi
 
 # set a var with the battery name
-for f in /sys/class/power_supply/*; do
-    d="$(basename $f)"
-    case $d in
-        BAT*) export BAT=$d
-            ;;
-        ADP*) export ADP=$d
-            ;;
-        wl*) export WAN=$d
-            ;;
-    esac
-done
+if stat /sys/class/power_supply/* > /dev/null 2>&1; then
+    for f in /sys/class/power_supply/*; do
+        d="$(basename "$f")"
+        case $d in
+            BAT*) export BAT=$d
+                ;;
+            ADP*) export ADP=$d
+                ;;
+            wl*) export WAN=$d
+                ;;
+        esac
+    done
+fi
 
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
