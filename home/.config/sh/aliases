@@ -64,6 +64,7 @@ alias mkdir='mkdir -p'
 alias du='du -h'
 alias df='df -h'
 alias visudo='sudo -E visudo'
+alias pacdiff='sudo -E pacdiff'
 alias se='sudo -E '
 alias bc='bc -lq'
 
