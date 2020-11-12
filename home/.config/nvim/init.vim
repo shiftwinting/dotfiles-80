@@ -4,7 +4,6 @@ let g:polyglot_disabled = ['latex', 'lua', 'tex', 'sxhkd', 'tmux']
 
 let mapleader = ' '
 let maplocalleader = ','
-
 set statusline=
 set statusline+=%f
 " [help] flag
@@ -16,9 +15,9 @@ set statusline+=%r
 " preview window flag
 set statusline+=%w
 set statusline+=%y
-" set statusline+=col:%c
-" set statusline+=(%l/%L)
-" set statusline+=\ %P
+set statusline+=col:%c
+set statusline+=(%l/%L)
+set statusline+=\ %P
 set statusline+=%=
 
 if !has('nvim')
@@ -98,7 +97,7 @@ if g:use_plugins
         Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
-        Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
+        " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
         " Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(has('nvim-0.5'))
         Plug 'RishabhRD/popfix', Cond(has('nvim-0.5'))
             Plug 'RishabhRD/nvim-lsputils', Cond(has('nvim-0.5'))
@@ -108,6 +107,7 @@ if g:use_plugins
         Plug 'nvim-treesitter/nvim-treesitter-refactor', Cond(has('nvim-0.5'))
         Plug 'nvim-treesitter/nvim-treesitter-textobjects', Cond(has('nvim-0.5'))
         Plug 'romgrk/nvim-treesitter-context', Cond(has('nvim-0.5'))
+        " Plug 'p00f/nvim-ts-rainbow', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
         Plug 'theHamsta/nvim-dap-virtual-text', Cond(has('nvim-0.5'))

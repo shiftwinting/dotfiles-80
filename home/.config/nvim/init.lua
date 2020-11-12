@@ -44,28 +44,28 @@ function Formatexpr(start_line, end_line, timeout_ms)
     return 0
 end
 
-local lsp_status = require("lsp-status")
+-- local lsp_status = require("lsp-status")
 
-lsp_status.config {
-    select_symbol = function(cursor_pos, symbol)
-        if symbol.valueRange then
-            local value_range = {
-                ["start"] = {
-                    character = 0,
-                    line = vim.fn.byte2line(symbol.valueRange[1])
-                },
-                ["end"] = {
-                    character = 0,
-                    line = vim.fn.byte2line(symbol.valueRange[2])
-                }
-            }
+-- lsp_status.config {
+--     select_symbol = function(cursor_pos, symbol)
+--         if symbol.valueRange then
+--             local value_range = {
+--                 ["start"] = {
+--                     character = 0,
+--                     line = vim.fn.byte2line(symbol.valueRange[1])
+--                 },
+--                 ["end"] = {
+--                     character = 0,
+--                     line = vim.fn.byte2line(symbol.valueRange[2])
+--                 }
+--             }
 
-            return require("lsp-status.util").in_range(cursor_pos, value_range)
-        end
-    end
-}
+--             return require("lsp-status.util").in_range(cursor_pos, value_range)
+--         end
+--     end
+-- }
 
-lsp_status.register_progress()
+-- lsp_status.register_progress()
 
 require("completion").addCompletionSource("vimtex",
                                           require("vimtex").complete_item)
@@ -73,11 +73,13 @@ require("completion").addCompletionSource("vimtex",
 local on_attach_wrapper = function(client)
     require"completion".on_attach(client)
     require"diagnostic".on_attach(client)
-    lsp_status.on_attach(client)
-    vim.api.nvim_command(
-        "autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()")
+    -- lsp_status.on_attach(client)
+    -- vim.api.nvim_command(
+    --     "autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()")
     nvim.bo.formatexpr = "v:lua.Formatexpr"
     nvim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+    -- vim.api
+    --     .nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 end
 
 local lsp_cfg = require "nvim_lsp"
@@ -85,7 +87,7 @@ local lsp_cfg = require "nvim_lsp"
 lsp_cfg.util.default_config = vim.tbl_extend("force",
                                              lsp_cfg.util.default_config, {
     on_attach = on_attach_wrapper,
-    capabilities = lsp_status.capabilities
+    -- capabilities = lsp_status.capabilities
 })
 lsp_cfg.bashls.setup {}
 lsp_cfg.clangd.setup {
@@ -100,7 +102,7 @@ lsp_cfg.clangd.setup {
     init_options = {
         usePlaceholders = true,
         completeUnimported = true,
-        clangdFileStatus = true
+        -- clangdFileStatus = true
     }
 }
 -- lsp_cfg.ccls.setup {
@@ -254,7 +256,11 @@ ts_cfg.setup {
                 ["dF"] = "@class.outer"
             }
         }
-    }
+    },
+    -- rainbow = {
+    --     enable = true,
+    --     disable = {'lua'} -- please disable lua for now
+    -- }
 }
 
 local dap = require "dap"

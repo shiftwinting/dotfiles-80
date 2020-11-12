@@ -6,6 +6,7 @@
 [push]
     default = upstream
     followTags = true
+    gpgSign = if-asked
 [core]
     whitespace = fix,trailing-space,cr-at-eol
     autocrlf = input
@@ -36,7 +37,6 @@
 [mergetool "conflictmarker"]
     cmd = $EDITOR "$MERGED"
 [commit]
-    verbose = true
     gpgsign = true
 [status]
     showUntrackedFiles = all
