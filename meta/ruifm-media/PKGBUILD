@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-media
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="ruifm's media metapackage"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(
   'mpv'
   'mpv-mpris'
-  'streamlink-git'
+  'streamlink'
   'youtube-dl'
 )
 

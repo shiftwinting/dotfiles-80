@@ -96,8 +96,6 @@ if g:use_plugins
     Plug 'neovim/nvim-lspconfig', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/completion-nvim', Cond(has('nvim-0.5'))
             Plug 'steelsojka/completion-buffers', Cond(has('nvim-0.5'))
-        Plug 'nvim-lua/diagnostic-nvim', Cond(has('nvim-0.5'))
-        " Plug 'nvim-lua/lsp-status.nvim', Cond(has('nvim-0.5'))
         " Plug 'jackguo380/vim-lsp-cxx-highlight', Cond(has('nvim-0.5'))
         Plug 'RishabhRD/popfix', Cond(has('nvim-0.5'))
             Plug 'RishabhRD/nvim-lsputils', Cond(has('nvim-0.5'))
@@ -127,5 +125,18 @@ if g:use_plugins
     call plug#end()
     if has('nvim-0.5')
         luafile ~/.config/nvim/init.lua
+        " function! LspStatus() abort
+        "     let sl = 'LSP '
+        "     if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+        "         let sl.=' E:'
+        "         let sl.=luaeval("vim.lsp.diagnostic.get_count([[Error]])")
+        "         let sl.=' W:'
+        "         let sl.=luaeval("vim.lsp.diagnostic.get_count([[Warning]])")
+        "     else
+        "         let sl.='off'
+        "     endif
+        " return sl
+        " endfunction
+        " set statusline+=%{LspStatus()}%=
     endif
 endif

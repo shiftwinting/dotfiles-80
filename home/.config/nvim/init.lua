@@ -44,49 +44,65 @@ function Formatexpr(start_line, end_line, timeout_ms)
     return 0
 end
 
--- local lsp_status = require("lsp-status")
-
--- lsp_status.config {
---     select_symbol = function(cursor_pos, symbol)
---         if symbol.valueRange then
---             local value_range = {
---                 ["start"] = {
---                     character = 0,
---                     line = vim.fn.byte2line(symbol.valueRange[1])
---                 },
---                 ["end"] = {
---                     character = 0,
---                     line = vim.fn.byte2line(symbol.valueRange[2])
---                 }
---             }
-
---             return require("lsp-status.util").in_range(cursor_pos, value_range)
---         end
---     end
--- }
-
--- lsp_status.register_progress()
-
 require("completion").addCompletionSource("vimtex",
                                           require("vimtex").complete_item)
 
+local mapper = function(keys, action)
+    vim.api.nvim_buf_set_keymap(0, 'n', keys, action,
+                                {noremap = true, silent = true})
+end
+
 local on_attach_wrapper = function(client)
     require"completion".on_attach(client)
-    require"diagnostic".on_attach(client)
-    -- lsp_status.on_attach(client)
-    -- vim.api.nvim_command(
-    --     "autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()")
-    nvim.bo.formatexpr = "v:lua.Formatexpr"
-    nvim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+    mapper('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    mapper('<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
+    mapper('gD', '<cmd>lua vim.lsp.declaration()<CR>')
+    mapper('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+    mapper('<leader>gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+    mapper('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+    mapper('gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    mapper('gh', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    mapper('gic', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+    mapper('goc', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+    mapper('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+    mapper('gR', '<cmd>lua vim.lsp.buf.rename()<CR>')
+    mapper('<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+    mapper('ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+    mapper('gw', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+    mapper('gW', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+    mapper('[w', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+    mapper(']w', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+    mapper('[e',
+           '<cmd>lua vim.lsp.diagnostic.goto_prev { severity_limit = "Error" }<CR>')
+    mapper(']e',
+           '<cmd>lua vim.lsp.diagnostic.goto_next { severity_limit = "Error" }<CR>')
+    vim.api.nvim_buf_set_keymap(0, 'x', '<leader>f',
+                                '<cmd>lua vim.lsp.buf.range_formatting()<CR>',
+                                {noremap = true, silent = true})
+    -- annoying diagnostics
+    -- vim.api
+    --     .nvim_command [[autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()]]
+
+    -- lsp highlighting
+    -- vim.api
+    --     .nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+    -- vim.api
+    --     .nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+    -- vim.api
+    --     .nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+
+    -- auto format on save
     -- vim.api
     --     .nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+    nvim.bo.formatexpr = "v:lua.Formatexpr"
+    nvim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
 local lsp_cfg = require "nvim_lsp"
 
 lsp_cfg.util.default_config = vim.tbl_extend("force",
                                              lsp_cfg.util.default_config, {
-    on_attach = on_attach_wrapper,
+    on_attach = on_attach_wrapper
     -- capabilities = lsp_status.capabilities
 })
 lsp_cfg.bashls.setup {}
@@ -101,7 +117,7 @@ lsp_cfg.clangd.setup {
     -- callbacks = lsp_status.extensions.clangd.setup(),
     init_options = {
         usePlaceholders = true,
-        completeUnimported = true,
+        completeUnimported = true
         -- clangdFileStatus = true
     }
 }
@@ -256,10 +272,10 @@ ts_cfg.setup {
                 ["dF"] = "@class.outer"
             }
         }
-    },
+    }
     -- rainbow = {
     --     enable = true,
-    --     disable = {'lua'} -- please disable lua for now
+    --     disable = {'lua', 'bash'} -- please disable lua and bash for now
     -- }
 }
 
@@ -322,22 +338,30 @@ vim.cmd [[
 
 vim.g.dap_virtual_text = 'all frames'
 
-vim.lsp.callbacks['textDocument/codeAction'] =
+vim.lsp.handlers['textDocument/codeAction'] =
     require'lsputil.codeAction'.code_action_handler
-vim.lsp.callbacks['textDocument/references'] =
+vim.lsp.handlers['textDocument/references'] =
     require'lsputil.locations'.references_handler
-vim.lsp.callbacks['textDocument/definition'] =
+vim.lsp.handlers['textDocument/definition'] =
     require'lsputil.locations'.definition_handler
-vim.lsp.callbacks['textDocument/declaration'] =
+vim.lsp.handlers['textDocument/declaration'] =
     require'lsputil.locations'.declaration_handler
-vim.lsp.callbacks['textDocument/typeDefinition'] =
+vim.lsp.handlers['textDocument/typeDefinition'] =
     require'lsputil.locations'.typeDefinition_handler
-vim.lsp.callbacks['textDocument/implementation'] =
+vim.lsp.handlers['textDocument/implementation'] =
     require'lsputil.locations'.implementation_handler
-vim.lsp.callbacks['textDocument/documentSymbol'] =
+vim.lsp.handlers['textDocument/documentSymbol'] =
     require'lsputil.symbols'.document_handler
-vim.lsp.callbacks['workspace/symbol'] =
+vim.lsp.handlers['workspace/symbol'] =
     require'lsputil.symbols'.workspace_handler
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false
+    })
 
 require('telescope').setup {
     defaults = {
