@@ -6,7 +6,6 @@ if not packer_exists then
     '%s/site/pack/packer/opt/',
     vim.fn.stdpath('data')
   )
-
   vim.fn.mkdir(directory, 'p')
 
   local out = vim.fn.system(string.format(
@@ -20,6 +19,8 @@ if not packer_exists then
 
   return
 end
+
+vim.api.nvim_command [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 return require('packer').startup(function()
     -- Packer can manage itself as an optional plugin
