@@ -105,38 +105,40 @@ if g:use_plugins
         Plug 'nvim-treesitter/nvim-treesitter-refactor', Cond(has('nvim-0.5'))
         Plug 'nvim-treesitter/nvim-treesitter-textobjects', Cond(has('nvim-0.5'))
         Plug 'romgrk/nvim-treesitter-context', Cond(has('nvim-0.5'))
-        " Plug 'p00f/nvim-ts-rainbow', Cond(has('nvim-0.5'))
+        Plug 'p00f/nvim-ts-rainbow', Cond(has('nvim-0.5'))
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'mfussenegger/nvim-dap', Cond(has('nvim-0.5'))
         Plug 'theHamsta/nvim-dap-virtual-text', Cond(has('nvim-0.5'))
     Plug 'rickhowe/diffchar.vim'
     Plug 'rhysd/conflict-marker.vim'
-    Plug 'Yggdroot/indentLine'
-        Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
+    " Plug 'Yggdroot/indentLine'
+    "     Plug 'lukas-reineke/indent-blankline.nvim', Cond(has('nvim-0.5'))
+    Plug 'glepnir/indent-guides.nvim'
     Plug 'sheerun/vim-polyglot'
     Plug 'nvim-lua/plenary.nvim', Cond(has('nvim-0.5'))
         Plug 'nvim-lua/popup.nvim', Cond(has('nvim-0.5'))
-            Plug 'nvim-lua/telescope.nvim', Cond(has('nvim-0.5'))
+            Plug 'nvim-telescope/telescope.nvim', Cond(has('nvim-0.5'))
     Plug 'tjdevries/nlua.nvim', Cond(has('nvim-0.5'))
     Plug 'euclidianAce/BetterLua.vim'
     Plug 'norcalli/nvim_utils', Cond(has('nvim-0.5'))
-    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+    " Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+    Plug 'romgrk/barbar.nvim'
     " Plug 'dstein64/vim-startuptime'
     call plug#end()
     if has('nvim-0.5')
         luafile ~/.config/nvim/init.lua
-        " function! LspStatus() abort
-        "     let sl = 'LSP '
-        "     if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-        "         let sl.=' E:'
-        "         let sl.=luaeval("vim.lsp.diagnostic.get_count([[Error]])")
-        "         let sl.=' W:'
-        "         let sl.=luaeval("vim.lsp.diagnostic.get_count([[Warning]])")
-        "     else
-        "         let sl.='off'
-        "     endif
-        " return sl
-        " endfunction
-        " set statusline+=%{LspStatus()}%=
+        function! LspStatus() abort
+            let sl = 'LSP '
+            if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+                let sl.=' E:'
+                let sl.=luaeval("vim.lsp.diagnostic.get_count(vim.fn.bufnr('%'), [[Error]])")
+                let sl.=' W:'
+                let sl.=luaeval("vim.lsp.diagnostic.get_count(vim.fn.bufnr('%'), [[Warning]])")
+            else
+                let sl.='off'
+            endif
+        return sl
+        endfunction
+        set statusline+=%{LspStatus()}%=
     endif
 endif

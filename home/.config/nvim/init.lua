@@ -98,15 +98,15 @@ local on_attach_wrapper = function(client)
     nvim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
-local lsp_cfg = require "nvim_lsp"
+local lspconfig = require "lspconfig"
 
-lsp_cfg.util.default_config = vim.tbl_extend("force",
-                                             lsp_cfg.util.default_config, {
+lspconfig.util.default_config = vim.tbl_extend("force",
+                                               lspconfig.util.default_config, {
     on_attach = on_attach_wrapper
     -- capabilities = lsp_status.capabilities
 })
-lsp_cfg.bashls.setup {}
-lsp_cfg.clangd.setup {
+lspconfig.bashls.setup {}
+lspconfig.clangd.setup {
     cmd = {
         "clangd", "--background-index", "--clang-tidy",
         "--completion-style=bundled", "--header-insertion=iwyu",
@@ -127,14 +127,14 @@ lsp_cfg.clangd.setup {
 --         client = {snippetSupport = true}
 --     }
 -- }
-lsp_cfg.jsonls.setup {cmd = {"json-languageserver"}}
-lsp_cfg.pyls.setup {}
-lsp_cfg.texlab.setup {}
-lsp_cfg.vimls.setup {}
-lsp_cfg.html.setup {}
-lsp_cfg.cmake.setup {}
-lsp_cfg.cssls.setup {}
-lsp_cfg.yamlls.setup {}
+lspconfig.jsonls.setup {cmd = {"json-languageserver"}}
+lspconfig.pyls.setup {}
+lspconfig.texlab.setup {}
+lspconfig.vimls.setup {}
+lspconfig.html.setup {}
+lspconfig.cmake.setup {}
+lspconfig.cssls.setup {}
+lspconfig.yamlls.setup {}
 
 local function get_lua_runtime()
     local result = {};
@@ -148,7 +148,7 @@ local function get_lua_runtime()
     return result;
 end
 
-lsp_cfg.sumneko_lua.setup({
+lspconfig.sumneko_lua.setup({
     settings = {
         Lua = {
             runtime = {
@@ -183,16 +183,16 @@ lsp_cfg.sumneko_lua.setup({
     cmd = {"lua-language-server"}
 })
 
-require'nvim_lsp'.efm.setup {
+lspconfig.efm.setup {
     filetypes = {
         "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
         "json", "csv", "lua"
     }
 }
 
-local ts_cfg = require "nvim-treesitter.configs"
+local tsconfigs = require "nvim-treesitter.configs"
 
-ts_cfg.setup {
+tsconfigs.setup {
     ensure_installed = "all", -- one of "all", "language", or a list of languages
     highlight = {
         enable = true, -- false will disable the whole extension
@@ -272,11 +272,11 @@ ts_cfg.setup {
                 ["dF"] = "@class.outer"
             }
         }
+    },
+    rainbow = {
+        enable = false,
+        disable = {'lua', 'bash'} -- please disable lua and bash for now
     }
-    -- rainbow = {
-    --     enable = true,
-    --     disable = {'lua', 'bash'} -- please disable lua and bash for now
-    -- }
 }
 
 local dap = require "dap"
@@ -368,4 +368,17 @@ require('telescope').setup {
         generic_sorter = require'telescope.sorters'.get_fzy_sorter,
         file_sorter = require'telescope.sorters'.get_fzy_sorter
     }
+}
+
+require('indent_guides').default_opts = {
+    indent_levels = 30,
+    indent_guide_size = 0,
+    indent_start_level = 1,
+    indent_space_guides = true,
+    indent_tab_guides = true,
+    indent_pretty_guides = false,
+    indent_soft_pattern = '\\s',
+    exclude_filetypes = {'help', 'man'},
+    -- TODO add rainbow mode support just like vscode
+    indent_rainbow_mode = false
 }
