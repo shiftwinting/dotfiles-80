@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_completion_nvim_config') || !has('nvim-0.5')
+if exists('g:loaded_completion_nvim_config') || !has('nvim-0.5')
     finish
 endif
 let g:loaded_completion_nvim_config = 1

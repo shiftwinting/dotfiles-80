@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_vimtex_config')
+if exists('g:loaded_vimtex_config')
     finish
 endif
 let g:loaded_vimtex_config = 1

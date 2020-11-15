@@ -46,9 +46,6 @@ set noswapfile
 if !has('nvim')
     set background=dark
 endif
-if !g:use_plugins
-    colorscheme desert
-endif
 
 set showmode
 set number

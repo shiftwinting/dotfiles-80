@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_asyncrun_config')
+if exists('g:loaded_asyncrun_config')
     finish
 endif
 let g:loaded_asyncrun_config = 1

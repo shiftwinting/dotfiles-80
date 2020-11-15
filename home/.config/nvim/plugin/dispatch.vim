@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_dispatch_config')
+if exists('g:loaded_dispatch_config')
     finish
 endif
 let g:loaded_dispatch_config = 1

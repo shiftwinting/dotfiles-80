@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_fugitive_config')
+if exists('g:loaded_fugitive_config')
     finish
 endif
 let g:loaded_fugitive_config = 1

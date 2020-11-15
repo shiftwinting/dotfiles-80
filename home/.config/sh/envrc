@@ -1,12 +1,12 @@
 #! /bin/sh
 
 safesource() {
-# shellcheck source=/dev/null
+    # shellcheck source=/dev/null
     [ -f "$1" ] && . "$1"
 }
 
 exists() {
-    command -v "$1" > /dev/null 2>&1
+    command -v "$1" >/dev/null 2>&1
 }
 
 if [ -z "$ENV_SOURCED" ]; then
@@ -53,19 +53,39 @@ export MANWIDTH=999
 # # Get color support for 'less'
 [ -f /usr/bin/source-highlight-esc.sh ] && export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS="--RAW-CONTROL-CHARS"
-LESS_TERMCAP_mb="$(tput bold; tput setaf 2)" # green
+LESS_TERMCAP_mb="$(
+    tput bold
+    tput setaf 2
+)" # green
 export LESS_TERMCAP_mb
-LESS_TERMCAP_md="$(tput bold; tput setaf 6)" # cyan
+LESS_TERMCAP_md="$(
+    tput bold
+    tput setaf 6
+)" # cyan
 export LESS_TERMCAP_md
 LESS_TERMCAP_me="$(tput sgr0)"
 export LESS_TERMCAP_me
-LESS_TERMCAP_so="$(tput bold; tput setaf 3; tput setab 4)" # yellow on blue
+LESS_TERMCAP_so="$(
+    tput bold
+    tput setaf 3
+    tput setab 4
+)" # yellow on blue
 export LESS_TERMCAP_so
-LESS_TERMCAP_se="$(tput rmso; tput sgr0)"
+LESS_TERMCAP_se="$(
+    tput rmso
+    tput sgr0
+)"
 export LESS_TERMCAP_se
-LESS_TERMCAP_us="$(tput smul; tput bold; tput setaf 7)" # white
+LESS_TERMCAP_us="$(
+    tput smul
+    tput bold
+    tput setaf 7
+)" # white
 export LESS_TERMCAP_us
-LESS_TERMCAP_ue="$(tput rmul; tput sgr0)"
+LESS_TERMCAP_ue="$(
+    tput rmul
+    tput sgr0
+)"
 export LESS_TERMCAP_ue
 LESS_TERMCAP_mr="$(tput rev)"
 export LESS_TERMCAP_mr
@@ -118,11 +138,14 @@ if [ -d "$net_dir" ] && files=$(ls -qAL -- "$net_dir") && [ "$files" ]; then
     for f in "$net_dir"/*; do
         d="$(basename "$f")"
         case $d in
-            bond0) export BOND=$d
+            bond0)
+                export BOND=$d
                 ;;
-            e*) export ETH=$d
+            e*)
+                export ETH=$d
                 ;;
-            wl*) export WAN=$d
+            wl*)
+                export WAN=$d
                 ;;
         esac
     done
@@ -142,11 +165,14 @@ if [ -d "$power_dir" ] && files=$(ls -qAL -- "$power_dir") && [ "$files" ]; then
     for f in "$power_dir"/*; do
         d="$(basename "$f")"
         case $d in
-            BAT*) export BAT=$d
+            BAT*)
+                export BAT=$d
                 ;;
-            ADP*) export ADP=$d
+            ADP*)
+                export ADP=$d
                 ;;
-            wl*) export WAN=$d
+            wl*)
+                export WAN=$d
                 ;;
         esac
     done

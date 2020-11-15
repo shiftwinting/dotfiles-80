@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_qf_config')
+if exists('g:loaded_qf_config')
     finish
 endif
 let g:loaded_qf_config = 1

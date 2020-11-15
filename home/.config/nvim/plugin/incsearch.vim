@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_incsearch_config')
+if exists('g:loaded_incsearch_config')
     finish
 endif
 let g:loaded_incsearch_config = 1

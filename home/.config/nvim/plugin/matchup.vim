@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_matchup_config')
+if exists('g:loaded_matchup_config')
     finish
 endif
 let g:loaded_matchup_config = 1

@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_telescope_config')
+if exists('g:loaded_telescope_config')
     finish
 endif
 let g:loaded_telescope_config = 1

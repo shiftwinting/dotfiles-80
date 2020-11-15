@@ -1,4 +1,4 @@
-if !g:use_plugins || exists('g:loaded_gruvbox_config')
+if exists('g:loaded_gruvbox_config')
     finish
 endif
 let g:loaded_gruvbox_config = 1
