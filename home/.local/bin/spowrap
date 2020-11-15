@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-$TERMINAL -e spt &
-$TERMINAL -e cava &

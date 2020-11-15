@@ -7,10 +7,7 @@ if [ "$(uname -n)" != "halley" ]; then
 fi
 xrandr --auto
 
-if [ "$(uname -n)" = "garry" ] && xrandr --query | grep "HDMI-0 connected"; then
-    xrandr --output eDP-1-1 --off
-    xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
-elif [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
+if [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
     xrandr --output eDP-1-1 --off
     xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
 elif [ "$(uname -n)" = "halley" ] && xrandr --query | grep "HDMI-1 connected"; then

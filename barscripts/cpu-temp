@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 case $BLOCK_BUTTON in
-	1) notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
-	3) notify-send "🖥 CPU module " "\- Shows CPU temperature.
+    1) notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
+    3) notify-send "🖥 CPU module " "\- Shows CPU temperature.
 - Click to show intensive processes.
 - % is of single core." ;;
 esac
@@ -11,13 +11,13 @@ temp=$(sensors | awk '/Core 0/ {print $3}' | tr -d '°C')
 temp=$(printf "%.0f" "$temp")
 
 if [ "$temp" -ge 90 ]; then
-	color="#ff0000"
+    color="#ff0000"
 elif [ "$temp" -ge 80 ]; then
-	color="#ffa500"
+    color="#ffa500"
 elif [ "$temp" -ge 70 ]; then
-	color="#ffff00"
+    color="#ffff00"
 else
-	color="#00ff00"
+    color="#00ff00"
 fi
 
 LABEL=""

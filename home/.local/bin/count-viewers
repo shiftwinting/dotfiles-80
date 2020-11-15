@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-viewers="$(ssh tau.hodor ss -tn | grep '192.168.1.2:443' | wc -l)"
-
+viewers="$(ssh tau.hodor ss -tn | grep -c '192.168.1.2:443')"
 
 printf "#viewers: %i" "$viewers"

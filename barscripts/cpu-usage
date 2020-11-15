@@ -4,13 +4,13 @@ usage=$(mpstat 1 1 | awk '/Average/ {print $3}' | cut -d "." -f 1 | cut -d "," -
 LABEL=""
 
 if [ "$usage" -ge 75 ]; then
-	color="#ff0000"
+    color="#ff0000"
 elif [ "$usage" -ge 50 ]; then
-	color="#ffa500"
+    color="#ffa500"
 elif [ "$usage" -ge 25 ]; then
-	color="#ffff00"
+    color="#ffff00"
 else
-	color="#00ff00"
+    color="#00ff00"
 fi
 
 printf "<span color='%s'>%s%s%%</span>\n" "$color" "$LABEL" "$usage"
