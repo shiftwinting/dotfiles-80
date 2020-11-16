@@ -3,9 +3,14 @@ if exists('g:loaded_gruvbox_config')
 endif
 let g:loaded_gruvbox_config = 1
 
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italicize_strings = 1
-let g:gruvbox_bold = 1
-let g:gruvbox_filetype_hi_groups = 1
-let g:gruvbox_plugin_hi_groups = 1
+let g:gruvbox_improved_strings = 0
+let g:gruvbox_improved_warnings = 1
 
-colorscheme gruvbox8_hard
+colorscheme gruvbox
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?

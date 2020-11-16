@@ -35,7 +35,7 @@ augroup END
 
 augroup silent-autoread
     autocmd!
-    autocmd FocusGained,CursorHold ?* if getcmdwintype() == '' | checktime | endif
+    autocmd FocusGained,CursorHold,CursorHoldI ?* if getcmdwintype() == '' | checktime | endif
 augroup END
 
 if has("terminal")

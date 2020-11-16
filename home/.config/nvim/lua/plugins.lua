@@ -47,7 +47,7 @@ return require('packer').startup(function()
     use 'andymass/vim-matchup'
     use 'haya14busa/incsearch.vim'
     use 'romainl/vim-qf'
-    use 'lifepillar/vim-gruvbox8'
+    use 'gruvbox-community/gruvbox'
     use 'luochen1990/rainbow'
     use 'justinmk/vim-sneak'
     use 'editorconfig/editorconfig-vim'
@@ -84,22 +84,16 @@ return require('packer').startup(function()
     use {'theHamsta/nvim-dap-virtual-text', requires = 'mfussenegger/nvim-dap'}
     use 'rickhowe/diffchar.vim'
     use 'rhysd/conflict-marker.vim'
-    use 'Yggdroot/indentLine'
-    use {'lukas-reineke/indent-blankline.nvim', requires='Yggdroot/indentLine'}
-    use {'glepnir/indent-guides.nvim', disable = true}
+    use {'Yggdroot/indentLine',
+            disable = true,
+            requires = 'lukas-reineke/indent-blankline.nvim'
+        }
+    use {'glepnir/indent-guides.nvim', disable = false}
     use 'sheerun/vim-polyglot'
     use {'nvim-telescope/telescope.nvim',
             requires = {
                 'nvim-lua/plenary.nvim',
                 'nvim-lua/popup.nvim'
-            }
-        }
-    use {'tjdevries/nlua.nvim',
-            ft = 'lua',
-            requires = {
-                'neovim/nvim-lspconfig',
-                'nvim-lua/completion-nvim',
-                'euclidianAce/BetterLua.vim',
             }
         }
     use 'norcalli/nvim_utils'

@@ -1,4 +1,4 @@
-require"plugins"
+require "plugins"
 require"colorizer".setup()
 require "nvim_utils"
 
@@ -53,7 +53,16 @@ local mapper = function(keys, action)
                                 {noremap = true, silent = true})
 end
 
-local on_attach_wrapper = function(client)
+local on_attach_wrapper = function(client, user_opts)
+    local opts = user_opts or
+                     {
+            auto_format = true,
+            show_diags = false,
+            lsp_highlights = false
+        }
+    local auto_format = opts.auto_format or false
+    local show_diags = opts.show_diags or false
+    local lsp_highlights = opts.lsp_highlights or false
     require"completion".on_attach(client)
     mapper('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
     mapper('<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -80,31 +89,34 @@ local on_attach_wrapper = function(client)
     vim.api.nvim_buf_set_keymap(0, 'x', '<leader>f',
                                 '<cmd>lua vim.lsp.buf.range_formatting()<CR>',
                                 {noremap = true, silent = true})
-    -- annoying diagnostics
-    -- vim.api
-    --     .nvim_command [[autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()]]
 
-    -- lsp highlighting
-    -- vim.api
-    --     .nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-    -- vim.api
-    --     .nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-    -- vim.api
-    --     .nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-
-    -- auto format on save
-    -- vim.api
-    --     .nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     nvim.bo.formatexpr = "v:lua.Formatexpr"
     nvim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+    if show_diags then
+        vim.api
+            .nvim_command [[autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()]]
+    end
+
+    if lsp_highlights then
+        vim.api
+            .nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+        vim.api
+            .nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+        vim.api
+            .nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+    end
+
+    if auto_format then
+        vim.api
+            .nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+    end
 end
 
 local lspconfig = require "lspconfig"
 
 lspconfig.util.default_config = vim.tbl_extend("force",
                                                lspconfig.util.default_config, {
-    on_attach = on_attach_wrapper
-    -- capabilities = lsp_status.capabilities
+    on_attach = function(client) on_attach_wrapper(client, nil) end
 })
 lspconfig.bashls.setup {}
 lspconfig.clangd.setup {
@@ -115,21 +127,13 @@ lspconfig.clangd.setup {
         "--cross-file-rename", "--index"
         -- '--all-scopes-completion',
     },
-    -- callbacks = lsp_status.extensions.clangd.setup(),
-    init_options = {
-        usePlaceholders = true,
-        completeUnimported = true
-        -- clangdFileStatus = true
-    }
+    on_attach = function(client)
+        on_attach_wrapper(client, {auto_format = false})
+        mapper('gH', ':ClangdSwitchSourceHeader<CR>')
+    end,
+    init_options = {usePlaceholders = true, completeUnimported = true}
 }
--- lsp_cfg.ccls.setup {
---     init_options = {
---         highlight = {lsRanges = true},
---         client = {snippetSupport = true}
---     }
--- }
 lspconfig.jsonls.setup {cmd = {"json-languageserver"}}
-lspconfig.pyls.setup {}
 lspconfig.texlab.setup {}
 lspconfig.vimls.setup {}
 lspconfig.html.setup {}
@@ -152,12 +156,7 @@ end
 lspconfig.sumneko_lua.setup({
     settings = {
         Lua = {
-            runtime = {
-                version = "LuaJIT"
-                -- TODO: Figure out how to get plugins here.
-                -- path = vim.split(package.path, ';')
-                -- path = {package.path},
-            },
+            runtime = {version = "LuaJIT"},
             completion = {
                 -- You should use real snippets
                 keywordSnippet = "Disable"
@@ -166,9 +165,7 @@ lspconfig.sumneko_lua.setup({
                 enable = true,
                 globals = {
                     -- Neovim
-                    "vim", -- Busted
-                    "describe", "it", "before_each", "after_each", "teardown",
-                    "pending"
+                    "vim" -- Busted
                 }
             },
 
@@ -402,15 +399,15 @@ require('gitsigns').setup {
     sign_priority = 6
 }
 
--- require('indent_guides').default_opts = {
---     indent_levels = 30,
---     indent_guide_size = 0,
---     indent_start_level = 1,
---     indent_space_guides = true,
---     indent_tab_guides = true,
---     indent_pretty_guides = false,
---     indent_soft_pattern = '\\s',
---     exclude_filetypes = {'help', 'man'},
---     -- TODO add rainbow mode support just like vscode
---     indent_rainbow_mode = false
--- }
+require('indent_guides').options = {
+    indent_levels = 30,
+    indent_guide_size = 0,
+    indent_start_level = 1,
+    indent_space_guides = true,
+    indent_tab_guides = true,
+    indent_pretty_guides = false,
+    indent_soft_pattern = '\\s',
+    exclude_filetypes = {'help', 'man', 'terminal'},
+    -- TODO add rainbow mode support just like vscode
+    indent_rainbow_mode = false
+}
