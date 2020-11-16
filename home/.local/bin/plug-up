@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 stty -ixoff
-$EDITOR +PackerCompile +PackerSync +PackerUpdate
+$EDITOR +PackerCompile +PackerSync
 stty -ixon

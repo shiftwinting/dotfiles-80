@@ -97,9 +97,9 @@ return require('packer').startup(function()
     use {'tjdevries/nlua.nvim',
             ft = 'lua',
             requires = {
-                {'neovim/nvim-lspconfig', opt = true},
-                {'nvim-lua/completion-nvim', opt = true},
-                {'euclidianAce/BetterLua.vim', opt = true},
+                'neovim/nvim-lspconfig',
+                'nvim-lua/completion-nvim',
+                'euclidianAce/BetterLua.vim',
             }
         }
     use 'norcalli/nvim_utils'
