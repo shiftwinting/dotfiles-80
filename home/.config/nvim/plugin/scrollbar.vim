@@ -1,7 +1,7 @@
+let g:loaded_scrollbar_config = 1
 if exists('g:loaded_scrollbar_config')
     finish
 endif
-let g:loaded_scrollbar_config = 1
 
 augroup ScrollbarInit
   autocmd!

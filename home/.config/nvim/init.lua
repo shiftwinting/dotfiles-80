@@ -1,5 +1,12 @@
 require "plugins"
 require"colorizer".setup()
+
+vim.g.gruvbox_italic = 1
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.g.gruvbox_italicize_strings = 1
+vim.g.gruvbox_improved_warnings = 1
+require("colorbuddy").colorscheme("gruvbox")
+
 require "nvim_utils"
 
 -- for use with `formatexpr` if called without parms
@@ -363,6 +370,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 
 require('telescope').setup {
     defaults = {
+        color_devicons = false,
+        prompt_position = "top",
+        sorting_strategy = "ascending",
+        scroll_strategy = "cycle",
         generic_sorter = require'telescope.sorters'.get_fzy_sorter,
         file_sorter = require'telescope.sorters'.get_fzy_sorter
     }

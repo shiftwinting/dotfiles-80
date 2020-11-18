@@ -49,12 +49,6 @@ nnoremap <leader>gs :<c-u>%s/<c-r>"/
 vnoremap <leader>gs :s/<c-r>"/
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 
-nnoremap <localleader>s :<c-u>%Subvert/
-vnoremap <localleader>s :Subvert/
-nnoremap <localleader>gs :<c-u>%Subvert/<c-r>"/
-vnoremap <localleader>gs :Subvert/<c-r>"/
-nnoremap <localLeader>S :%Subvert/\<<C-r><C-w>\>/
-
 nnoremap <silent> <leader>x :wall<cr>
 nnoremap <silent> <leader>z :wqall<cr>
 nnoremap <silent> <leader>q :quitall<cr>
