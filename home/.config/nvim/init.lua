@@ -381,24 +381,24 @@ require('telescope').setup {
 
 require('gitsigns').setup {
     signs = {
-    add          = {hl = 'DiffAdd'   , text = '│'},
-    change       = {hl = 'DiffChange', text = '│'},
-    delete       = {hl = 'DiffDelete', text = '_', show_count=true},
-    topdelete    = {hl = 'DiffDelete', text = '‾', show_count=true},
-    changedelete = {hl = 'DiffChange', text = '~', show_count=true},
-  },
-  count_chars = {
-    [1]   = '1', -- '₁',
-    [2]   = '2', -- '₂',
-    [3]   = '3', -- '₃',
-    [4]   = '4', -- '₄',
-    [5]   = '5', -- '₅',
-    [6]   = '6', -- '₆',
-    [7]   = '7', -- '₇',
-    [8]   = '8', -- '₈',
-    [9]   = '9', -- '₉',
-    ['+'] = '' , -- '₊',
-  },
+        add = {hl = 'DiffAdd', text = '│'},
+        change = {hl = 'DiffChange', text = '│'},
+        delete = {hl = 'DiffDelete', text = '_', show_count = true},
+        topdelete = {hl = 'DiffDelete', text = '‾', show_count = true},
+        changedelete = {hl = 'DiffChange', text = '~', show_count = true}
+    },
+    count_chars = {
+        [1] = '1', -- '₁',
+        [2] = '2', -- '₂',
+        [3] = '3', -- '₃',
+        [4] = '4', -- '₄',
+        [5] = '5', -- '₅',
+        [6] = '6', -- '₆',
+        [7] = '7', -- '₇',
+        [8] = '8', -- '₈',
+        [9] = '9', -- '₉',
+        ['+'] = '' -- '₊',
+    },
     keymaps = {
         -- Default keymap options
         noremap = true,
@@ -437,14 +437,17 @@ require('gitsigns').setup {
 }
 
 require('indent_guides').options = {
-    indent_levels = 30,
+    indent_levels = 20,
     indent_guide_size = 0,
     indent_start_level = 1,
     indent_space_guides = true,
     indent_tab_guides = true,
     indent_pretty_guides = true,
     indent_soft_pattern = '\\s',
-    exclude_filetypes = {'help', 'man', 'terminal', 'packer', 'Telescope'},
+    exclude_filetypes = {
+        'help', 'man', 'terminal', 'packer', 'TelescopePrompt', 'fugitive',
+        'diff'
+    },
     -- TODO add rainbow mode support just like vscode
     indent_rainbow_mode = false
 }

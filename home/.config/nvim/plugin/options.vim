@@ -50,7 +50,6 @@ endif
 set showmode
 set number
 set cursorline
-set colorcolumn=81
 set lazyredraw
 if has('signcolumn')
     " Always draw the signcolumn.
@@ -74,7 +73,9 @@ set splitbelow
 set splitright
 
 set linebreak    "Wrap lines at convenient points
+set breakindent
 set textwidth=80
+set colorcolumn=+1
 
 set spelllang=en,pt_pt,es_es
 set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
@@ -129,6 +130,8 @@ set list
 
 set title
 set signcolumn=auto:2
+
+set virtualedit=block
 
 if has('nvim-0.5')
     set spelloptions=camel
