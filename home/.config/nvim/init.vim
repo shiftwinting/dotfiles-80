@@ -49,7 +49,9 @@ if has('nvim-0.5')
         endif
     return sl
     endfunction
-    set statusline+=%{LspStatus()}%=
+    set statusline+=%{LspStatus()}
+    set statusline+=%=
+    set statusline+=%{get(b:,'gitsigns_status','')}
 else
     if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
         if !executable('curl')

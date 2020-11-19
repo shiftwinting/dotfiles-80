@@ -381,12 +381,24 @@ require('telescope').setup {
 
 require('gitsigns').setup {
     signs = {
-        add = {hl = 'DiffAdd', text = '│'},
-        change = {hl = 'DiffChange', text = '│'},
-        delete = {hl = 'DiffDelete', text = '_'},
-        topdelete = {hl = 'DiffDelete', text = '‾'},
-        changedelete = {hl = 'DiffChange', text = '~'}
-    },
+    add          = {hl = 'DiffAdd'   , text = '│'},
+    change       = {hl = 'DiffChange', text = '│'},
+    delete       = {hl = 'DiffDelete', text = '_', show_count=true},
+    topdelete    = {hl = 'DiffDelete', text = '‾', show_count=true},
+    changedelete = {hl = 'DiffChange', text = '~', show_count=true},
+  },
+  count_chars = {
+    [1]   = '1', -- '₁',
+    [2]   = '2', -- '₂',
+    [3]   = '3', -- '₃',
+    [4]   = '4', -- '₄',
+    [5]   = '5', -- '₅',
+    [6]   = '6', -- '₆',
+    [7]   = '7', -- '₇',
+    [8]   = '8', -- '₈',
+    [9]   = '9', -- '₉',
+    ['+'] = '' , -- '₊',
+  },
     keymaps = {
         -- Default keymap options
         noremap = true,
@@ -407,7 +419,21 @@ require('gitsigns').setup {
         ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>'
     },
     watch_index = {interval = 1000},
-    sign_priority = 6
+    sign_priority = 6,
+    status_formatter = function(status)
+        local status_txt = status.head
+        if status.added > 0 then
+            status_txt = status_txt .. '+' .. status.added
+        end
+        if status.changed > 0 then
+            status_txt = status_txt .. '~' .. status.changed
+        end
+        if status.removed > 0 then
+            status_txt = status_txt .. '-' .. status.removed
+        end
+        return status_txt
+    end
+
 }
 
 require('indent_guides').options = {
@@ -416,9 +442,9 @@ require('indent_guides').options = {
     indent_start_level = 1,
     indent_space_guides = true,
     indent_tab_guides = true,
-    indent_pretty_guides = false,
+    indent_pretty_guides = true,
     indent_soft_pattern = '\\s',
-    exclude_filetypes = {'help', 'man', 'terminal'},
+    exclude_filetypes = {'help', 'man', 'terminal', 'packer', 'Telescope'},
     -- TODO add rainbow mode support just like vscode
     indent_rainbow_mode = false
 }
