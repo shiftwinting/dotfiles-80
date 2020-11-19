@@ -20,17 +20,13 @@ case "$url" in
     *twitch.tv*)
         setsid streamlink "$url" >/dev/null 2>&1 &
         ;;
-    *.mkv | *.webm | *.mp4 | *.mp3 | *.ogg | *.mov | *.ts | *.m3u8* | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be* | *invidio.us*)
+    *.mkv | *.webm | *.mp4 | *.mp3 | *.ogg | *.mov | *.ts | *.m3u8* | *.gif | *.m4a | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be* | *invidio.us* | *lbry*)
         setsid mpv -quiet "$url" >/dev/null 2>&1 &
         ;;
     acestream://*)
         setsid acestream-launcher "$url" >/dev/null 2>&1 &
         ;;
-    *lbry*)
-        lbry_url="$(curl "$url" | grep embed | sed 's/.*embed\(.*\)">.*/\1/' | cut -d '"' -f1 | awk -v prefix="https://cdn.lbryplayer.xyz/api/v2/streams/free" '{print prefix $0}')"
-        setsid mpv -quiet "$lbry_url" >/dev/null 2>&1 &
-        ;;
-    *.png | *.jpg | *.jpe | *.jpeg | *.gif)
+    *.png | *.jpg | *.jpe | *.jpeg)
         local_url="$(resolve_url "$url")"
         setsid sxiv -a "$local_url" >/dev/null 2>&1 &
         ;;
@@ -38,12 +34,9 @@ case "$url" in
         local_url="$(resolve_url "$url")"
         setsid zathura "$local_url" >/dev/null 2>&1 &
         ;;
-    *.torrent)
+    *.torrent | magnet:*)
         local_url="$(resolve_url "$url")"
         setsid toradd "$local_url" >/dev/null 2>&1 &
-        ;;
-    magnet:*)
-        setsid toradd "$url" >/dev/null 2>&1 &
         ;;
     *rss* | *feed* | http*.xml | http*.atom)
         setsid rssadd "$url" >/dev/null 2>&1 &
