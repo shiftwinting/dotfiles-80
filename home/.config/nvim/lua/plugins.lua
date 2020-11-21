@@ -105,5 +105,6 @@ return require('packer').startup(function()
     use 'romgrk/barbar.nvim'
     use {'Xuyuanp/scrollbar.nvim', disable = true}
     use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use 'pwntester/octo.nvim'
     use {'dstein64/vim-startuptime', disable = true}
 end)

@@ -181,7 +181,7 @@ fi
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
 # Java: use system anti-aliased fonts and make swing use the GTK look and feel:
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java'
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
@@ -195,6 +195,8 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 
 export PWA_TELEMETRY_OPTOUT=y
+OCTO_GITHUB_TOKEN=ruifm:$(grep oauth_token "$HOME"/.config/hub | tr -d ' ' | cut -d':' -f 2)
+export OCTO_GITHUB_TOKEN
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
@@ -202,6 +204,7 @@ export PWA_TELEMETRY_OPTOUT=y
 
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export NMBGIT="$XDG_DATA_HOME/notmuch/nmbug"
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="$XDG_CONFIG_HOME/sh/inputrc"
@@ -216,6 +219,7 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo":/usr/share/terminfo
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
@@ -223,8 +227,7 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
@@ -238,3 +241,21 @@ export UNCRUSTIFY_CONFIG="$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker-machine"
+export GOPATH="$XDG_DATA_HOME/go"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/xcompose"
+export XCOMPOSECACHE="$XDG_CACHE_HOME/X11/xcompose"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+export PYLINTHOME="$XDG_CACHE_HOME/pylint"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
+export USERXSESSION="$XDG_CACHE_HOME/x11/xsession"
+export USERXSESSIONRC="$XDG_CACHE_HOME/x11/xsessionrc"
+export ALTUSERXSESSION="$XDG_CACHE_HOME/x11/Xsession"
+export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
+export NUGET_PACKAGES="$XDG_CACHE_HOME/NuGetPackages"
