@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=11
+pkgver=13
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -28,7 +28,6 @@ depends=(
   'go'
   'htop'
   'hub'
-  'informant'
   'ipcalc'
   'ipython'
   'irqbalance'

@@ -63,31 +63,28 @@ return require('packer').startup(function()
     use 'norcalli/nvim-colorizer.lua'
     use {'SirVer/ultisnips', requires = 'honza/vim-snippets'}
     use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/completion-nvim'
-    use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
-    use 'nvim-treesitter/nvim-treesitter'
     use {
-        'nvim-treesitter/completion-treesitter',
+        'nvim-lua/completion-nvim',
         requires = {
-            'nvim-treesitter/nvim-treesitter', 'nvim-lua/completion-nvim'
+            'steelsojka/completion-buffers',
+            'nvim-treesitter/completion-treesitter'
         }
     }
+    use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
     use {
-        'nvim-treesitter/nvim-treesitter-refactor',
-        requires = 'nvim-treesitter/nvim-treesitter'
+        'nvim-treesitter/nvim-treesitter',
+        requires = {
+            {
+                'nvim-treesitter/completion-treesitter',
+                requires = 'nvim-lua/completion-nvim'
+            }, 'nvim-treesitter/nvim-treesitter-refactor',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'romgrk/nvim-treesitter-context', 'p00f/nvim-ts-rainbow',
+            'bryall/contextprint.nvim', {'p00f/nvim-ts-rainbow', disable = true}
+        }
     }
-    use {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        requires = 'nvim-treesitter/nvim-treesitter'
-    }
-    use {
-        'romgrk/nvim-treesitter-context',
-        requires = 'nvim-treesitter/nvim-treesitter'
-    }
-    use {'p00f/nvim-ts-rainbow', requires = 'nvim-treesitter/nvim-treesitter'}
     use 'antoinemadec/FixCursorHold.nvim'
-    use 'mfussenegger/nvim-dap'
-    use {'theHamsta/nvim-dap-virtual-text', requires = 'mfussenegger/nvim-dap'}
+    use {'mfussenegger/nvim-dap', requires = 'theHamsta/nvim-dap-virtual-text'}
     use 'rickhowe/diffchar.vim'
     use 'rhysd/conflict-marker.vim'
     use {
@@ -95,7 +92,7 @@ return require('packer').startup(function()
         disable = true,
         requires = 'lukas-reineke/indent-blankline.nvim'
     }
-    use {'glepnir/indent-guides.nvim', disable = false}
+    use 'glepnir/indent-guides.nvim'
     use 'sheerun/vim-polyglot'
     use {
         'nvim-telescope/telescope.nvim',

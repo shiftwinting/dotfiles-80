@@ -82,12 +82,10 @@ else
         Plug 'tpope/vim-rsi'
         Plug 'tpope/vim-surround'
         Plug 'tpope/vim-apathy'
-        Plug 'vhdirk/vim-cmake'
-            Plug 'skywind3000/asyncrun.vim'
         Plug 'andymass/vim-matchup'
         Plug 'haya14busa/incsearch.vim'
         Plug 'romainl/vim-qf'
-        Plug 'lifepillar/vim-gruvbox8'
+        Plug 'gruvbox-community/gruvbox'
         Plug 'luochen1990/rainbow'
         Plug 'justinmk/vim-sneak'
         Plug 'editorconfig/editorconfig-vim'
@@ -114,4 +112,3 @@ else
         " Plug 'dstein64/vim-startuptime'
     call plug#end()
 endif
-
