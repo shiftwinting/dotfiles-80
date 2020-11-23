@@ -73,14 +73,16 @@ return require('packer').startup(function()
     use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
     use {
         'nvim-treesitter/nvim-treesitter',
+        lock = true,
         requires = {
             {
                 'nvim-treesitter/completion-treesitter',
                 requires = 'nvim-lua/completion-nvim'
             }, 'nvim-treesitter/nvim-treesitter-refactor',
             'nvim-treesitter/nvim-treesitter-textobjects',
-            'romgrk/nvim-treesitter-context', 'p00f/nvim-ts-rainbow',
-            'bryall/contextprint.nvim', {'p00f/nvim-ts-rainbow', disable = true}
+            {'romgrk/nvim-treesitter-context', lock = true},
+            'p00f/nvim-ts-rainbow', 'bryall/contextprint.nvim',
+            {'p00f/nvim-ts-rainbow', disable = true}
         }
     }
     use 'antoinemadec/FixCursorHold.nvim'
@@ -96,12 +98,16 @@ return require('packer').startup(function()
     use 'sheerun/vim-polyglot'
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}
+        requires = {
+            'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim',
+            'nvim-telescope/telescope-fzy-native.nvim'
+        }
     }
     use 'norcalli/nvim_utils'
     use 'romgrk/barbar.nvim'
     use {'Xuyuanp/scrollbar.nvim', disable = true}
     use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
     use 'pwntester/octo.nvim'
+    use 'strboul/urlview.vim'
     use {'dstein64/vim-startuptime', disable = true}
 end)

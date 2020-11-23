@@ -24,3 +24,4 @@ nnoremap <silent><localleader>m :lua require'telescope.builtin'.man_pages()<cr>
 nnoremap <silent><localleader>k :lua require'telescope.builtin'.keymaps()<cr>
 nnoremap <silent><localleader>Q :lua require'telescope.builtin'.quickfix()<cr>
 nnoremap <silent><localleader>L :lua require'telescope.builtin'.loclist()<cr>
+nnoremap <silent><localleader>R :lua require'telescope.builtin'.registers()<cr>
