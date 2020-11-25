@@ -150,13 +150,9 @@ lspconfig.yamlls.setup {}
 
 local function get_lua_runtime()
     local result = {};
-    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-        local lua_path = path .. "/lua/";
-        if vim.fn.isdirectory(lua_path) then result[lua_path] = true end
+    for _, path in pairs(vim.api.nvim_get_runtime_file("lua/", true)) do
+        result[path:sub(1, #path - 1)] = true
     end
-
-    -- This loads the `lua` files from nvim into the runtime.
-    result[vim.fn.expand("$VIMRUNTIME/lua")] = true
     return result;
 end
 
@@ -201,7 +197,6 @@ tsconfigs.setup {
     ensure_installed = "all", -- one of "all", "language", or a list of languages
     highlight = {
         enable = true, -- false will disable the whole extension
-        use_language_tree = true,
         disable = {} -- list of language that will be disabled
     },
     incremental_selection = {
@@ -278,10 +273,7 @@ tsconfigs.setup {
             }
         }
     },
-    rainbow = {
-        enable = false,
-        disable = {'lua', 'bash'} -- please disable lua and bash for now
-    }
+    rainbow = {enable = true, disable = {'bash'}}
 }
 
 local dap = require "dap"
@@ -365,7 +357,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         virtual_text = true,
         signs = true,
         underline = true,
-        update_in_insert = true
+        update_in_insert = false
     })
 
 require('telescope').setup {
@@ -442,9 +434,9 @@ require('indent_guides').options = {
     indent_levels = 20,
     indent_guide_size = 0,
     indent_start_level = 1,
-    indent_space_guides = true,
-    indent_tab_guides = true,
-    indent_pretty_guides = true,
+    indent_space_guides = false,
+    indent_tab_guides = false,
+    indent_pretty_guides = false,
     indent_soft_pattern = '\\s',
     exclude_filetypes = {
         'help', 'man', 'terminal', 'packer', 'TelescopePrompt', 'fugitive',

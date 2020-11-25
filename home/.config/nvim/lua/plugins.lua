@@ -1,20 +1,10 @@
--- Only required if you have packer in your `opt` pack
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-
-if not packer_exists then
-    local directory = string.format('%s/site/pack/packer/opt/',
-                                    vim.fn.stdpath('data'))
-    vim.fn.mkdir(directory, 'p')
-
-    local out = vim.fn.system(string.format('git clone %s %s',
-                                            'https://github.com/wbthomason/packer.nvim',
-                                            directory .. '/packer.nvim'))
-
-    print(out)
-    print("Downloading packer.nvim...")
-
-    return
+local install_path = vim.fn.stdpath('data') ..
+                         '/site/pack/packer/opt/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    vim.api.nvim_command(
+        '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
+vim.cmd [[packadd packer.nvim]]
 
 vim.api.nvim_command [[autocmd BufWritePost plugins.lua PackerCompile]]
 
@@ -81,8 +71,7 @@ return require('packer').startup(function()
             }, 'nvim-treesitter/nvim-treesitter-refactor',
             'nvim-treesitter/nvim-treesitter-textobjects',
             {'romgrk/nvim-treesitter-context', lock = true},
-            'p00f/nvim-ts-rainbow', 'bryall/contextprint.nvim',
-            {'p00f/nvim-ts-rainbow', disable = true}
+            'p00f/nvim-ts-rainbow', 'bryall/contextprint.nvim'
         }
     }
     use 'antoinemadec/FixCursorHold.nvim'
