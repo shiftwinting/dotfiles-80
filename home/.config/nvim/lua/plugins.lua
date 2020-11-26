@@ -55,10 +55,7 @@ return require('packer').startup(function()
     use 'neovim/nvim-lspconfig'
     use {
         'nvim-lua/completion-nvim',
-        requires = {
-            'steelsojka/completion-buffers',
-            'nvim-treesitter/completion-treesitter'
-        }
+        requires = 'nvim-treesitter/completion-treesitter'
     }
     use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
     use {
