@@ -60,14 +60,13 @@ return require('packer').startup(function()
     use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
     use {
         'nvim-treesitter/nvim-treesitter',
-        lock = true,
         requires = {
             {
                 'nvim-treesitter/completion-treesitter',
                 requires = 'nvim-lua/completion-nvim'
             }, 'nvim-treesitter/nvim-treesitter-refactor',
             'nvim-treesitter/nvim-treesitter-textobjects',
-            {'romgrk/nvim-treesitter-context', lock = true},
+            {'romgrk/nvim-treesitter-context', disable = true},
             'p00f/nvim-ts-rainbow', 'bryall/contextprint.nvim'
         }
     }

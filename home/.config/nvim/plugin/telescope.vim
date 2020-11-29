@@ -17,6 +17,7 @@ nnoremap <silent><localleader>s :lua require'telescope.builtin'.lsp_document_sym
 nnoremap <silent><localleader>S :lua require'telescope.builtin'.lsp_workspace_symbols()<cr>
 nnoremap <silent><localleader>r :lua require'telescope.builtin'.lsp_references()<cr>
 nnoremap <silent><localleader>a :lua require'telescope.builtin'.lsp_code_actions()<cr>
+nnoremap <silent><localleader>A :lua require'telescope.builtin'.lsp_range_code_actions()<cr>
 
 nnoremap <silent><localleader>c :lua require'telescope.builtin'.commands()<cr>
 nnoremap <silent><localleader>h :lua require'telescope.builtin'.help_tags()<cr>
