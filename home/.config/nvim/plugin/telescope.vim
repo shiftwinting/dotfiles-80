@@ -6,8 +6,8 @@ let g:loaded_telescope_config = 1
 nnoremap <silent><localleader>p :lua require'telescope.builtin'.planets()<cr>
 nnoremap <silent><localleader>B :lua require'telescope.builtin'.builtin()<cr>
 
-nnoremap <silent><localleader>g :lua require'telescope.builtin'.live_grep()<cr>
-nnoremap <silent><localleader>G :lua require'telescope.builtin'.grep_string()<cr>
+nnoremap <silent><localleader>/ :lua require'telescope.builtin'.live_grep()<cr>
+nnoremap <silent><localleader>? :lua require'telescope.builtin'.grep_string()<cr>
 nnoremap <silent><localleader>f :lua require'telescope.builtin'.find_files{find_command = {"fd", "--type", "file", "--follow", "--hidden", "--exclude", ".git"}}<cr>
 nnoremap <silent><localleader>b :lua require'telescope.builtin'.buffers{show_all_buffers = true}<cr>
 
@@ -26,3 +26,8 @@ nnoremap <silent><localleader>k :lua require'telescope.builtin'.keymaps()<cr>
 nnoremap <silent><localleader>Q :lua require'telescope.builtin'.quickfix()<cr>
 nnoremap <silent><localleader>L :lua require'telescope.builtin'.loclist()<cr>
 nnoremap <silent><localleader>R :lua require'telescope.builtin'.registers()<cr>
+
+nnoremap <silent><localleader>gs :lua require'telescope.builtin'.git_status()<cr>
+nnoremap <silent><localleader>gb :lua require'telescope.builtin'.git_branches()<cr>
+nnoremap <silent><localleader>gc :lua require'telescope.builtin'.git_commits()<cr>
+nnoremap <silent><localleader>gC :lua require'telescope.builtin'.git_bcommits()<cr>

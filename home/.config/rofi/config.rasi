@@ -1,0 +1,17 @@
+configuration {
+	modi: "window,run,drun";
+	font: "mono 18";
+	terminal: "st";
+	disable-history: false;
+	sort: true;
+	sorting-method: "fzf";
+	parse-hosts: true;
+	combi-modi: "window,run,drun";
+	matching: "fuzzy";
+	hide-scrollbar: true;
+	theme: "~/.local/share/rofi/gruvbox-dark-hard.rasi";
+	kb-remove-to-eol: "Control+Shift+k";
+	kb-accept-entry: "Return,KP_Enter";
+	kb-row-up: "Up,Control+p,Control+k,ISO_Left_Tab";
+	kb-row-down: "Down,Control+n,Control+j";
+}

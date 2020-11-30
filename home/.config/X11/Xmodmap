@@ -1,4 +1,8 @@
-keycode  34 = bracketleft dead_circumflex bracketleft dead_circumflex dead_grave dead_abovering dead_grave
-keycode  35 = bracketright asterisk bracketright asterisk plus dead_macron plus
-keycode  48 = braceleft dead_diaeresis bracketleft dead_diaeresis dead_acute dead_acute dead_acute
-keycode  51 = braceright Ccedilla braceright Ccedilla ccedilla dead_breve ccedilla
+keycode   9 = grave asciitilde grave asciitilde
+keycode  62 = Up NoSymbol Up
+keycode 105 = Right NoSymbol Right
+keycode 108 = Left NoSymbol Left
+keycode 111 = Up NoSymbol Up
+keycode 113 = Alt_R Meta_R Alt_R Meta_R
+keycode 114 = Control_R NoSymbol Control_R
+keycode 135 = Down NoSymbol Down

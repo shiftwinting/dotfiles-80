@@ -1,0 +1,4 @@
+keycode  34 = bracketleft dead_circumflex bracketleft dead_circumflex dead_grave dead_abovering dead_grave
+keycode  35 = bracketright asterisk bracketright asterisk plus dead_macron plus
+keycode  48 = braceleft dead_diaeresis bracketleft dead_diaeresis dead_acute dead_acute dead_acute
+keycode  51 = braceright Ccedilla braceright Ccedilla ccedilla dead_breve ccedilla

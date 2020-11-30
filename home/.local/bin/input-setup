@@ -4,8 +4,7 @@
 if [ "$(uname -n)" = "halley" ]; then
     setxkbmap -layout no
 else
-    setxkbmap -layout es
-    xmodmap ~/.config/X11/Xmodmap
+    setxkbmap -layout us
 fi
 setxkbmap -option "caps:escape"
 xset r rate 250 30
@@ -17,8 +16,13 @@ setlayout() {
     done
 }
 
-setlayout "Kingston HyperX Alloy FPS Pro Mechanical Gaming Keyboard" us
-setlayout "SONiX USB DEVICE" us
+# setlayout "Kingston HyperX Alloy FPS Pro Mechanical Gaming Keyboard" us
+# setlayout "SONiX USB DEVICE" us
+# setlayout "SEMITEK USB-HID Gaming Keyboard" us
+kbds=$(xinput --list | sed -ne '/Virtual core keyboard/{:a' -e 'n;p;ba' -e '}' | grep "SEMITEK USB-HID Gaming Keyboard" | sed -n 's/.*id=\([0-9]\+\).*/\1/p')
+if [ "$kbds" ]; then
+    xmodmap ~/.config/X11/Xmodmap
+fi
 
 if [ "$(uname -n)" = "hercules" ]; then
     xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1

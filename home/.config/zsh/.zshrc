@@ -147,7 +147,9 @@ if [ -n "$ZSH_HIGHLIGHT_STYLES" ]; then
     ZSH_HIGHLIGHT_STYLES[comment]='fg=yellow'
 fi
 
+export ZSH_AUTOSUGGEST_USE_ASYNC=y
 safesource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^[[Z' autosuggest-accept
 
 safesource /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
