@@ -1,8 +1,1 @@
 keycode   9 = grave asciitilde grave asciitilde
-keycode  62 = Up NoSymbol Up
-keycode 105 = Right NoSymbol Right
-keycode 108 = Left NoSymbol Left
-keycode 111 = Up NoSymbol Up
-keycode 113 = Alt_R Meta_R Alt_R Meta_R
-keycode 114 = Control_R NoSymbol Control_R
-keycode 135 = Down NoSymbol Down
