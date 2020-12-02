@@ -33,8 +33,8 @@ return require('packer').startup(function()
     use 'romainl/vim-qf'
     use {
         'npxbr/gruvbox.nvim',
-        requires = 'tjdevries/colorbuddy.nvim',
-        config = require "cfg.gruvbox"
+        config = function() require "cfg.gruvbox" end,
+        requires = 'tjdevries/colorbuddy.nvim'
     }
     use 'luochen1990/rainbow'
     use 'justinmk/vim-sneak'
@@ -56,14 +56,19 @@ return require('packer').startup(function()
     use {'npxbr/glow.nvim', ft = 'markdown'}
     use {'norcalli/nvim-colorizer.lua', require"colorizer".setup()}
     use {'SirVer/ultisnips', requires = 'honza/vim-snippets'}
-    use 'neovim/nvim-lspconfig'
+    use {'neovim/nvim-lspconfig', config = function() require "cfg.lsp" end}
     use {
         'nvim-lua/completion-nvim',
         requires = 'nvim-treesitter/completion-treesitter'
     }
-    use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
+    use {
+        'RishabhRD/nvim-lsputils',
+        config = function() require "cfg.lsputil" end,
+        requires = 'RishabhRD/popfix'
+    }
     use {
         'nvim-treesitter/nvim-treesitter',
+        config = function() require "cfg.ts" end,
         requires = {
             {
                 'nvim-treesitter/completion-treesitter',
@@ -75,15 +80,17 @@ return require('packer').startup(function()
         }
     }
     use 'antoinemadec/FixCursorHold.nvim'
-    use {'mfussenegger/nvim-dap', requires = 'theHamsta/nvim-dap-virtual-text'}
+    use {
+        'mfussenegger/nvim-dap',
+        config = function() require "cfg.dap" end,
+        requires = 'theHamsta/nvim-dap-virtual-text'
+    }
     use 'rickhowe/diffchar.vim'
     use 'rhysd/conflict-marker.vim'
     use {
-        'Yggdroot/indentLine',
-        disable = true,
-        requires = 'lukas-reineke/indent-blankline.nvim'
+        'glepnir/indent-guides.nvim',
+        config = function() require "cfg.indent_guides" end
     }
-    use 'glepnir/indent-guides.nvim'
     use {
         'sheerun/vim-polyglot',
         setup = function()
@@ -92,6 +99,7 @@ return require('packer').startup(function()
     }
     use {
         'nvim-telescope/telescope.nvim',
+        config = function() require "cfg.telescope" end,
         requires = {
             'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim',
             'nvim-telescope/telescope-fzy-native.nvim',
@@ -99,10 +107,17 @@ return require('packer').startup(function()
         }
     }
     use 'romgrk/barbar.nvim'
-    use {'Xuyuanp/scrollbar.nvim', disable = true}
-    use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function() require "cfg.gitsigns" end,
+        requires = 'nvim-lua/plenary.nvim'
+    }
     use 'pwntester/octo.nvim'
     use 'strboul/urlview.vim'
-    use {'tjdevries/express_line.nvim', requires = 'nvim-lua/plenary.nvim'}
+    use {
+        'tjdevries/express_line.nvim',
+        config = function() require "cfg.statusline" end,
+        requires = 'nvim-lua/plenary.nvim'
+    }
     use {'dstein64/vim-startuptime', disable = true}
 end)
