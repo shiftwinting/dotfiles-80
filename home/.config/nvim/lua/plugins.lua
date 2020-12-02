@@ -31,7 +31,11 @@ return require('packer').startup(function()
     use 'andymass/vim-matchup'
     use 'haya14busa/incsearch.vim'
     use 'romainl/vim-qf'
-    use {'npxbr/gruvbox.nvim', requires = 'tjdevries/colorbuddy.nvim'}
+    use {
+        'npxbr/gruvbox.nvim',
+        requires = 'tjdevries/colorbuddy.nvim',
+        config = require "cfg.gruvbox"
+    }
     use 'luochen1990/rainbow'
     use 'justinmk/vim-sneak'
     use 'editorconfig/editorconfig-vim'
@@ -50,7 +54,7 @@ return require('packer').startup(function()
     }
     use {'mzlogin/vim-markdown-toc', ft = 'markdown'}
     use {'npxbr/glow.nvim', ft = 'markdown'}
-    use 'norcalli/nvim-colorizer.lua'
+    use {'norcalli/nvim-colorizer.lua', require"colorizer".setup()}
     use {'SirVer/ultisnips', requires = 'honza/vim-snippets'}
     use 'neovim/nvim-lspconfig'
     use {
@@ -80,7 +84,12 @@ return require('packer').startup(function()
         requires = 'lukas-reineke/indent-blankline.nvim'
     }
     use 'glepnir/indent-guides.nvim'
-    use 'sheerun/vim-polyglot'
+    use {
+        'sheerun/vim-polyglot',
+        setup = function()
+            vim.g.polyglot_disabled = {'latex', 'lua', 'tex', 'sxhkd', 'tmux'}
+        end
+    }
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -89,11 +98,11 @@ return require('packer').startup(function()
             'nvim-telescope/telescope-dap.nvim'
         }
     }
-    use 'norcalli/nvim_utils'
     use 'romgrk/barbar.nvim'
     use {'Xuyuanp/scrollbar.nvim', disable = true}
     use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
     use 'pwntester/octo.nvim'
     use 'strboul/urlview.vim'
+    use {'tjdevries/express_line.nvim', requires = 'nvim-lua/plenary.nvim'}
     use {'dstein64/vim-startuptime', disable = true}
 end)
