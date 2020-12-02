@@ -13,6 +13,9 @@ super+d
 super+a
     rofi -modi windowcd -show windowcd
 
+super+i
+	input-setup
+
 super+e
     emoji
 
@@ -54,12 +57,6 @@ super+shift+s
 
 super+alt+c
     showclip
-
-super+alt+{i,n}
-    xrandr --output eDP-1 --rotate {inverted,normal}
-
-super+{F7,F8}
-    systemctl --user {start, stop} caminv
 
 super+F5
     stream

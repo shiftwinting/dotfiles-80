@@ -85,7 +85,8 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim',
-            'nvim-telescope/telescope-fzy-native.nvim'
+            'nvim-telescope/telescope-fzy-native.nvim',
+            'nvim-telescope/telescope-dap.nvim'
         }
     }
     use 'norcalli/nvim_utils'

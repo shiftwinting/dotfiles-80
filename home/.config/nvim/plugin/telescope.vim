@@ -17,7 +17,7 @@ nnoremap <silent><localleader>s :lua require'telescope.builtin'.lsp_document_sym
 nnoremap <silent><localleader>S :lua require'telescope.builtin'.lsp_workspace_symbols()<cr>
 nnoremap <silent><localleader>r :lua require'telescope.builtin'.lsp_references()<cr>
 nnoremap <silent><localleader>a :lua require'telescope.builtin'.lsp_code_actions()<cr>
-nnoremap <silent><localleader>A :lua require'telescope.builtin'.lsp_range_code_actions()<cr>
+" nnoremap <silent><localleader>A :lua require'telescope.builtin'.lsp_range_code_actions()<cr>
 
 nnoremap <silent><localleader>c :lua require'telescope.builtin'.commands()<cr>
 nnoremap <silent><localleader>h :lua require'telescope.builtin'.help_tags()<cr>
@@ -26,8 +26,14 @@ nnoremap <silent><localleader>k :lua require'telescope.builtin'.keymaps()<cr>
 nnoremap <silent><localleader>Q :lua require'telescope.builtin'.quickfix()<cr>
 nnoremap <silent><localleader>L :lua require'telescope.builtin'.loclist()<cr>
 nnoremap <silent><localleader>R :lua require'telescope.builtin'.registers()<cr>
+nnoremap <silent><localleader>A :lua require'telescope.builtin'.autocommands()<cr>
 
 nnoremap <silent><localleader>gs :lua require'telescope.builtin'.git_status()<cr>
 nnoremap <silent><localleader>gb :lua require'telescope.builtin'.git_branches()<cr>
 nnoremap <silent><localleader>gc :lua require'telescope.builtin'.git_commits()<cr>
 nnoremap <silent><localleader>gC :lua require'telescope.builtin'.git_bcommits()<cr>
+
+nnoremap <silent><localleader>dc :lua require'telescope'.extensions.dap.commands()<cr>
+nnoremap <silent><localleader>dC :lua require'telescope'.extensions.dap.configurations()<cr>
+nnoremap <silent><localleader>db :lua require'telescope'.extensions.dap.list_breakpoints()<cr>
+nnoremap <silent><localleader>dv :lua require'telescope'.extensions.dap.variables()<cr>

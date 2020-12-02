@@ -36,7 +36,7 @@ if has('termguicolors') && &term!="linux" && ($DISPLAY!="" || $SSH_TTY!="")
 endif
 
 if has('nvim-0.5')
-    luafile ~/.config/nvim/init.lua
+    luafile ~/.config/nvim/lua/init.lua
     function! LspStatus() abort
         let sl = 'LSP '
         if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
