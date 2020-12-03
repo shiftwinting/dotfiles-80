@@ -9,7 +9,7 @@ P = function(v)
 end
 
 SourceLocal = function()
-    local localcfg = "doit.lua"
+    local localcfg = ".doit.lua"
     local cwd = vim.fn.getcwd()
     local path = cwd .. '/' .. localcfg
     if vim.fn.filereadable(path) == 1 then

@@ -1,6 +1,6 @@
 # Vim
 .exrc
-.doit.vim
+.doit.lua
 
 # Swap
 [._]*.s[a-v][a-z]
