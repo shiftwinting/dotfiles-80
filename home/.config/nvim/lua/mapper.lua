@@ -1,7 +1,9 @@
 local M = {}
 
 M.map = function(mode, keys, action, buf, opts)
-    opts = opts or {noremap = true, silent = true}
+    default_opts = {noremap = true, silent = true}
+    opts = opts or default_opts
+    opts = vim.tbl_extend("keep", opts, default_opts)
     buf = buf or false
     if buf then
         vim.api.nvim_buf_set_keymap(0, mode, keys, action, opts)
@@ -11,13 +13,12 @@ M.map = function(mode, keys, action, buf, opts)
 end
 
 M.cmdi = function(mode, keys, action, buf, opts)
-    opts = opts or {noremap = true, silent = false}
+    opts = opts or {silent = false}
     M.map(mode, keys, ':' .. action, buf, opts)
 end
 
 M.cmd = function(mode, keys, action, buf, opts)
-    opts = opts or {noremap = true, silent = true}
-    M.cmdi(mode, keys, action .. '<cr>', buf, opts)
+    M.map(mode, keys, '<cmd>' .. action .. '<cr>', buf, opts)
 end
 
 M.luai = function(mode, keys, action, buf, opts)
@@ -29,7 +30,7 @@ M.lua = function(mode, keys, action, buf, opts)
 end
 
 M.plug = function(mode, keys, action, buf, opts)
-    opts = opts or {silent = true, noremap = false}
+    opts = opts or {noremap = false}
     M.map(mode, keys, '<Plug>(' .. action .. ')', buf, opts)
 end
 

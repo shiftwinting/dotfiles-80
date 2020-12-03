@@ -36,4 +36,5 @@ map.iplug("<tab>", "completion_smart_tab")
 map.iplug("<s-tab>", "completion_smart_s_tab")
 
 map.i("<cr>",
-      "pumvisible() ? complete_info()['selected'] != '-1' ? '<Plug>(completion_confirm_completion)'  : '<c-e><CR>' : '<CR>'")
+      "pumvisible() ? complete_info()['selected'] != '-1' ? '<Plug>(completion_confirm_completion)'  : '<c-e><CR>' : '<CR>'",
+      false, {expr = true})

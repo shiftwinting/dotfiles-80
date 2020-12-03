@@ -1,3 +1,9 @@
+local map = require "mapper"
+local lsp_nmap =
+    function(keys, func) map.nlua(keys, "vim.lsp." .. func, true) end
+local lsp_vmap =
+    function(keys, func) map.vlua(keys, "vim.lsp." .. func, true) end
+
 local on_attach_wrapper = function(client, user_opts)
     local opts = user_opts or
                      {
@@ -9,14 +15,6 @@ local on_attach_wrapper = function(client, user_opts)
     local show_diags = opts.show_diags or false
     local lsp_highlights = opts.lsp_highlights or false
     require"completion".on_attach(client)
-
-    local map = require "mapper"
-    local lsp_nmap = function(keys, func)
-        map.nlua(keys, "vim.lsp." .. func, true)
-    end
-    local lsp_vmap = function(keys, func)
-        map.vlua(keys, "vim.lsp." .. func, true)
-    end
 
     lsp_nmap('K', 'buf.hover()')
     lsp_nmap('<c-]>', 'buf.definition()')
@@ -79,7 +77,7 @@ lspconfig.clangd.setup {
     },
     on_attach = function(client)
         on_attach_wrapper(client, {auto_format = false})
-        mapper('gH', ':ClangdSwitchSourceHeader<CR>')
+        map.ncmd('gH', 'ClangdSwitchSourceHeader')
     end,
     init_options = {usePlaceholders = true, completeUnimported = true}
 }
