@@ -102,6 +102,6 @@ dap_map('<F10>', 'repl.run_last()')
 dap_map('<F2>', 'list_breakpoints()')
 
 map.ncmd('g<cr>', "execute 'DebugC' g:dbg_cmd")
-map.ncmdi('n', 'g<space>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s<Space>")
+map.ncmdi('g<space>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s<Space>")
 
 return M

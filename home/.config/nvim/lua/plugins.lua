@@ -65,7 +65,10 @@ return require('packer').startup(function()
     }
     use {'mzlogin/vim-markdown-toc', ft = 'markdown'}
     use {'npxbr/glow.nvim', ft = 'markdown'}
-    use {'norcalli/nvim-colorizer.lua', require"colorizer".setup()}
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function() require"colorizer".setup() end
+    }
     use {
         'SirVer/ultisnips',
         config = function() require "cfg.ultisnips" end,
@@ -138,5 +141,4 @@ return require('packer').startup(function()
         config = function() require "cfg.statusline" end,
         requires = 'nvim-lua/plenary.nvim'
     }
-    use {'dstein64/vim-startuptime', disable = true}
 end)
