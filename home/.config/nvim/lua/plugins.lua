@@ -18,7 +18,7 @@ return require('packer').startup(function()
     use 'tpope/vim-unimpaired'
     use 'benmills/vimux'
     use 'tpope/vim-abolish'
-    use 'tpope/vim-dispatch'
+    use {'tpope/vim-dispatch', config = function() require "cfg.dispatch" end}
     use 'tpope/vim-git'
     use {
         'tpope/vim-fugitive',
@@ -27,18 +27,22 @@ return require('packer').startup(function()
     use 'tpope/vim-rsi'
     use 'tpope/vim-surround'
     use 'tpope/vim-apathy'
-    use {'vhdirk/vim-cmake', requires = 'skywind3000/asyncrun.vim'}
-    use 'andymass/vim-matchup'
-    use 'haya14busa/incsearch.vim'
-    use 'romainl/vim-qf'
+    use {'ilyachur/cmake4vim', config = function() require "cfg.cmake" end}
+    use {'andymass/vim-matchup', config = function() require "cfg.matchup" end}
+    use {'romainl/vim-qf', config = function() require "cfg.qf" end}
     use {
         'npxbr/gruvbox.nvim',
         config = function() require "cfg.gruvbox" end,
         requires = 'tjdevries/colorbuddy.nvim'
     }
-    use 'luochen1990/rainbow'
+    use {'luochen1990/rainbow', config = function() require "cfg.rainbow" end}
     use 'justinmk/vim-sneak'
-    use 'editorconfig/editorconfig-vim'
+    use {
+        'editorconfig/editorconfig-vim',
+        config = function()
+            vim.g.EditorConfig_exclude_patterns = {'fugitive://.*'}
+        end
+    }
     use 'michaeljsmith/vim-indent-object'
     use 'wellle/targets.vim'
     use 'rhysd/clever-f.vim'
@@ -46,7 +50,11 @@ return require('packer').startup(function()
     use 'kovetskiy/sxhkd-vim'
     use 'tmux-plugins/vim-tmux'
     use 'christoomey/vim-tmux-navigator'
-    use {'lervag/vimtex', ft = 'tex'}
+    use {
+        'lervag/vimtex',
+        ft = 'tex',
+        config = function() require "cfg.vimtex" end
+    }
     use 'rhysd/git-messenger.vim'
     use {
         'Julian/vim-textobj-variable-segment',
@@ -55,10 +63,15 @@ return require('packer').startup(function()
     use {'mzlogin/vim-markdown-toc', ft = 'markdown'}
     use {'npxbr/glow.nvim', ft = 'markdown'}
     use {'norcalli/nvim-colorizer.lua', require"colorizer".setup()}
-    use {'SirVer/ultisnips', requires = 'honza/vim-snippets'}
+    use {
+        'SirVer/ultisnips',
+        config = function() require "cfg.ultisnips" end,
+        requires = 'honza/vim-snippets'
+    }
     use {'neovim/nvim-lspconfig', config = function() require "cfg.lsp" end}
     use {
         'nvim-lua/completion-nvim',
+        config = function() require "cfg.completion" end,
         requires = 'nvim-treesitter/completion-treesitter'
     }
     use {
@@ -106,7 +119,7 @@ return require('packer').startup(function()
             'nvim-telescope/telescope-dap.nvim'
         }
     }
-    use 'romgrk/barbar.nvim'
+    use {'romgrk/barbar.nvim', setup = function() require "cfg.barbar" end}
     use {
         'lewis6991/gitsigns.nvim',
         config = function() require "cfg.gitsigns" end,

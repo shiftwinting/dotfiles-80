@@ -89,4 +89,24 @@ vim.cmd [[
 
 vim.g.dap_virtual_text = 'all frames'
 
+local dap_map = function(keys, func)
+    vim.api.nvim_set_keymap('n', keys, ":lua require'dap'." .. func .. "()<cr>",
+                            {noremap = true, silent = true})
+end
+
+dap_map('<F5>', 'continue')
+dap_map('<F6>', 'step_over')
+dap_map('<F7>', 'step_into')
+dap_map('<F8>', 'step_out')
+dap_map('<F9>', 'toggle_breakpoint')
+dap_map('<F1>', 'repl.open')
+dap_map('<F10>', 'repl.run_last')
+dap_map('<F2>', 'list_breakpoints')
+
+vim.api.nvim_set_keymap('n', 'g<cr>', ":execute 'DebugC' g:dbg_cmd<cr>",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'g<space>',
+                        ":let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s<Space>",
+                        {noremap = true, silent = true})
+
 return M
