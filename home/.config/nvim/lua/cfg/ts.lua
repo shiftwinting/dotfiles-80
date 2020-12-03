@@ -1,3 +1,4 @@
+require"mapper".ncmd('<leader>h', 'write <bar> edit <bar> TSBufEnable highlight')
 local tsconfigs = require "nvim-treesitter.configs"
 
 tsconfigs.setup {

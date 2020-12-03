@@ -14,9 +14,8 @@ require('telescope').load_extension('dap')
 
 local telescope_map = function(keys, func, mod)
     mod = mod or '.builtin'
-    vim.api.nvim_set_keymap('n', '<localleader>' .. keys,
-                            ":lua require'telescope." .. mod .. "'." .. func ..
-                                "<cr>", {silent = true})
+    require"mapper".nlua('<localleader>' .. keys,
+                         "require'telescope." .. mod .. "'." .. func)
 end
 
 telescope_map('p', 'planets()')

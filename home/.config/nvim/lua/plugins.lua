@@ -11,7 +11,6 @@ vim.api.nvim_command [[autocmd BufWritePost plugins.lua PackerCompile]]
 return require('packer').startup(function()
     -- Packer can manage itself as an optional plugin
     use {'wbthomason/packer.nvim', opt = true}
-    use 'tpope/vim-sensible'
     use 'tpope/vim-repeat'
     use 'tpope/vim-obsession'
     use 'tpope/vim-commentary'
@@ -125,7 +124,10 @@ return require('packer').startup(function()
         config = function() require "cfg.gitsigns" end,
         requires = 'nvim-lua/plenary.nvim'
     }
-    use 'pwntester/octo.nvim'
+    use {
+        'pwntester/octo.nvim',
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
+    }
     use 'strboul/urlview.vim'
     use {
         'tjdevries/express_line.nvim',

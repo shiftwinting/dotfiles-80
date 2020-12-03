@@ -25,30 +25,27 @@ vim.g.bufferline = {
     maximum_padding = 0
 }
 
-local barbar_map = function(keys, func)
-    vim.api.nvim_set_keymap('n', keys, ":" .. func .. "<cr>",
-                            {noremap = true, silent = true})
-end
+local map = require "mapper"
 -- Magic buffer-picking mode
-barbar_map('<leader>bp', 'BufferPick')
+map.ncmd('<leader>bp', 'BufferPick')
 -- -- Move to previous/next
-barbar_map('<A-,>', 'BufferPrevious')
-barbar_map('<A-.>', 'BufferNext')
+map.ncmd('<A-,>', 'BufferPrevious')
+map.ncmd('<A-.>', 'BufferNext')
 -- -- Re-order to previous/next
--- barbar_map('<A-<, 'BufferMovePrevious')
--- barbar_map('<A->, 'BufferMoveNext')
+-- map.ncmd('<A-<, 'BufferMovePrevious')
+-- map.ncmd('<A->, 'BufferMoveNext')
 -- Goto buffer in position...
-barbar_map('<A-1>', 'BufferGoto 1')
-barbar_map('<A-2>', 'BufferGoto 2')
-barbar_map('<A-3>', 'BufferGoto 3')
-barbar_map('<A-4>', 'BufferGoto 4')
-barbar_map('<A-5>', 'BufferGoto 5')
-barbar_map('<A-6>', 'BufferGoto 6')
-barbar_map('<A-7>', 'BufferGoto 7')
-barbar_map('<A-8>', 'BufferGoto 8')
-barbar_map('<A-9>', 'BufferLast')
+map.ncmd('<A-1>', 'BufferGoto 1')
+map.ncmd('<A-2>', 'BufferGoto 2')
+map.ncmd('<A-3>', 'BufferGoto 3')
+map.ncmd('<A-4>', 'BufferGoto 4')
+map.ncmd('<A-5>', 'BufferGoto 5')
+map.ncmd('<A-6>', 'BufferGoto 6')
+map.ncmd('<A-7>', 'BufferGoto 7')
+map.ncmd('<A-8>', 'BufferGoto 8')
+map.ncmd('<A-9>', 'BufferLast')
 -- Close buffer
-barbar_map('<A-c>', 'BufferClose')
+map.ncmd('<A-c>', 'BufferClose')
 -- Wipeout buffer
 -- :BufferWipeout
 -- Other:

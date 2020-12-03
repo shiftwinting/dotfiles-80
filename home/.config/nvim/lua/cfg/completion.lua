@@ -28,15 +28,12 @@ vim.g.completion_chain_complete_list = {
     }
 }
 
-local imap = function(keys, action)
-    vim.api.nvim_set_keymap('i', keys, action, {silent = true})
-end
+local map = require "mapper"
 
-imap("<c-j>", "<Plug>(completion_next_source)")
-imap("<c-k>", "<Plug>(completion_prev_source)")
-imap("<tab>", "<Plug>(completion_smart_tab)")
-imap("<s-tab>", "<Plug>(completion_smart_s_tab)")
+map.iplug("<c-j>", "completion_next_source")
+map.iplug("<c-k>", "completion_prev_source")
+map.iplug("<tab>", "completion_smart_tab")
+map.iplug("<s-tab>", "completion_smart_s_tab")
 
-vim.api.nvim_set_keymap('i', "<cr>",
-                        "pumvisible() ? complete_info()['selected'] != '-1' ? '<Plug>(completion_confirm_completion)'  : '<c-e><CR>' : '<CR>'",
-                        {silent = true, expr = true})
+map.i("<cr>",
+      "pumvisible() ? complete_info()['selected'] != '-1' ? '<Plug>(completion_confirm_completion)'  : '<c-e><CR>' : '<CR>'")

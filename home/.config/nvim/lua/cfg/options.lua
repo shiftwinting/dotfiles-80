@@ -9,7 +9,7 @@ opt.swapfile = false
 opt.showmode = true
 opt.number = true
 opt.cursorline = true
-opt.lazyredraw = true
+-- opt.lazyredraw = true
 opt.signcolumn = "auto:2"
 opt.showtabline = 2
 opt.showmatch = true
@@ -44,20 +44,23 @@ opt.synmaxcol = 500
 
 opt.completeopt = {"menuone", "noinsert", "noselect"}
 opt.scrolloff = 999
+opt.sidescrolloff = 5
 
 opt.clipboard = "unnamedplus"
 
-opt.wildmode = {"longest", "full"}
+opt.wildmode = "longest,full"
 
--- opt.cpoptions = opt.cpoptions - '_'
+opt.cpoptions = opt.cpoptions - '_'
 
 opt.joinspaces = true
 
--- opt.listchars = append(opt.listchars, "trail:·", ',')
+opt.listchars = 'tab:>\\ ,trail:·,extends:>,precedes:<,nbsp:+'
 opt.list = true
 
 opt.virtualedit = "block"
 opt.spelloptions = "camel"
+
+opt.viewoptions = opt.viewoptions - 'options'
 
 vim.g.is_posix = 1
 vim.g.netrw_home = vim.fn.stdpath('data')

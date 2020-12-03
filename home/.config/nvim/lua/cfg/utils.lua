@@ -42,10 +42,4 @@ M.formatexpr = function(start_line, end_line, timeout_ms)
     return 0
 end
 
-M.mapper = function(keys, action)
-    vim.api.nvim_buf_set_keymap(0, 'n', keys, action,
-                                {noremap = true, silent = true})
-end
-
-
 return M

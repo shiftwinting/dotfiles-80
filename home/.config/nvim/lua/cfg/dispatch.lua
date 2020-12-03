@@ -1,8 +1,5 @@
-local nmap = function(keys, expr, trail)
-    trail = trail or "<cr>"
-    vim.api.nvim_set_keymap('n', keys, ": " .. expr .. trail, {noremap = true})
-end
+local map = require "mapper"
 
-nmap("m<cr>", "execute 'Make g:targets'")
-nmap("m!", "execute 'Make! g:targets'")
-nmap("m<space>", "Make<space>", "")
+map.ncmd("m<cr>", "execute 'Make g:targets'")
+map.ncmd("m!", "execute 'Make! g:targets'")
+map.ncmdi("m<space>", "Make<space>")
