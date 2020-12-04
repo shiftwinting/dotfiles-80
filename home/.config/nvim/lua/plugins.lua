@@ -26,11 +26,7 @@ return require('packer').startup(function()
     use 'tpope/vim-rsi'
     use 'tpope/vim-surround'
     use 'tpope/vim-apathy'
-    use {
-        'ilyachur/cmake4vim',
-        lock = true,
-        config = function() require "cfg.cmake" end
-    }
+    use {'ilyachur/cmake4vim', config = function() require "cfg.cmake" end}
     use {'andymass/vim-matchup', config = function() require "cfg.matchup" end}
     use {'romainl/vim-qf', config = function() require "cfg.qf" end}
     use {
