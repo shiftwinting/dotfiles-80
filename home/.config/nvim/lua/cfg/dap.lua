@@ -101,7 +101,8 @@ dap_map('<F1>', 'repl.open()')
 dap_map('<F10>', 'repl.run_last()')
 dap_map('<F2>', 'list_breakpoints()')
 
-map.ncmd('g<cr>', "execute 'DebugC' g:dbg_cmd")
+vim.g.dbg_cmd = ''
+map.ncmd('g<cr>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s")
 map.ncmdi('g<space>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s<Space>")
 
 return M
