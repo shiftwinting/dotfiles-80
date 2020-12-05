@@ -27,10 +27,12 @@ setlayout "Kingston HyperX Alloy FPS Pro Mechanical Gaming Keyboard" us
 # setlayout "SONiX USB DEVICE" us
 
 setlayout "SEMITEK USB-HID Gaming Keyboard" us
-setmodmap "SEMITEK USB-HID Gaming Keyboard"
+# setmodmap "SEMITEK USB-HID Gaming Keyboard"
 
 setlayout "Dierya DK61 Keyboard" us
-setmodmap "Dierya DK61 Keyboard"
+# setmodmap "Dierya DK61 Keyboard"
+
+xmodmap ~/.config/X11/Xmodmap
 
 if [ "$(uname -n)" = "hercules" ]; then
     xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
