@@ -66,71 +66,88 @@ lspconfig.util.default_config = vim.tbl_extend("force",
                                                lspconfig.util.default_config, {
     on_attach = function(client) on_attach_wrapper(client, nil) end
 })
-lspconfig.bashls.setup {}
-lspconfig.clangd.setup {
-    cmd = {
-        "clangd", "--background-index", "--clang-tidy",
-        "--completion-style=bundled", "--header-insertion=iwyu",
-        "--header-insertion-decorators", "--suggest-missing-includes",
-        "--cross-file-rename", "--index"
-        -- '--all-scopes-completion',
-    },
-    on_attach = function(client)
-        on_attach_wrapper(client, {auto_format = false})
-        map.ncmd('gH', 'ClangdSwitchSourceHeader')
-    end,
-    init_options = {usePlaceholders = true, completeUnimported = true}
-}
-lspconfig.jsonls.setup {cmd = {"json-languageserver"}}
-lspconfig.texlab.setup {}
-lspconfig.vimls.setup {}
-lspconfig.html.setup {}
-lspconfig.cmake.setup {}
-lspconfig.cssls.setup {}
-lspconfig.yamlls.setup {}
 
-local function get_lua_runtime()
-    local result = {};
-    for _, path in pairs(vim.api.nvim_get_runtime_file("lua/", true)) do
-        result[path:sub(1, #path - 1)] = true
-    end
-    return result;
+if vim.fn.executable("bash-language-server") == 1 then lspconfig.bashls.setup {} end
+
+if vim.fn.executable("clangd") == 1 then
+    lspconfig.clangd.setup {
+        cmd = {
+            "clangd", "--background-index", "--clang-tidy",
+            "--completion-style=bundled", "--header-insertion=iwyu",
+            "--header-insertion-decorators", "--suggest-missing-includes",
+            "--cross-file-rename", "--index"
+            -- '--all-scopes-completion',
+        },
+        on_attach = function(client)
+            on_attach_wrapper(client, {auto_format = false})
+            map.ncmd('gH', 'ClangdSwitchSourceHeader')
+        end,
+        init_options = {usePlaceholders = true, completeUnimported = true}
+    }
 end
 
-lspconfig.sumneko_lua.setup({
-    settings = {
-        Lua = {
-            runtime = {version = "LuaJIT"},
-            completion = {
-                -- You should use real snippets
-                keywordSnippet = "Disable"
-            },
-            diagnostics = {
-                enable = true,
-                globals = {
-                    -- Neovim
-                    "vim" -- Busted
+if vim.fn.executable("json-languageserver") == 1 then
+    lspconfig.jsonls.setup {cmd = {"json-languageserver"}}
+end
+
+if vim.fn.executable("texlab") == 1 then lspconfig.texlab.setup {} end
+
+if vim.fn.executable("vim-language-server") == 1 then lspconfig.vimls.setup {} end
+
+if vim.fn.executable("html-languageserver") == 1 then lspconfig.html.setup {} end
+
+if vim.fn.executable("cmake-language-server") == 1 then lspconfig.cmake.setup {} end
+
+if vim.fn.executable("css-languageserver") == 1 then lspconfig.cssls.setup {} end
+
+if vim.fn.executable("yaml-language-server") == 1 then lspconfig.yamlls.setup {} end
+
+if vim.fn.executable("lua-language-server") == 1 then
+    local function get_lua_runtime()
+        local result = {};
+        for _, path in pairs(vim.api.nvim_get_runtime_file("lua/", true)) do
+            result[path:sub(1, #path - 1)] = true
+        end
+        return result;
+    end
+
+    lspconfig.sumneko_lua.setup({
+        settings = {
+            Lua = {
+                runtime = {version = "LuaJIT"},
+                completion = {
+                    -- You should use real snippets
+                    keywordSnippet = "Disable"
+                },
+                diagnostics = {
+                    enable = true,
+                    globals = {
+                        -- Neovim
+                        "vim" -- Busted
+                    }
+                },
+
+                workspace = {
+                    library = get_lua_runtime(),
+                    maxPreload = 1000,
+                    preloadFileSize = 1000
                 }
-            },
-
-            workspace = {
-                library = get_lua_runtime(),
-                maxPreload = 1000,
-                preloadFileSize = 1000
             }
+        },
+
+        filetypes = {"lua"},
+        cmd = {"lua-language-server"}
+    })
+end
+
+if vim.fn.executable("efm-langserver") then
+    lspconfig.efm.setup {
+        filetypes = {
+            "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
+            "json", "csv", "lua"
         }
-    },
-
-    filetypes = {"lua"},
-    cmd = {"lua-language-server"}
-})
-
-lspconfig.efm.setup {
-    filetypes = {
-        "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
-        "json", "csv", "lua"
     }
-}
+end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
