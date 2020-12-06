@@ -140,7 +140,7 @@ if vim.fn.executable("lua-language-server") == 1 then
     })
 end
 
-if vim.fn.executable("efm-langserver") then
+if vim.fn.executable("efm-langserver") == 1 then
     lspconfig.efm.setup {
         filetypes = {
             "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
@@ -149,10 +149,18 @@ if vim.fn.executable("efm-langserver") then
     }
 end
 
+if vim.fn.executable("pyright-langserver") == 1 then lspconfig.pyright.setup {} end
+
+if vim.fn.executable("jedi-language-server") == 1 then
+    lspconfig.jedi_language_server.setup {}
+end
+
+if vim.fn.executable("pyls") == 1 then lspconfig.pyls.setup {} end
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
+        virtual_text = true,
         signs = true,
-        underline = false,
+        underline = true,
         update_in_insert = false
     })
