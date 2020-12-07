@@ -14,17 +14,18 @@ vim.g.completion_chain_complete_list = {
             {complete_items = {'lsp', 'snippet'}}, {complete_items = {'ts'}}
         },
         string = {
-            {complete_items = {'path'}, triggered_only = {'/'}},
-            {complete_items = {'buffers'}}
+            {complete_items = {'path'}, triggered_only = {'/'}}
+            -- {complete_items = {'buffers'}}
         },
         comment = {{complete_items = {'buffers', 'path'}}}
     },
     tex = {
         default = {
             {complete_items = {'vimtex', 'lsp', 'snippet'}},
-            {complete_items = {'ts'}}, {complete_items = {'buffers'}}
-        },
-        comment = {{complete_items = {'buffers'}}}
+            {complete_items = {'ts'}}
+            -- {complete_items = {'buffers'}}
+        }
+        -- comment = {{complete_items = {'buffers'}}}
     }
 }
 

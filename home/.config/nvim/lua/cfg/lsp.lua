@@ -67,10 +67,17 @@ lspconfig.util.default_config = vim.tbl_extend("force",
     on_attach = function(client) on_attach_wrapper(client, nil) end
 })
 
-if vim.fn.executable("bash-language-server") == 1 then lspconfig.bashls.setup {} end
+local function get_lua_runtime()
+    local result = {};
+    for _, path in pairs(vim.api.nvim_get_runtime_file("lua/", true)) do
+        result[path:sub(1, #path - 1)] = true
+    end
+    return result;
+end
 
-if vim.fn.executable("clangd") == 1 then
-    lspconfig.clangd.setup {
+local servers = {
+    bashls = {},
+    clangd = {
         cmd = {
             "clangd", "--background-index", "--clang-tidy",
             "--completion-style=bundled", "--header-insertion=iwyu",
@@ -83,38 +90,27 @@ if vim.fn.executable("clangd") == 1 then
             map.ncmd('gH', 'ClangdSwitchSourceHeader')
         end,
         init_options = {usePlaceholders = true, completeUnimported = true}
-    }
-end
-
-if vim.fn.executable("json-languageserver") == 1 then
-    lspconfig.jsonls.setup {cmd = {"json-languageserver"}}
-end
-
-if vim.fn.executable("texlab") == 1 then lspconfig.texlab.setup {} end
-
-if vim.fn.executable("vim-language-server") == 1 then lspconfig.vimls.setup {} end
-
-if vim.fn.executable("html-languageserver") == 1 then lspconfig.html.setup {} end
-
-if vim.fn.executable("cmake-language-server") == 1 then lspconfig.cmake.setup {} end
-
-if vim.fn.executable("css-languageserver") == 1 then lspconfig.cssls.setup {} end
-
-if vim.fn.executable("yaml-language-server") == 1 then lspconfig.yamlls.setup {} end
-
-if vim.fn.executable("lua-language-server") == 1 then
-    local function get_lua_runtime()
-        local result = {};
-        for _, path in pairs(vim.api.nvim_get_runtime_file("lua/", true)) do
-            result[path:sub(1, #path - 1)] = true
-        end
-        return result;
-    end
-
-    lspconfig.sumneko_lua.setup({
+    },
+    cmake = {},
+    cssls = {},
+    efm = {
+        filetypes = {
+            "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
+            "json", "csv", "lua"
+        }
+    },
+    html = {},
+    -- jedi_language_server = {},
+    jsonls = {cmd = {"json-languageserver", "--stdio"}},
+    -- pyright = {},
+    pyls = {},
+    sumneko_lua = {
         settings = {
             Lua = {
-                runtime = {version = "LuaJIT"},
+                runtime = {
+                    version = "LuaJIT",
+                    path = vim.split(package.path, ';')
+                },
                 completion = {
                     -- You should use real snippets
                     keywordSnippet = "Disable"
@@ -137,25 +133,18 @@ if vim.fn.executable("lua-language-server") == 1 then
 
         filetypes = {"lua"},
         cmd = {"lua-language-server"}
-    })
+    },
+    texlab = {},
+    vimls = {},
+    yamlls = {}
+}
+
+for server, config in pairs(servers) do
+    local default_config = lspconfig[server].default_config or
+                               lspconfig[server].document_config.default_config
+    local cmd = config.cmd or default_config.cmd
+    if vim.fn.executable(cmd[1]) == 1 then lspconfig[server].setup(config) end
 end
-
-if vim.fn.executable("efm-langserver") == 1 then
-    lspconfig.efm.setup {
-        filetypes = {
-            "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
-            "json", "csv", "lua"
-        }
-    }
-end
-
--- if vim.fn.executable("pyright-langserver") == 1 then lspconfig.pyright.setup {} end
-
--- if vim.fn.executable("jedi-language-server") == 1 then
---     lspconfig.jedi_language_server.setup {}
--- end
-
-if vim.fn.executable("pyls") == 1 then lspconfig.pyls.setup {} end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
