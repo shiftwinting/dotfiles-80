@@ -54,7 +54,6 @@ return require('packer').startup(function()
         ft = 'tex',
         config = function() require "cfg.vimtex" end
     }
-    use 'rhysd/git-messenger.vim'
     use {
         'Julian/vim-textobj-variable-segment',
         requires = 'kana/vim-textobj-user'

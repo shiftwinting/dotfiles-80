@@ -7,7 +7,7 @@ local lsp_vmap =
 local on_attach_wrapper = function(client, user_opts)
     local opts = user_opts or
                      {
-            auto_format = true,
+            auto_format = false,
             show_diags = false,
             lsp_highlights = false
         }
@@ -149,11 +149,11 @@ if vim.fn.executable("efm-langserver") == 1 then
     }
 end
 
-if vim.fn.executable("pyright-langserver") == 1 then lspconfig.pyright.setup {} end
+-- if vim.fn.executable("pyright-langserver") == 1 then lspconfig.pyright.setup {} end
 
-if vim.fn.executable("jedi-language-server") == 1 then
-    lspconfig.jedi_language_server.setup {}
-end
+-- if vim.fn.executable("jedi-language-server") == 1 then
+--     lspconfig.jedi_language_server.setup {}
+-- end
 
 if vim.fn.executable("pyls") == 1 then lspconfig.pyls.setup {} end
 
