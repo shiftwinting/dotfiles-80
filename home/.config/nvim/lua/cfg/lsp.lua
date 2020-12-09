@@ -5,6 +5,9 @@ local lsp_vmap =
     function(keys, func) map.vlua(keys, "vim.lsp." .. func, true) end
 
 local on_attach_wrapper = function(client, user_opts)
+    if client.config.flags then
+        client.config.flags.allow_incremental_sync = true
+    end
     local opts = user_opts or
                      {
             auto_format = false,

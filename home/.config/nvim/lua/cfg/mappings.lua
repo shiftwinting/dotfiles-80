@@ -18,6 +18,13 @@ map.n('gV', '`[v`]')
 
 map.n('<down>', '<c-e>')
 map.n('<up>', '<c-y>')
+
+
+map.n('=', '<c-a>')
+map.v('=', '<c-a>')
+map.n('-', '<c-x>')
+map.v('-', '<c-x>')
+
 -- go to first non-blank character of current line
 map.n('<c-a>', '^')
 map.v('<c-a>', '^')
