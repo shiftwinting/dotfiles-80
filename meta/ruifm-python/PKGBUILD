@@ -1,13 +1,12 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-python
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="ruifm's python metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
-  'flake8'
   'jedi-language-server'
   'pyright'
   'python-debugpy'

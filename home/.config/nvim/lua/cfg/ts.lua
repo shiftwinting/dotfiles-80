@@ -83,3 +83,6 @@ tsconfigs.setup {
     },
     rainbow = {enable = false, disable = {}}
 }
+
+
+require"mapper".nlua('<leader>p', 'require"contextprint".add_statement()')

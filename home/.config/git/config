@@ -26,6 +26,8 @@
     autoStash = true
 [fetch]
     recurseSubmodules = on-demand
+    prune = true
+    pruneTags = true
 [pull]
     ff = only
 [merge]

@@ -7,7 +7,7 @@ map.n('Q', '@q')
 
 -- make an accidental ; press also enter command mode
 -- temporarily disabled to to vim-sneak plugin
--- map.n('; :
+map.n(';', ':')
 
 -- Map Y to act like D and C, i.e. to yank until EOL (which is more logical,
 -- but not Vi-compatible), rather than act as yy
