@@ -106,6 +106,7 @@ alias py='python3'
 alias p='python3'
 alias p2='python2'
 
-alias ta='tmux new-session -A -s'
+alias ta='tmux new-session -A'
+alias tas='tmux new-session -A -s'
 
 alias qr='qrencode -t UTF8'

@@ -19,7 +19,7 @@ if [ ! "$DISPLAY" ]; then
         [ -r ~/dotfiles/lists/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/lists/caps2esc.map > /dev/null
         sudo -n kbdrate -s -d 250 -r 30 > /dev/null
         if [ "$XDG_VTNR" = "2" ] && [ -t 0 ] && [ -z "$TMUX" ] && [ "$(uname -n)" != "tau" ]; then
-            exists tmux && exec tmux new-session -A -s tty
+            exists tmux && exec tmux new-session -A
         fi
     fi
 fi
