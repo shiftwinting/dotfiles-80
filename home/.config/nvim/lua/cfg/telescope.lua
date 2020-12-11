@@ -1,14 +1,24 @@
+local sorters = require 'telescope.sorters'
+local previewers = require 'telescope.previewers'
+local actions = require 'telescope.actions'
+
 require('telescope').setup {
     defaults = {
         color_devicons = false,
         prompt_position = "top",
         sorting_strategy = "ascending",
         scroll_strategy = "cycle",
-        generic_sorter = require'telescope.sorters'.get_fzy_sorter,
-        file_sorter = require'telescope.sorters'.get_fzy_sorter,
-        file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-        grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-        qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+        generic_sorter = sorters.get_fzy_sorter,
+        file_sorter = sorters.get_fzy_sorter,
+        file_previewer = previewers.vim_buffer_cat.new,
+        grep_previewer = previewers.vim_buffer_vimgrep.new,
+        qflist_previewer = previewers.vim_buffer_qflist.new,
+        mappings = {
+            i = {
+                ["<c-j>"] = actions.move_selection_next,
+                ["<c-k>"] = actions.move_selection_previous
+            }
+        }
     }
 }
 
