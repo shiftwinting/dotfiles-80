@@ -78,7 +78,10 @@ return require('packer').startup(function()
     use {
         'RishabhRD/nvim-lsputils',
         config = function() require "cfg.lsputil" end,
-        requires = 'RishabhRD/popfix'
+        requires = {
+            'RishabhRD/popfix',
+            run = 'make -C external_modules/fzy_lua_native'
+        }
     }
     use {
         'nvim-treesitter/nvim-treesitter',

@@ -122,7 +122,7 @@ local servers = {
                     enable = true,
                     globals = {
                         -- Neovim
-                        "vim" -- Busted
+                        "vim", "use"
                     }
                 },
 
