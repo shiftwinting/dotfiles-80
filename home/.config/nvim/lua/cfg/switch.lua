@@ -8,5 +8,5 @@ map.n('<Plug>SpeedDatingFallbackUp', '<c-a>')
 map.n('<Plug>SpeedDatingFallbackDown', '<c-x>')
 
 -- Manually invoke speeddating in case switch didn't work
-map.ncmd(']i', [[ if !switch#Switch() <bar> call speeddating#increment(v:count1) <bar> endif ]])
-map.ncmd('[i', [[ if !switch#Switch({'reverse': 1}) <bar> call speeddating#increment(-v:count1) <bar> endif ]])
+map.ncmd(']i', [[ let mycount = v:count1 <bar> if !switch#Switch() <bar> call speeddating#increment(mycount) <bar> unlet mycount <bar> endif ]])
+map.ncmd('[i', [[ let mycount = v:count1 <bar> if !switch#Switch({'reverse': v:true}) <bar> call speeddating#increment(-mycount) <bar> unlet mycount <bar> endif ]])
