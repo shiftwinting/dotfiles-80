@@ -15,6 +15,7 @@ return require('packer').startup(function()
     use 'tpope/vim-obsession'
     use 'tpope/vim-commentary'
     use 'tpope/vim-unimpaired'
+    use 'tpope/vim-speeddating'
     use 'benmills/vimux'
     use 'tpope/vim-abolish'
     use {'tpope/vim-dispatch', config = function() require "cfg.dispatch" end}
@@ -92,7 +93,7 @@ return require('packer').startup(function()
                 requires = 'nvim-lua/completion-nvim'
             }, 'nvim-treesitter/nvim-treesitter-refactor',
             'nvim-treesitter/nvim-treesitter-textobjects',
-            {'romgrk/nvim-treesitter-context', disable = true},
+            {'romgrk/nvim-treesitter-context', disable = false},
             'p00f/nvim-ts-rainbow', 'bryall/contextprint.nvim'
         }
     }
@@ -140,4 +141,5 @@ return require('packer').startup(function()
         config = function() require "cfg.statusline" end,
         requires = 'nvim-lua/plenary.nvim'
     }
+    use {'AndrewRadev/switch.vim', config = function() require "cfg.switch" end}
 end)
