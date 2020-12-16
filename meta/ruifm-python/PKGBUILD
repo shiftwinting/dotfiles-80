@@ -1,27 +1,31 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-python
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="ruifm's python metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
+  'autopep8'
+  'flake8'
   'jedi-language-server'
   'pyright'
+  'python-black'
   'python-debugpy'
   'python-language-server'
+  'python-language-server-black'
   'python-matplotlib'
   'python-mccabe'
   'python-pillow'
   'python-pipenv'
   'python-poetry'
-  'python-pylint'
   'python-pydocstyle'
+  'python-pylint'
+  'python-pyls-isort-git'
   'python-rope'
   'python-scipy'
   'python-tqdm'
-  'autopep8'
   'yapf'
 )
 
