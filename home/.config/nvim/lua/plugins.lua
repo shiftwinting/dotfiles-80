@@ -101,7 +101,9 @@ return require('packer').startup(function()
     use {
         'mfussenegger/nvim-dap',
         config = function() require "cfg.dap" end,
-        requires = 'theHamsta/nvim-dap-virtual-text'
+        requires = {
+            'theHamsta/nvim-dap-virtual-text', 'mfussenegger/nvim-dap-python'
+        }
     }
     use 'rickhowe/diffchar.vim'
     use 'rhysd/conflict-marker.vim'
@@ -120,9 +122,10 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         config = function() require "cfg.telescope" end,
         requires = {
-            'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim',
-            'nvim-telescope/telescope-fzy-native.nvim',
-            'nvim-telescope/telescope-dap.nvim'
+            'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', {
+                'nvim-telescope/telescope-fzy-native.nvim',
+                run = 'make -C deps/fzy-lua-native'
+            }, 'nvim-telescope/telescope-dap.nvim'
         }
     }
     use {'romgrk/barbar.nvim', setup = function() require "cfg.barbar" end}

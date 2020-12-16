@@ -1,5 +1,5 @@
 local M = {}
-local last_gdb_config
+local last_config
 
 local dap = require "dap"
 
@@ -39,32 +39,15 @@ dap.adapters.lldb = {
     name = "lldb"
 }
 
-local find_python = function()
-    local cwd = vim.fn.getcwd()
-    if vim.fn.executable(cwd .. "/venv/bin/python") then
-        return cwd .. "/venv/bin/python"
-    elseif vim.fn.executable(cwd .. "/.venv/bin/python") then
-        return cwd .. "/.venv/bin/python"
-    else
-        return "/usr/bin/python"
+local get_python_path = function()
+    local venv_path = os.getenv('VIRTUAL_ENV')
+    if venv_path then
+        return venv_path .. '/bin/python'
     end
+    return "/usr/bin/python"
 end
 
-dap.adapters.python = {
-    type = "executable",
-    command = "/usr/bin/python",
-    args = {"-m", "debugpy.adapter"}
-}
-
-dap.configurations.python = {
-    {
-        type = "python",
-        request = "launch",
-        name = "Launch file",
-        program = "${file}",
-        pythonPath = find_python()
-    }
-}
+require'dap-python'.setup(get_python_path())
 
 dap.repl.commands = {
     continue = {".continue", ".c"},
@@ -104,5 +87,7 @@ dap_map('<F2>', 'list_breakpoints()')
 vim.g.dbg_cmd = ''
 map.ncmd('g<cr>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s")
 map.ncmdi('g<space>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s<Space>")
+map.nlua('gm', "require'dap-python'.test_method()")
+map.vlua('g<cr>', "require'dap-python'.debug_selection()")
 
 return M

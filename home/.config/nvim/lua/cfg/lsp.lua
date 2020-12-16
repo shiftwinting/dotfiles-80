@@ -64,6 +64,7 @@ local on_attach_wrapper = function(client, user_opts)
 end
 
 local lspconfig = require "lspconfig"
+local util = require "lspconfig.util"
 
 lspconfig.util.default_config = vim.tbl_extend("force",
                                                lspconfig.util.default_config, {
@@ -98,15 +99,42 @@ local servers = {
     cssls = {},
     efm = {
         filetypes = {
-            "vim", "make", "markdown", "rst", "yaml", "python", "sh", "html",
-            "json", "csv", "lua"
+            "vim", "make", "markdown", "rst", "yaml", "sh", "html", "json",
+            "csv", "lua"
         }
     },
     html = {},
     -- jedi_language_server = {},
     jsonls = {cmd = {"json-languageserver", "--stdio"}},
-    -- pyright = {},
-    pyls = {},
+
+    pyright = {
+        handlers = {
+            -- pyright ignores dynamicRegistration settings
+            ['client/registerCapability'] = function(_, _, _, _)
+                return {result = nil, error = nil}
+            end
+        },
+        root_dir = function(fname)
+            return util.root_pattern(".git", "setup.py", "setup.cfg",
+                                     "pyproject.toml", "requirements.txt")(fname) or
+                       util.path.dirname(fname)
+        end
+    },
+    pyls = {
+        plugins = {
+            jedi_completion = {enabled = false},
+            jedi_definition = {enabled = false},
+            jedi_symbols = {enabled = false},
+            jedi_references = {enabled = false},
+            mccabe = {enabled = false},
+            preload = {enabled = false},
+            pydocstyle = {enabled = false},
+            pyflakes = {enabled = false},
+            pylint = {enabled = false},
+            rope_completion = {enabled = false}
+
+        }
+    },
     sumneko_lua = {
         settings = {
             Lua = {
