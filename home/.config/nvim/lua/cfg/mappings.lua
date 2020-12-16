@@ -57,8 +57,3 @@ map.ncmd('<leader>q', 'quitall')
 map.ncmd('<localleader>x', 'update')
 
 map.t('<Esc>', "<c-\\><c-n>", {silent = true, noremap = true, expr = true})
-
-map.i('jj', '<esc>')
-map.i('kk', '<esc>')
-map.i('jk', '<esc>')
-map.i('kj', '<esc>')
