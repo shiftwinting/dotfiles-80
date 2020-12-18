@@ -81,7 +81,7 @@ tsconfigs.setup {
             }
         }
     },
-    rainbow = {enable = false, disable = {}}
+    rainbow = {enable = true, disable = {'bash'}}
 }
 
 
