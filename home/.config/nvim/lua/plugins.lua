@@ -136,7 +136,8 @@ return require('packer').startup(function()
     }
     use {
         'pwntester/octo.nvim',
-        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
+        cond = function() return vim.fn.executable("gh") == 1 end
     }
     use 'strboul/urlview.vim'
     use {

@@ -195,8 +195,6 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 
 export PWA_TELEMETRY_OPTOUT=y
-OCTO_GITHUB_TOKEN=ruifm:$(grep oauth_token "$HOME"/.config/hub | tr -d ' ' | cut -d':' -f 2)
-export OCTO_GITHUB_TOKEN
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
