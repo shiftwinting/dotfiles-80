@@ -1,7 +1,7 @@
 local M = {}
 
 M.map = function(mode, keys, action, buf, opts)
-    default_opts = {noremap = true, silent = true}
+    local default_opts = {noremap = true, silent = true}
     opts = opts or default_opts
     opts = vim.tbl_extend("keep", opts, default_opts)
     buf = buf or false
