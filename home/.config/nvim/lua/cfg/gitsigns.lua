@@ -4,5 +4,5 @@ require('gitsigns').setup {
         topdelete = {show_count = true},
         changedelete = {show_count = true}
     },
-    numhl = true,
+    -- numhl = true,
 }

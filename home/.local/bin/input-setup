@@ -18,6 +18,8 @@ setmodmap() {
 
 if [ "$(uname -n)" = "halley" ]; then
     setxkbmap -layout no
+elif [ "$(uname -n)" = "hercules" ]; then
+    setxkbmap -layout es
 fi
 
 setxkbmap -option "caps:escape"

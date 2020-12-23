@@ -108,12 +108,6 @@ local servers = {
     jsonls = {cmd = {"json-languageserver", "--stdio"}},
 
     pyright = {
-        handlers = {
-            -- pyright ignores dynamicRegistration settings
-            ['client/registerCapability'] = function(_, _, _, _)
-                return {result = nil, error = nil}
-            end
-        },
         root_dir = function(fname)
             return util.root_pattern(".git", "setup.py", "setup.cfg",
                                      "pyproject.toml", "requirements.txt")(fname) or
@@ -184,3 +178,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         underline = true,
         update_in_insert = false
     })
+
+-- pyright and jdtls ignore dynamicRegistration settings and sent client/registerCapability handler which are unhandled
+vim.lsp.handlers['client/registerCapability'] =
+    function(_, _, _, _) return {result = nil, error = nil} end

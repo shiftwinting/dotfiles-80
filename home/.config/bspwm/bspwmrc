@@ -10,8 +10,6 @@ elif [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected";
     bspc monitor 'eDP-1-1' --remove
 fi
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-
 bspc config border_width 1
 bspc config window_gap 0
 # top_padding I set equal to polybar's height
@@ -46,3 +44,5 @@ bspc rule -a "fifaconfig.exe" state=floating desktop="10"
 bspc rule -a "launcher.exe" state=floating desktop="10"
 bspc rule -a "socialclubhelper.exe" state=floating desktop="10"
 bspc rule -a "gta5.exe" desktop="10"
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
