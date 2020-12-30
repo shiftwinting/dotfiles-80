@@ -86,6 +86,7 @@ return require('packer').startup(function()
     }
     use {
         'nvim-treesitter/nvim-treesitter',
+        run = ":TSUpdate",
         config = function() require "cfg.ts" end,
         requires = {
             {
@@ -93,8 +94,8 @@ return require('packer').startup(function()
                 requires = 'nvim-lua/completion-nvim'
             }, 'nvim-treesitter/nvim-treesitter-refactor',
             'nvim-treesitter/nvim-treesitter-textobjects',
-            {'romgrk/nvim-treesitter-context', disable = false},
-            'p00f/nvim-ts-rainbow', 'bryall/contextprint.nvim'
+            'romgrk/nvim-treesitter-context', 'p00f/nvim-ts-rainbow',
+            'bryall/contextprint.nvim'
         }
     }
     use 'antoinemadec/FixCursorHold.nvim'
