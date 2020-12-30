@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+resolve_url() {
+    if [ -f "$1" ]; then
+        local_url="$1"
+    else
+        local_url="/tmp/$(echo "$1" | sed "s/.*\///")"
+        curl -sL "$1" >"$local_url"
+    fi
+    printf "%s" "$local_url"
+}
+
+if [ -z "$1" ]; then
+    url=$(xclip -o -selection clipboard)
+else
+    url="$1"
+fi
+
+setsid mpv -quiet "$url" >/dev/null 2>&1 &

@@ -52,6 +52,9 @@ shift+@Print
 super+o;{m,s,r,e,n,t,f,w,p,b,h,0}
     {spowrap,linkhandler,$TERMINAL -e tuir,$TERMINAL -e neomutt, $TERMINAL -e newsboat,torwrap,$TERMINAL -e lf,firefox,$TERMINAL -e ipython -i -c 'from math import *',bwmenu --auto-lock "-1" -c 30, $TERMINAL -e htop, printf "¯\_(⊙_ʖ⊙)_/¯" | xclip -selection clipboard}
 
+super+v
+    videowrapper
+
 super+shift+s
     locknpause
 
