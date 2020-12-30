@@ -114,8 +114,9 @@ return require('packer').startup(function()
     use {
         'sheerun/vim-polyglot',
         setup = function()
-            vim.g.loaded_sensible = 1
-            vim.g.polyglot_disabled = {'latex', 'lua', 'tex', 'sxhkd', 'tmux'}
+            vim.g.polyglot_disabled = {
+                'latex', 'lua', 'tex', 'sxhkd', 'tmux', "sensible"
+            }
         end
     }
     use {
