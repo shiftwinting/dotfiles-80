@@ -8,12 +8,8 @@ P = function(v)
     return v
 end
 
-SourceLocal = function()
-    local localcfg = ".doit.lua"
-    local cwd = vim.fn.getcwd()
-    local path = cwd .. '/' .. localcfg
-    if vim.fn.filereadable(path) == 1 then
-        print("sourcing local config")
-        vim.cmd("luafile " .. localcfg)
-    end
+local settings = vim.fn.findfile('.doit.lua', '.;')
+if settings ~= '' then
+    print("sourcing local config")
+    dofile(settings)
 end

@@ -66,9 +66,14 @@ end
 local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
 
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 lspconfig.util.default_config = vim.tbl_extend("force",
                                                lspconfig.util.default_config, {
-    on_attach = function(client) on_attach_wrapper(client, nil) end
+    on_attach = function(client) on_attach_wrapper(client, nil) end,
+    capabilities = capabilities
 })
 
 local function get_lua_runtime()

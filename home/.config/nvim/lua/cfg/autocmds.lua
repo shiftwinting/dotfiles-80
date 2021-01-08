@@ -25,6 +25,4 @@ autocmd [[ TermOpen * startinsert ]]
 
 autocmd [[ TextYankPost * silent! lua vim.highlight.on_yank() ]]
 
-autocmd [[ VimEnter * call v:lua.SourceLocal() ]]
-
 cmd [[ augroup end ]]

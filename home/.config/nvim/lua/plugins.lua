@@ -15,7 +15,6 @@ return require('packer').startup(function()
     use 'tpope/vim-obsession'
     use 'tpope/vim-commentary'
     use 'tpope/vim-unimpaired'
-    use 'tpope/vim-speeddating'
     use 'benmills/vimux'
     use 'tpope/vim-abolish'
     use {'tpope/vim-dispatch', config = function() require "cfg.dispatch" end}
@@ -147,9 +146,9 @@ return require('packer').startup(function()
         config = function() require "cfg.statusline" end,
         requires = 'nvim-lua/plenary.nvim'
     }
-    use {'AndrewRadev/switch.vim', config = function() require "cfg.switch" end}
     use {
         'jdhao/better-escape.vim',
         config = function() vim.g.better_escape_shortcut = "jj" end
     }
+    use {'monaqa/dial.nvim', config = function() require "cfg.dial" end}
 end)
