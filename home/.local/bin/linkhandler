@@ -17,7 +17,7 @@ else
 fi
 
 case "$url" in
-    *.mkv | *.webm | *.mp4 | *.mp3 | *.ogg | *.mov | *.ts | *.m3u8* | *.gif | *.m4a | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be* | *twitch.tv* | *invidio.us* | *lbry* | *streamye.com* | *streamvi.com*)
+    *.mkv | *.webm | *.mp4 | *.mp3 | *.ogg | *.mov | *.ts | *.m3u8* | *.gif | *.m4a | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be* | *twitch.tv* | *invidio.us* | *lbry* | *streamye.com* | *streamvi.com* | *streamwo.com*)
         setsid mpv -quiet "$url" >/dev/null 2>&1 &
         ;;
     acestream://*)
