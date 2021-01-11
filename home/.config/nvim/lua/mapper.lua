@@ -1,69 +1,68 @@
 local M = {}
 
-M.map = function(mode, keys, action, buf, opts)
+M.map = function(mode, keys, action, bufnr, opts)
     local default_opts = {noremap = true, silent = true}
     opts = opts or default_opts
     opts = vim.tbl_extend("keep", opts, default_opts)
-    buf = buf or false
-    if buf then
-        vim.api.nvim_buf_set_keymap(0, mode, keys, action, opts)
+    if bufnr then
+        vim.api.nvim_buf_set_keymap(bufnr, mode, keys, action, opts)
     else
         vim.api.nvim_set_keymap(mode, keys, action, opts)
     end
 end
 
-M.cmdi = function(mode, keys, action, buf, opts)
+M.cmdi = function(mode, keys, action, bufnr, opts)
     opts = opts or {silent = false}
-    M.map(mode, keys, ':' .. action, buf, opts)
+    M.map(mode, keys, ':' .. action, bufnr, opts)
 end
 
-M.cmd = function(mode, keys, action, buf, opts)
-    M.map(mode, keys, '<cmd>' .. action .. '<cr>', buf, opts)
+M.cmd = function(mode, keys, action, bufnr, opts)
+    M.map(mode, keys, '<cmd>' .. action .. '<cr>', bufnr, opts)
 end
 
-M.luai = function(mode, keys, action, buf, opts)
-    M.cmdi(mode, keys, 'lua ' .. action, buf, opts)
+M.luai = function(mode, keys, action, bufnr, opts)
+    M.cmdi(mode, keys, 'lua ' .. action, bufnr, opts)
 end
 
-M.lua = function(mode, keys, action, buf, opts)
-    M.cmd(mode, keys, 'lua ' .. action, buf, opts)
+M.lua = function(mode, keys, action, bufnr, opts)
+    M.cmd(mode, keys, 'lua ' .. action, bufnr, opts)
 end
 
-M.plug = function(mode, keys, action, buf, opts)
+M.plug = function(mode, keys, action, bufnr, opts)
     opts = opts or {noremap = false}
-    M.map(mode, keys, '<Plug>(' .. action .. ')', buf, opts)
+    M.map(mode, keys, '<Plug>(' .. action .. ')', bufnr, opts)
 end
 
-M.n = function(keys, action, buf, opts) M.map('n', keys, action, buf, opts) end
+M.n = function(keys, action, bufnr, opts) M.map('n', keys, action, bufnr, opts) end
 M.ncmdi =
-    function(keys, action, buf, opts) M.cmdi('n', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.cmdi('n', keys, action, bufnr, opts) end
 M.ncmd =
-    function(keys, action, buf, opts) M.cmd('n', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.cmd('n', keys, action, bufnr, opts) end
 M.nluai =
-    function(keys, action, buf, opts) M.luai('n', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.luai('n', keys, action, bufnr, opts) end
 M.nlua =
-    function(keys, action, buf, opts) M.lua('n', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.lua('n', keys, action, bufnr, opts) end
 M.nplug =
-    function(keys, action, buf, opts) M.plug('n', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.plug('n', keys, action, bufnr, opts) end
 
-M.v = function(keys, action, buf, opts) M.map('v', keys, action, buf, opts) end
+M.v = function(keys, action, bufnr, opts) M.map('v', keys, action, bufnr, opts) end
 M.vcmdi =
-    function(keys, action, buf, opts) M.cmdi('v', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.cmdi('v', keys, action, bufnr, opts) end
 M.vcmd =
-    function(keys, action, buf, opts) M.cmd('v', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.cmd('v', keys, action, bufnr, opts) end
 M.vluai =
-    function(keys, action, buf, opts) M.luai('v', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.luai('v', keys, action, bufnr, opts) end
 M.vlua =
-    function(keys, action, buf, opts) M.lua('v', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.lua('v', keys, action, bufnr, opts) end
 M.vplug =
-    function(keys, action, buf, opts) M.plug('v', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.plug('v', keys, action, bufnr, opts) end
 
-M.i = function(keys, action, buf, opts) M.map('i', keys, action, buf, opts) end
+M.i = function(keys, action, bufnr, opts) M.map('i', keys, action, bufnr, opts) end
 M.iplug =
-    function(keys, action, buf, opts) M.plug('i', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.plug('i', keys, action, bufnr, opts) end
 
-M.t = function(keys, action, buf, opts) M.map('i', keys, action, buf, opts) end
+M.t = function(keys, action, bufnr, opts) M.map('i', keys, action, bufnr, opts) end
 M.tplug =
-    function(keys, action, buf, opts) M.plug('i', keys, action, buf, opts) end
+    function(keys, action, bufnr, opts) M.plug('i', keys, action, bufnr, opts) end
 
 return M
