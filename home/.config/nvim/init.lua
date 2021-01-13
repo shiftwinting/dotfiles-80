@@ -8,8 +8,10 @@ P = function(v)
     return v
 end
 
-local settings = vim.fn.findfile('.doit.lua', '.;')
-if settings ~= '' then
-    print("sourcing local config")
-    dofile(settings)
+SourceLocal = function()
+    local settings = vim.fn.findfile('.doit.lua', '.;')
+    if settings ~= '' then
+        print("sourcing local config")
+        dofile(settings)
+    end
 end
