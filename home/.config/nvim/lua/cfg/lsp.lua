@@ -109,7 +109,7 @@ local servers = {
             "--cross-file-rename", "--index"
             -- '--all-scopes-completion',
         },
-        on_attach = function(client)
+        on_attach = function(client, bufnr)
             on_attach_wrapper(client, bufnr, {auto_format = false})
             map.ncmd('gH', 'ClangdSwitchSourceHeader')
         end,
