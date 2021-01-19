@@ -127,13 +127,7 @@ local servers = {
     -- jedi_language_server = {},
     jsonls = {cmd = {"json-languageserver", "--stdio"}},
 
-    pyright = {
-        root_dir = function(fname)
-            return lsputil.root_pattern(".git", "setup.py", "setup.cfg",
-                                        "pyproject.toml", "requirements.txt")(
-                       fname) or lsputil.path.dirname(fname)
-        end
-    },
+    pyright = {},
     pyls = {
         plugins = {
             jedi_completion = {enabled = false},
@@ -181,10 +175,7 @@ local servers = {
 }
 
 for server, config in pairs(servers) do
-    local default_config = lspconfig[server].default_config or
-                               lspconfig[server].document_config.default_config
-    local cmd = config.cmd or default_config.cmd
-    if vim.fn.executable(cmd[1]) == 1 then lspconfig[server].setup(config) end
+    lspconfig[server].setup(config)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
