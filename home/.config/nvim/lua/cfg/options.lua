@@ -63,6 +63,8 @@ opt.spelloptions = "camel"
 opt.viewoptions = opt.viewoptions - 'options'
 
 vim.g.is_posix = 1
+vim.g.python_host_prog = "/usr/bin/python2"
+vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.netrw_home = vim.fn.stdpath('data')
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
