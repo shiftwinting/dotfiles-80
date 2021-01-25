@@ -1,4 +1,7 @@
 version: 2
+# log-file: /tmp/efm.log
+# log-level: 1
+
 root-markers:
   - .git/
 tools:
@@ -73,6 +76,13 @@ tools:
     format-command: 'lua-format -i'
     format-stdin: true
 
+  c-pwcheck: &c-pwcheck
+    lint-command: 'pwlint'
+    lint-stdin: false
+    lint-formats:
+      - '%f:%l:%c %m'
+    lint-ignore-exit-code: true
+
 languages:
   vim:
     - <<: *vim-vint
@@ -109,3 +119,6 @@ languages:
 
   lua:
     - <<: *lua-lua-format
+
+  c:
+    - <<: *c-pwcheck

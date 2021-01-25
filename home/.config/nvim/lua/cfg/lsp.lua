@@ -1,6 +1,5 @@
 local map = require "mapper"
 local lspconfig = require "lspconfig"
-local lsputil = lspconfig.util
 
 local on_attach_wrapper = function(client, bufnr, user_opts)
     local opts = user_opts or
@@ -66,13 +65,13 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     end
 
     if lsp_highlights and client.resolved_capabilities.document_highlight then
-        lsputil.nvim_multiline_command [[
+        vim.api.nvim_exec( [[
         augroup lsp_document_highlight
             autocmd!
             autocmd CursorHold,CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
-        ]]
+        ]], false)
     end
 
     if auto_format then

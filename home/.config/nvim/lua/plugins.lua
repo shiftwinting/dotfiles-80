@@ -34,7 +34,7 @@ return require('packer').startup(function()
         config = function() require "cfg.gruvbox" end,
         requires = 'tjdevries/colorbuddy.nvim'
     }
-    use {'luochen1990/rainbow', config = function() require "cfg.rainbow" end}
+    -- use {'luochen1990/rainbow', config = function() require "cfg.rainbow" end}
     use 'justinmk/vim-sneak'
     use {
         'editorconfig/editorconfig-vim',

@@ -83,6 +83,7 @@ dap_map('<F9>', 'toggle_breakpoint()')
 dap_map('<F1>', 'repl.open()')
 dap_map('<F10>', 'repl.run_last()')
 dap_map('<F2>', 'list_breakpoints()')
+dap_map('<F3>', 'ui.variables.hover()')
 
 vim.g.dbg_cmd = ''
 map.ncmd('g<cr>', "let @s=g:dbg_cmd<CR>:DebugC<Space><c-r>s")
