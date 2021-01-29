@@ -81,7 +81,7 @@ tsconfigs.setup {
             }
         }
     },
-    rainbow = {enable = true}
+    rainbow = {enable = true, disable = {"cpp"}}
 }
 
 
