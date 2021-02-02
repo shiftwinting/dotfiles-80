@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=14
+pkgver=15
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -51,6 +51,7 @@ depends=(
   'pacman-cleanup-hook'
   'pacman-contrib'
   'pam-gnupg-git'
+  'paru'
   'pass'
   'pbzip2'
   'perl-file-mimeinfo'
@@ -83,7 +84,6 @@ depends=(
 )
 
 optdepends=(
-  'paru'
   'reflector'
   'thermald'
 )

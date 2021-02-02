@@ -1,0 +1,17 @@
+# Maintainer: Rui Marques <arch@ruimarques.xyz>
+pkgname=ruifm-matrix-server
+pkgver=1
+pkgrel=1
+pkgdesc="ruifm's matrix-server metapackage"
+arch=('any')
+url="https://ruimarques.xyz"
+license=('GPL3')
+depends=(
+  'coturn'
+  'matrix-synapse'
+  'mautrix-signal-git'
+  'protonmail-bridge-nogui'
+  'python-virtualenv'
+)
+
+# vim: ts=2 sw=2 et:

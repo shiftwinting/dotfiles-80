@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-webserver
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="ruifm's webserver metapackage"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
   'certbot-nginx'
-  'fcgiwrap'
   'goaccess'
+  'nginx'
   'nginx-rtmp'
 )
 

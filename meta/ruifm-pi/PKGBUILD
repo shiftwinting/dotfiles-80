@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-pi
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="ruifm's pi metapackage"
 arch=('any')
@@ -20,7 +20,6 @@ depends=(
   'raspberrypi-userland-aarch64-git'
   'wd719x-firmware'
   'xf86-video-fbturbo-git'
-  'yay'
 )
 
 # vim: ts=2 sw=2 et:

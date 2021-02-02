@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-sound
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="ruifm's sound metapackage"
 arch=('any')
@@ -13,6 +13,9 @@ depends=(
   'pulseaudio'
   'pulseaudio-alsa'
   'pulsemixer'
+)
+optdepends=(
+  'spotifyd'
 )
 
 # vim: ts=2 sw=2 et:
