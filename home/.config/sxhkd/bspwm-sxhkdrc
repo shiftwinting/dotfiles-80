@@ -51,10 +51,6 @@ super + ctrl + {p,b,comma,period}
 super + {_,shift + }Tab
 	bspc desktop -f {next,prev}.local.occupied
 
-# focus the next/previous node in the current desktop
-super + {_,shift + }n
-	bspc node -f {next,prev}.local
-
 # focus the last node/desktop
 super + {ctrl,shift + } o
 	bspc {node,desktop} -f last
