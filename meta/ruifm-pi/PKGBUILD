@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-pi
-pkgver=4
+pkgver=7
 pkgrel=1
 pkgdesc="ruifm's pi metapackage"
 arch=('any')
@@ -13,13 +13,10 @@ depends=(
   'libva-mesa-driver'
   'libva-vdpau-driver'
   'libvdpau-va-gl'
-  'linux-aarch64'
-  'linux-aarch64-headers'
   'mesa-vdpau'
   'raspberrypi-bootloader'
-  'raspberrypi-userland-aarch64-git'
   'wd719x-firmware'
-  'xf86-video-fbturbo-git'
+  'xf86-video-fbdev'
 )
 
 # vim: ts=2 sw=2 et:

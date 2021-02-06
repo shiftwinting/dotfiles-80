@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [ "$(uname -n)" != "halley" ]; then
+if [ "$(uname -n)" = "hercules" ]; then
     xrandr --setprovideroutputsource modesetting NVIDIA-0
     nvidia-settings --load-config-only &
     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1' &
