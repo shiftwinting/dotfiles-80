@@ -85,10 +85,14 @@ return require('packer').startup({
         use {'neovim/nvim-lspconfig', config = function()
             require "cfg.lsp"
         end}
-        use {
+        --[[ use {
             'nvim-lua/completion-nvim',
             config = function() require "cfg.completion" end,
             requires = 'nvim-treesitter/completion-treesitter'
+        } ]]
+        use {
+            'hrsh7th/nvim-compe',
+            config = function() require "cfg.completion" end
         }
         use {
             'RishabhRD/nvim-lsputils',
@@ -154,8 +158,7 @@ return require('packer').startup({
         }
         use {
             'pwntester/octo.nvim',
-            requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
-            cond = function() return vim.fn.executable("gh") == 1 end
+            requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
         }
         use 'strboul/urlview.vim'
         use {

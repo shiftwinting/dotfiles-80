@@ -42,7 +42,7 @@ opt.shortmess = opt.shortmess - 'f' - 'i' - 'l' - 'm' - 'n' - 'r' - 'w' - 'x'
 opt.gdefault = true
 opt.synmaxcol = 500
 
-opt.completeopt = {"menuone", "noinsert", "noselect"}
+opt.completeopt = {"menuone", "noselect"}
 opt.scrolloff = 999
 opt.sidescrolloff = 5
 

@@ -12,7 +12,9 @@ M.map = function(mode, keys, action, bufnr, opts)
 end
 
 M.cmdi = function(mode, keys, action, bufnr, opts)
-    opts = opts or {silent = false}
+    local default_opts = {silent = false}
+    opts = opts or default_opts
+    opts = vim.tbl_extend("keep", opts, default_opts)
     M.map(mode, keys, ':' .. action, bufnr, opts)
 end
 
@@ -29,40 +31,64 @@ M.lua = function(mode, keys, action, bufnr, opts)
 end
 
 M.plug = function(mode, keys, action, bufnr, opts)
-    opts = opts or {noremap = false}
+    local default_opts = {noremap = false}
+    opts = opts or default_opts
+    opts = vim.tbl_extend("keep", opts, default_opts)
     M.map(mode, keys, '<Plug>(' .. action .. ')', bufnr, opts)
 end
 
-M.n = function(keys, action, bufnr, opts) M.map('n', keys, action, bufnr, opts) end
-M.ncmdi =
-    function(keys, action, bufnr, opts) M.cmdi('n', keys, action, bufnr, opts) end
-M.ncmd =
-    function(keys, action, bufnr, opts) M.cmd('n', keys, action, bufnr, opts) end
-M.nluai =
-    function(keys, action, bufnr, opts) M.luai('n', keys, action, bufnr, opts) end
-M.nlua =
-    function(keys, action, bufnr, opts) M.lua('n', keys, action, bufnr, opts) end
-M.nplug =
-    function(keys, action, bufnr, opts) M.plug('n', keys, action, bufnr, opts) end
+M.n =
+    function(keys, action, bufnr, opts) M.map('n', keys, action, bufnr, opts) end
+M.ncmdi = function(keys, action, bufnr, opts)
+    M.cmdi('n', keys, action, bufnr, opts)
+end
+M.ncmd = function(keys, action, bufnr, opts)
+    M.cmd('n', keys, action, bufnr, opts)
+end
+M.nluai = function(keys, action, bufnr, opts)
+    M.luai('n', keys, action, bufnr, opts)
+end
+M.nlua = function(keys, action, bufnr, opts)
+    M.lua('n', keys, action, bufnr, opts)
+end
+M.nplug = function(keys, action, bufnr, opts)
+    M.plug('n', keys, action, bufnr, opts)
+end
 
-M.v = function(keys, action, bufnr, opts) M.map('v', keys, action, bufnr, opts) end
-M.vcmdi =
-    function(keys, action, bufnr, opts) M.cmdi('v', keys, action, bufnr, opts) end
-M.vcmd =
-    function(keys, action, bufnr, opts) M.cmd('v', keys, action, bufnr, opts) end
-M.vluai =
-    function(keys, action, bufnr, opts) M.luai('v', keys, action, bufnr, opts) end
-M.vlua =
-    function(keys, action, bufnr, opts) M.lua('v', keys, action, bufnr, opts) end
-M.vplug =
-    function(keys, action, bufnr, opts) M.plug('v', keys, action, bufnr, opts) end
+M.v =
+    function(keys, action, bufnr, opts) M.map('v', keys, action, bufnr, opts) end
+M.vcmdi = function(keys, action, bufnr, opts)
+    M.cmdi('v', keys, action, bufnr, opts)
+end
+M.vcmd = function(keys, action, bufnr, opts)
+    M.cmd('v', keys, action, bufnr, opts)
+end
+M.vluai = function(keys, action, bufnr, opts)
+    M.luai('v', keys, action, bufnr, opts)
+end
+M.vlua = function(keys, action, bufnr, opts)
+    M.lua('v', keys, action, bufnr, opts)
+end
+M.vplug = function(keys, action, bufnr, opts)
+    M.plug('v', keys, action, bufnr, opts)
+end
 
-M.i = function(keys, action, bufnr, opts) M.map('i', keys, action, bufnr, opts) end
-M.iplug =
-    function(keys, action, bufnr, opts) M.plug('i', keys, action, bufnr, opts) end
+M.i =
+    function(keys, action, bufnr, opts) M.map('i', keys, action, bufnr, opts) end
+M.ilua = function(keys, action, bufnr, opts)
+    local default_opts = {expr = true}
+    opts = opts or default_opts
+    opts = vim.tbl_extend("keep", opts, default_opts)
+    M.i(keys, "v:lua." .. action, bufnr, opts)
+end
+M.iplug = function(keys, action, bufnr, opts)
+    M.plug('i', keys, action, bufnr, opts)
+end
 
-M.t = function(keys, action, bufnr, opts) M.map('i', keys, action, bufnr, opts) end
-M.tplug =
-    function(keys, action, bufnr, opts) M.plug('i', keys, action, bufnr, opts) end
+M.t =
+    function(keys, action, bufnr, opts) M.map('t', keys, action, bufnr, opts) end
+M.tplug = function(keys, action, bufnr, opts)
+    M.plug('t', keys, action, bufnr, opts)
+end
 
 return M
