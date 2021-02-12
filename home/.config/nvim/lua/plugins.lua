@@ -14,8 +14,10 @@ return require('packer').startup({
         use {'wbthomason/packer.nvim', opt = true}
         use 'tpope/vim-repeat'
         use 'tpope/vim-obsession'
-        -- use 'tpope/vim-commentary'
-        use 'b3nj5m1n/kommentary'
+        use {
+            'b3nj5m1n/kommentary',
+            config = function() require "cfg.comments" end
+        }
         use 'tpope/vim-unimpaired'
         use 'benmills/vimux'
         use 'tpope/vim-abolish'
@@ -171,10 +173,10 @@ return require('packer').startup({
             config = function() vim.g.better_escape_shortcut = "jj" end
         }
         use {'monaqa/dial.nvim', config = function() require "cfg.dial" end}
-        use {
-            'kevinhwang91/nvim-bqf',
-            cond = function() return vim.fn.executable("fzf") == 1 end
-        }
+        -- use {
+        --     'kevinhwang91/nvim-bqf',
+        --     cond = function() return vim.fn.executable("fzf") == 1 end
+        -- }
         use {
             'kosayoda/nvim-lightbulb',
             config = function() require "cfg.lightbulb" end
