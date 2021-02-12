@@ -173,10 +173,6 @@ return require('packer').startup({
             config = function() vim.g.better_escape_shortcut = "jj" end
         }
         use {'monaqa/dial.nvim', config = function() require "cfg.dial" end}
-        -- use {
-        --     'kevinhwang91/nvim-bqf',
-        --     cond = function() return vim.fn.executable("fzf") == 1 end
-        -- }
         use {
             'kosayoda/nvim-lightbulb',
             config = function() require "cfg.lightbulb" end
