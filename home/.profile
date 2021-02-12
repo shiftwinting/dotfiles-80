@@ -12,9 +12,9 @@
 [ -r  ~/.config/sh/envrc ] && . ~/.config/sh/envrc
 
 if [ ! "$DISPLAY" ]; then
-    if  [ "$XDG_VTNR" = "1" ] && [ "$(uname -n)" != "tau" ]; then
-        exists sx && exec sx
-        exists startx && exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
+    if  [ "$XDG_VTNR" = "1" ]; then
+        exists sx && sx
+        exists startx && startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
     elif [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ]; then
         [ -r ~/dotfiles/lists/caps2esc.map ] && sudo -n loadkeys ~/dotfiles/lists/caps2esc.map > /dev/null
         sudo -n kbdrate -s -d 250 -r 30 > /dev/null

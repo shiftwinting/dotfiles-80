@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-matrix-server
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="ruifm's matrix-server metapackage"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(
   'coturn'
   'matrix-synapse'
-  'mautrix-signal-git'
+  # 'mautrix-signal-git'
   'protonmail-bridge-nogui'
   'python-virtualenv'
 )
