@@ -8,15 +8,13 @@ map.vplug('[i', 'dial-decrement')
 
 local dial = require("dial")
 
-local my_augends = {
-    dial.augends.common.enum_cyclic {
-        name = "boolean",
-        strlist = {"true", "false"}
-    },
-    dial.augends.common.enum_cyclic {
-        name = "Boolean",
-        strlist = {"True", "False"}
-    },
+dial.augends["custom#boolean"] = dial.common.enum_cyclic{
+    name = "boolean",
+    strlist = {"true", "false"},
 }
-
-vim.list_extend(dial.searchlist.normal, my_augends)
+table.insert(dial.config.searchlist.normal, "custom#boolean")
+dial.augends["custom#Boolean"] = dial.common.enum_cyclic{
+    name = "Boolean",
+    strlist = {"True", "False"},
+}
+table.insert(dial.config.searchlist.normal, "custom#Boolean")
