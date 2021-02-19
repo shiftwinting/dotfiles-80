@@ -65,7 +65,7 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     end
 
     if lsp_highlights and client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec( [[
+        vim.api.nvim_exec([[
         augroup lsp_document_highlight
             autocmd!
             autocmd CursorHold,CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
@@ -126,20 +126,33 @@ local servers = {
     -- jedi_language_server = {},
     jsonls = {cmd = {"json-languageserver", "--stdio"}},
 
-    pyright = {},
+    pyright = {
+        settings = {
+            python = {
+                analysis = {
+                    autoImportCompletions = true,
+                    autoSearchPaths = true
+                }
+            }
+        }
+    },
     pyls = {
+        configurationSources = {"flake8"},
         plugins = {
+            autopep8 = {enabled = false},
+            flake8 = {enabled = true},
             jedi_completion = {enabled = false},
             jedi_definition = {enabled = false},
             jedi_symbols = {enabled = false},
             jedi_references = {enabled = false},
             mccabe = {enabled = false},
-            preload = {enabled = false},
+            preload = {enabled = true},
             pydocstyle = {enabled = false},
             pyflakes = {enabled = false},
-            pylint = {enabled = false},
-            rope_completion = {enabled = false}
-
+            pylint = {enabled = true},
+            pycodestyle = {enabled = false},
+            rope_completion = {enabled = false},
+            yapf = {enabled = false}
         }
     },
     sumneko_lua = {
@@ -173,9 +186,7 @@ local servers = {
     yamlls = {}
 }
 
-for server, config in pairs(servers) do
-    lspconfig[server].setup(config)
-end
+for server, config in pairs(servers) do lspconfig[server].setup(config) end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
