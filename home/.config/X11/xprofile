@@ -11,6 +11,7 @@ xsetroot -cursor_name left_ptr &
 input-setup &
 unclutter &
 if [ "$(uname -n)" != "tau" ]; then
-    automute &
     launch-polybar &
+    dunst &
+    sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
 fi

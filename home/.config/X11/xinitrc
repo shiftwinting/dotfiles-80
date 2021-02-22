@@ -3,7 +3,5 @@
 # shellcheck source=/dev/null
 [ -r  ~/.config/X11/xprofile ] && . ~/.config/X11/xprofile &
 if [ "$(uname -n)" != "tau" ]; then
-    dunst &
-    sxhkd ~/.config/sxhkd/bspwm-sxhkdrc &
     exec bspwm
 fi
