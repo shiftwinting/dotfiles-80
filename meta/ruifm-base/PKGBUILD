@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-base
-pkgver=15
+pkgver=16
 pkgrel=1
 pkgdesc="ruifm's base metapackage"
 arch=('any')
@@ -9,7 +9,6 @@ license=('GPL3')
 depends=(
   'acpid'
   'aic94xx-firmware'
-  'arch-audit'
   'base'
   'bash-completion'
   'bat'
