@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-pi
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="ruifm's pi metapackage"
 arch=('any')
@@ -13,8 +13,13 @@ depends=(
   'libva-mesa-driver'
   'libva-vdpau-driver'
   'libvdpau-va-gl'
+  'linux-raspberrypi4'
+  'linux-raspberrypi4-headers'
   'mesa-vdpau'
   'raspberrypi-bootloader'
+  'raspberrypi-bootloader-x'
+  'raspberrypi-firmware'
+  'uboot-tools'
   'wd719x-firmware'
   'xf86-video-fbdev'
 )
