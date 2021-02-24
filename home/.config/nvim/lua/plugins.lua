@@ -45,7 +45,7 @@ return require('packer').startup({
         use {
             'npxbr/gruvbox.nvim',
             config = function() require "cfg.gruvbox" end,
-            requires = 'tjdevries/colorbuddy.nvim'
+            requires = 'rktjmp/lush.nvim'
         }
         use {
             'luochen1990/rainbow',

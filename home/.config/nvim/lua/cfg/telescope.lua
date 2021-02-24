@@ -11,9 +11,6 @@ require('telescope').setup {
         selection_strategy = "follow",
         generic_sorter = sorters.get_fzy_sorter,
         file_sorter = sorters.get_fzy_sorter,
-        file_previewer = previewers.vim_buffer_cat.new,
-        grep_previewer = previewers.vim_buffer_vimgrep.new,
-        qflist_previewer = previewers.vim_buffer_qflist.new,
         mappings = {
             i = {
                 ["<c-j>"] = actions.move_selection_next,
