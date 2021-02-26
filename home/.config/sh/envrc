@@ -195,6 +195,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 
 export PWA_TELEMETRY_OPTOUT=y
+export PWA_TELEMETRY_TAG=Appentra
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth
