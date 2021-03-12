@@ -21,10 +21,6 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
 
     local function lsp_setopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    if client.config.flags then
-        client.config.flags.allow_incremental_sync = true
-    end
-
     require"completion".on_attach(client)
 
     lsp_nmap('K', 'buf.hover()')
