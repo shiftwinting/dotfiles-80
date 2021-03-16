@@ -21,7 +21,7 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
 
     local function lsp_setopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    require"completion".on_attach(client)
+    require'lsp_signature'.on_attach()
 
     lsp_nmap('K', 'buf.hover()')
     lsp_nmap('<c-]>', 'buf.definition()')

@@ -179,6 +179,7 @@ return require('packer').startup({
             'kosayoda/nvim-lightbulb',
             config = function() require "cfg.lightbulb" end
         }
+        use 'ray-x/lsp_signature.nvim'
     end,
     config = {display = {open_cmd = 'new +only [packer]'}}
 })
