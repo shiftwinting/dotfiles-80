@@ -180,6 +180,15 @@ return require('packer').startup({
             config = function() require "cfg.lightbulb" end
         }
         use 'ray-x/lsp_signature.nvim'
+        use 'jubnzv/virtual-types.nvim'
+        use {
+            'TimUntersberger/neogit',
+            config = function() require"neogit".setup {} end
+        }
+        use {
+            'rmagatti/auto-session',
+            config = function() require "cfg.session" end
+        }
     end,
     config = {display = {open_cmd = 'new +only [packer]'}}
 })

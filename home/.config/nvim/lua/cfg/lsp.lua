@@ -23,6 +23,10 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
 
     require'lsp_signature'.on_attach()
 
+    if client.resolved_capabilities.code_lens then
+        require'virtualtypes'.on_attach()
+    end
+
     lsp_nmap('K', 'buf.hover()')
     lsp_nmap('<c-]>', 'buf.definition()')
     lsp_nmap('gD', 'buf.declaration()')
