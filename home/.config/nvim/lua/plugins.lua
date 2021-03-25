@@ -14,7 +14,6 @@ return require('packer').startup({
         use {'wbthomason/packer.nvim', opt = true}
         use 'tjdevries/astronauta.nvim'
         use 'tpope/vim-repeat'
-        use 'tpope/vim-obsession'
         use {
             'b3nj5m1n/kommentary',
             config = function() require "cfg.comments" end
