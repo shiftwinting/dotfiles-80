@@ -113,3 +113,5 @@ user_pref("network.http.sendRefererHeader" 0);
 user_pref("network.captive-portal-service.enabled" false);
 
 user_pref("network.trr.mode" 5);
+
+user_pref("privacy.resistFingerprinting.randomDataOnCanvasExtract", true);

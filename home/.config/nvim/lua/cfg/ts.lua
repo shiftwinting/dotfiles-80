@@ -81,7 +81,15 @@ tsconfigs.setup {
             }
         }
     },
-    rainbow = {enable = true, disable = {"cpp"}}
+    rainbow = {enable = true},
+    pairs = {
+      enable = true,
+      goto_right_end = false,
+      fallback_cmd_normal = "call matchup#motion#find_matching_pair(0, 1)",
+      keymaps = {
+        goto_partner = "%"
+      }
+    }
 }
 
 

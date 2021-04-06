@@ -19,7 +19,6 @@ return require('packer').startup({
             config = function() require "cfg.comments" end
         }
         use 'tpope/vim-unimpaired'
-        use 'benmills/vimux'
         use 'tpope/vim-abolish'
         use {
             'tpope/vim-dispatch',
@@ -87,11 +86,6 @@ return require('packer').startup({
         use {'neovim/nvim-lspconfig', config = function()
             require "cfg.lsp"
         end}
-        --[[ use {
-            'nvim-lua/completion-nvim',
-            config = function() require "cfg.completion" end,
-            requires = 'nvim-treesitter/completion-treesitter'
-        } ]]
         use {
             'hrsh7th/nvim-compe',
             config = function() require "cfg.completion" end
@@ -109,13 +103,10 @@ return require('packer').startup({
             run = ":TSUpdate",
             config = function() require "cfg.ts" end,
             requires = {
-                {
-                    'nvim-treesitter/completion-treesitter',
-                    requires = 'nvim-lua/completion-nvim'
-                }, 'nvim-treesitter/nvim-treesitter-refactor',
+                'nvim-treesitter/nvim-treesitter-refactor',
                 'nvim-treesitter/nvim-treesitter-textobjects',
                 'romgrk/nvim-treesitter-context', 'p00f/nvim-ts-rainbow',
-                'bryall/contextprint.nvim'
+                'bryall/contextprint.nvim', 'theHamsta/nvim-treesitter-pairs'
             }
         }
         use 'antoinemadec/FixCursorHold.nvim'
