@@ -58,16 +58,16 @@ end
 M.v =
     function(keys, action, bufnr, opts) M.map('v', keys, action, bufnr, opts) end
 M.vcmdi = function(keys, action, bufnr, opts)
-    M.cmdi('v', keys, action, bufnr, opts)
+    M.v(keys, ":" .. action, bufnr, opts)
 end
 M.vcmd = function(keys, action, bufnr, opts)
-    M.cmd('v', keys, action, bufnr, opts)
+    M.vcmdi(keys, action .. '<cr>', bufnr, opts)
 end
 M.vluai = function(keys, action, bufnr, opts)
-    M.luai('v', keys, action, bufnr, opts)
+    M.vcmdi(keys, 'lua ' .. action, bufnr, opts)
 end
 M.vlua = function(keys, action, bufnr, opts)
-    M.lua('v', keys, action, bufnr, opts)
+    M.vcmd(keys, 'lua ' .. action, bufnr, opts)
 end
 M.vplug = function(keys, action, bufnr, opts)
     M.plug('v', keys, action, bufnr, opts)

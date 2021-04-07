@@ -25,10 +25,6 @@ return require('packer').startup({
             config = function() require "cfg.dispatch" end
         }
         use 'tpope/vim-git'
-        use {
-            'tpope/vim-fugitive',
-            requires = {'junegunn/gv.vim', 'tpope/vim-rhubarb'}
-        }
         use 'tpope/vim-rsi'
         use 'tpope/vim-surround'
         use 'tpope/vim-apathy'
@@ -50,19 +46,17 @@ return require('packer').startup({
             config = function() require "cfg.rainbow" end
         }
         use 'justinmk/vim-sneak'
-        use {
-            'editorconfig/editorconfig-vim',
-            config = function()
-                vim.g.EditorConfig_exclude_patterns = {'fugitive://.*'}
-            end
-        }
+        use 'editorconfig/editorconfig-vim'
         use 'michaeljsmith/vim-indent-object'
         use 'wellle/targets.vim'
         use 'rhysd/clever-f.vim'
         use 'lambdalisue/suda.vim'
         use 'kovetskiy/sxhkd-vim'
         use 'tmux-plugins/vim-tmux'
-        use 'christoomey/vim-tmux-navigator'
+        use {
+            'numToStr/Navigator.nvim',
+            config = function() require "cfg.tmux" end
+        }
         use {
             'lervag/vimtex',
             ft = 'tex',
@@ -173,6 +167,7 @@ return require('packer').startup({
         use 'jubnzv/virtual-types.nvim'
         use {
             'TimUntersberger/neogit',
+            branch = 'pr/94',
             config = function() require"neogit".setup {} end
         }
         use {
