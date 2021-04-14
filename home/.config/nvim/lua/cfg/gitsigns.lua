@@ -5,5 +5,5 @@ require('gitsigns').setup {
         topdelete = {show_count = true},
         changedelete = {show_count = true}
     },
-    current_line_blame = true
+    -- current_line_blame = true
 }

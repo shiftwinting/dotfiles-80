@@ -37,7 +37,7 @@ telescope_map('/', 'live_grep()')
 telescope_map('?', 'grep_string()')
 telescope_map('f',
               'find_files{find_command = {"fd", "--type", "file", "--follow", "--hidden", "--exclude", ".git"}}')
-telescope_map('b', 'buffers{show_all_buffers = true, initial_mode = "normal"}')
+telescope_map('b', 'buffers{show_all_buffers = true}')
 
 telescope_map('t', 'treesitter()')
 

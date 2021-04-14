@@ -28,6 +28,7 @@ return require('packer').startup({
         use 'tpope/vim-rsi'
         use 'tpope/vim-surround'
         use 'tpope/vim-apathy'
+        use 'tpope/vim-obsession'
         use {'ilyachur/cmake4vim', config = function()
             require "cfg.cmake"
         end}
@@ -109,7 +110,7 @@ return require('packer').startup({
             config = function() require "cfg.dap" end,
             requires = {
                 'theHamsta/nvim-dap-virtual-text',
-                'mfussenegger/nvim-dap-python'
+                'mfussenegger/nvim-dap-python', 'jbyuki/lua-debug.nvim'
             }
         }
         use 'rickhowe/diffchar.vim'
@@ -171,8 +172,9 @@ return require('packer').startup({
             config = function() require"neogit".setup {} end
         }
         use {
-            'rmagatti/auto-session',
-            config = function() require "cfg.session" end
+            'ruifm/gitlinker.nvim',
+            requires = 'nvim-lua/plenary.nvim',
+            config = function() require "cfg.gitlinker" end
         }
     end,
     config = {display = {open_cmd = 'new +only [packer]'}}
