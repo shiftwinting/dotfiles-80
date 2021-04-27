@@ -1,6 +1,6 @@
 local sorters = require 'telescope.sorters'
-local previewers = require 'telescope.previewers'
 local actions = require 'telescope.actions'
+local map = require "mapper"
 
 require('telescope').setup {
     defaults = {
@@ -20,14 +20,13 @@ require('telescope').setup {
     }
 }
 
-
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('dap')
 
 local telescope_map = function(keys, func, mod)
     mod = mod or '.builtin'
-    require"mapper".nlua('<localleader>' .. keys,
-                         "require'telescope." .. mod .. "'." .. func)
+    map.nlua('<localleader>' .. keys,
+             "require'telescope." .. mod .. "'." .. func)
 end
 
 telescope_map('p', 'planets()')
@@ -62,6 +61,8 @@ telescope_map('gc', 'git_commits()')
 telescope_map('gC', 'git_bcommits()')
 
 telescope_map('dc', 'extensions.dap.commands()', "")
-telescope_map('dC', 'extensions.dap.configurations{ initial_mode = "normal" }', "")
-telescope_map('db', 'extensions.dap.list_breakpoints{ initial_mode = "normal" }', "")
+telescope_map('dC', 'extensions.dap.configurations{ initial_mode = "normal" }',
+              "")
+telescope_map('db',
+              'extensions.dap.list_breakpoints{ initial_mode = "normal" }', "")
 telescope_map('dv', 'extensions.dap.variables()', "")

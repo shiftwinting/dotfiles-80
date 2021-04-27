@@ -58,6 +58,9 @@ end
 M.v =
     function(keys, action, bufnr, opts) M.map('v', keys, action, bufnr, opts) end
 M.vcmdi = function(keys, action, bufnr, opts)
+    local default_opts = {silent = false}
+    opts = opts or default_opts
+    opts = vim.tbl_extend("keep", opts, default_opts)
     M.v(keys, ":" .. action, bufnr, opts)
 end
 M.vcmd = function(keys, action, bufnr, opts)

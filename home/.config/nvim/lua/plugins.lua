@@ -6,7 +6,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 vim.cmd [[packadd packer.nvim]]
 
-vim.api.nvim_command [[autocmd BufWritePost plugins.lua PackerCompile]]
+vim.api.nvim_command [[autocmd BufWritePost plugins PackerCompile]]
 
 return require('packer').startup({
     function()
@@ -74,9 +74,12 @@ return require('packer').startup({
             config = function() require"colorizer".setup() end
         }
         use {
-            'SirVer/ultisnips',
-            config = function() require "cfg.ultisnips" end,
-            requires = 'honza/vim-snippets'
+            'hrsh7th/vim-vsnip',
+            config = function() require "cfg.snippets" end,
+            requires = {
+                'hrsh7th/vim-vsnip-integ', 'one-harsh/vscode-cpp-snippets',
+                'kitagry/vs-snippets', 'rafamadriz/friendly-snippets'
+            }
         }
         use {'neovim/nvim-lspconfig', config = function()
             require "cfg.lsp"
@@ -87,7 +90,6 @@ return require('packer').startup({
         }
         use {
             'RishabhRD/nvim-lsputils',
-            config = function() require "cfg.lsputil" end,
             requires = {
                 'RishabhRD/popfix',
                 run = 'make -C external_modules/fzy_lua_native'
@@ -101,7 +103,8 @@ return require('packer').startup({
                 'nvim-treesitter/nvim-treesitter-refactor',
                 'nvim-treesitter/nvim-treesitter-textobjects',
                 'romgrk/nvim-treesitter-context', 'p00f/nvim-ts-rainbow',
-                'bryall/contextprint.nvim', 'theHamsta/nvim-treesitter-pairs'
+                'bryall/contextprint.nvim', 'theHamsta/nvim-treesitter-pairs', 
+                'haringsrob/nvim_context_vt'
             }
         }
         use 'antoinemadec/FixCursorHold.nvim'
@@ -136,9 +139,6 @@ return require('packer').startup({
                 }, 'nvim-telescope/telescope-dap.nvim'
             }
         }
-        use {'romgrk/barbar.nvim', setup = function()
-            require "cfg.barbar"
-        end}
         use {
             'lewis6991/gitsigns.nvim',
             config = function() require "cfg.gitsigns" end,
@@ -176,6 +176,14 @@ return require('packer').startup({
             requires = 'nvim-lua/plenary.nvim',
             config = function() require "cfg.gitlinker" end
         }
+        use {
+            'simrat39/symbols-outline.nvim',
+            config = function() require"symbols-outline".setup() end
+        }
+        use 'tpope/vim-fugitive'
     end,
-    config = {display = {open_cmd = 'new +only [packer]'}}
+    config = {
+        profile = {enable = true, threshold = 1},
+        display = {open_cmd = 'new +only [packer]'}
+    }
 })
