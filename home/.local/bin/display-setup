@@ -7,14 +7,13 @@ if [ "$(uname -n)" = "hercules" ]; then
 fi
 xrandr --auto
 
-rate=""
-if xrandr --query | grep -E '^ {3}1920x1080 +([1-9][0-9]{,2}\.[0-9]{2}(\*| )(\+|) {,2})*14[0-9]\.[0-9]{2}(\*| )(\+| ) {,2}([1-9][0-9]{,2}\.[0-9]{2}(\*| )(\+| ) {,2})*$'; then
-    rate="--rate 144"
-fi
-
 if [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; then
     xrandr --output eDP-1-1 --off
-    xrandr --output HDMI-0 --primary --mode 1920x1080
+    xrandr --output HDMI-0 --primary --mode 3840x2160
+    # xrandr --output HDMI-0 --sameas eDP-1-1
 elif [ "$(uname -n)" = "halley" ] && xrandr --query | grep "HDMI-1 connected"; then
     xrandr --output HDMI-1 --same-as eDP-1
 fi
+
+bspc wm -r
+launch-polybar

@@ -1,13 +1,13 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-extra
-pkgver=4
+pkgver=6
 pkgrel=1
 pkgdesc="ruifm's extra metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
-  'megacmd-bin'
+  'megacmd'
   'newsboat'
   'pandoc-bin'
   'spotifyd'

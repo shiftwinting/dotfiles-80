@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-choice=$(printf "rtp1\nrtp2\nrtp3\nrtp-desporto-1\nrtp-desporto-2\nrtp-desporto-3\nrtp-desporto-4\nrtp-internacional\nla-1\nla-2\ntdp\n24h\neuronews" | rofi -dmenu -p tv)
+choice=$(printf "rtp3\ntvi24\nrtp1\nrtp2\nrtp-desporto-1\nrtp-desporto-2\nrtp-desporto-3\nrtp-desporto-4\nrtp-internacional\nla-1\nla-2\ntdp\n24h\neuronews" | rofi -dmenu -p tv)
 
 case $choice in
     "rtp1")
@@ -11,6 +11,9 @@ case $choice in
         ;;
     "rtp3")
         streamlink https://www.rtp.pt/play/direto/rtp3
+        ;;
+    "tvi24")
+        mpv --title='Direto TVI24 _ TVI Player' --ytdl-raw-options='add-header="Cookie:",referer="https://tviplayer.iol.pt/"' 'https://video-auth4.iol.pt/live_tvi24/live_tvi24/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9Ni80LzIwMjEgNDoyMDoyNyBQTSZoYXNoX3ZhbHVlPWdOK1Y3N1FKbzZQL0MvdFBHT2hJU1E9PSZ2YWxpZG1pbnV0ZXM9MTQ0MCZpZD1lM2EwNzMyOC01YjhlLTQ2ZjYtYmI1MC02ZWI3NGJkNGQxZjM='
         ;;
     "rtp-desporto-1")
         streamlink https://www.rtp.pt/play/direto/rtpdesporto1

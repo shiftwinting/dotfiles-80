@@ -1,18 +1,19 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-nvidia
-pkgver=1
+pkgver=5
 pkgrel=1
 pkgdesc="ruifm's nvidia metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
+  'nvtop'
   'nvidia-dkms'
   'nvidia-settings'
   'nvidia-utils'
+  'libva-vdpau-driver-vp9-git'
   'linux-headers'
   'opencl-nvidia'
-  'libva-vdpau-driver-vp9-git'
 )
 
 # vim: ts=2 sw=2 et:

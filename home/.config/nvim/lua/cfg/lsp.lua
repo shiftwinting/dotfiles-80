@@ -83,22 +83,15 @@ end
 -- Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {'documentation', 'detail', 'additionalTextEdits'}
+}
 
 lspconfig.util.default_config = vim.tbl_extend("force",
                                                lspconfig.util.default_config, {
     on_attach = function(client, bufnr) on_attach_wrapper(client, bufnr) end,
     capabilities = capabilities
 })
-
-local function get_lua_runtime()
-    local result = {};
-    for _, path in pairs(vim.api.nvim_get_runtime_file("lua/", true)) do
-        result[path:sub(1, #path - 1)] = true
-    end
-    return result;
-end
 
 local servers = {
     bashls = {},
@@ -124,7 +117,7 @@ local servers = {
             "csv", "lua"
         }
     },
-    html = {},
+    html = {cmd = {"vscode-html-languageserver", "--stdio"}},
     -- jedi_language_server = {},
     jsonls = {cmd = {"json-languageserver", "--stdio"}},
 
@@ -164,23 +157,15 @@ local servers = {
                     version = "LuaJIT",
                     path = vim.split(package.path, ';')
                 },
-                diagnostics = {
-                    enable = true,
-                    globals = {
-                        -- Neovim
-                        "vim", "use", "it"
-                    }
-                },
-
+                diagnostics = {enable = true, globals = {"vim", "use", "it"}},
                 workspace = {
-                    library = get_lua_runtime(),
+                    library = vim.api.nvim_get_runtime_file("", true),
                     maxPreload = 1000,
                     preloadFileSize = 1000
                 }
             }
         },
 
-        filetypes = {"lua"},
         cmd = {"lua-language-server"}
     },
     texlab = {},

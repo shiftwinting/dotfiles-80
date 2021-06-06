@@ -68,7 +68,6 @@ return require('packer').startup({
             requires = 'kana/vim-textobj-user'
         }
         use {'mzlogin/vim-markdown-toc', ft = 'markdown'}
-        use {'npxbr/glow.nvim', ft = 'markdown'}
         use {
             'norcalli/nvim-colorizer.lua',
             config = function() require"colorizer".setup() end
@@ -103,7 +102,7 @@ return require('packer').startup({
                 'nvim-treesitter/nvim-treesitter-refactor',
                 'nvim-treesitter/nvim-treesitter-textobjects',
                 'romgrk/nvim-treesitter-context', 'p00f/nvim-ts-rainbow',
-                'bryall/contextprint.nvim', 'theHamsta/nvim-treesitter-pairs', 
+                'bryall/contextprint.nvim', 'theHamsta/nvim-treesitter-pairs',
                 'haringsrob/nvim_context_vt'
             }
         }
@@ -125,8 +124,9 @@ return require('packer').startup({
         use {
             'sheerun/vim-polyglot',
             setup = function()
-                vim.g.polyglot_disabled =
-                    {'latex', 'lua', 'tex', 'sxhkd', 'tmux', "sensible"}
+                vim.g.polyglot_disabled = {
+                    'latex', 'lua', 'tex', 'sxhkd', 'tmux', "sensible"
+                }
             end
         }
         use {
@@ -168,8 +168,19 @@ return require('packer').startup({
         use 'jubnzv/virtual-types.nvim'
         use {
             'TimUntersberger/neogit',
-            branch = 'pr/94',
-            config = function() require"neogit".setup {} end
+            requires = {
+                'nvim-lua/plenary.nvim', {
+                    'sindrets/diffview.nvim',
+                    config = function()
+                        require'diffview'.setup {
+                            file_panel = {use_icons = false}
+                        }
+                    end
+                }
+            },
+            config = function()
+                require"neogit".setup {integrations = {diffview = true}}
+            end
         }
         use {
             'ruifm/gitlinker.nvim',
@@ -178,9 +189,12 @@ return require('packer').startup({
         }
         use {
             'simrat39/symbols-outline.nvim',
-            config = function() require"symbols-outline".setup() end
+            config = function() require "cfg.symbols" end
         }
-        use 'tpope/vim-fugitive'
+        use {
+            'Pocco81/AbbrevMan.nvim',
+            config = function() require "abbrev-man" end
+        }
     end,
     config = {
         profile = {enable = true, threshold = 1},

@@ -1,4 +1,3 @@
-require "globals"
 local opt = vim.opt
 
 -- poor man's version control
@@ -30,15 +29,14 @@ opt.breakindent = true
 opt.textwidth = 80
 opt.colorcolumn = "+1"
 
-opt.spelllang = {"en", "pt_pt", "es_es"}
+opt.spelllang:append{"pt_pt", "es_es"}
 opt.spellfile = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
 
 opt.cmdheight = 2
 opt.updatetime = 300
 
-opt.shortmess = opt.shortmess - 'f' - 'i' - 'l' - 'm' - 'n' - 'r' - 'w' - 'x'
+opt.shortmess:append{a = true}
 
--- opt.shortmess = opt.shortmess + 'a'
 opt.gdefault = true
 opt.synmaxcol = 500
 
@@ -48,19 +46,25 @@ opt.sidescrolloff = 5
 
 opt.clipboard = "unnamedplus"
 
-opt.wildmode = "longest,full"
+opt.wildmode = {"longest", "full"}
 
-opt.cpoptions = opt.cpoptions - '_'
+opt.cpoptions:remove{'_'}
 
 opt.joinspaces = true
 
-opt.listchars = 'tab:>\\ ,trail:·,extends:>,precedes:<,nbsp:+'
+opt.listchars = {
+    tab = '> ',
+    trail = '·',
+    extends = '>',
+    precedes = '<',
+    nbsp = '+'
+}
 opt.list = true
 
 opt.virtualedit = "block"
 opt.spelloptions = "camel"
 
-opt.viewoptions = opt.viewoptions - 'options'
+opt.viewoptions:remove{'options'}
 
 vim.g.is_posix = 1
 vim.g.python_host_prog = "/usr/bin/python2"
@@ -71,8 +75,13 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
-opt.diffopt =
-    "filler,internal,indent-heuristic,hiddenoff,iblank,iwhiteall,algorithm:histogram"
+opt.diffopt:append{
+    ["indent-heuristic"] = true,
+    hiddenoff = true,
+    iblank = true,
+    iwhiteall = true,
+    algorithm = "histogram"
+}
 
 if vim.fn.executable('rg') then
     opt.grepprg = "rg\\ --vimgrep"
