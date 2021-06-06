@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-extra
-pkgver=6
+pkgver=8
 pkgrel=1
 pkgdesc="ruifm's extra metapackage"
 arch=('any')

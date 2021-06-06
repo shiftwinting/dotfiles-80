@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-gaming
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="ruifm's gaming metapackage"
 arch=('any')
@@ -12,11 +12,13 @@ depends=(
   'mangohud'
   'steam'
   'steam-fonts'
+  'xow-git'
 )
 optdepends=(
   'lib32-gamemode'
   'lutris'
   'proton-ge-custom-bin'
+  'supertuxkart'
 )
 
 # vim: ts=2 sw=2 et:
