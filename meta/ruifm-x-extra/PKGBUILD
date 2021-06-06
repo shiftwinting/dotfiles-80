@@ -1,12 +1,13 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-x-extra
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="ruifm's Xorg apps metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
+  'element-desktop'
   'firefox'
   'signal-desktop'
   'zathura'
