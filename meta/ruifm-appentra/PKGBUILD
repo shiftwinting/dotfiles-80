@@ -1,14 +1,18 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-appentra
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="ruifm's appentra dev metapackage"
 arch=('any')
 url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
+  'autofirma'
+  'bear'
   'boost'
+  'compiledb'
   'creduce'
+  'docker'
   'hdf5'
   'llvm'
   'gcc-fortran'

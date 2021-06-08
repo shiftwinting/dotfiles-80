@@ -111,8 +111,9 @@ return require('packer').startup({
             'mfussenegger/nvim-dap',
             config = function() require "cfg.dap" end,
             requires = {
-                'theHamsta/nvim-dap-virtual-text',
-                'mfussenegger/nvim-dap-python', 'jbyuki/lua-debug.nvim'
+                'theHamsta/nvim-dap-virtual-text', "rcarriga/nvim-dap-ui",
+                'mfussenegger/nvim-dap-python',
+                'jbyuki/one-small-step-for-vimkind'
             }
         }
         use 'rickhowe/diffchar.vim'
@@ -178,9 +179,7 @@ return require('packer').startup({
                     end
                 }
             },
-            config = function()
-                require"neogit".setup {integrations = {diffview = true}}
-            end
+            config = function() require "cfg.neogit" end
         }
         use {
             'ruifm/gitlinker.nvim',

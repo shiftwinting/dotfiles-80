@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-dev
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="ruifm's dev metapackage"
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
   'checkmake'
   'efm-langserver-git'
   'github-cli'
+  'luacheck'
   'lua-format'
   'lua-language-server'
   'nodejs-markdownlint-cli'

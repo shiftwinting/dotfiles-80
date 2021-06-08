@@ -114,7 +114,7 @@ local servers = {
     efm = {
         filetypes = {
             "vim", "make", "markdown", "rst", "yaml", "sh", "html", "json",
-            "csv", "lua"
+            "csv", "lua", "c", "cpp"
         }
     },
     html = {cmd = {"vscode-html-languageserver", "--stdio"}},

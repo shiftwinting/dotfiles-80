@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-cpp
-pkgver=3
+pkgver=6
 pkgrel=1
 pkgdesc="ruifm's cpp metapackage"
 arch=('any')
@@ -12,10 +12,11 @@ depends=(
   'cmake-language-server'
   'doxygen'
   'gdb'
-  'include-what-you-use'
   'lld'
   'lldb'
   'valgrind'
 )
-
+optdepends=(
+  'include-what-you-use'
+)
 # vim: ts=2 sw=2 et:

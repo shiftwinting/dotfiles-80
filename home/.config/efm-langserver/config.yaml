@@ -76,12 +76,9 @@ tools:
     format-command: 'lua-format -i'
     format-stdin: true
 
-  c-pwcheck: &c-pwcheck
-    lint-command: 'pwlint'
-    lint-stdin: false
-    lint-formats:
-      - '%f:%l:%c %m'
-    lint-ignore-exit-code: true
+  c-git-clang-format: &c-git-clang-format
+    format-command: 'git clang-format --force >/dev/null 2>&1 ${INPUT} && cat ${INPUT}'
+    format-stdin: false
 
 languages:
   vim:
@@ -121,4 +118,7 @@ languages:
     - <<: *lua-lua-format
 
   c:
-    - <<: *c-pwcheck
+    - <<: *c-git-clang-format
+
+  cpp:
+    - <<: *c-git-clang-format
