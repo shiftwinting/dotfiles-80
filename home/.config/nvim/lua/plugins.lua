@@ -24,7 +24,6 @@ return require('packer').startup({
             'tpope/vim-dispatch',
             config = function() require "cfg.dispatch" end
         }
-        use 'tpope/vim-git'
         use 'tpope/vim-rsi'
         use 'tpope/vim-surround'
         use 'tpope/vim-apathy'
@@ -52,16 +51,9 @@ return require('packer').startup({
         use 'wellle/targets.vim'
         use 'rhysd/clever-f.vim'
         use 'lambdalisue/suda.vim'
-        use 'kovetskiy/sxhkd-vim'
-        use 'tmux-plugins/vim-tmux'
         use {
             'numToStr/Navigator.nvim',
             config = function() require "cfg.tmux" end
-        }
-        use {
-            'lervag/vimtex',
-            ft = 'tex',
-            config = function() require "cfg.vimtex" end
         }
         use {
             'Julian/vim-textobj-variable-segment',
@@ -121,14 +113,6 @@ return require('packer').startup({
         use {
             'glepnir/indent-guides.nvim',
             config = function() require "cfg.indent_guides" end
-        }
-        use {
-            'sheerun/vim-polyglot',
-            setup = function()
-                vim.g.polyglot_disabled = {
-                    'latex', 'lua', 'tex', 'sxhkd', 'tmux', "sensible"
-                }
-            end
         }
         use {
             'nvim-telescope/telescope.nvim',
@@ -194,6 +178,24 @@ return require('packer').startup({
             'Pocco81/AbbrevMan.nvim',
             config = function() require "abbrev-man" end
         }
+
+        use 'tpope/vim-git'
+        use 'kovetskiy/sxhkd-vim'
+        use 'tmux-plugins/vim-tmux'
+        use {
+            'lervag/vimtex',
+            config = function() require "cfg.vimtex" end
+        }
+        use 'sudar/vim-arduino-syntax'
+        use 'pboettch/vim-cmake-syntax'
+        use 'chrisbra/csv.vim'
+        use 'martinda/Jenkinsfile-vim-syntax'
+        use 'rhysd/vim-llvm'
+        use 'MTDL9/vim-log-highlighting'
+        use 'chr4/nginx.vim'
+        use 'raimon49/requirements.txt.vim'
+        use 'wgwoods/vim-systemd-syntax'
+        use 'amadeus/vim-xml'
     end,
     config = {
         profile = {enable = true, threshold = 1},
