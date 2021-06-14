@@ -196,6 +196,9 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 
 export PWA_TELEMETRY_OPTOUT=y
 export PWA_TELEMETRY_TAG=Appentra
+export PW_USE_SYSTEM_LLVM_TOOLS=1
+
+export GITHUB_ACCESS_TOKEN="$(grep "oauth_token:" ~/.config/gh/hosts.yml | grep -Eo "[[:xdigit:]]{40}")"
 
 # cleanup ~
 # only set XAUTHORITY when not logging from ssh, since it breaks xauth

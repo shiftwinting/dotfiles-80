@@ -66,7 +66,8 @@ dap.configurations.cpp = {
         program = get_program,
         stopOnEntry = false,
         args = get_args,
-        env = get_env_vars
+        env = get_env_vars,
+        runInTerminal = true
     }, {
         -- If you get an "Operation not permitted" error using this, try disabling YAMA:
         --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -163,7 +164,7 @@ require("dapui").setup({
     sidebar = {
         elements = {
             -- You can change the order of elements in the sidebar
-            "scopes", "breakpoints", "watches"
+            "scopes", "breakpoints", "stacks", "watches"
         },
         width = 80,
         position = "left" -- Can be "left" or "right"

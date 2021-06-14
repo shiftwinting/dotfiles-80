@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-python
-pkgver=9
+pkgver=12
 pkgrel=1
 pkgdesc="ruifm's python metapackage"
 arch=('any')
@@ -22,7 +22,6 @@ depends=(
   'python-poetry'
   'python-pydocstyle'
   'python-pylint'
-  'python-pyls-isort-git'
   'python-rope'
   'python-scipy'
   'python-tqdm'

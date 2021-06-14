@@ -50,9 +50,9 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     lsp_nmap('<leader>gwr', 'buf.remove_workspace_folder()')
 
     -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
+    if client.resolved_capabilities.document_formatting or
+        client.resolved_capabilities.document_range_formatting then
         lsp_nmap('<leader>f', 'buf.formatting()')
-    elseif client.resolved_capabilities.document_range_formatting then
         lsp_vmap('<leader>f', 'buf.range_formatting()')
     end
 
@@ -98,9 +98,10 @@ local servers = {
     clangd = {
         cmd = {
             "clangd", "--background-index", "--clang-tidy",
-            "--completion-style=bundled", "--header-insertion=iwyu",
-            "--header-insertion-decorators", "--suggest-missing-includes",
-            "--cross-file-rename", "--index"
+            "--completion-parse=auto", "--completion-style=bundled",
+            "--header-insertion=iwyu", "--header-insertion-decorators",
+            "--suggest-missing-includes", "--cross-file-rename",
+            "--debug-origin", "--limit-results=0", "-j=10"
             -- '--all-scopes-completion',
         },
         on_attach = function(client, bufnr)
@@ -110,7 +111,7 @@ local servers = {
         init_options = {usePlaceholders = true, completeUnimported = true}
     },
     cmake = {},
-    cssls = {},
+    cssls = {cmd = {"css-languageserver", "--stdio"}},
     efm = {
         filetypes = {
             "vim", "make", "markdown", "rst", "yaml", "sh", "html", "json",

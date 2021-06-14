@@ -1,17 +1,16 @@
 local install_path = vim.fn.stdpath('data') ..
-                         '/site/pack/packer/opt/packer.nvim'
+                         '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.api.nvim_command(
         '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    vim.api.nvim_command [[packadd packer.nvim]]
 end
-vim.cmd [[packadd packer.nvim]]
 
 vim.api.nvim_command [[autocmd BufWritePost plugins PackerCompile]]
 
 return require('packer').startup({
     function()
-        -- Packer can manage itself as an optional plugin
-        use {'wbthomason/packer.nvim', opt = true}
+        use 'wbthomason/packer.nvim'
         use 'tjdevries/astronauta.nvim'
         use 'tpope/vim-repeat'
         use {
@@ -108,7 +107,6 @@ return require('packer').startup({
                 'jbyuki/one-small-step-for-vimkind'
             }
         }
-        use 'rickhowe/diffchar.vim'
         use 'rhysd/conflict-marker.vim'
         use {
             'glepnir/indent-guides.nvim',
