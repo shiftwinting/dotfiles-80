@@ -3,6 +3,7 @@ local last_config
 
 local dap = require "dap"
 
+dap.defaults.fallback.force_external_terminal = true
 dap.defaults.fallback.external_terminal = {
     command = '/usr/bin/st',
     args = {'-e'}

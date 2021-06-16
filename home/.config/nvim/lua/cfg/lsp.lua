@@ -25,6 +25,10 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
 
     if client.resolved_capabilities.code_lens then
         require'virtualtypes'.on_attach()
+        vim.api
+            .nvim_command [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
+
+        lsp_nmap('gl', 'codelens.run()')
     end
 
     lsp_nmap('K', 'buf.hover()')
@@ -101,7 +105,7 @@ local servers = {
             "--completion-parse=auto", "--completion-style=bundled",
             "--header-insertion=iwyu", "--header-insertion-decorators",
             "--suggest-missing-includes", "--cross-file-rename",
-            "--debug-origin", "--limit-results=0", "-j=10"
+            "--hidden-features", "--debug-origin", "-j=4"
             -- '--all-scopes-completion',
         },
         on_attach = function(client, bufnr)
