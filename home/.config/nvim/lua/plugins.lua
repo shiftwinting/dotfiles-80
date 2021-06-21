@@ -176,6 +176,7 @@ return require('packer').startup({
             'Pocco81/AbbrevMan.nvim',
             config = function() require "abbrev-man" end
         }
+        use 'doums/lsp_status'
 
         use 'tpope/vim-git'
         use 'kovetskiy/sxhkd-vim'

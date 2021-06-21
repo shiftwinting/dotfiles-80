@@ -1,5 +1,29 @@
 local map = require "mapper"
 local lspconfig = require "lspconfig"
+local lsp_status = require'lsp_status'
+
+local function format_range_operator()
+    local old_func = vim.go.operatorfunc
+    _G.op_func_formatting = function()
+        local start = vim.api.nvim_buf_get_mark(0, '[')
+        local finish = vim.api.nvim_buf_get_mark(0, ']')
+        vim.lsp.buf.range_formatting({}, start, finish)
+        vim.go.operatorfunc = old_func
+        _G.op_func_formatting = nil
+    end
+    vim.go.operatorfunc = 'v:lua.op_func_formatting'
+    vim.api.nvim_feedkeys('g@', 'n', false)
+end
+
+local function preview_location_callback(_, _, result)
+    if result == nil or vim.tbl_isempty(result) then return nil end
+    vim.lsp.util.preview_location(result[1])
+end
+
+local function peek_callback(request)
+    local params = vim.lsp.util.make_position_params()
+    return vim.lsp.buf_request(0, request, params, preview_location_callback)
+end
 
 local on_attach_wrapper = function(client, bufnr, user_opts)
     local opts = user_opts or
@@ -21,7 +45,8 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
 
     local function lsp_setopt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    require'lsp_signature'.on_attach()
+    require'lsp_signature'.on_attach({fix_pos=true})
+    lsp_status.on_attach(client, bufnr)
 
     if client.resolved_capabilities.code_lens then
         require'virtualtypes'.on_attach()
@@ -34,8 +59,12 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     lsp_nmap('K', 'buf.hover()')
     lsp_nmap('<c-]>', 'buf.definition()')
     lsp_nmap('gD', 'buf.declaration()')
+    map.nlua("<leader>gD",
+             "require'cfg.lsp'.peek_callback('textDocument/declaration')", bufnr)
     lsp_nmap('gd', 'buf.definition()')
-    lsp_nmap('<leader>gd', 'buf.type_definition()')
+    map.nlua("<leader>gd",
+             "require'cfg.lsp'.peek_callback('textDocument/definition')", bufnr)
+    lsp_nmap('gt', 'buf.type_definition()')
     lsp_nmap('gi', 'buf.implementation()')
     lsp_nmap('gs', 'buf.signature_help()')
     lsp_nmap('gh', 'buf.hover()')
@@ -50,14 +79,13 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     lsp_nmap(']w', 'diagnostic.goto_next()')
     lsp_nmap('[e', 'diagnostic.goto_prev { severity_limit = "Error" }')
     lsp_nmap(']e', 'diagnostic.goto_next { severity_limit = "Error" }')
-    lsp_nmap('<leader>gwa', 'buf.add_workspace_folder()')
-    lsp_nmap('<leader>gwr', 'buf.remove_workspace_folder()')
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting or
         client.resolved_capabilities.document_range_formatting then
         lsp_nmap('<leader>f', 'buf.formatting()')
         lsp_vmap('<leader>f', 'buf.range_formatting()')
+        map.nlua("gm", "require'cfg.lsp'.format_range_operator()", bufnr)
     end
 
     lsp_setopt("formatexpr", "v:lua.require'cfg.utils'.formatexpr")
@@ -91,11 +119,28 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {'documentation', 'detail', 'additionalTextEdits'}
 }
 
+-- turn on `window/workDoneProgress` capability
+lsp_status.init_capabilities(capabilities)
+
 lspconfig.util.default_config = vim.tbl_extend("force",
                                                lspconfig.util.default_config, {
     on_attach = function(client, bufnr) on_attach_wrapper(client, bufnr) end,
     capabilities = capabilities
 })
+
+local function switch_source_header_splitcmd(bufnr, splitcmd)
+    bufnr = require'lspconfig'.util.validate_bufnr(bufnr)
+    local params = {uri = vim.uri_from_bufnr(bufnr)}
+    vim.lsp.buf_request(bufnr, 'textDocument/switchSourceHeader', params,
+                        function(err, _, result)
+        if err then error(tostring(err)) end
+        if not result then
+            print("Corresponding file can’t be determined")
+            return
+        end
+        vim.api.nvim_command(splitcmd .. ' ' .. vim.uri_to_fname(result))
+    end)
+end
 
 local servers = {
     bashls = {},
@@ -108,9 +153,31 @@ local servers = {
             "--hidden-features", "--debug-origin", "-j=4"
             -- '--all-scopes-completion',
         },
+        commands = {
+            ClangdSwitchSourceHeader = {
+                function()
+                    switch_source_header_splitcmd(0, "edit")
+                end,
+                description = "Open source/header in current buffer"
+            },
+            ClangdSwitchSourceHeaderVSplit = {
+                function()
+                    switch_source_header_splitcmd(0, "vsplit")
+                end,
+                description = "Open source/header in a new vsplit"
+            },
+            ClangdSwitchSourceHeaderSplit = {
+                function()
+                    switch_source_header_splitcmd(0, "split")
+                end,
+                description = "Open source/header in a new split"
+            }
+        },
         on_attach = function(client, bufnr)
             on_attach_wrapper(client, bufnr, {auto_format = false})
             map.ncmd('gH', 'ClangdSwitchSourceHeader')
+            map.ncmd('gvH', 'ClangdSwitchSourceHeaderVSplit')
+            map.ncmd('gxH', 'ClangdSwitchSourceHeaderSplit')
         end,
         init_options = {usePlaceholders = true, completeUnimported = true}
     },
@@ -204,3 +271,8 @@ vim.lsp.handlers['textDocument/documentSymbol'] =
     require'lsputil.symbols'.document_handler
 vim.lsp.handlers['workspace/symbol'] =
     require'lsputil.symbols'.workspace_handler
+
+return {
+    format_range_operator = format_range_operator,
+    peek_callback = peek_callback
+}
