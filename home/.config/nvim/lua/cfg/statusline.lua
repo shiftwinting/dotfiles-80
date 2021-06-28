@@ -1,23 +1,32 @@
 local lsp_status = function()
-    local sl = string.format("[%s] ", require'lsp_status'.status())
+    local sl = string.format("[%s] ", require("lsp_status").status())
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
-        sl = sl ..
-                 string.format('E: %s W: %s',
-                               vim.lsp.diagnostic.get_count(0, [[Error]]),
-                               vim.lsp.diagnostic.get_count(0, [[Warning]]))
+        sl = sl
+            .. string.format(
+                "E: %s W: %s",
+                vim.lsp.diagnostic.get_count(0, [[Error]]),
+                vim.lsp.diagnostic.get_count(0, [[Warning]])
+            )
     end
     return sl
 end
 
 local function statusline_generator()
-    local builtin = require('el.builtin')
-    local sections = require('el.sections')
+    local builtin = require("el.builtin")
+    local sections = require("el.sections")
     return {
-        builtin.filetype, '%f', builtin.help, builtin.modified,
-        builtin.readonly, builtin.preview, builtin.quickfix, builtin.loclist,
+        builtin.filetype,
+        "%f",
+        builtin.help,
+        builtin.modified,
+        builtin.readonly,
+        builtin.preview,
+        builtin.quickfix,
+        builtin.loclist,
         string.format("[%s, %s]", builtin.column, builtin.number_of_lines),
-        sections.split, lsp_status
+        sections.split,
+        lsp_status,
     }
 end
 
-require('el').setup {generator = statusline_generator}
+require("el").setup({ generator = statusline_generator })

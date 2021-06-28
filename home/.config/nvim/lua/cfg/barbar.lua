@@ -22,30 +22,30 @@ vim.g.bufferline = {
     -- for other layouts.
     -- letters = 'asdfjkl;ghnmxcbziowerutyqpASDFJKLGHNMXCBZIOWERUTYQP',
     -- Sets the maximum padding width with which to surround each tab
-    maximum_padding = 0
+    maximum_padding = 0,
 }
 
-local map = require "mapper"
+local map = require("mapper")
 -- Magic buffer-picking mode
-map.ncmd('<leader>bp', 'BufferPick')
+map.ncmd("<leader>bp", "BufferPick")
 -- -- Move to previous/next
-map.ncmd('<A-,>', 'BufferPrevious')
-map.ncmd('<A-.>', 'BufferNext')
+map.ncmd("<A-,>", "BufferPrevious")
+map.ncmd("<A-.>", "BufferNext")
 -- -- Re-order to previous/next
 -- map.ncmd('<A-<, 'BufferMovePrevious')
 -- map.ncmd('<A->, 'BufferMoveNext')
 -- Goto buffer in position...
-map.ncmd('<A-1>', 'BufferGoto 1')
-map.ncmd('<A-2>', 'BufferGoto 2')
-map.ncmd('<A-3>', 'BufferGoto 3')
-map.ncmd('<A-4>', 'BufferGoto 4')
-map.ncmd('<A-5>', 'BufferGoto 5')
-map.ncmd('<A-6>', 'BufferGoto 6')
-map.ncmd('<A-7>', 'BufferGoto 7')
-map.ncmd('<A-8>', 'BufferGoto 8')
-map.ncmd('<A-9>', 'BufferLast')
+map.ncmd("<A-1>", "BufferGoto 1")
+map.ncmd("<A-2>", "BufferGoto 2")
+map.ncmd("<A-3>", "BufferGoto 3")
+map.ncmd("<A-4>", "BufferGoto 4")
+map.ncmd("<A-5>", "BufferGoto 5")
+map.ncmd("<A-6>", "BufferGoto 6")
+map.ncmd("<A-7>", "BufferGoto 7")
+map.ncmd("<A-8>", "BufferGoto 8")
+map.ncmd("<A-9>", "BufferLast")
 -- Close buffer
-map.ncmd('<A-c>', 'BufferClose')
+map.ncmd("<A-c>", "BufferClose")
 -- Wipeout buffer
 -- :BufferWipeout
 -- Other:

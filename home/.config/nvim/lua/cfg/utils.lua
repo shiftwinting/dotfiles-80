@@ -7,7 +7,7 @@ M.formatexpr = function(start_line, end_line, timeout_ms)
     timeout_ms = timeout_ms or 500
 
     if not start_line or not end_line then
-        if vim.fn.mode() == 'i' or vim.fn.mode() == 'R' then
+        if vim.fn.mode() == "i" or vim.fn.mode() == "R" then
             -- `formatexpr` is also called when exceding
             -- `textwidth` in insert mode
             -- fall back to internal formatting
@@ -21,13 +21,16 @@ M.formatexpr = function(start_line, end_line, timeout_ms)
         local params = {
             textDocument = vim.lsp.util.make_text_document_params(),
             range = {
-                start = {line = start_line - 1, character = 0},
-                ["end"] = {line = end_line - 1, character = 0}
-            }
-        };
-        local client_results = vim.lsp.buf_request_sync(0,
-                                                        "textDocument/rangeFormatting",
-                                                        params, timeout_ms)
+                start = { line = start_line - 1, character = 0 },
+                ["end"] = { line = end_line - 1, character = 0 },
+            },
+        }
+        local client_results = vim.lsp.buf_request_sync(
+            0,
+            "textDocument/rangeFormatting",
+            params,
+            timeout_ms
+        )
 
         -- Apply the text edits from one and only one of the clients.
         for _, response in pairs(client_results) do
