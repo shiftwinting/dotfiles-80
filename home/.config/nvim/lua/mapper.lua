@@ -90,6 +90,18 @@ end
 
 M.t =
     function(keys, action, bufnr, opts) M.map('t', keys, action, bufnr, opts) end
+M.tcmdi = function(keys, action, bufnr, opts)
+    M.cmdi('t', keys, action, bufnr, opts)
+end
+M.tcmd = function(keys, action, bufnr, opts)
+    M.cmd('t', keys, action, bufnr, opts)
+end
+M.tluai = function(keys, action, bufnr, opts)
+    M.luai('t', keys, action, bufnr, opts)
+end
+M.tlua = function(keys, action, bufnr, opts)
+    M.lua('t', keys, action, bufnr, opts)
+end
 M.tplug = function(keys, action, bufnr, opts)
     M.plug('t', keys, action, bufnr, opts)
 end

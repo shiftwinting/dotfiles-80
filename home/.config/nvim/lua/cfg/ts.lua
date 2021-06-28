@@ -1,6 +1,15 @@
 require"mapper".ncmd('<leader>h', 'write <bar> edit <bar> TSBufEnable highlight')
-local tsconfigs = require "nvim-treesitter.configs"
 
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.markdown = {
+    install_info = {
+        url = "https://github.com/ikatyang/tree-sitter-markdown",
+        files = {"src/parser.c", "src/scanner.cc"}
+    },
+    filetype = "markdown",
+}
+
+local tsconfigs = require "nvim-treesitter.configs"
 tsconfigs.setup {
     ensure_installed = "all", -- one of "all", "language", or a list of languages
     highlight = {
@@ -83,14 +92,15 @@ tsconfigs.setup {
     },
     rainbow = {enable = true},
     pairs = {
-      enable = true,
-      goto_right_end = false,
-      fallback_cmd_normal = "call matchup#motion#find_matching_pair(0, 1)",
-      keymaps = {
-        goto_partner = "%"
-      }
+        enable = true,
+        goto_right_end = false,
+        fallback_cmd_normal = "call matchup#motion#find_matching_pair(0, 1)",
+        keymaps = {goto_partner = "%"}
+    },
+    textsubjects = {
+        enable = true,
+        keymaps = {['.'] = 'textsubjects-smart', [';'] = 'textsubjects-big'}
     }
 }
-
 
 require"mapper".nlua('<leader>p', 'require"contextprint".add_statement()')

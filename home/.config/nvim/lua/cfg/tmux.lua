@@ -1,10 +1,19 @@
-require('Navigator').setup({
-    disable_on_zoom = true
+require("tmux").setup({
+    -- overwrite default configuration
+    -- here, e.g. to enable default bindings
+    navigation = {
+        -- enables default keybindings (C-hjkl) for normal mode
+        enable_default_keybindings = true
+    },
+    resize = {
+        -- enables default keybindings (A-hjkl) for normal mode
+        enable_default_keybindings = true
+    }
 })
 
 local map = require"mapper"
 
-map.nlua("<c-h>", "require('Navigator').left()")
-map.nlua("<c-k>", "require('Navigator').up()")
-map.nlua("<c-l>", "require('Navigator').right()")
-map.nlua("<c-j>", "require('Navigator').down()")
+map.tlua('<c-h>', "require'tmux'.move_left()")
+map.tlua('<c-j>', "require'tmux'.move_bottom()")
+map.tlua('<c-k>', "require'tmux'.move_top()")
+map.tlua('<c-l>', "require'tmux'.move_right()")

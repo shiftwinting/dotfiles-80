@@ -17,6 +17,7 @@
     algorithm = histogram
     mnemonicPrefix = true
     relative = true
+    renameLimit = 10000
 [difftool]
     prompt = false
     trustExitCode = true

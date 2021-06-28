@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-mail
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="ruifm's mail metapackage"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://ruimarques.xyz"
 license=('GPL3')
 depends=(
   'abook'
+  'aerc'
   'mutt-wizard-git'
   'protonmail-bridge-nogui'
   'w3m'

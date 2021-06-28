@@ -100,6 +100,8 @@ export LESS_TERMCAP_ZO
 LESS_TERMCAP_ZW="$(tput rsupm)"
 export LESS_TERMCAP_ZW
 
+export LESS="-F -X $LESS"
+
 export LANG=en_US.UTF-8
 export OPENER='xdg-open'
 if exists fd; then
