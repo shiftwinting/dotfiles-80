@@ -22,7 +22,7 @@ alias dmesg='dmesg --color=auto'
 alias lsip="ip a | grep -E '\<inet\>'"
 
 alias g='git'
-alias gs='git status'
+alias gs='git status --branch --short'
 alias gc='git commit'
 alias gco='git checkout'
 alias gcb='git checkout -b'
