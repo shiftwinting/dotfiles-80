@@ -1,8 +1,3 @@
-require("mapper").ncmd(
-    "<leader>h",
-    "write <bar> edit <bar> TSBufEnable highlight"
-)
-
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.markdown = {
     install_info = {
@@ -105,5 +100,3 @@ tsconfigs.setup({
         keymaps = { ["."] = "textsubjects-smart", [";"] = "textsubjects-big" },
     },
 })
-
-require("mapper").nlua("<leader>p", 'require"contextprint".add_statement()')

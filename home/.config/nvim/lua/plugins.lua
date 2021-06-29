@@ -185,8 +185,15 @@ return require("packer").startup({
         })
         use({
             "bryall/contextprint.nvim",
-            event = "BufRead",
+            keys = { "n", "<leader>p" },
             after = "ts",
+            config = function()
+                require("contextprint").setup()
+                require("mapper").nlua(
+                    "<leader>p",
+                    'require"contextprint".add_statement()'
+                )
+            end,
         })
         use({
             "haringsrob/nvim_context_vt",
