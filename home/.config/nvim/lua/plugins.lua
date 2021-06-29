@@ -7,33 +7,49 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.api.nvim_command([[packadd packer.nvim]])
 end
 
-vim.api.nvim_command([[autocmd BufWritePost plugins PackerCompile]])
+vim.api.nvim_command([[autocmd BufWritePost plugins.lua PackerCompile]])
 
 return require("packer").startup({
     function()
         use("wbthomason/packer.nvim")
-        use("tjdevries/astronauta.nvim")
-        use("tpope/vim-repeat")
+        use({ "tpope/vim-repeat", keys = { "n", "." } })
         use({
             "terrortylor/nvim-comment",
+            keys = { { "n", "gc" }, { "v", "gc" } },
             config = function()
                 require("cfg.comments")
             end,
         })
-        use("tpope/vim-unimpaired")
+        use({
+            "tpope/vim-unimpaired",
+            keys = {
+                { "n", "]" },
+                { "n", "[" },
+                { "n", "yo" },
+            },
+        })
         use("tpope/vim-abolish")
         use({
             "tpope/vim-dispatch",
+            cmd = { "Dispatch", "Make", "Focus", "Start" },
             config = function()
                 require("cfg.dispatch")
             end,
         })
         use("tpope/vim-rsi")
-        use("tpope/vim-surround")
+        use({
+            "tpope/vim-surround",
+            keys = {
+                { "n", "cs" },
+                { "n", "ds" },
+                { "n", "ys" },
+            },
+        })
         use("tpope/vim-apathy")
-        use("tpope/vim-obsession")
+        use({ "tpope/vim-obsession", cmd = "Obsession" })
         use({
             "andymass/vim-matchup",
+            event = "CursorMoved",
             config = function()
                 require("cfg.matchup")
             end,
@@ -46,6 +62,7 @@ return require("packer").startup({
         })
         use({
             "npxbr/gruvbox.nvim",
+            event = "VimEnter",
             config = function()
                 require("cfg.gruvbox")
             end,
@@ -57,14 +74,17 @@ return require("packer").startup({
                 require("cfg.rainbow")
             end,
         })
-        use("justinmk/vim-sneak")
         use("editorconfig/editorconfig-vim")
         use("michaeljsmith/vim-indent-object")
         use("wellle/targets.vim")
-        use("rhysd/clever-f.vim")
-        use("lambdalisue/suda.vim")
         use({
             "aserowy/tmux.nvim",
+            keys = {
+                { "n", "<c-h>" },
+                { "n", "<c-j>" },
+                { "n", "<c-k>" },
+                { "n", "<c-l>" },
+            },
             config = function()
                 require("cfg.tmux")
             end,
@@ -81,62 +101,124 @@ return require("packer").startup({
             end,
         })
         use({
-            "hrsh7th/vim-vsnip",
-            config = function()
-                require("cfg.snippets")
-            end,
-            requires = {
-                "hrsh7th/vim-vsnip-integ",
-                "one-harsh/vscode-cpp-snippets",
-                "kitagry/vs-snippets",
-                "rafamadriz/friendly-snippets",
-            },
-        })
-        use({
             "neovim/nvim-lspconfig",
+            event = "BufRead",
             config = function()
                 require("cfg.lsp")
             end,
+            requires = {
+                {
+                    "RishabhRD/nvim-lsputils",
+                    requires = {
+                        "RishabhRD/popfix",
+                        run = "make -C external_modules/fzy_lua_native",
+                    },
+                },
+                "ray-x/lsp_signature.nvim",
+                "doums/lsp_spinner.nvim",
+
+                {
+                    "kosayoda/nvim-lightbulb",
+                    config = function()
+                        require("cfg.lightbulb")
+                    end,
+                },
+                "jubnzv/virtual-types.nvim",
+
+                {
+                    "simrat39/symbols-outline.nvim",
+                    config = function()
+                        require("cfg.symbols")
+                    end,
+                },
+                "jose-elias-alvarez/null-ls.nvim",
+            },
         })
         use({
             "hrsh7th/nvim-compe",
+            event = "InsertEnter",
             config = function()
                 require("cfg.completion")
             end,
-        })
-        use({
-            "RishabhRD/nvim-lsputils",
             requires = {
-                "RishabhRD/popfix",
-                run = "make -C external_modules/fzy_lua_native",
+                "hrsh7th/vim-vsnip",
+                event = "InsertCharPre",
+                config = function()
+                    require("cfg.snippets")
+                end,
+                requires = {
+                    "hrsh7th/vim-vsnip-integ",
+                    "one-harsh/vscode-cpp-snippets",
+                    "kitagry/vs-snippets",
+                    "rafamadriz/friendly-snippets",
+                },
             },
         })
         use({
             "nvim-treesitter/nvim-treesitter",
+            as = "ts",
+            event = "BufRead",
             run = ":TSUpdate",
             config = function()
                 require("cfg.ts")
             end,
-            requires = {
-                "nvim-treesitter/nvim-treesitter-refactor",
-                "nvim-treesitter/nvim-treesitter-textobjects",
-                "romgrk/nvim-treesitter-context",
-                "p00f/nvim-ts-rainbow",
-                "bryall/contextprint.nvim",
-                "theHamsta/nvim-treesitter-pairs",
-                "haringsrob/nvim_context_vt",
-                "RRethy/nvim-treesitter-textsubjects",
-                {
-                    "jghauser/follow-md-links.nvim",
-                    config = function()
-                        require("follow-md-links")
-                    end,
-                },
-            },
         })
-        use("antoinemadec/FixCursorHold.nvim")
+        use({
+            "romgrk/nvim-treesitter-context",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "nvim-treesitter/nvim-treesitter-refactor",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "p00f/nvim-ts-rainbow",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "bryall/contextprint.nvim",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "haringsrob/nvim_context_vt",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "RRethy/nvim-treesitter-textsubjects",
+            event = "BufRead",
+            after = "ts",
+        })
+
+        use({
+            "theHamsta/nvim-treesitter-pairs",
+            event = "BufRead",
+            after = "ts",
+        })
+        use({
+            "jghauser/follow-md-links.nvim",
+            ft = "markdown",
+            after = "ts",
+            config = function()
+                require("follow-md-links")
+            end,
+        })
+        use({
+            "antoinemadec/FixCursorHold.nvim",
+            event = { "CursorMoved", "CursorMovedI" },
+        })
         use({
             "mfussenegger/nvim-dap",
+            keys = { "<F5>", "<leader>lp", "gm", "g<cr>" },
             config = function()
                 require("cfg.dap")
             end,
@@ -147,74 +229,87 @@ return require("packer").startup({
                 "jbyuki/one-small-step-for-vimkind",
             },
         })
-        use("rhysd/conflict-marker.vim")
+        use({
+            "rhysd/conflict-marker.vim",
+            event = "BufRead",
+            keys = {
+                { "n", "[x" },
+                { "n", "]x" },
+                { "n", "co" },
+                { "n", "ct" },
+                { "n", "cb" },
+                { "n", "cB" },
+            },
+        })
         use({
             "glepnir/indent-guides.nvim",
+            event = "BufRead",
             config = function()
                 require("cfg.indent_guides")
             end,
         })
         use({
+            "nvim-lua/plenary.nvim",
+            as = "plenary",
+            module = "plenary",
+        })
+        use({
             "nvim-telescope/telescope.nvim",
+            keys = { "n", "<localleader>" },
             config = function()
                 require("cfg.telescope")
             end,
             requires = {
-                "nvim-lua/plenary.nvim",
+                "plenary",
                 "nvim-lua/popup.nvim",
                 {
                     "nvim-telescope/telescope-fzy-native.nvim",
                     run = "make -C deps/fzy-lua-native",
                 },
-                "nvim-telescope/telescope-dap.nvim",
             },
         })
         use({
             "lewis6991/gitsigns.nvim",
+            event = "BufRead",
             config = function()
                 require("cfg.gitsigns")
             end,
-            requires = "nvim-lua/plenary.nvim",
+            requires = "plenary",
         })
         use({
             "pwntester/octo.nvim",
-            requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
-            cond = function()
-                return vim.fn.executable("gh") == 1
-            end,
+            cmd = "Octo",
+            requires = { "nvim-lua/popup.nvim", "plenary" },
         })
-        use("strboul/urlview.vim")
         use({
             "tjdevries/express_line.nvim",
             config = function()
                 require("cfg.statusline")
             end,
-            requires = "nvim-lua/plenary.nvim",
+            requires = "plenary",
         })
         use({
             "jdhao/better-escape.vim",
+            keys = { "i", "jj" },
             config = function()
                 vim.g.better_escape_shortcut = "jj"
             end,
         })
         use({
             "monaqa/dial.nvim",
+            keys = {
+                { "n", "]i" },
+                { "n", "[i" },
+            },
             config = function()
                 require("cfg.dial")
             end,
         })
         use({
-            "kosayoda/nvim-lightbulb",
-            config = function()
-                require("cfg.lightbulb")
-            end,
-        })
-        use("ray-x/lsp_signature.nvim")
-        use("jubnzv/virtual-types.nvim")
-        use({
             "TimUntersberger/neogit",
+            cmd = { "Neogit", "G" },
             requires = {
-                "nvim-lua/plenary.nvim",
+                "plenary",
                 {
                     "sindrets/diffview.nvim",
                     config = function()
@@ -230,28 +325,26 @@ return require("packer").startup({
         })
         use({
             "ruifm/gitlinker.nvim",
-            requires = "nvim-lua/plenary.nvim",
+            keys = {
+                { "n", "<leader>gy" },
+                { "v", "<leader>gy" },
+            },
+            requires = "plenary",
             config = function()
                 require("cfg.gitlinker")
             end,
         })
         use({
-            "simrat39/symbols-outline.nvim",
-            config = function()
-                require("cfg.symbols")
-            end,
-        })
-        use({
             "Pocco81/AbbrevMan.nvim",
+            ft = { "text", "tex", "markdown", "lua", "python" },
             config = function()
                 require("abbrev-man")
             end,
         })
-        use("doums/lsp_status")
         use({
             "iamcco/markdown-preview.nvim",
             run = "cd app && yarn install",
-
+            ft = "markdown",
             config = function()
                 vim.api.nvim_command([[
                     function! g:OpenNewWindow(url)
@@ -261,18 +354,19 @@ return require("packer").startup({
                 vim.g.mkdp_browserfunc = "g:OpenNewWindow"
             end,
         })
-        use("jose-elias-alvarez/null-ls.nvim")
+
         use("tpope/vim-git")
         use("kovetskiy/sxhkd-vim")
         use("tmux-plugins/vim-tmux")
         use({
             "lervag/vimtex",
+            ft = "tex",
             config = function()
                 require("cfg.vimtex")
             end,
         })
         use("sudar/vim-arduino-syntax")
-        use("pboettch/vim-cmake-syntax")
+        use({ "pboettch/vim-cmake-syntax", ft = "cmake" })
         use("chrisbra/csv.vim")
         use("martinda/Jenkinsfile-vim-syntax")
         use("rhysd/vim-llvm")
@@ -280,7 +374,7 @@ return require("packer").startup({
         use("chr4/nginx.vim")
         use("raimon49/requirements.txt.vim")
         use("wgwoods/vim-systemd-syntax")
-        use("amadeus/vim-xml")
+        use({ "amadeus/vim-xml", ft = "xml" })
     end,
     config = {
         profile = { enable = true, threshold = 1 },

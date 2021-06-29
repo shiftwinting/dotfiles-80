@@ -21,7 +21,6 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("fzy_native")
-require("telescope").load_extension("dap")
 
 local telescope_map = function(keys, func, mod)
     mod = mod or ".builtin"
@@ -63,16 +62,3 @@ telescope_map("gs", 'git_status{ initial_mode = "normal" }')
 telescope_map("gb", "git_branches()")
 telescope_map("gc", "git_commits()")
 telescope_map("gC", "git_bcommits()")
-
-telescope_map("dc", "extensions.dap.commands()", "")
-telescope_map(
-    "dC",
-    'extensions.dap.configurations{ initial_mode = "normal" }',
-    ""
-)
-telescope_map(
-    "db",
-    'extensions.dap.list_breakpoints{ initial_mode = "normal" }',
-    ""
-)
-telescope_map("dv", "extensions.dap.variables()", "")

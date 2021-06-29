@@ -1,6 +1,6 @@
 local map = require("mapper")
 local lspconfig = require("lspconfig")
-local lsp_status = require("lsp_status")
+local lsp_spinner = require("lsp_spinner")
 
 local function format_range_operator()
     local old_func = vim.go.operatorfunc
@@ -50,7 +50,7 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     end
 
     require("lsp_signature").on_attach({ fix_pos = true })
-    lsp_status.on_attach(client, bufnr)
+    lsp_spinner.on_attach(client, bufnr)
 
     if client.resolved_capabilities.code_lens then
         require("virtualtypes").on_attach()
@@ -138,7 +138,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 -- turn on `window/workDoneProgress` capability
-lsp_status.init_capabilities(capabilities)
+lsp_spinner.init_capabilities(capabilities)
 
 lspconfig.util.default_config = vim.tbl_extend(
     "force",

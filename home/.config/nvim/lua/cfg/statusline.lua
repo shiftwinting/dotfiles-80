@@ -1,5 +1,5 @@
 local lsp_status = function()
-    local sl = string.format("[%s] ", require("lsp_status").status())
+    local sl = string.format("[%s] ", require("lsp_spinner").status())
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
         sl = sl
             .. string.format(
