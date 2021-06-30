@@ -105,6 +105,7 @@ alias nview='nvim -R'
 alias nv='nvim -R'
 alias ngit='nvim +G'
 alias ng='nvim +G'
+alias packer="nvim +\"lua require'plugins'\" +\"lua require'packer'.sync()\""
 
 alias python='python3'
 alias pip='pip3'

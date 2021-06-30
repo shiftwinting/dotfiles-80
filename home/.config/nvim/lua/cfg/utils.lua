@@ -45,4 +45,12 @@ M.formatexpr = function(start_line, end_line, timeout_ms)
     return 0
 end
 
+M.sourceLocal = function()
+    local settings = vim.fn.findfile(".doit.lua", ".;")
+    if settings ~= "" then
+        print("sourcing local config")
+        dofile(settings)
+    end
+end
+
 return M

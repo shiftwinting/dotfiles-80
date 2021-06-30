@@ -361,6 +361,8 @@ return require("packer").startup({
                 vim.g.mkdp_browserfunc = "g:OpenNewWindow"
             end,
         })
+        use("delphinus/agrp.nvim")
+        use({ "dstein64/vim-startuptime" })
 
         use("tpope/vim-git")
         use("kovetskiy/sxhkd-vim")
@@ -384,7 +386,7 @@ return require("packer").startup({
         use({ "amadeus/vim-xml", ft = "xml" })
     end,
     config = {
-        profile = { enable = true, threshold = 1 },
+        profile = { enable = false, threshold = 1 },
         display = { open_cmd = "new +only [packer]" },
     },
 })
