@@ -146,6 +146,9 @@ lspconfig.util.default_config = vim.tbl_extend(
     {
         on_attach = on_attach_wrapper,
         capabilities = capabilities,
+        flags = {
+            debounce_text_changes = 150,
+        },
     }
 )
 
