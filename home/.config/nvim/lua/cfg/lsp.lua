@@ -27,16 +27,13 @@ local function peek_callback(request)
     return vim.lsp.buf_request(0, request, params, preview_location_callback)
 end
 
-local on_attach_wrapper = function(client, bufnr, user_opts)
-    local opts = user_opts
-        or {
-            auto_format = false,
-            show_diags = false,
-            lsp_highlights = false,
-        }
-    local auto_format = opts.auto_format or false
-    local show_diags = opts.show_diags or false
-    local lsp_highlights = opts.lsp_highlights or false
+local on_attach_wrapper = function(client, bufnr, opts)
+    local default_opts = {
+        auto_format = true,
+        show_diags = false,
+    }
+    opts = opts or default_opts
+    opts = vim.tbl_extend("keep", opts, default_opts)
 
     local lsp_nmap = function(keys, func)
         map.nlua(keys, "vim.lsp." .. func, bufnr)
@@ -92,41 +89,32 @@ local on_attach_wrapper = function(client, bufnr, user_opts)
     lsp_nmap("]e", 'diagnostic.goto_next { severity_limit = "Error" }')
 
     -- Set some keybinds conditional on server capabilities
-    if
-        client.resolved_capabilities.document_formatting
-        or client.resolved_capabilities.document_range_formatting
-    then
-        lsp_nmap("<leader>f", "buf.formatting()")
-        lsp_vmap("<leader>f", "buf.range_formatting()")
-        map.nlua("gm", "require'cfg.lsp'.format_range_operator()", bufnr)
-    end
+    lsp_nmap("<leader>f", "buf.formatting()")
+    lsp_vmap("<leader>f", "buf.range_formatting()")
+    map.nlua("<leader>hf", "require'cfg.utils'.formatting_hunks()")
+    map.nlua("gf", "require'cfg.lsp'.format_range_operator()", bufnr)
 
-    lsp_setopt("formatexpr", "v:lua.require'cfg.utils'.formatexpr")
+    if client.supports_method("textDocument/rangeFormatting") then
+        lsp_setopt("formatexpr", "v:lua.require'cfg.utils'.formatexpr()")
+    end
     lsp_setopt("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    if show_diags then
+    if opts.show_diags then
         vim.api.nvim_command(
             [[autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()]]
         )
     end
 
-    if lsp_highlights and client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec(
-            [[
-        augroup lsp_document_highlight
-            autocmd!
-            autocmd CursorHold,CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]],
-            false
-        )
-    end
-
-    if auto_format then
-        vim.api.nvim_command(
-            [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
-        )
+    if opts.auto_format then
+        if client.supports_method("textDocument/rangeFormatting") then
+            vim.api.nvim_command(
+                [[autocmd BufWritePre <buffer> lua require"cfg.utils".formatting_hunks(500)]]
+            )
+        else
+            vim.api.nvim_command(
+                [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+            )
+        end
     end
 end
 
@@ -211,7 +199,7 @@ local servers = {
             },
         },
         on_attach = function(client, bufnr)
-            on_attach_wrapper(client, bufnr, { auto_format = false })
+            on_attach_wrapper(client, bufnr, { auto_format = true })
             map.ncmd("gH", "ClangdSwitchSourceHeader")
             map.ncmd("gvH", "ClangdSwitchSourceHeaderVSplit")
             map.ncmd("gxH", "ClangdSwitchSourceHeaderSplit")
@@ -220,22 +208,6 @@ local servers = {
     },
     cmake = {},
     cssls = { cmd = { "css-languageserver", "--stdio" } },
-    -- efm = {
-    --     filetypes = {
-    --         "vim",
-    --         "make",
-    --         "markdown",
-    --         "rst",
-    --         "yaml",
-    --         "sh",
-    --         "html",
-    --         "json",
-    --         "csv",
-    --         "lua",
-    --         "c",
-    --         "cpp",
-    --     },
-    -- },
     html = { cmd = { "vscode-html-languageserver", "--stdio" } },
     -- jedi_language_server = {},
     jsonls = { cmd = { "json-languageserver", "--stdio" } },
@@ -479,17 +451,6 @@ null_ls.setup({
                     "--tab-stop=2",
                 },
                 to_stdin = true,
-            }),
-        },
-        {
-            name = "gitclangformatter",
-            method = null_ls.methods.FORMATTING,
-            filetypes = { "cpp" },
-            generator = helpers.formatter_factory({
-                command = "gitclangformatter",
-                args = {
-                    "$FILENAME",
-                },
             }),
         },
     },

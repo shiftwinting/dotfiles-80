@@ -4,7 +4,12 @@ parser_config.markdown = {
         url = "https://github.com/ikatyang/tree-sitter-markdown",
         files = { "src/parser.c", "src/scanner.cc" },
     },
-    filetype = "markdown",
+}
+parser_config.vim = {
+    install_info = {
+        url = "https://github.com/vigoux/tree-sitter-viml",
+        files = { "src/parser.c", "src/scanner.c" },
+    },
 }
 
 local tsconfigs = require("nvim-treesitter.configs")

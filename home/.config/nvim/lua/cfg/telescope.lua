@@ -5,7 +5,9 @@ local map = require("mapper")
 require("telescope").setup({
     defaults = {
         color_devicons = false,
-        prompt_position = "top",
+        layout_config = {
+            prompt_position = "top",
+        },
         sorting_strategy = "ascending",
         scroll_strategy = "cycle",
         selection_strategy = "follow",

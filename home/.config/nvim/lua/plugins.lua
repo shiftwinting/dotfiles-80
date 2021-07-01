@@ -100,6 +100,7 @@ return require("packer").startup({
                 require("colorizer").setup()
             end,
         })
+
         use({
             "neovim/nvim-lspconfig",
             event = "BufRead",
@@ -154,6 +155,7 @@ return require("packer").startup({
                 },
             },
         })
+
         use({
             "nvim-treesitter/nvim-treesitter",
             as = "ts",
@@ -219,6 +221,13 @@ return require("packer").startup({
                 require("follow-md-links")
             end,
         })
+        use({
+            "lewis6991/spellsitter.nvim",
+            config = function()
+                require("spellsitter").setup()
+            end,
+        })
+
         use({
             "antoinemadec/FixCursorHold.nvim",
             event = { "CursorMoved", "CursorMovedI" },
