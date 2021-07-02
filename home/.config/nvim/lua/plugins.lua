@@ -38,12 +38,17 @@ return require("packer").startup({
         })
         use("tpope/vim-rsi")
         use({
-            "tpope/vim-surround",
+            "blackCauldron7/surround.nvim",
             keys = {
-                { "n", "cs" },
-                { "n", "ds" },
+                { "n", "sr" },
+                { "n", "sd" },
                 { "n", "ys" },
+                { "v", "s" },
+                { "i", "<c-s>" },
             },
+            config = function()
+                require("surround").setup({})
+            end,
         })
         use("tpope/vim-apathy")
         use({ "tpope/vim-obsession", cmd = "Obsession" })
@@ -384,7 +389,6 @@ return require("packer").startup({
             end,
         })
         use("sudar/vim-arduino-syntax")
-        use({ "pboettch/vim-cmake-syntax", ft = "cmake" })
         use("chrisbra/csv.vim")
         use("martinda/Jenkinsfile-vim-syntax")
         use("rhysd/vim-llvm")

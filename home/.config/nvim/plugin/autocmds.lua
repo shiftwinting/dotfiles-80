@@ -2,7 +2,8 @@ require("agrp").set({
     restore_pos = {
         {
             "BufReadPost",
-            "* ++once",
+            "*",
+            { "once" },
             [[if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' |   exe "normal! g`\"" |endif]],
         },
     },
@@ -49,7 +50,7 @@ require("agrp").set({
         {
             "VimEnter",
             "*",
-            require"cfg.utils".sourceLocal,
+            require("cfg.utils").sourceLocal,
         },
     },
 })

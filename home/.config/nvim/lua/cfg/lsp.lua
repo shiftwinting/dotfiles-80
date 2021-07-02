@@ -199,7 +199,13 @@ local servers = {
             },
         },
         on_attach = function(client, bufnr)
-            on_attach_wrapper(client, bufnr, { auto_format = true })
+            on_attach_wrapper(client, bufnr, { auto_format = false })
+            vim.api.nvim_command(
+                [[autocmd BufWritePre *.cpp lua require"cfg.utils".formatting_hunks(500)]]
+            )
+            vim.api.nvim_command(
+                [[autocmd BufWritePre *.h lua require"cfg.utils".formatting_hunks(500)]]
+            )
             map.ncmd("gH", "ClangdSwitchSourceHeader")
             map.ncmd("gvH", "ClangdSwitchSourceHeaderVSplit")
             map.ncmd("gxH", "ClangdSwitchSourceHeaderSplit")
