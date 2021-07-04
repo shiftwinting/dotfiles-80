@@ -25,6 +25,7 @@ return require("packer").startup({
                 "PackerSync",
                 "PackerStatus",
                 "PackerLoad",
+                "PackerProfile",
             },
         })
         use({ "tpope/vim-repeat", keys = { "n", "." } })
