@@ -12,9 +12,9 @@ if [ "$(uname -n)" = "hercules" ] && xrandr --query | grep "HDMI-0 connected"; t
     xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144
     # xrandr --output HDMI-0 --primary --mode 1920x1080
     # xrandr --output HDMI-0 --primary --mode 3840x2160
-    # xrandr --output HDMI-0 --sameas eDP-1-1
+    # xrandr --output HDMI-0 --mode 1920x1080 --sameas eDP-1-1
 elif [ "$(uname -n)" = "halley" ] && xrandr --query | grep "HDMI-1 connected"; then
-    xrandr --output HDMI-1 --same-as eDP-1
+    xrandr --output HDMI-1 --mode 1920x1080 --same-as eDP-1
 fi
 
 bspc wm -r

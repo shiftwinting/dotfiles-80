@@ -94,6 +94,9 @@ tsconfigs.setup({
         },
     },
     rainbow = { enable = true },
+    matchup = {
+        enable = true,
+    },
     pairs = {
         enable = true,
         goto_right_end = false,

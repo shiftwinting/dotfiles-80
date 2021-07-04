@@ -1,17 +1,32 @@
 local install_path = vim.fn.stdpath("data")
-    .. "/site/pack/packer/start/packer.nvim"
+    .. "/site/pack/packer/opt/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.api.nvim_command(
-        "!git clone https://github.com/wbthomason/packer.nvim " .. install_path
-    )
+    vim.fn.system({
+        "git",
+        "clone",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
     vim.api.nvim_command([[packadd packer.nvim]])
 end
 
-vim.api.nvim_command([[autocmd BufWritePost plugins.lua PackerCompile]])
-
 return require("packer").startup({
     function()
-        use("wbthomason/packer.nvim")
+        use({
+            "wbthomason/packer.nvim",
+            config = function()
+                require("plugins")
+            end,
+            cmd = {
+                "PackerCompile",
+                "PackerInstall",
+                "PackerUpdate",
+                "PackerClean",
+                "PackerSync",
+                "PackerStatus",
+                "PackerLoad",
+            },
+        })
         use({ "tpope/vim-repeat", keys = { "n", "." } })
         use({
             "terrortylor/nvim-comment",
@@ -75,6 +90,7 @@ return require("packer").startup({
         })
         use({
             "luochen1990/rainbow",
+            event = "BufRead",
             config = function()
                 require("cfg.rainbow")
             end,
@@ -101,6 +117,7 @@ return require("packer").startup({
         use({ "mzlogin/vim-markdown-toc", ft = "markdown" })
         use({
             "norcalli/nvim-colorizer.lua",
+            event = "BufRead",
             config = function()
                 require("colorizer").setup()
             end,
@@ -228,6 +245,7 @@ return require("packer").startup({
         })
         use({
             "lewis6991/spellsitter.nvim",
+            event = "BufRead",
             config = function()
                 require("spellsitter").setup()
             end,
@@ -304,6 +322,7 @@ return require("packer").startup({
         })
         use({
             "tjdevries/express_line.nvim",
+            event = "VimEnter",
             config = function()
                 require("cfg.statusline")
             end,
@@ -375,8 +394,8 @@ return require("packer").startup({
                 vim.g.mkdp_browserfunc = "g:OpenNewWindow"
             end,
         })
-        use("delphinus/agrp.nvim")
-        use({ "dstein64/vim-startuptime" })
+        use({ "delphinus/agrp.nvim", module = "agrp" })
+        use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
         use("tpope/vim-git")
         use("kovetskiy/sxhkd-vim")
