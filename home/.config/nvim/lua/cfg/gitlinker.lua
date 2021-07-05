@@ -6,3 +6,12 @@ require("gitlinker").setup({
         end,
     },
 })
+
+require("mapper").nlua(
+    "<leader>gb",
+    'require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})'
+)
+require("mapper").vlua(
+    "<leader>gb",
+    'require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})'
+)

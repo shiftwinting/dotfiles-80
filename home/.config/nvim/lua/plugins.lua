@@ -381,8 +381,8 @@ return require("packer").startup({
         use({
             "ruifm/gitlinker.nvim",
             keys = {
-                { "n", "<leader>gy" },
-                { "v", "<leader>gy" },
+                { "n", "<leader>g" },
+                { "v", "<leader>g" },
             },
             requires = "plenary",
             config = function()
