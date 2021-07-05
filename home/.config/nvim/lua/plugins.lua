@@ -17,6 +17,7 @@ return require("packer").startup({
             config = function()
                 require("plugins")
             end,
+            module = "packer",
             cmd = {
                 "PackerCompile",
                 "PackerInstall",
@@ -294,14 +295,21 @@ return require("packer").startup({
             module = "plenary",
         })
         use({
+            "nvim-lua/popup.nvim",
+            as = "popup",
+            module = "popup",
+        })
+        use({
             "nvim-telescope/telescope.nvim",
+            as = "telescope",
+            module = "telescope",
             keys = { "n", "<localleader>" },
             config = function()
                 require("cfg.telescope")
             end,
             requires = {
                 "plenary",
-                "nvim-lua/popup.nvim",
+                "popup",
                 {
                     "nvim-telescope/telescope-fzy-native.nvim",
                     run = "make -C deps/fzy-lua-native",
@@ -319,7 +327,13 @@ return require("packer").startup({
         use({
             "pwntester/octo.nvim",
             cmd = "Octo",
-            requires = { "nvim-lua/popup.nvim", "plenary" },
+            requires = { "popup", "plenary", "telescope" },
+            config = function()
+                require("octo.config")._config.default_remote = {
+                    "origin",
+                    "upstream",
+                }
+            end,
         })
         use({
             "tjdevries/express_line.nvim",
