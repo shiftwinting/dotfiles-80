@@ -1,6 +1,11 @@
 local map = require("mapper")
 local lspconfig = require("lspconfig")
 local lsp_spinner = require("lsp_spinner")
+local luadev = require("lua-dev").setup({
+    lspconfig = {
+        cmd = { "lua-language-server" },
+    },
+})
 
 local function format_range_operator()
     local old_func = vim.go.operatorfunc
@@ -29,7 +34,7 @@ end
 
 local on_attach_wrapper = function(client, bufnr, opts)
     local default_opts = {
-        auto_format = true,
+        auto_format = false,
         show_diags = false,
     }
     opts = opts or default_opts
@@ -227,7 +232,7 @@ local servers = {
             },
         },
     },
-    pyls = {
+    pylsp = {
         configurationSources = { "flake8" },
         plugins = {
             autopep8 = { enabled = false },
@@ -246,27 +251,7 @@ local servers = {
             yapf = { enabled = false },
         },
     },
-    sumneko_lua = {
-        settings = {
-            Lua = {
-                runtime = {
-                    version = "LuaJIT",
-                    path = vim.split(package.path, ";"),
-                },
-                diagnostics = {
-                    enable = true,
-                    globals = { "vim", "use", "it" },
-                },
-                workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
-                    maxPreload = 1000,
-                    preloadFileSize = 1000,
-                },
-            },
-        },
-
-        cmd = { "lua-language-server" },
-    },
+    sumneko_lua = luadev,
     texlab = {},
     vimls = {},
     yamlls = {},
@@ -345,6 +330,7 @@ null_ls.setup({
         builtins.diagnostics.write_good,
         builtins.diagnostics.markdownlint,
         builtins.diagnostics.shellcheck,
+        builtins.diagnostics.hadolint,
         builtins.formatting.shfmt.with({
             args = { "-i", "4", "-ci" },
         }),

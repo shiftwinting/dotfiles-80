@@ -19,7 +19,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias dmesg='dmesg --color=auto'
-alias lsip="ip a | grep -E '\<inet\>'"
+alias dm='dmesg --color=always | less -r'
+alias ip="ip -color=auto"
+alias lsip="ip -human -color=auto --brief address show"
+alias ipa="ip -stats -details -human -color=auto address show"
 
 alias g='git'
 alias gs='git status --branch --short'
@@ -58,7 +61,7 @@ alias gbranch='git branch'
 alias gb='git branch'
 alias gclean='git branch --merged | egrep -v "(^\*|master|dev|develop|main)" | xargs -n1 -r git branch -d'
 alias gw='git switch'
-alias gwc='git switch -C'
+alias gwc='git switch -c'
 alias gf='git fetch'
 alias gfetch='git fetch'
 alias gfa='git fetch --all'
@@ -98,7 +101,6 @@ alias ports='sudo ss -tupn'
 alias c='clear'
 
 alias n='nvim'
-alias ns='nvim -S'
 alias ndiff='nvim -d'
 alias nd='nvim -d'
 alias nview='nvim -R'
@@ -106,13 +108,6 @@ alias nv='nvim -R'
 alias ngit='nvim +G'
 alias ng='nvim +G'
 alias packer="nvim +PackerSync"
-
-alias python='python3'
-alias pip='pip3'
-alias p3='python3'
-alias py='python3'
-alias p='python3'
-alias p2='python2'
 
 alias ta='tmux new-session -A'
 alias tas='tmux new-session -A -s'

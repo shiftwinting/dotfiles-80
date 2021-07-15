@@ -12,6 +12,13 @@ parser_config.vim = {
     },
 }
 
+parser_config.diff = {
+    install_info = {
+        url = "https://github.com/vigoux/tree-sitter-diff",
+        files = { "src/parser.c"},
+    },
+}
+
 local tsconfigs = require("nvim-treesitter.configs")
 tsconfigs.setup({
     ensure_installed = "all", -- one of "all", "language", or a list of languages

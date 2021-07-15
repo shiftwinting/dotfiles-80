@@ -68,6 +68,14 @@ return require("packer").startup({
             end,
         })
         use("tpope/vim-apathy")
+        use({
+            "folke/persistence.nvim",
+            event = "VimEnter",
+            module = "persistence",
+            config = function()
+                require("cfg.session")
+            end,
+        })
         use({ "tpope/vim-obsession", cmd = "Obsession" })
         use({
             "andymass/vim-matchup",
@@ -141,7 +149,6 @@ return require("packer").startup({
                 },
                 "ray-x/lsp_signature.nvim",
                 "doums/lsp_spinner.nvim",
-
                 {
                     "kosayoda/nvim-lightbulb",
                     config = function()
@@ -157,6 +164,7 @@ return require("packer").startup({
                     end,
                 },
                 "jose-elias-alvarez/null-ls.nvim",
+                "folke/lua-dev.nvim",
             },
         })
         use({
@@ -184,6 +192,7 @@ return require("packer").startup({
             "nvim-treesitter/nvim-treesitter",
             as = "ts",
             event = "BufRead",
+            module = "nvim-treesitter.ts_utils",
             run = ":TSUpdate",
             config = function()
                 require("cfg.ts")
@@ -192,27 +201,27 @@ return require("packer").startup({
         use({
             "romgrk/nvim-treesitter-context",
             event = "BufRead",
-            after = "ts",
+            requires = "ts",
         })
         use({
             "nvim-treesitter/nvim-treesitter-refactor",
             event = "BufRead",
-            after = "ts",
+            requires = "ts",
         })
         use({
             "nvim-treesitter/nvim-treesitter-textobjects",
             event = "BufRead",
-            after = "ts",
+            requires = "ts",
         })
         use({
             "p00f/nvim-ts-rainbow",
             event = "BufRead",
-            after = "ts",
+            requires = "ts",
         })
         use({
             "bryall/contextprint.nvim",
             keys = { "n", "<leader>p" },
-            after = "ts",
+            requires = "ts",
             config = function()
                 require("contextprint").setup()
                 require("mapper").nlua(
@@ -224,7 +233,7 @@ return require("packer").startup({
         use({
             "haringsrob/nvim_context_vt",
             event = "BufRead",
-            after = "ts",
+            requires = "ts",
         })
         use({
             "RRethy/nvim-treesitter-textsubjects",
@@ -235,12 +244,12 @@ return require("packer").startup({
         use({
             "theHamsta/nvim-treesitter-pairs",
             event = "BufRead",
-            after = "ts",
+            requires = "ts",
         })
         use({
             "jghauser/follow-md-links.nvim",
-            ft = "markdown",
-            after = "ts",
+            event = "BufRead",
+            requires = "ts",
             config = function()
                 require("follow-md-links")
             end,

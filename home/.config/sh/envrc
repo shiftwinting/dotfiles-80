@@ -33,6 +33,7 @@ export GPG_AGENT_INFO=1
 # set XDG env vars
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
 export XDG_CACHE_HOME="$HOME"/.cache
 # set ENV var to tell sh shell where its config file is
 export ENV="$XDG_CONFIG_HOME"/sh/shinit

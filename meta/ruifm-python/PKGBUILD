@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-python
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc="ruifm's python metapackage"
 arch=('any')
@@ -13,8 +13,8 @@ depends=(
   'python-black'
   'python-debugpy'
   'python-flake8-black'
-  'python-language-server'
-  'python-pyls-black'
+  'python-lsp-black'
+  'python-lsp-server'
   'python-matplotlib'
   'python-mccabe'
   'python-pillow'
