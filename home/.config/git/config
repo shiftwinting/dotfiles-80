@@ -4,7 +4,7 @@
     username = ruifm
     signingkey = F95836893984D3B7
 [push]
-    default = upstream
+    default = current
     followTags = true
     gpgSign = if-asked
 [core]

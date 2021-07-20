@@ -165,133 +165,6 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
     )
 end
 
-local servers = {
-    bashls = {},
-    clangd = {
-        cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-            "--completion-parse=auto",
-            "--completion-style=bundled",
-            "--header-insertion=iwyu",
-            "--header-insertion-decorators",
-            "--suggest-missing-includes",
-            "--cross-file-rename",
-            "--hidden-features",
-            "--debug-origin",
-            "-j=4",
-            -- '--all-scopes-completion',
-        },
-        commands = {
-            ClangdSwitchSourceHeader = {
-                function()
-                    switch_source_header_splitcmd(0, "edit")
-                end,
-                description = "Open source/header in current buffer",
-            },
-            ClangdSwitchSourceHeaderVSplit = {
-                function()
-                    switch_source_header_splitcmd(0, "vsplit")
-                end,
-                description = "Open source/header in a new vsplit",
-            },
-            ClangdSwitchSourceHeaderSplit = {
-                function()
-                    switch_source_header_splitcmd(0, "split")
-                end,
-                description = "Open source/header in a new split",
-            },
-        },
-        on_attach = function(client, bufnr)
-            on_attach_wrapper(client, bufnr, { auto_format = false })
-            vim.api.nvim_command(
-                [[autocmd BufWritePre *.cpp lua require"cfg.utils".formatting_hunks(500)]]
-            )
-            vim.api.nvim_command(
-                [[autocmd BufWritePre *.h lua require"cfg.utils".formatting_hunks(500)]]
-            )
-            map.ncmd("gH", "ClangdSwitchSourceHeader")
-            map.ncmd("gvH", "ClangdSwitchSourceHeaderVSplit")
-            map.ncmd("gxH", "ClangdSwitchSourceHeaderSplit")
-        end,
-        init_options = { usePlaceholders = true, completeUnimported = true },
-    },
-    cmake = {},
-    cssls = { cmd = { "css-languageserver", "--stdio" } },
-    html = { cmd = { "vscode-html-languageserver", "--stdio" } },
-    -- jedi_language_server = {},
-    jsonls = { cmd = { "json-languageserver", "--stdio" } },
-    pyright = {
-        settings = {
-            python = {
-                analysis = {
-                    autoImportCompletions = true,
-                    autoSearchPaths = true,
-                },
-            },
-        },
-    },
-    pylsp = {
-        configurationSources = { "flake8" },
-        plugins = {
-            autopep8 = { enabled = false },
-            flake8 = { enabled = true },
-            jedi_completion = { enabled = false },
-            jedi_definition = { enabled = false },
-            jedi_symbols = { enabled = false },
-            jedi_references = { enabled = false },
-            mccabe = { enabled = false },
-            preload = { enabled = true },
-            pydocstyle = { enabled = false },
-            pyflakes = { enabled = false },
-            pylint = { enabled = true },
-            pycodestyle = { enabled = false },
-            rope_completion = { enabled = false },
-            yapf = { enabled = false },
-        },
-    },
-    sumneko_lua = luadev,
-    texlab = {},
-    vimls = {},
-    yamlls = {},
-}
-
-for server, config in pairs(servers) do
-    lspconfig[server].setup(config)
-end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        virtual_text = { severity_limit = "Error" },
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-    }
-)
-
-vim.lsp.handlers["textDocument/codeAction"] =
-    require("lsputil.codeAction").code_action_handler
-vim.lsp.handlers["textDocument/references"] =
-    require("lsputil.locations").references_handler
-vim.lsp.handlers["textDocument/definition"] =
-    require("lsputil.locations").definition_handler
-vim.lsp.handlers["textDocument/declaration"] =
-    require("lsputil.locations").declaration_handler
-vim.lsp.handlers["textDocument/typeDefinition"] =
-    require(
-        "lsputil.locations"
-    ).typeDefinition_handler
-vim.lsp.handlers["textDocument/implementation"] =
-    require(
-        "lsputil.locations"
-    ).implementation_handler
-vim.lsp.handlers["textDocument/documentSymbol"] =
-    require("lsputil.symbols").document_handler
-vim.lsp.handlers["workspace/symbol"] =
-    require("lsputil.symbols").workspace_handler
-
 local null_ls = require("null-ls")
 local builtins = null_ls.builtins
 local helpers = require("null-ls.helpers")
@@ -303,37 +176,19 @@ local severities = {
     style = vim.lsp.protocol.DiagnosticSeverity.Hint,
 }
 
-local function offset_to_position(lines, offset)
-    local remainder = offset
-    local lnum = 0
-    local character = 0
-    for i, line in pairs(lines) do
-        local new_remainder = remainder - #line
-        if new_remainder < 0 then
-            character = remainder
-            lnum = i - 1
-            break
-        else
-            remainder = new_remainder
-        end
-    end
-    return {
-        line = lnum,
-        character = character,
-    }
-end
-
-null_ls.setup({
+null_ls.config({
     sources = {
         builtins.formatting.stylua,
         builtins.formatting.prettier,
+        builtins.formatting.shfmt.with({
+            args = { "-i", "4", "-ci" },
+        }),
         builtins.diagnostics.write_good,
         builtins.diagnostics.markdownlint,
         builtins.diagnostics.shellcheck,
         builtins.diagnostics.hadolint,
-        builtins.formatting.shfmt.with({
-            args = { "-i", "4", "-ci" },
-        }),
+        builtins.diagnostics.vale,
+        builtins.code_actions.gitsigns,
         {
             name = "vint",
             method = null_ls.methods.DIAGNOSTICS,
@@ -376,7 +231,7 @@ null_ls.setup({
                     "--format={{.LineNumber}}:{{.Rule}}:{{.Violation}}",
                     "$FILENAME",
                 },
-                on_output = function(line, params)
+                on_output = function(line)
                     line = line:gsub("\r", "")
                     local items = vim.split(line, ":")
                     return {
@@ -446,8 +301,135 @@ null_ls.setup({
             }),
         },
     },
-    on_attach = on_attach_wrapper,
 })
+
+local servers = {
+    bashls = {},
+    clangd = {
+        cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--completion-parse=auto",
+            "--completion-style=bundled",
+            "--header-insertion=iwyu",
+            "--header-insertion-decorators",
+            "--suggest-missing-includes",
+            "--cross-file-rename",
+            "--hidden-features",
+            "--debug-origin",
+            "-j=6",
+            -- '--all-scopes-completion',
+        },
+        commands = {
+            ClangdSwitchSourceHeader = {
+                function()
+                    switch_source_header_splitcmd(0, "edit")
+                end,
+                description = "Open source/header in current buffer",
+            },
+            ClangdSwitchSourceHeaderVSplit = {
+                function()
+                    switch_source_header_splitcmd(0, "vsplit")
+                end,
+                description = "Open source/header in a new vsplit",
+            },
+            ClangdSwitchSourceHeaderSplit = {
+                function()
+                    switch_source_header_splitcmd(0, "split")
+                end,
+                description = "Open source/header in a new split",
+            },
+        },
+        on_attach = function(client, bufnr)
+            on_attach_wrapper(client, bufnr, { auto_format = false })
+            vim.api.nvim_command(
+                [[autocmd BufWritePre *.cpp lua require"cfg.utils".formatting_hunks(500)]]
+            )
+            vim.api.nvim_command(
+                [[autocmd BufWritePre *.h lua require"cfg.utils".formatting_hunks(500)]]
+            )
+            map.ncmd("gH", "ClangdSwitchSourceHeader")
+            map.ncmd("gvH", "ClangdSwitchSourceHeaderVSplit")
+            map.ncmd("gxH", "ClangdSwitchSourceHeaderSplit")
+        end,
+        init_options = { usePlaceholders = true, completeUnimported = true },
+    },
+    cmake = {},
+    cssls = { cmd = { "css-languageserver", "--stdio" } },
+    html = { cmd = { "vscode-html-languageserver", "--stdio" } },
+    -- jedi_language_server = {},
+    jsonls = { cmd = { "json-languageserver", "--stdio" } },
+    ["null-ls"] = {},
+    pyright = {
+        settings = {
+            python = {
+                analysis = {
+                    autoImportCompletions = true,
+                    autoSearchPaths = true,
+                },
+            },
+        },
+    },
+    pylsp = {
+        configurationSources = { "flake8" },
+        plugins = {
+            autopep8 = { enabled = false },
+            flake8 = { enabled = true },
+            jedi_completion = { enabled = false },
+            jedi_definition = { enabled = false },
+            jedi_symbols = { enabled = false },
+            jedi_references = { enabled = false },
+            mccabe = { enabled = false },
+            preload = { enabled = true },
+            pydocstyle = { enabled = false },
+            pyflakes = { enabled = false },
+            pylint = { enabled = true },
+            pycodestyle = { enabled = false },
+            rope_completion = { enabled = false },
+            yapf = { enabled = false },
+        },
+    },
+    sumneko_lua = luadev,
+    texlab = {},
+    vimls = {},
+    yamlls = {},
+}
+
+for server, config in pairs(servers) do
+    lspconfig[server].setup(config)
+end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+        virtual_text = { severity_limit = "Error" },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+    }
+)
+
+vim.lsp.handlers["textDocument/codeAction"] =
+    require("lsputil.codeAction").code_action_handler
+vim.lsp.handlers["textDocument/references"] =
+    require("lsputil.locations").references_handler
+vim.lsp.handlers["textDocument/definition"] =
+    require("lsputil.locations").definition_handler
+vim.lsp.handlers["textDocument/declaration"] =
+    require("lsputil.locations").declaration_handler
+vim.lsp.handlers["textDocument/typeDefinition"] =
+    require(
+        "lsputil.locations"
+    ).typeDefinition_handler
+vim.lsp.handlers["textDocument/implementation"] =
+    require(
+        "lsputil.locations"
+    ).implementation_handler
+vim.lsp.handlers["textDocument/documentSymbol"] =
+    require("lsputil.symbols").document_handler
+vim.lsp.handlers["workspace/symbol"] =
+    require("lsputil.symbols").workspace_handler
 
 return {
     format_range_operator = format_range_operator,

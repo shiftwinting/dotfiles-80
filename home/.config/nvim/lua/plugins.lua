@@ -70,7 +70,7 @@ return require("packer").startup({
         use("tpope/vim-apathy")
         use({
             "folke/persistence.nvim",
-            event = "VimEnter",
+            event = "BufReadPre",
             module = "persistence",
             config = function()
                 require("cfg.session")
@@ -149,20 +149,7 @@ return require("packer").startup({
                 },
                 "ray-x/lsp_signature.nvim",
                 "doums/lsp_spinner.nvim",
-                {
-                    "kosayoda/nvim-lightbulb",
-                    config = function()
-                        require("cfg.lightbulb")
-                    end,
-                },
                 "jubnzv/virtual-types.nvim",
-
-                {
-                    "simrat39/symbols-outline.nvim",
-                    config = function()
-                        require("cfg.symbols")
-                    end,
-                },
                 "jose-elias-alvarez/null-ls.nvim",
                 "folke/lua-dev.nvim",
             },
