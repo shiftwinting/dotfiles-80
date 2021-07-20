@@ -2,12 +2,9 @@
 Name=bond0
 
 [Network]
-DHCP=ipv4
 MulticastDNS=yes
-# DNS=1.1.1.2
-# DNS=192.168.1.203
-# Address=10.0.0.1
-# Gateway=10.0.0.2
-
-# [DHCP]
-# UseDNS=false
+DHCP=ipv4
+LinkLocalAddressing=ipv4
+IPv6AcceptRA=no
+InitialCongestionWindow=50
+InitialAdvertisedReceiveWindow=50

@@ -1,5 +1,5 @@
 [Match]
-Name=wl*
+Type=wlan
 
 [Network]
 Bond=bond0
