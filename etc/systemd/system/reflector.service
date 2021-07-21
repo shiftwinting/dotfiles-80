@@ -1,0 +1,14 @@
+[Unit]
+Description=Refresh Pacman mirrorlist with Reflector.
+Documentation=https://wiki.archlinux.org/index.php/Reflector
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector @/etc/xdg/reflector/reflector.conf
+CacheDirectory=reflector
+Environment=XDG_CACHE_HOME=/var/cache/reflector
+
+[Install]
+WantedBy=multi-user.target
