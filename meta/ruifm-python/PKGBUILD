@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-python
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc="ruifm's python metapackage"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'python-black'
   'python-debugpy'
   'python-flake8-black'
+  'python-flit-core'
   'python-lsp-black'
   'python-lsp-server'
   'python-matplotlib'

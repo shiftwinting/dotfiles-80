@@ -70,7 +70,7 @@
     s = status --branch --short
     m = merge
     mt = mergetool
-    ff = merge --ff=only
+    ff = merge --ff-only
     rb = rebase
     ri = rebase -i
     p = push

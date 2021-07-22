@@ -31,7 +31,7 @@ end
 
 local on_attach_wrapper = function(client, bufnr, opts)
     local default_opts = {
-        auto_format = false,
+        auto_format = true,
         show_diags = false,
     }
     opts = opts or default_opts
@@ -48,7 +48,6 @@ local on_attach_wrapper = function(client, bufnr, opts)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
 
-    lsp_signature.on_attach({ fix_pos = true })
     lsp_spinner.on_attach(client, bufnr)
 
     if client.resolved_capabilities.code_lens then
@@ -56,33 +55,53 @@ local on_attach_wrapper = function(client, bufnr, opts)
         vim.api.nvim_command(
             [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
         )
-
         lsp_nmap("gl", "codelens.run()")
     end
 
-    lsp_nmap("K", "buf.hover()")
-    lsp_nmap("<c-]>", "buf.definition()")
-    lsp_nmap("gD", "buf.declaration()")
-    map.nlua(
-        "<leader>gD",
-        "require'cfg.lsp'.peek_callback('textDocument/declaration')",
-        bufnr
-    )
-    lsp_nmap("gd", "buf.definition()")
-    map.nlua(
-        "<leader>gd",
-        "require'cfg.lsp'.peek_callback('textDocument/definition')",
-        bufnr
-    )
-    lsp_nmap("gt", "buf.type_definition()")
-    lsp_nmap("gi", "buf.implementation()")
-    lsp_nmap("gs", "buf.signature_help()")
-    lsp_nmap("gh", "buf.hover()")
-    lsp_nmap("gic", "buf.incoming_calls()")
-    lsp_nmap("goc", "buf.outgoing_calls()")
-    lsp_nmap("gr", "buf.references()")
-    lsp_nmap("gR", "buf.rename()")
-    lsp_nmap("ga", "buf.code_action()")
+    if client.resolved_capabilities.hover then
+        lsp_nmap("K", "buf.hover()")
+        lsp_nmap("gh", "buf.hover()")
+    end
+    if client.resolved_capabilities.go_to_definition then
+        lsp_nmap("<c-]>", "buf.definition()")
+        lsp_nmap("gd", "buf.definition()")
+    end
+    if client.resolved_capabilities.declaration then
+        lsp_nmap("gD", "buf.declaration()")
+        map.nlua(
+            "<leader>gD",
+            "require'cfg.lsp'.peek_callback('textDocument/declaration')",
+            bufnr
+        )
+        map.nlua(
+            "<leader>gd",
+            "require'cfg.lsp'.peek_callback('textDocument/definition')",
+            bufnr
+        )
+    end
+    if client.resolved_capabilities.type_definition then
+        lsp_nmap("gt", "buf.type_definition()")
+    end
+    if client.resolved_capabilities.implementation then
+        lsp_nmap("gi", "buf.implementation()")
+    end
+    if client.resolved_capabilities.signature_help then
+        lsp_signature.on_attach({ fix_pos = true })
+        lsp_nmap("gs", "buf.signature_help()")
+    end
+    if client.resolved_capabilities.call_hierarchy then
+        lsp_nmap("gic", "buf.incoming_calls()")
+        lsp_nmap("goc", "buf.outgoing_calls()")
+    end
+    if client.resolved_capabilities.find_references then
+        lsp_nmap("gr", "buf.references()")
+    end
+    if client.resolved_capabilities.rename then
+        lsp_nmap("gR", "buf.rename()")
+    end
+    if client.resolved_capabilities.code_action then
+        lsp_nmap("ga", "buf.code_action()")
+    end
     lsp_nmap("gw", "diagnostic.show_line_diagnostics()")
     lsp_nmap("gW", "diagnostic.set_loclist()")
     lsp_nmap("[w", "diagnostic.goto_prev()")
@@ -91,15 +110,15 @@ local on_attach_wrapper = function(client, bufnr, opts)
     lsp_nmap("]e", 'diagnostic.goto_next { severity_limit = "Error" }')
 
     -- Set some keybinds conditional on server capabilities
-    lsp_nmap("<leader>f", "buf.formatting()")
-    lsp_vmap("<leader>f", "buf.range_formatting()")
-    map.nlua("<leader>hf", "require'cfg.utils'.formatting_hunks()")
-    map.nlua("gf", "require'cfg.lsp'.format_range_operator()", bufnr)
-
-    if client.supports_method("textDocument/rangeFormatting") then
+    if client.resolved_capabilities.document_formatting then
+        lsp_nmap("<leader>f", "buf.formatting()")
+    end
+    if client.resolved_capabilities.document_range_formatting then
+        lsp_vmap("<leader>f", "buf.range_formatting()")
+        map.nlua("<leader>hf", "require'cfg.utils'.formatting_hunks()")
+        map.nlua("gf", "require'cfg.lsp'.format_range_operator()", bufnr)
         lsp_setopt("formatexpr", "v:lua.require'cfg.utils'.formatexpr()")
     end
-    lsp_setopt("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     if opts.show_diags then
         vim.api.nvim_command(
@@ -108,11 +127,11 @@ local on_attach_wrapper = function(client, bufnr, opts)
     end
 
     if opts.auto_format then
-        if client.supports_method("textDocument/rangeFormatting") then
+        if client.resolved_capabilities.document_range_formatting then
             vim.api.nvim_command(
                 [[autocmd BufWritePre <buffer> lua require"cfg.utils".formatting_hunks(500)]]
             )
-        else
+        elseif client.resolved_capabilities.document_range_formatting then
             vim.api.nvim_command(
                 [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
             )
@@ -214,10 +233,13 @@ local servers = {
         end,
         init_options = { usePlaceholders = true, completeUnimported = true },
     },
-    cmake = {},
+    cmake = {
+        on_attach = function(client, bufnr)
+            on_attach_wrapper(client, bufnr, { auto_format = false })
+        end,
+    },
     cssls = { cmd = { "css-languageserver", "--stdio" } },
     html = { cmd = { "vscode-html-languageserver", "--stdio" } },
-    -- jedi_language_server = {},
     jsonls = { cmd = { "json-languageserver", "--stdio" } },
     pyright = {
         settings = {

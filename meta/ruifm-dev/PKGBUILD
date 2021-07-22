@@ -1,6 +1,6 @@
 # Maintainer: Rui Marques <arch@ruimarques.xyz>
 pkgname=ruifm-dev
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc="ruifm's dev metapackage"
 arch=('any')
@@ -20,6 +20,7 @@ depends=(
   'shfmt'
   'sloccount'
   'stylua-bin'
+  'vale'
   'vim-language-server'
   'vint'
   'vscode-json-languageserver-bin'
