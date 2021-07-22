@@ -1,1 +1,1 @@
-vim.cmd[[syntax match Comment +\/\/.\+$+]]
+vim.cmd([[syntax match Comment +\/\/.\+$+]])

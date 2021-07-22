@@ -1,5 +1,5 @@
-local ncmd = require"mapper".ncmd
-local vcmd = require"mapper".ncmd
+local ncmd = require("mapper").ncmd
+local vcmd = require("mapper").ncmd
 ncmd("gc", "Cycle", 0)
 ncmd("gp", "Pick", 0)
 ncmd("ge", "Edit", 0)

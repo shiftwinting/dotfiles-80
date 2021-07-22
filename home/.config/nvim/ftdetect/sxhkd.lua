@@ -1,1 +1,1 @@
-vim.cmd[[autocmd BufNewFile,BufFilePre,BufRead *sxhkdrc setfiletype sxhkd]]
+vim.cmd([[autocmd BufNewFile,BufFilePre,BufRead *sxhkdrc setfiletype sxhkd]])

@@ -137,4 +137,4 @@ null_ls.config({
     },
 })
 
-pcall(require("lspconfig")["null-ls"].setup,{})
+pcall(require("lspconfig")["null-ls"].setup, {})
