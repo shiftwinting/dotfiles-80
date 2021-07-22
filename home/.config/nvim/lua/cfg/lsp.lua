@@ -1,11 +1,8 @@
 local map = require("mapper")
 local lspconfig = require("lspconfig")
 local lsp_spinner = require("lsp_spinner")
-local luadev = require("lua-dev").setup({
-    lspconfig = {
-        cmd = { "lua-language-server" },
-    },
-})
+local lsp_signature = require("lsp_signature")
+local virtualtypes = require("virtualtypes")
 
 local function format_range_operator()
     local old_func = vim.go.operatorfunc
@@ -51,11 +48,11 @@ local on_attach_wrapper = function(client, bufnr, opts)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
 
-    require("lsp_signature").on_attach({ fix_pos = true })
+    lsp_signature.on_attach({ fix_pos = true })
     lsp_spinner.on_attach(client, bufnr)
 
     if client.resolved_capabilities.code_lens then
-        require("virtualtypes").on_attach()
+        virtualtypes.on_attach()
         vim.api.nvim_command(
             [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
         )
@@ -146,7 +143,7 @@ lspconfig.util.default_config = vim.tbl_extend(
 )
 
 local function switch_source_header_splitcmd(bufnr, splitcmd)
-    bufnr = require("lspconfig").util.validate_bufnr(bufnr)
+    bufnr = lspconfig.util.validate_bufnr(bufnr)
     local params = { uri = vim.uri_from_bufnr(bufnr) }
     vim.lsp.buf_request(
         bufnr,
@@ -164,144 +161,6 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
         end
     )
 end
-
-local null_ls = require("null-ls")
-local builtins = null_ls.builtins
-local helpers = require("null-ls.helpers")
-
-local severities = {
-    error = vim.lsp.protocol.DiagnosticSeverity.Error,
-    warning = vim.lsp.protocol.DiagnosticSeverity.Warning,
-    info = vim.lsp.protocol.DiagnosticSeverity.Information,
-    style = vim.lsp.protocol.DiagnosticSeverity.Hint,
-}
-
-null_ls.config({
-    sources = {
-        builtins.formatting.stylua,
-        builtins.formatting.prettier,
-        builtins.formatting.shfmt.with({
-            args = { "-i", "4", "-ci" },
-        }),
-        builtins.diagnostics.write_good,
-        builtins.diagnostics.markdownlint,
-        builtins.diagnostics.shellcheck,
-        builtins.diagnostics.hadolint,
-        builtins.diagnostics.vale,
-        builtins.code_actions.gitsigns,
-        {
-            name = "vint",
-            method = null_ls.methods.DIAGNOSTICS,
-            filetypes = { "vim" },
-            generator = helpers.generator_factory({
-                command = "vint",
-                args = { "-", "--json", "--style-problem", "--enable-neovim" },
-                on_output = function(params)
-                    local diagnostics = {}
-                    for _, item in ipairs(params.output or {}) do
-                        table.insert(diagnostics, {
-                            row = item.line_number,
-                            col = item.column_number,
-                            end_col = item.column_number,
-                            source = "vint",
-                            message = string.format(
-                                "[SC%s] %s (%s)",
-                                item.policy_name,
-                                item.description,
-                                item.reference
-                            ),
-                            severity = severities[item.severity],
-                        })
-                    end
-                    return diagnostics
-                end,
-                to_stdin = true,
-                to_stderr = true,
-                ignore_errors = true,
-                format = "json",
-            }),
-        },
-        {
-            name = "checkmake",
-            method = null_ls.methods.DIAGNOSTICS,
-            filetypes = { "make" },
-            generator = helpers.generator_factory({
-                command = "checkmake",
-                args = {
-                    "--format={{.LineNumber}}:{{.Rule}}:{{.Violation}}",
-                    "$FILENAME",
-                },
-                on_output = function(line)
-                    line = line:gsub("\r", "")
-                    local items = vim.split(line, ":")
-                    return {
-                        row = tonumber(items[1]),
-                        source = "checkmake",
-                        message = items[3],
-                        severity = vim.lsp.protocol.DiagnosticSeverity.Warning,
-                    }
-                end,
-                to_stderr = true,
-                ignore_errors = true,
-                format = "line",
-            }),
-        },
-        {
-            name = "pandoc-markdown",
-            method = null_ls.methods.FORMATTING,
-            filetypes = { "markdown" },
-            generator = helpers.formatter_factory({
-                command = "pandoc",
-                args = {
-                    "-f",
-                    "markdown",
-                    "-t",
-                    "markdown",
-                    "--standalone",
-                    "--columns=80",
-                    "--tab-stop=2",
-                },
-                to_stdin = true,
-            }),
-        },
-        {
-            name = "pandoc-rst",
-            method = null_ls.methods.FORMATTING,
-            filetypes = { "rst" },
-            generator = helpers.formatter_factory({
-                command = "pandoc",
-                args = {
-                    "-f",
-                    "rst",
-                    "-t",
-                    "rst",
-                    "--standalone",
-                    "--columns=80",
-                    "--tab-stop=2",
-                },
-                to_stdin = true,
-            }),
-        },
-        {
-            name = "pandoc-rst",
-            method = null_ls.methods.FORMATTING,
-            filetypes = { "rst" },
-            generator = helpers.formatter_factory({
-                command = "pandoc",
-                args = {
-                    "-f",
-                    "rst",
-                    "-t",
-                    "rst",
-                    "--standalone",
-                    "--columns=80",
-                    "--tab-stop=2",
-                },
-                to_stdin = true,
-            }),
-        },
-    },
-})
 
 local servers = {
     bashls = {},
@@ -360,7 +219,6 @@ local servers = {
     html = { cmd = { "vscode-html-languageserver", "--stdio" } },
     -- jedi_language_server = {},
     jsonls = { cmd = { "json-languageserver", "--stdio" } },
-    ["null-ls"] = {},
     pyright = {
         settings = {
             python = {
@@ -390,7 +248,6 @@ local servers = {
             yapf = { enabled = false },
         },
     },
-    sumneko_lua = luadev,
     texlab = {},
     vimls = {},
     yamlls = {},
@@ -409,27 +266,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         update_in_insert = false,
     }
 )
-
-vim.lsp.handlers["textDocument/codeAction"] =
-    require("lsputil.codeAction").code_action_handler
-vim.lsp.handlers["textDocument/references"] =
-    require("lsputil.locations").references_handler
-vim.lsp.handlers["textDocument/definition"] =
-    require("lsputil.locations").definition_handler
-vim.lsp.handlers["textDocument/declaration"] =
-    require("lsputil.locations").declaration_handler
-vim.lsp.handlers["textDocument/typeDefinition"] =
-    require(
-        "lsputil.locations"
-    ).typeDefinition_handler
-vim.lsp.handlers["textDocument/implementation"] =
-    require(
-        "lsputil.locations"
-    ).implementation_handler
-vim.lsp.handlers["textDocument/documentSymbol"] =
-    require("lsputil.symbols").document_handler
-vim.lsp.handlers["workspace/symbol"] =
-    require("lsputil.symbols").workspace_handler
 
 return {
     format_range_operator = format_range_operator,

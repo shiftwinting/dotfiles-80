@@ -58,4 +58,43 @@
 [remote "origin"]
     fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [alias]
+    cl = clone
+    co = checkout
+    br = branch
+    c = commit
+    cp = cherry-pick
+    sw = switch
+    cb = switch -c
+    rt = restore
+    res = reset
+    s = status --branch --short
+    m = merge
+    mt = mergetool
+    ff = merge --ff=only
+    rb = rebase
+    ri = rebase -i
+    p = push
+    fp = push --force-with-lease
+    f = fetch
+    fa = fetch --all
+    d = diff
+    dc = diff --cached
+    dt = difftool
+    a = add
+    sub = submodule
+    subf = submodule foreach
+    re = remote -v
+    ra = remote add
+    rs = remote set-url
+    rr = remote remove
+    st = stash
+    sp = stash pop
+    sd = stash drop
+    sl = stash list
+    ss = stash show
+    del = branch -D
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    undo = reset --hard
+    l = log --abbrev-commit -200 --graph --date=short --pretty=oneline
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"

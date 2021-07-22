@@ -1,6 +1,7 @@
 local lsp_status = function()
-    local sl = string.format("[%s] ", require("lsp_spinner").status())
+    local sl = "[]"
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+        sl = string.format("[%s] ", require("lsp_spinner").status())
         sl = sl
             .. string.format(
                 "E: %s W: %s",

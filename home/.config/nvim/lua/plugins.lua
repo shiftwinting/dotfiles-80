@@ -15,7 +15,7 @@ return require("packer").startup({
         use({
             "wbthomason/packer.nvim",
             config = function()
-                require("plugins")
+                dofile(vim.fn.stdpath("config") .. "/lua/plugins.lua")
             end,
             module = "packer",
             cmd = {
@@ -29,12 +29,22 @@ return require("packer").startup({
                 "PackerProfile",
             },
         })
+        use({
+            "nvim-lua/plenary.nvim",
+            as = "plenary",
+            module = "plenary",
+        })
+        use({
+            "nvim-lua/popup.nvim",
+            as = "popup",
+            module = "popup",
+        })
         use({ "tpope/vim-repeat", keys = { "n", "." } })
         use({
             "terrortylor/nvim-comment",
             keys = { { "n", "gc" }, { "v", "gc" } },
             config = function()
-                require("cfg.comments")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/comments.lua")
             end,
         })
         use({
@@ -50,7 +60,7 @@ return require("packer").startup({
             "tpope/vim-dispatch",
             cmd = { "Dispatch", "Make", "Focus", "Start" },
             config = function()
-                require("cfg.dispatch")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/dispatch.lua")
             end,
         })
         use("tpope/vim-rsi")
@@ -73,7 +83,7 @@ return require("packer").startup({
             event = "BufReadPre",
             module = "persistence",
             config = function()
-                require("cfg.session")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/session.lua")
             end,
         })
         use({ "tpope/vim-obsession", cmd = "Obsession" })
@@ -81,20 +91,20 @@ return require("packer").startup({
             "andymass/vim-matchup",
             event = "CursorMoved",
             config = function()
-                require("cfg.matchup")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/matchup.lua")
             end,
         })
         use({
             "romainl/vim-qf",
             config = function()
-                require("cfg.qf")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/qf.lua")
             end,
         })
         use({
             "npxbr/gruvbox.nvim",
             event = "VimEnter",
             config = function()
-                require("cfg.gruvbox")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/gruvbox.lua")
             end,
             requires = "rktjmp/lush.nvim",
         })
@@ -102,7 +112,7 @@ return require("packer").startup({
             "luochen1990/rainbow",
             event = "BufRead",
             config = function()
-                require("cfg.rainbow")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/rainbow.lua")
             end,
         })
         use("editorconfig/editorconfig-vim")
@@ -117,7 +127,7 @@ return require("packer").startup({
                 { "n", "<c-l>" },
             },
             config = function()
-                require("cfg.tmux")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/tmux.lua")
             end,
         })
         use({
@@ -134,37 +144,66 @@ return require("packer").startup({
         })
 
         use({
+            "ray-x/lsp_signature.nvim",
+            module = "lsp_signature",
+        })
+        use({
+            "doums/lsp_spinner.nvim",
+            module = "lsp_spinner",
+        })
+        use({
+            "jubnzv/virtual-types.nvim",
+            module = "virtualtypes",
+        })
+        use({
             "neovim/nvim-lspconfig",
-            event = "BufRead",
+            as = "lspconfig",
             config = function()
-                require("cfg.lsp")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/lsp.lua")
             end,
+        })
+
+        use({
+            "RishabhRD/nvim-lsputils",
+            event = "BufRead",
             requires = {
-                {
-                    "RishabhRD/nvim-lsputils",
-                    requires = {
-                        "RishabhRD/popfix",
-                        run = "make -C external_modules/fzy_lua_native",
-                    },
-                },
-                "ray-x/lsp_signature.nvim",
-                "doums/lsp_spinner.nvim",
-                "jubnzv/virtual-types.nvim",
-                "jose-elias-alvarez/null-ls.nvim",
-                "folke/lua-dev.nvim",
+                "RishabhRD/popfix",
+                run = "make -C external_modules/fzy_lua_native",
             },
+            config = function()
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/lsputils.lua")
+            end,
+        })
+        use({
+            "jose-elias-alvarez/null-ls.nvim",
+            event = "BufRead",
+            requires = {
+                "lspconfig",
+                "plenary",
+            },
+            config = function()
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/null.lua")
+            end,
+        })
+        use({
+            "folke/lua-dev.nvim",
+            ft = "lua",
+            requires = "lspconfig",
+            config = function()
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/luadev.lua")
+            end,
         })
         use({
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("cfg.completion")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/completion.lua")
             end,
             requires = {
                 "hrsh7th/vim-vsnip",
                 event = "InsertCharPre",
                 config = function()
-                    require("cfg.snippets")
+                    dofile(vim.fn.stdpath("config") .. "/lua/cfg/snippets.lua")
                 end,
                 requires = {
                     "hrsh7th/vim-vsnip-integ",
@@ -182,7 +221,7 @@ return require("packer").startup({
             module = "nvim-treesitter.ts_utils",
             run = ":TSUpdate",
             config = function()
-                require("cfg.ts")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/ts.lua")
             end,
         })
         use({
@@ -257,7 +296,7 @@ return require("packer").startup({
             "mfussenegger/nvim-dap",
             keys = { "<F5>", "<leader>lp", "gm", "g<cr>" },
             config = function()
-                require("cfg.dap")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/dap.lua")
             end,
             requires = {
                 "theHamsta/nvim-dap-virtual-text",
@@ -286,22 +325,12 @@ return require("packer").startup({
             end,
         })
         use({
-            "nvim-lua/plenary.nvim",
-            as = "plenary",
-            module = "plenary",
-        })
-        use({
-            "nvim-lua/popup.nvim",
-            as = "popup",
-            module = "popup",
-        })
-        use({
             "nvim-telescope/telescope.nvim",
             as = "telescope",
             module = "telescope",
             keys = { "n", "<localleader>" },
             config = function()
-                require("cfg.telescope")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/telescope.lua")
             end,
             requires = {
                 "plenary",
@@ -316,7 +345,7 @@ return require("packer").startup({
             "lewis6991/gitsigns.nvim",
             event = "BufRead",
             config = function()
-                require("cfg.gitsigns")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/gitsigns.lua")
             end,
             requires = "plenary",
         })
@@ -335,7 +364,7 @@ return require("packer").startup({
             "tjdevries/express_line.nvim",
             event = "VimEnter",
             config = function()
-                require("cfg.statusline")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/statusline.lua")
             end,
             requires = "plenary",
         })
@@ -353,7 +382,7 @@ return require("packer").startup({
                 { "n", "[i" },
             },
             config = function()
-                require("cfg.dial")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/dial.lua")
             end,
         })
         use({
@@ -371,7 +400,7 @@ return require("packer").startup({
                 },
             },
             config = function()
-                require("cfg.neogit")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/neogit.lua")
             end,
         })
         use({
@@ -382,7 +411,7 @@ return require("packer").startup({
             },
             requires = "plenary",
             config = function()
-                require("cfg.gitlinker")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/gitlinker.lua")
             end,
         })
         use({
@@ -415,7 +444,7 @@ return require("packer").startup({
             "lervag/vimtex",
             ft = "tex",
             config = function()
-                require("cfg.vimtex")
+                dofile(vim.fn.stdpath("config") .. "/lua/cfg/vimtex.lua")
             end,
         })
         use("sudar/vim-arduino-syntax")
