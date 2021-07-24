@@ -256,11 +256,11 @@ return require("packer").startup({
                 )
             end,
         })
-        use({
-            "haringsrob/nvim_context_vt",
-            event = "BufRead",
-            requires = "ts",
-        })
+        -- use({
+        --     "haringsrob/nvim_context_vt",
+        --     event = "BufRead",
+        --     requires = "ts",
+        -- })
         use({
             "RRethy/nvim-treesitter-textsubjects",
             event = "BufRead",
