@@ -3,7 +3,7 @@ require("agrp").set({
         {
             "BufWritePost",
             "plugins.lua",
-            "PackerCompile",
+            "PackerSync",
         },
     },
 })

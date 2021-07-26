@@ -22,7 +22,6 @@ null_ls.config({
         builtins.diagnostics.shellcheck,
         builtins.diagnostics.hadolint,
         builtins.diagnostics.vale,
-        builtins.code_actions.gitsigns,
         {
             name = "vint",
             method = null_ls.methods.DIAGNOSTICS,

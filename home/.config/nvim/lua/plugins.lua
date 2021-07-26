@@ -86,7 +86,6 @@ return require("packer").startup({
                 dofile(vim.fn.stdpath("config") .. "/lua/cfg/session.lua")
             end,
         })
-        use({ "tpope/vim-obsession", cmd = "Obsession" })
         use({
             "andymass/vim-matchup",
             event = "CursorMoved",
@@ -256,11 +255,11 @@ return require("packer").startup({
                 )
             end,
         })
-        -- use({
-        --     "haringsrob/nvim_context_vt",
-        --     event = "BufRead",
-        --     requires = "ts",
-        -- })
+        use({
+            "haringsrob/nvim_context_vt",
+            event = "BufRead",
+            requires = "ts",
+        })
         use({
             "RRethy/nvim-treesitter-textsubjects",
             event = "BufRead",
@@ -435,6 +434,7 @@ return require("packer").startup({
             end,
         })
         use({ "delphinus/agrp.nvim", module = "agrp" })
+        use({ "ThePrimeagen/refactoring.nvim" })
         use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
         use("tpope/vim-git")
