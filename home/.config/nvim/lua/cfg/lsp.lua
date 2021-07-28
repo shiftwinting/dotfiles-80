@@ -50,7 +50,7 @@ local on_attach_wrapper = function(client, bufnr, opts)
 
     lsp_spinner.on_attach(client, bufnr)
 
-    if client.supports_method('textDocument/codeLens') then
+    if client.supports_method("textDocument/codeLens") then
         virtualtypes.on_attach()
         vim.api.nvim_command(
             [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
@@ -58,15 +58,15 @@ local on_attach_wrapper = function(client, bufnr, opts)
         lsp_nmap("gl", "codelens.run()")
     end
 
-    if client.supports_method('textDocument/hover') then
+    if client.supports_method("textDocument/hover") then
         lsp_nmap("K", "buf.hover()")
         lsp_nmap("gh", "buf.hover()")
     end
-    if client.supports_method('textDocument/definition') then
+    if client.supports_method("textDocument/definition") then
         lsp_nmap("<c-]>", "buf.definition()")
         lsp_nmap("gd", "buf.definition()")
     end
-    if client.supports_method('textDocument/declaration') then
+    if client.supports_method("textDocument/declaration") then
         lsp_nmap("gD", "buf.declaration()")
         map.nlua(
             "<leader>gD",
@@ -79,27 +79,27 @@ local on_attach_wrapper = function(client, bufnr, opts)
             bufnr
         )
     end
-    if client.supports_method('textDocument/typeDefinition') then
+    if client.supports_method("textDocument/typeDefinition") then
         lsp_nmap("gt", "buf.type_definition()")
     end
-    if client.supports_method('textDocument/implementation') then
+    if client.supports_method("textDocument/implementation") then
         lsp_nmap("gi", "buf.implementation()")
     end
-    if client.supports_method('textDocument/signatureHelp') then
+    if client.supports_method("textDocument/signatureHelp") then
         lsp_signature.on_attach({ fix_pos = true })
         lsp_nmap("gs", "buf.signature_help()")
     end
-    if client.supports_method('textDocument/prepareCallHierarchy') then
+    if client.supports_method("textDocument/prepareCallHierarchy") then
         lsp_nmap("gic", "buf.incoming_calls()")
         lsp_nmap("goc", "buf.outgoing_calls()")
     end
-    if client.supports_method('textDocument/references') then
+    if client.supports_method("textDocument/references") then
         lsp_nmap("gr", "buf.references()")
     end
-    if client.supports_method('textDocument/rename') then
+    if client.supports_method("textDocument/rename") then
         lsp_nmap("gR", "buf.rename()")
     end
-    if client.supports_method('textDocument/codeAction') then
+    if client.supports_method("textDocument/codeAction") then
         lsp_nmap("ga", "buf.code_action()")
     end
     lsp_nmap("gw", "diagnostic.show_line_diagnostics()")
@@ -110,10 +110,10 @@ local on_attach_wrapper = function(client, bufnr, opts)
     lsp_nmap("]e", 'diagnostic.goto_next { severity_limit = "Error" }')
 
     -- Set some keybinds conditional on server capabilities
-    if client.supports_method('textDocument/formatting') then
+    if client.supports_method("textDocument/formatting") then
         lsp_nmap("<leader>f", "buf.formatting()")
     end
-    if client.supports_method('textDocument/rangeFormatting') then
+    if client.supports_method("textDocument/rangeFormatting") then
         lsp_vmap("<leader>f", "buf.range_formatting()")
         map.nlua("<leader>hf", "require'cfg.utils'.formatting_hunks()")
         map.nlua("gf", "require'cfg.lsp'.format_range_operator()", bufnr)
@@ -127,11 +127,11 @@ local on_attach_wrapper = function(client, bufnr, opts)
     end
 
     if opts.auto_format then
-        if client.supports_method('textDocument/rangeFormatting') then
+        if client.supports_method("textDocument/rangeFormatting") then
             vim.api.nvim_command(
                 [[autocmd BufWritePre <buffer> lua require"cfg.utils".formatting_hunks(500)]]
             )
-        elseif client.supports_method('textDocument/formatting') then
+        elseif client.supports_method("textDocument/formatting") then
             vim.api.nvim_command(
                 [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
             )
@@ -231,7 +231,11 @@ local servers = {
             map.ncmd("gvH", "ClangdSwitchSourceHeaderVSplit")
             map.ncmd("gxH", "ClangdSwitchSourceHeaderSplit")
         end,
-        init_options = { usePlaceholders = true, completeUnimported = true },
+        init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+        },
     },
     cmake = {
         on_attach = function(client, bufnr)
