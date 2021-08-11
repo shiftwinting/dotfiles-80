@@ -10,6 +10,8 @@
 [core]
     whitespace = fix,trailing-space,cr-at-eol
     autocrlf = input
+[branch]
+    autoSetupMerge = false
 [web]
     browser = firefox
 [diff]

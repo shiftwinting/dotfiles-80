@@ -80,8 +80,6 @@ return require("packer").startup({
         use("tpope/vim-apathy")
         use({
             "folke/persistence.nvim",
-            event = "BufReadPre",
-            module = "persistence",
             config = function()
                 dofile(vim.fn.stdpath("config") .. "/lua/cfg/session.lua")
             end,
@@ -114,7 +112,6 @@ return require("packer").startup({
                 dofile(vim.fn.stdpath("config") .. "/lua/cfg/rainbow.lua")
             end,
         })
-        use("editorconfig/editorconfig-vim")
         use("michaeljsmith/vim-indent-object")
         use("wellle/targets.vim")
         use({
@@ -237,6 +234,14 @@ return require("packer").startup({
             "nvim-treesitter/nvim-treesitter-textobjects",
             event = "BufRead",
             requires = "ts",
+        })
+        use({
+            "nvim-treesitter/nvim-tree-docs",
+            event = "BufRead",
+            requires = {
+                "ts",
+                { "Olical/aniseed", tag = "v3.20.0" },
+            },
         })
         use({
             "p00f/nvim-ts-rainbow",
@@ -435,6 +440,13 @@ return require("packer").startup({
         })
         use({ "delphinus/agrp.nvim", module = "agrp" })
         use({ "ThePrimeagen/refactoring.nvim" })
+        use({
+            "rcarriga/nvim-notify",
+            config = function()
+                vim.notify = require("notify")
+            end,
+        })
+        use('gpanders/editorconfig.nvim')
         use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
         use("tpope/vim-git")

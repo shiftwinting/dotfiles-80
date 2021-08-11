@@ -31,7 +31,7 @@ end
 
 local on_attach_wrapper = function(client, bufnr, opts)
     local default_opts = {
-        auto_format = true,
+        auto_format = false,
         show_diags = false,
     }
     opts = opts or default_opts

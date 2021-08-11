@@ -3,13 +3,6 @@ local builtins = null_ls.builtins
 local generator = null_ls.generator
 local formatter = null_ls.formatter
 
-local severities = {
-    error = vim.lsp.protocol.DiagnosticSeverity.Error,
-    warning = vim.lsp.protocol.DiagnosticSeverity.Warning,
-    info = vim.lsp.protocol.DiagnosticSeverity.Information,
-    style = vim.lsp.protocol.DiagnosticSeverity.Hint,
-}
-
 null_ls.config({
     sources = {
         builtins.formatting.stylua,
@@ -17,43 +10,13 @@ null_ls.config({
         builtins.formatting.shfmt.with({
             args = { "-i", "4", "-ci" },
         }),
+        builtins.formatting.nginx_beautifier,
         builtins.diagnostics.write_good,
         builtins.diagnostics.markdownlint,
         builtins.diagnostics.shellcheck,
         builtins.diagnostics.hadolint,
         builtins.diagnostics.vale,
-        {
-            name = "vint",
-            method = null_ls.methods.DIAGNOSTICS,
-            filetypes = { "vim" },
-            generator = generator({
-                command = "vint",
-                args = { "-", "--json", "--style-problem", "--enable-neovim" },
-                on_output = function(params)
-                    local diagnostics = {}
-                    for _, item in ipairs(params.output or {}) do
-                        table.insert(diagnostics, {
-                            row = item.line_number,
-                            col = item.column_number,
-                            end_col = item.column_number,
-                            source = "vint",
-                            message = string.format(
-                                "[SC%s] %s (%s)",
-                                item.policy_name,
-                                item.description,
-                                item.reference
-                            ),
-                            severity = severities[item.severity],
-                        })
-                    end
-                    return diagnostics
-                end,
-                to_stdin = true,
-                to_stderr = true,
-                ignore_errors = true,
-                format = "json",
-            }),
-        },
+        builtins.diagnostics.vint,
         {
             name = "checkmake",
             method = null_ls.methods.DIAGNOSTICS,

@@ -107,4 +107,7 @@ tsconfigs.setup({
         enable = true,
         keymaps = { ["."] = "textsubjects-smart", [";"] = "textsubjects-big" },
     },
+    tree_docs = {
+        enable = true,
+    },
 })
