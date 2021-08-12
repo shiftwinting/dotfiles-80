@@ -66,7 +66,7 @@
     c = commit
     cp = cherry-pick
     sw = switch
-    cb = switch -c
+    swc = switch -c
     rt = restore
     res = reset
     s = status --branch --short
@@ -80,9 +80,11 @@
     f = fetch
     fa = fetch --all
     d = diff
-    dc = diff --cached
+    staged = diff --cached
     dt = difftool
     a = add
+    stage = add
+    st = add
     sub = submodule
     subf = submodule foreach
     re = remote -v

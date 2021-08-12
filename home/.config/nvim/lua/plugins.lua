@@ -66,15 +66,18 @@ return require("packer").startup({
         use("tpope/vim-rsi")
         use({
             "blackCauldron7/surround.nvim",
-            keys = {
-                { "n", "sr" },
-                { "n", "sd" },
-                { "n", "ys" },
-                { "v", "s" },
-                { "i", "<c-s>" },
-            },
             config = function()
-                require("surround").setup({})
+                require("surround").setup({
+                    pairs = {
+                        nestable = {
+                            { "(", ")" },
+                            { "[", "]" },
+                            { "{", "}" },
+                            { "<", ">" },
+                        },
+                        linear = { { "'", "'" }, { "`", "`" }, { '"', '"' } },
+                    },
+                })
             end,
         })
         use("tpope/vim-apathy")
@@ -338,7 +341,6 @@ return require("packer").startup({
             end,
             requires = {
                 "plenary",
-                "popup",
                 {
                     "nvim-telescope/telescope-fzy-native.nvim",
                     run = "make -C deps/fzy-lua-native",
@@ -446,7 +448,7 @@ return require("packer").startup({
                 vim.notify = require("notify")
             end,
         })
-        use('gpanders/editorconfig.nvim')
+        use("gpanders/editorconfig.nvim")
         use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
         use("tpope/vim-git")
